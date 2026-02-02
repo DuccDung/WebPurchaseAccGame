@@ -1,0 +1,372 @@
+﻿<link href="~/assets_admin/css/acc_game_page.css" asp-append-version="true" rel="stylesheet" /> 
+<!-- STATS UI (HTML + CSS only) -->
+<div class="container-fluid pt-4 px-4">
+    <!-- Header + Filters -->
+    <div class="bg-secondary rounded p-4 mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div>
+                <h5 class="mb-1">Thống kê tài khoản game</h5>
+                <small class="text-muted">KPI • Charts (mock) • Breakdown</small>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-light btn-sm">
+                    <i class="fa fa-undo me-1"></i> Reset
+                </button>
+                <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fa fa-filter me-1"></i> Áp dụng
+                </button>
+            </div>
+        </div>
+
+        <hr class="border-secondary my-3" />
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Từ ngày</label>
+                <input type="date" class="form-control bg-dark border-0" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Đến ngày</label>
+                <input type="date" class="form-control bg-dark border-0" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Game</label>
+                <select class="form-select bg-dark border-0">
+                    <option>Tất cả</option>
+                    <option>Liên Minh Huyền Thoại</option>
+                    <option>Genshin Impact</option>
+                    <option>PUBG</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Trạng thái</label>
+                <select class="form-select bg-dark border-0">
+                    <option>Tất cả</option>
+                    <option>DRAFT</option>
+                    <option>PENDING</option>
+                    <option>PUBLISHED</option>
+                    <option>SOLD</option>
+                    <option>HIDDEN</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="row g-4 mb-4">
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="stat-card bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Tổng bài</small>
+                    <i class="fa fa-layer-group text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">1,248</h3>
+                <div class="stat-sub text-muted mt-2">
+                    <span class="badge badge-soft">+12%</span>
+                    <small>so với kỳ trước</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="stat-card bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Đang bán</small>
+                    <i class="fa fa-store text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">402</h3>
+                <div class="stat-sub text-muted mt-2">
+                    <span class="badge badge-soft">+5%</span>
+                    <small>tăng</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="stat-card bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Đã bán</small>
+                    <i class="fa fa-check-circle text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">316</h3>
+                <div class="stat-sub text-muted mt-2">
+                    <span class="badge badge-soft">+18%</span>
+                    <small>tăng</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="stat-card bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Chờ duyệt</small>
+                    <i class="fa fa-hourglass-half text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">87</h3>
+                <div class="stat-sub text-muted mt-2">
+                    <span class="badge badge-soft">-3%</span>
+                    <small>giảm</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="stat-card bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Doanh thu</small>
+                    <i class="fa fa-coins text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">₫128,500,000</h3>
+                <div class="stat-sub text-muted mt-2">
+                    <span class="badge badge-soft">+9%</span>
+                    <small>tăng</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-xl-2">
+            <div class="stat-card bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Giá TB</small>
+                    <i class="fa fa-tag text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">₫2,350,000</h3>
+                <div class="stat-sub text-muted mt-2">
+                    <span class="badge badge-soft">+1%</span>
+                    <small>tăng</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts (Pure HTML/CSS mock) -->
+    <div class="row g-4">
+        <!-- Left: Area chart mock -->
+        <div class="col-xl-8">
+            <div class="bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h6 class="mb-0">Số bài đăng theo ngày</h6>
+                    <span class="badge bg-dark">01/01 → 31/01</span>
+                </div>
+
+                <div class="chart-shell">
+                    <div class="chart-grid"></div>
+
+                    <!-- Fake line points (tĩnh) -->
+                    <div class="chart-line">
+                        <span class="pt" style="left: 4%; bottom: 28%"></span>
+                        <span class="pt" style="left: 12%; bottom: 40%"></span>
+                        <span class="pt" style="left: 20%; bottom: 35%"></span>
+                        <span class="pt" style="left: 28%; bottom: 52%"></span>
+                        <span class="pt" style="left: 36%; bottom: 46%"></span>
+                        <span class="pt" style="left: 44%; bottom: 64%"></span>
+                        <span class="pt" style="left: 52%; bottom: 58%"></span>
+                        <span class="pt" style="left: 60%; bottom: 70%"></span>
+                        <span class="pt" style="left: 68%; bottom: 60%"></span>
+                        <span class="pt" style="left: 76%; bottom: 66%"></span>
+                        <span class="pt" style="left: 84%; bottom: 55%"></span>
+                        <span class="pt" style="left: 92%; bottom: 62%"></span>
+                    </div>
+
+                    <div class="chart-legend">
+                        <span class="dot"></span>
+                        <small class="text-muted">Bài đăng</small>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-2 text-muted small">
+                    <span>Tuần 1</span><span>Tuần 2</span><span>Tuần 3</span><span>Tuần 4</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Status donut mock -->
+        <div class="col-xl-4">
+            <div class="bg-secondary rounded p-4 h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h6 class="mb-0">Tỉ lệ trạng thái</h6>
+                    <span class="badge bg-dark">All games</span>
+                </div>
+
+                <div class="d-flex align-items-center gap-4 flex-wrap">
+                    <div class="donut" aria-label="donut chart mock"></div>
+
+                    <div class="flex-grow-1">
+                        <div class="legend-item">
+                            <span class="swatch sw-1"></span><span class="text-muted">PUBLISHED</span>
+                            <b class="ms-auto">32%</b>
+                        </div>
+                        <div class="legend-item">
+                            <span class="swatch sw-2"></span><span class="text-muted">SOLD</span>
+                            <b class="ms-auto">25%</b>
+                        </div>
+                        <div class="legend-item">
+                            <span class="swatch sw-3"></span><span class="text-muted">PENDING</span>
+                            <b class="ms-auto">11%</b>
+                        </div>
+                        <div class="legend-item">
+                            <span class="swatch sw-4"></span><span class="text-muted">DRAFT</span>
+                            <b class="ms-auto">22%</b>
+                        </div>
+                        <div class="legend-item">
+                            <span class="swatch sw-5"></span><span class="text-muted">HIDDEN</span>
+                            <b class="ms-auto">10%</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-dark border-0 mt-3 mb-0">
+                    <i class="fa fa-lightbulb me-2"></i>
+                    Tip: Tập trung tăng <b>PUBLISHED</b> và tối ưu mô tả/ảnh để
+                    tăng <b>SOLD</b>.
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: Top games bar mock -->
+        <div class="col-12">
+            <div class="bg-secondary rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h6 class="mb-0">Top game theo số lượng bài</h6>
+                    <small class="text-muted">Mock bar chart</small>
+                </div>
+
+                <div class="bar-list">
+                    <div class="bar-row">
+                        <div class="bar-left">
+                            <div class="bar-title">Liên Minh Huyền Thoại</div>
+                            <small class="text-muted">420 bài</small>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-left">
+                            <div class="bar-title">Genshin Impact</div>
+                            <small class="text-muted">310 bài</small>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 58%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-left">
+                            <div class="bar-title">PUBG</div>
+                            <small class="text-muted">198 bài</small>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 38%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-row">
+                        <div class="bar-left">
+                            <div class="bar-title">Khác</div>
+                            <small class="text-muted">120 bài</small>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 26%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breakdown Table -->
+    <div class="bg-secondary rounded p-4 mt-4">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h6 class="mb-0">Breakdown theo game</h6>
+            <small class="text-muted">Tổng • PUBLISHED • SOLD • PENDING • Doanh thu</small>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Game</th>
+                        <th class="text-end">Tổng</th>
+                        <th class="text-end">PUBLISHED</th>
+                        <th class="text-end">SOLD</th>
+                        <th class="text-end">PENDING</th>
+                        <th class="text-end">Doanh thu</th>
+                        <th class="text-end">Tỉ lệ SOLD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="game-dot gd-1"></span>
+                                <div>
+                                    <div class="fw-semibold">Liên Minh Huyền Thoại</div>
+                                    <small class="text-muted">MOBA</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-end">420</td>
+                        <td class="text-end">160</td>
+                        <td class="text-end">110</td>
+                        <td class="text-end">34</td>
+                        <td class="text-end">₫52,300,000</td>
+                        <td class="text-end">
+                            <div class="rate">
+                                <div class="rate-bar" style="width: 26%"></div>
+                            </div>
+                            <small class="text-muted">26%</small>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="game-dot gd-2"></span>
+                                <div>
+                                    <div class="fw-semibold">Genshin Impact</div>
+                                    <small class="text-muted">RPG</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-end">310</td>
+                        <td class="text-end">98</td>
+                        <td class="text-end">86</td>
+                        <td class="text-end">29</td>
+                        <td class="text-end">₫41,900,000</td>
+                        <td class="text-end">
+                            <div class="rate">
+                                <div class="rate-bar" style="width: 28%"></div>
+                            </div>
+                            <small class="text-muted">28%</small>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="game-dot gd-3"></span>
+                                <div>
+                                    <div class="fw-semibold">PUBG</div>
+                                    <small class="text-muted">FPS</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-end">198</td>
+                        <td class="text-end">60</td>
+                        <td class="text-end">52</td>
+                        <td class="text-end">18</td>
+                        <td class="text-end">₫21,600,000</td>
+                        <td class="text-end">
+                            <div class="rate">
+                                <div class="rate-bar" style="width: 26%"></div>
+                            </div>
+                            <small class="text-muted">26%</small>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

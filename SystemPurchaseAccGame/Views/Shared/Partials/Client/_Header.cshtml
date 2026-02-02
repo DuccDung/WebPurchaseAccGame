@@ -1,0 +1,131 @@
+﻿<header class="header">
+    <nav class="nav" aria-label="Điều hướng chính">
+        <div class="nav__container">
+            <!-- Brand -->
+            <a class="nav__brand" href="/" aria-label="Trang chủ">
+                <img class="nav__logo" src="./logo.png" alt="Logo" />
+            </a>
+
+            <!-- Actions (right, always visible) -->
+            <div class="nav__actions">
+                <!-- Theme toggle -->
+                <button class="themeBtn"
+                        type="button"
+                        aria-label="Đổi giao diện (sáng/tối)"
+                        data-theme-toggle
+                        title="Đổi giao diện">
+                    <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                </button>
+
+                <!-- Mobile toggle -->
+                <button class="nav__toggle"
+                        type="button"
+                        aria-controls="navCollapse"
+                        aria-expanded="false"
+                        aria-label="Mở menu"
+                        data-nav-toggle>
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                    <span class="sr-only">Menu</span>
+                </button>
+            </div>
+
+            <!-- Collapse -->
+            <div class="nav__collapse" id="navCollapse" data-nav-collapse>
+                <!-- Left menu -->
+                <ul class="menu menu--left" role="list">
+                    <li>
+                        <a class="link" href="/view/listdichvu.html">
+                            <i class="fa-solid fa-layer-group icon"
+                               aria-hidden="true"></i>
+                            DỊCH VỤ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="/client/topup">
+                            <i class="fa-solid fa-wallet icon" aria-hidden="true"></i>
+                            NẠP TIỀN
+                        </a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="dropdown" data-dropdown>
+                        <button class="link"
+                                type="button"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                data-dropdown-btn>
+                            <span style="display: inline-flex; align-items: center; gap: 10px">
+                                <i class="fa-solid fa-user-gear icon"
+                                   aria-hidden="true"></i>
+                                TÀI KHOẢN
+                            </span>
+                            <i class="fa-solid fa-chevron-down icon"
+                               aria-hidden="true"></i>
+                        </button>
+
+                        <div class="dropdown__menu"
+                             role="menu"
+                             aria-label="Tài khoản"
+                             data-dropdown-menu>
+                            <a class="dropdown__item" role="menuitem" href="/client/user">
+                                THÔNG TIN TÀI KHOẢN
+                                <i class="fa-solid fa-id-card icon" aria-hidden="true"></i>
+                            </a>
+
+                            <a class="dropdown__item"
+                               role="menuitem"
+                               href="/client/history">
+                                LỊCH SỬ MUA ACC
+                                <i class="fa-solid fa-clock-rotate-left icon"
+                                   aria-hidden="true"></i>
+                            </a>
+
+                            <a class="dropdown__item"
+                               role="menuitem"
+                               href="/client/orders">
+                                LỊCH SỬ DỊCH VỤ
+                                <i class="fa-solid fa-receipt icon" aria-hidden="true"></i>
+                            </a>
+
+                            <div class="divider"
+                                 role="separator"
+                                 aria-hidden="true"></div>
+
+                            <a class="dropdown__item"
+                               role="menuitem"
+                               href="/client/logout">
+                                ĐĂNG XUẤT
+                                <i class="fa-solid fa-right-from-bracket icon"
+                                   aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Right menu -->
+                <ul class="menu menu--right" role="list">
+                    <li>
+                        <a class="pill pill--ghost"
+                           href="/client/user"
+                           title="Tài khoản">
+                            <i class="fa-solid fa-circle-user icon"
+                               aria-hidden="true"></i>
+                            Dũng Nguyễn
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="pill pill--outline"
+                           href="/client/logout"
+                           title="Đăng xuất">
+                            <i class="fa-solid fa-arrow-right-from-bracket icon"
+                               aria-hidden="true"></i>
+                            ĐĂNG XUẤT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

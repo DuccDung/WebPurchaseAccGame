@@ -1,0 +1,19 @@
+﻿<!doctype html>
+<html lang="vi" data-theme="system">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ACC Play Together</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/home/main.css" asp-append-version="true"/>
+</head>
+
+<body>
+    @await Html.PartialAsync("Partials/Client/_Header")
+    @RenderBody()
+    @await Html.PartialAsync("Partials/Client/_Footer")
+   <script src="~/js/home/main.js" asp-append-version="true"></script>
+</body> 
+</html>

@@ -1,0 +1,898 @@
+﻿@using SystemPurchaseAccGame.Models
+@{
+    var games = ViewBag.Games as List<Game> ?? new List<Game>();
+}
+<!-- Form Start -->
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <!-- LEFT: FORM -->
+        <div class="col-lg-8">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div>
+                        <h5 class="mb-1">Đăng bài Account Game</h5>
+                        <small class="text-muted">Wizard • Upload media • Attributes • Preview</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button"
+                                class="btn btn-outline-light btn-sm"
+                                id="btnSaveDraft">
+                            <i class="fa fa-save me-1"></i> Lưu nháp
+                        </button>
+                        <button type="button"
+                                class="btn btn-primary btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#previewModal"
+                                id="btnOpenPreview">
+                            <i class="fa fa-eye me-1"></i> Preview
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEPPER -->
+                <div class="mb-4">
+                    <div class="d-flex flex-wrap gap-2" id="stepper">
+                        <button class="btn btn-sm btn-primary step-btn"
+                                data-step="1">
+                            <i class="fa fa-info-circle me-1"></i>1. Bài đăng
+                        </button>
+                        <button class="btn btn-sm btn-outline-light step-btn"
+                                data-step="2">
+                            <i class="fa fa-image me-1"></i>2. Media
+                        </button>
+                        <button class="btn btn-sm btn-outline-light step-btn"
+                                data-step="3">
+                            <i class="fa fa-list me-1"></i>3. Thuộc tính
+                        </button>
+                        <button class="btn btn-sm btn-outline-light step-btn"
+                                data-step="4">
+                            <i class="fa fa-lock me-1"></i>4. Login
+                        </button>
+                        <button class="btn btn-sm btn-outline-light step-btn"
+                                data-step="5">
+                            <i class="fa fa-check me-1"></i>5. Publish
+                        </button>
+                    </div>
+                    <div class="progress bg-dark mt-3" style="height: 8px">
+                        <div class="progress-bar"
+                             id="progressBar"
+                             role="progressbar"
+                             style="width: 20%"></div>
+                    </div>
+                </div>
+
+                <form id="listingForm" onsubmit="return false;">
+                    <!-- STEP 1 -->
+                    <div class="step-pane" data-step="1">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Game</label>
+                                <select class="form-select bg-dark border-0"
+                                        id="gameId"
+                                        name="gameId"
+                                        required>
+                                    <option value="">-- Chọn game --</option>
+
+                                    @foreach (var g in games)
+                                    {
+                                        <option value="@g.GameId"
+                                                data-game-name="@g.Name"
+                                                data-game-thumb="@(g.ThumbnailUrl ?? "")">
+                                            @g.Name
+                                        </option>
+                                    }
+                                </select>
+                                <small class="text-muted">
+                                    Khi chọn game, form Attributes sẽ gợi ý
+                                    template
+                                </small>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Tiêu đề bài đăng</label>
+                                <input class="form-control bg-dark border-0"
+                                       id="title"
+                                       placeholder="VD: Rank KC, 120 tướng, nhiều skin hiếm..."
+                                       required />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Giá</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-dark border-0">₫</span>
+                                    <input type="number"
+                                           min="0"
+                                           class="form-control bg-dark border-0"
+                                           id="price"
+                                           placeholder="VD: 1200000"
+                                           required />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Trạng thái</label>
+                                <select class="form-select bg-dark border-0" id="status" required>
+                                    <option value="HIDDEN">HIDDEN (Nháp / Ẩn)</option>
+                                    <option value="RESERVED">RESERVED (Giữ chỗ / Chờ xử lý)</option>
+                                    <option value="AVAILABLE">AVAILABLE (Đang bán)</option>
+                                    <option value="SOLD">SOLD (Đã bán)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Mô tả</label>
+                                <textarea class="form-control bg-dark border-0"
+                                          id="description"
+                                          rows="5"
+                                          placeholder="Mô tả chi tiết: rank, trang phục, tướng, thông tin đăng ký, ưu đãi, bảo hành..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="alert alert-dark border-0 mb-0">
+                                    <i class="fa fa-lightbulb me-2"></i>
+                                    Tip: Nên có ít nhất <b>1 ảnh đại diện</b> +
+                                    <b>1 ảnh nền</b> để preview đẹp và tăng chuyển đổi.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 -->
+                    <div class="step-pane d-none" data-step="2">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <h6 class="mb-2">Ảnh nền Account & Media</h6>
+                                <small class="text-muted">
+                                    Upload để lưu vào AccountMedia (MediaType
+                                    background/thumbnail/gallery)
+                                </small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Ảnh nền Account (background)</label>
+                                <input class="form-control bg-dark border-0"
+                                       type="file"
+                                       id="accBackground"
+                                       accept="image/*" />
+                                <small class="text-muted">Khuyến nghị 1600×900 hoặc 1920×1080</small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Ảnh đại diện (thumbnail)</label>
+                                <input class="form-control bg-dark border-0"
+                                       type="file"
+                                       id="accThumbnail"
+                                       accept="image/*" />
+                                <small class="text-muted">Khuyến nghị 1:1 hoặc 4:3</small>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Gallery (nhiều ảnh)</label>
+                                <input class="form-control bg-dark border-0"
+                                       type="file"
+                                       id="accGallery"
+                                       accept="image/*"
+                                       multiple />
+                                <small class="text-muted">
+                                    Bạn có thể kéo thả sắp xếp (demo: dùng SortOrder sau
+                                    này)
+                                </small>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="row g-3" id="galleryPreview"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="step-pane d-none" data-step="3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <div>
+                                <h6 class="mb-0">
+                                    Thuộc tính Account (AccountAttributes)
+                                </h6>
+                                <small class="text-muted">Key/Value động theo game — có thể thêm/xoá</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-light"
+                                        id="btnLoadTemplate">
+                                    <i class="fa fa-magic me-1"></i> Gợi ý theo game
+                                </button>
+                                <button type="button"
+                                        class="btn btn-sm btn-primary"
+                                        id="btnAddAttr">
+                                    <i class="fa fa-plus me-1"></i> Thêm thuộc tính
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark table-hover align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 35%">AttrKey</th>
+                                        <th>AttrValue</th>
+                                        <th style="width: 70px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="attrTableBody">
+                                    <!-- rows injected -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <small class="text-muted d-block mt-2">
+                            Ví dụ key: <code>rank</code>, <code>skins_count</code>,
+                            <code>server</code>, <code>register_type</code>...
+                        </small>
+                    </div>
+
+                    <!-- STEP 4 -->
+                    <div class="step-pane d-none" data-step="4">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="alert alert-warning">
+                                    <i class="fa fa-exclamation-triangle me-2"></i>
+                                    <b>LoginInfo là dữ liệu nhạy cảm</b> — nên mã hoá khi
+                                    lưu DB & chỉ hiển thị cho admin/owner.
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Username / Email</label>
+                                <input class="form-control bg-dark border-0"
+                                       id="loginUser"
+                                       placeholder="VD: abc@gmail.com" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Password</label>
+                                <input type="password"
+                                       class="form-control bg-dark border-0"
+                                       id="loginPass"
+                                       placeholder="••••••••" />
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Ghi chú (2FA / Recovery / Lưu ý bàn giao)</label>
+                                <textarea class="form-control bg-dark border-0"
+                                          id="loginNote"
+                                          rows="4"
+                                          placeholder="VD: có 2FA, sẽ cung cấp backup code sau khi thanh toán..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           role="switch"
+                                           id="maskLoginPreview"
+                                           checked />
+                                    <label class="form-check-label" for="maskLoginPreview">Che LoginInfo khi preview public</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5 -->
+                    <div class="step-pane d-none" data-step="5">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <h6 class="mb-2">Xác nhận & Đăng bài</h6>
+                                <div class="alert alert-dark border-0">
+                                    <ul class="mb-0">
+                                        <li>Kiểm tra tiêu đề, giá, mô tả.</li>
+                                        <li>
+                                            Đảm bảo có ảnh nền/thumbnail để hiển thị đẹp.
+                                        </li>
+                                        <li>
+                                            Attributes nên đầy đủ để khách dễ quyết định mua.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Hành động</label>
+                                <select class="form-select bg-dark border-0"
+                                        id="publishAction">
+                                    <option value="save">
+                                        Lưu (giữ trạng thái hiện tại)
+                                    </option>
+                                    <option value="submitPending">
+                                        Gửi duyệt (PENDING)
+                                    </option>
+                                    <option value="publishNow">
+                                        Đăng bán ngay (PUBLISHED)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 d-flex align-items-end">
+                                <button type="button"
+                                        class="btn btn-primary w-100"
+                                        id="btnSubmit">
+                                    <i class="fa fa-upload me-1"></i> Lưu / Đăng bài
+                                </button>
+                            </div>
+
+                            <div class="col-12">
+                                <small class="text-muted">
+                                    * Demo UI: nút submit hiện chỉ show alert + log JSON.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NAV BUTTONS -->
+                    <hr class="my-4" />
+                    <div class="d-flex justify-content-between">
+                        <button type="button"
+                                class="btn btn-outline-light"
+                                id="btnPrev"
+                                disabled>
+                            <i class="fa fa-arrow-left me-1"></i> Trước
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btnNext">
+                            Tiếp <i class="fa fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIGHT: LIVE PREVIEW PANEL -->
+        <div class="col-lg-4">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h6 class="mb-0">Preview nhanh</h6>
+                    <span class="badge bg-dark" id="previewStatusBadge">DRAFT</span>
+                </div>
+
+                <div class="card bg-dark border-0 overflow-hidden">
+                    <div id="previewBg"
+                         style="
+                      height: 140px;
+                      background-size: cover;
+                      background-position: center;
+                      background-image: url(&quot;https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&auto=format&fit=crop&quot;);
+                    "></div>
+                    <div class="card-body">
+                        <div class="d-flex gap-3">
+                            <div class="flex-shrink-0">
+                                <img id="previewThumb"
+                                     src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&auto=format&fit=crop"
+                                     class="rounded"
+                                     style="width: 72px; height: 72px; object-fit: cover"
+                                     alt="" />
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <h6 class="mb-1" id="previewTitle">
+                                        Tiêu đề sẽ hiển thị ở đây
+                                    </h6>
+                                    <div class="text-primary fw-bold" id="previewPrice">
+                                        ₫0
+                                    </div>
+                                </div>
+                                <small class="text-muted" id="previewGame">Chưa chọn game</small>
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary my-3" />
+
+                        <div class="small text-muted mb-2">Mô tả</div>
+                        <div class="text-light"
+                             id="previewDesc"
+                             style="max-height: 90px; overflow: auto">
+                            <small>Nhập mô tả để xem preview...</small>
+                        </div>
+
+                        <hr class="border-secondary my-3" />
+
+                        <div class="small text-muted mb-2">Thuộc tính</div>
+                        <div class="d-flex flex-wrap gap-2" id="previewAttrs"></div>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <button type="button"
+                            class="btn btn-outline-light w-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#previewModal">
+                        <i class="fa fa-desktop me-1"></i> Preview full
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PREVIEW MODAL -->
+<div class="modal fade"
+     id="previewModal"
+     tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <i class="fa fa-eye me-2"></i>Preview bài đăng
+                </h5>
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="card bg-dark border-0 overflow-hidden">
+                    <div id="modalBg"
+                         style="
+                      height: 260px;
+                      background-size: cover;
+                      background-position: center;
+                    "></div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                            <div>
+                                <h4 class="mb-1" id="modalTitle">---</h4>
+                                <div class="text-muted">
+                                    <span id="modalGame">---</span>
+                                    <span class="mx-2">•</span>
+                                    <span class="badge bg-secondary" id="modalStatus">---</span>
+                                </div>
+                            </div>
+                            <div class="text-primary fw-bold fs-3" id="modalPrice">
+                                ₫0
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary my-3" />
+
+                        <div class="row g-4">
+                            <div class="col-lg-5">
+                                <div class="d-flex gap-3 mb-3">
+                                    <img id="modalThumb"
+                                         class="rounded"
+                                         style="
+                              width: 120px;
+                              height: 120px;
+                              object-fit: cover;
+                            "
+                                         alt="" />
+                                    <div>
+                                        <div class="text-muted small mb-1">Gallery</div>
+                                        <div class="d-flex flex-wrap gap-2"
+                                             id="modalGallery"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-7">
+                                <div class="text-muted small mb-2">Mô tả</div>
+                                <div class="text-light" id="modalDesc"></div>
+
+                                <hr class="border-secondary my-3" />
+
+                                <div class="text-muted small mb-2">Thuộc tính</div>
+                                <div class="row g-2" id="modalAttrs"></div>
+
+                                <hr class="border-secondary my-3" />
+
+                                <div class="text-muted small mb-2">LoginInfo</div>
+                                <div class="bg-secondary rounded p-3">
+                                    <div id="modalLoginInfo"
+                                         class="text-light small"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button"
+                        class="btn btn-outline-light"
+                        data-bs-dismiss="modal">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .step-btn {
+        border-radius: 999px;
+    }
+
+    .badge-attr {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .thumb-mini {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    .gallery-tile {
+        position: relative;
+    }
+
+    .gallery-remove {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.65);
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    // ====== STATE ======
+    let currentStep = 1;
+    const maxStep = 5;
+
+    // media previews (base64)
+    let accBgSrc = "";
+    let accThumbSrc = "";
+    let gallerySrcList = [];
+
+    // ====== HELPERS ======
+    const fmtVND = (n) => {
+      const x = Number(n || 0);
+      return "₫" + x.toLocaleString("vi-VN");
+    };
+
+    const setStep = (step) => {
+      currentStep = step;
+
+      document.querySelectorAll(".step-pane").forEach((p) => {
+        p.classList.toggle("d-none", Number(p.dataset.step) !== currentStep);
+      });
+
+      document.querySelectorAll(".step-btn").forEach((b) => {
+        const isActive = Number(b.dataset.step) === currentStep;
+        b.classList.toggle("btn-primary", isActive);
+        b.classList.toggle("btn-outline-light", !isActive);
+      });
+
+      document.getElementById("progressBar").style.width =
+        (currentStep / maxStep) * 100 + "%";
+
+      document.getElementById("btnPrev").disabled = currentStep === 1;
+      document.getElementById("btnNext").classList.toggle("d-none", currentStep === maxStep);
+
+      refreshPreview();
+    };
+
+    const readFileAsDataURL = (file) =>
+      new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+      });
+
+    // ====== ATTR TABLE ======
+    const addAttrRow = (key = "", value = "") => {
+      const tbody = document.getElementById("attrTableBody");
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><input class="form-control bg-dark border-0 attr-key" placeholder="VD: rank" value="${key}"></td>
+        <td><input class="form-control bg-dark border-0 attr-val" placeholder="VD: KC / AR60 / Ace..." value="${value}"></td>
+        <td class="text-end">
+            <button type="button" class="btn btn-sm btn-outline-light btnDelAttr"><i class="fa fa-trash"></i></button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+
+      tr.querySelector(".btnDelAttr").addEventListener("click", () => {
+        tr.remove();
+        refreshPreview();
+      });
+
+      tr.querySelectorAll("input").forEach((i) =>
+        i.addEventListener("input", refreshPreview)
+      );
+    };
+
+    const loadTemplateByGame = () => {
+      const gameId = document.getElementById("gameId").value;
+      const tbody = document.getElementById("attrTableBody");
+      tbody.innerHTML = "";
+
+      let rows = [];
+      if (gameId === "101") {
+        rows = [
+          ["rank", "Kim Cương"],
+          ["champion_count", "120"],
+          ["skin_count", "85"],
+          ["server", "VN"],
+          ["register_type", "Email"],
+        ];
+      } else if (gameId === "102") {
+        rows = [
+          ["ar_level", "60"],
+          ["5star_count", "14"],
+          ["weapon_5star", "6"],
+          ["region", "Asia"],
+          ["register_type", "Email"],
+        ];
+      } else if (gameId === "103") {
+        rows = [
+          ["tier", "Ace"],
+          ["season_max_rank", "Ace Dominator"],
+          ["server", "ASIA"],
+          ["rare_outfits", "Có"],
+          ["register_type", "Phone"],
+        ];
+      } else {
+        rows = [
+          ["rank", ""],
+          ["server", ""],
+          ["register_type", ""],
+        ];
+      }
+
+      rows.forEach((r) => addAttrRow(r[0], r[1]));
+      refreshPreview();
+    };
+
+    const collectAttrs = () => {
+      const keys = [...document.querySelectorAll(".attr-key")]
+        .map((x) => x.value.trim())
+        .filter(Boolean);
+      const vals = [...document.querySelectorAll(".attr-val")].map((x) => x.value.trim());
+
+      const out = [];
+      for (let i = 0; i < Math.min(keys.length, vals.length); i++) {
+        out.push({ key: keys[i], value: vals[i] || "" });
+      }
+      return out;
+    };
+
+    // ====== PREVIEW ======
+    const refreshPreview = () => {
+      const gameSel = document.getElementById("gameId");
+      const opt = gameSel.options[gameSel.selectedIndex];
+      const gameName = opt
+        ? opt.dataset.gameName || gameSel.value || "Chưa chọn game"
+        : "Chưa chọn game";
+      const gameThumb = opt ? opt.dataset.gameThumb || "" : "";
+
+      const title = document.getElementById("title").value || "Tiêu đề sẽ hiển thị ở đây";
+      const price = document.getElementById("price").value || 0;
+      const status = document.getElementById("status").value || "DRAFT";
+
+      const bg =
+        accBgSrc ||
+        gameThumb ||
+        "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&auto=format&fit=crop";
+      const thumb =
+        accThumbSrc ||
+        gameThumb ||
+        "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&auto=format&fit=crop";
+
+      document.getElementById("previewBg").style.backgroundImage = `url('${bg}')`;
+      document.getElementById("previewThumb").src = thumb;
+      document.getElementById("previewTitle").textContent = title;
+      document.getElementById("previewPrice").textContent = fmtVND(price);
+      document.getElementById("previewGame").textContent = gameName;
+      document.getElementById("previewStatusBadge").textContent = status;
+
+      document.getElementById("previewDesc").innerHTML =
+        (document.getElementById("description").value || "")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\n/g, "<br>") ||
+        "<small>Nhập mô tả để xem preview...</small>";
+
+      const attrs = collectAttrs();
+      const wrap = document.getElementById("previewAttrs");
+      wrap.innerHTML = "";
+      attrs.slice(0, 10).forEach((a) => {
+        const span = document.createElement("span");
+        span.className = "badge bg-secondary badge-attr";
+        span.textContent = `${a.key}: ${a.value}`;
+        wrap.appendChild(span);
+      });
+
+      // modal sync
+      document.getElementById("modalBg").style.backgroundImage = `url('${bg}')`;
+      document.getElementById("modalThumb").src = thumb;
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalPrice").textContent = fmtVND(price);
+      document.getElementById("modalGame").textContent = gameName;
+      document.getElementById("modalStatus").textContent = status;
+      document.getElementById("modalDesc").innerHTML = document.getElementById("previewDesc").innerHTML;
+
+      const mg = document.getElementById("modalGallery");
+      mg.innerHTML = "";
+      gallerySrcList.slice(0, 8).forEach((src) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.className = "thumb-mini";
+        mg.appendChild(img);
+      });
+
+      const ma = document.getElementById("modalAttrs");
+      ma.innerHTML = "";
+      attrs.forEach((a) => {
+        const col = document.createElement("div");
+        col.className = "col-md-6";
+        col.innerHTML = `
+          <div class="bg-secondary rounded p-2">
+            <div class="text-muted small">${a.key}</div>
+            <div class="text-light">${a.value || "-"}</div>
+          </div>
+        `;
+        ma.appendChild(col);
+      });
+
+      const mask = document.getElementById("maskLoginPreview").checked;
+      const u = document.getElementById("loginUser").value.trim();
+      const p = document.getElementById("loginPass").value.trim();
+      const note = document.getElementById("loginNote").value.trim();
+
+      document.getElementById("modalLoginInfo").innerHTML = mask
+        ? `<span class="badge bg-dark">Ẩn trong public preview</span>
+           <div class="text-muted small mt-2">LoginInfo chỉ hiển thị cho admin/owner.</div>`
+        : `<div><b>User:</b> ${u || "-"}</div>
+           <div><b>Pass:</b> ${p ? "••••••••" : "-"}</div>
+           <div class="mt-2 text-muted small"><b>Note:</b> ${
+             note ? note.replace(/</g, "&lt;").replace(/>/g, "&gt;") : "-"
+           }</div>`;
+    };
+
+    // ====== EVENTS ======
+    document.querySelectorAll(".step-btn").forEach((b) => {
+      b.addEventListener("click", () => setStep(Number(b.dataset.step)));
+    });
+
+    document.getElementById("btnPrev").addEventListener("click", () =>
+      setStep(Math.max(1, currentStep - 1))
+    );
+
+    document.getElementById("btnNext").addEventListener("click", () =>
+      setStep(Math.min(maxStep, currentStep + 1))
+    );
+
+    ["title","price","description","status","gameId","maskLoginPreview","loginUser","loginPass","loginNote"]
+      .forEach((id) => {
+        const el = document.getElementById(id);
+        el.addEventListener("input", refreshPreview);
+        el.addEventListener("change", refreshPreview);
+      });
+
+    document.getElementById("btnAddAttr").addEventListener("click", () => addAttrRow());
+    document.getElementById("btnLoadTemplate").addEventListener("click", loadTemplateByGame);
+
+    document.getElementById("accBackground").addEventListener("change", async (e) => {
+      const f = e.target.files?.[0];
+      if (!f) return;
+      accBgSrc = await readFileAsDataURL(f);
+      refreshPreview();
+    });
+
+    document.getElementById("accThumbnail").addEventListener("change", async (e) => {
+      const f = e.target.files?.[0];
+      if (!f) return;
+      accThumbSrc = await readFileAsDataURL(f);
+      refreshPreview();
+    });
+
+    document.getElementById("accGallery").addEventListener("change", async (e) => {
+      const files = [...(e.target.files || [])];
+      if (!files.length) return;
+
+      for (const f of files) {
+        const src = await readFileAsDataURL(f);
+        gallerySrcList.push(src);
+      }
+
+      const wrap = document.getElementById("galleryPreview");
+      wrap.innerHTML = "";
+      gallerySrcList.forEach((src, idx) => {
+        const col = document.createElement("div");
+        col.className = "col-6 col-md-3";
+        col.innerHTML = `
+          <div class="gallery-tile">
+            <img src="${src}" class="w-100 rounded" style="height:110px;object-fit:cover" />
+            <div class="gallery-remove" title="Xoá" data-idx="${idx}">
+              <i class="fa fa-times text-white"></i>
+            </div>
+          </div>
+        `;
+        wrap.appendChild(col);
+      });
+
+      wrap.querySelectorAll(".gallery-remove").forEach((btn) => {
+        btn.addEventListener("click", (ev) => {
+          const i = Number(ev.currentTarget.dataset.idx);
+          gallerySrcList.splice(i, 1);
+          refreshPreview();
+          document.getElementById("accGallery").dispatchEvent(new Event("change"));
+        });
+      });
+
+      refreshPreview();
+    });
+
+    document.getElementById("btnOpenPreview").addEventListener("click", refreshPreview);
+
+    document.getElementById("btnSaveDraft").addEventListener("click", () => {
+      document.getElementById("status").value = "DRAFT";
+      refreshPreview();
+      alert("Đã lưu nháp (demo UI).");
+    });
+
+    // ====== SUBMIT (NO CATEGORY) ======
+    async function submitToServer() {
+      const formData = new FormData();
+
+      formData.append("GameId", document.getElementById("gameId").value || "");
+      formData.append("Title", document.getElementById("title").value || "");
+      formData.append("Price", document.getElementById("price").value || "0");
+      formData.append("Description", document.getElementById("description").value || "");
+      formData.append("Status", document.getElementById("status").value || "DRAFT");
+      formData.append("Action", document.getElementById("publishAction").value || "save");
+
+      formData.append("AttributesJson", JSON.stringify(collectAttrs()));
+
+      formData.append("LoginInfo.User", document.getElementById("loginUser").value || "");
+      formData.append("LoginInfo.Pass", document.getElementById("loginPass").value || "");
+      formData.append("LoginInfo.Note", document.getElementById("loginNote").value || "");
+      formData.append("LoginInfo.MaskPublic",
+        document.getElementById("maskLoginPreview").checked ? "true" : "false"
+      );
+
+      const bgFile = document.getElementById("accBackground").files[0];
+      const thumbFile = document.getElementById("accThumbnail").files[0];
+      const galleryFiles = document.getElementById("accGallery").files;
+
+      if (bgFile) formData.append("BackgroundFile", bgFile);
+      if (thumbFile) formData.append("ThumbnailFile", thumbFile);
+
+      for (let i = 0; i < galleryFiles.length; i++) {
+        formData.append("GalleryFiles", galleryFiles[i]);
+      }
+
+      const res = await fetch("/api/account-listings", {
+        method: "POST",
+        body: formData,
+      });
+
+      // debug dễ hơn (kể cả khi server trả HTML)
+      const raw = await res.text();
+
+      if (!res.ok) {
+        alert("Lỗi: " + res.status + "\n" + raw);
+        return;
+      }
+
+      console.log("Server response raw:", raw);
+      alert("Gửi thành công!");
+    }
+
+    document.getElementById("btnSubmit").addEventListener("click", submitToServer);
+
+    // init
+    addAttrRow("rank", "");
+    addAttrRow("server", "");
+    setStep(1);
+    refreshPreview();
+</script>
+
+<!-- Form End -->
