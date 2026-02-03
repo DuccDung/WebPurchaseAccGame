@@ -4,6 +4,7 @@
         item_bar_account: "/Admin/AccGame",
         item_bar_upload_acc: "/Admin/UploadAccGame",
         item_bar_sold: "/Admin/SoldAccGame",// nếu chưa có action này thì bạn tạo sau
+        item_bar_confirm_payment: "/Admin/ConfirmPayment"
     };
 
     function setActiveMenu(clickedId) {
@@ -60,6 +61,11 @@
     $("#item_bar_sold").on("click", function (e) {
         e.preventDefault();
         loadPartial(routes.item_bar_sold, "item_bar_sold");
+    });
+
+    $("#item_bar_confirm_payment").on("click", function (e) {
+        e.preventDefault();
+        loadPartial(routes.item_bar_confirm_payment, "item_bar_confirm_payment");
     });
     // Option: load mặc định khi vào Dashboard (ví dụ mở "Tài khoản")
     //loadPartial(routes.item_bar_account, "item_bar_account");

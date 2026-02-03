@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+<section class="payment_success_wrap" role="region" aria-label="Thông báo nạp tiền thành công">
+    <div class="payment_success_card" role="status" aria-live="polite">
+        <div class="payment_success_icon" aria-hidden="true">✓</div>
+
+        <div class="payment_success_content">
+            <h2 class="payment_success_title">Nạp tiền thành công</h2>
+            <p class="payment_success_desc">
+                Yêu cầu nạp tiền của bạn đã được ghi nhận. Hệ thống đang xác thực giao dịch,
+                vui lòng chờ khoảng <strong>2 tiếng</strong>.
+            </p>
+
+            <div class="payment_success_note">
+                Nếu quá thời gian chưa cộng tiền, vui lòng liên hệ hỗ trợ và cung cấp <strong>mã giao dịch</strong>.
+            </div>
+
+            <div class="payment_success_actions">
+                <a class="payment_success_btn payment_success_btn--primary" asp-controller="home" asp-action="bank">
+                    Quay lại trang nạp
+                </a>
+                <button type="button"
+                        class="payment_success_btn payment_success_btn--primary"
+                        data-support-open>
+                    Liên hệ hỗ trợ
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="payment_success_modal" data-support-modal aria-hidden="true">
+    <div class="payment_success_modal__backdrop" data-support-close></div>
+
+    <div class="payment_success_modal__dialog"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="payment_success_support_title">
+        <div class="payment_success_modal__head">
+            <h3 class="payment_success_modal__title" id="payment_success_support_title">
+                Liên hệ hỗ trợ
+            </h3>
+
+            <button type="button"
+                    class="payment_success_modal__close"
+                    aria-label="Đóng"
+                    data-support-close>
+                ✕
+            </button>
+        </div>
+
+        <div class="payment_success_modal__body">
+            <p class="payment_success_modal__desc">
+                Nếu quá <strong>2 tiếng</strong> chưa cộng tiền, vui lòng liên hệ và cung cấp <strong>mã giao dịch</strong>.
+            </p>
+
+            <div class="payment_success_supportList">
+                <a class="payment_success_supportItem" href="tel:0900000000">
+                    <span class="payment_success_supportItem__label">Số điện thoại</span>
+                    <span class="payment_success_supportItem__value">0900 000 000</span>
+                </a>
+
+                <a class="payment_success_supportItem" href="https://zalo.me/0900000000" target="_blank" rel="noopener">
+                    <span class="payment_success_supportItem__label">Zalo</span>
+                    <span class="payment_success_supportItem__value">zalo.me/0900 000 000</span>
+                </a>
+
+                <a class="payment_success_supportItem" href="https://facebook.com/yourpage" target="_blank" rel="noopener">
+                    <span class="payment_success_supportItem__label">Facebook</span>
+                    <span class="payment_success_supportItem__value">facebook.com/yourpage</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="payment_success_modal__foot">
+            <button type="button" class="payment_success_btn" data-support-close>Đóng</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+  (() => {
+    const openBtn = document.querySelector("[data-support-open]");
+    const modal = document.querySelector("[data-support-modal]");
+    if (!modal) return;
+
+    const closeEls = modal.querySelectorAll("[data-support-close]");
+    const dialog = modal.querySelector(".payment_success_modal__dialog");
+
+    function openModal() {
+      modal.dataset.open = "true";
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      // focus nút đóng cho dễ thao tác
+      modal.querySelector("[data-support-close]")?.focus?.();
+    }
+
+    function closeModal() {
+      delete modal.dataset.open;
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      openBtn?.focus?.();
+    }
+
+    openBtn?.addEventListener("click", openModal);
+    closeEls.forEach((el) => el.addEventListener("click", closeModal));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.dataset.open === "true") closeModal();
+    });
+
+    // click ngoài dialog để đóng (an toàn hơn)
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+      if (e.target.classList.contains("payment_success_modal__backdrop")) closeModal();
+      if (dialog && !dialog.contains(e.target) && modal.dataset.open === "true") closeModal();
+    });
+  })();
+</script>

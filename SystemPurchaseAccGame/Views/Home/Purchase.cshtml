@@ -1,0 +1,318 @@
+﻿@using System.Text.Json
+@using System.Text.Json.Serialization
+@model SystemPurchaseAccGame.ViewModel.AccountPurchaseDto
+
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    var jsonOptions = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+    };
+}
+
+<main class="acc_detail_pay_main">
+    <!-- HERO -->
+    <section class="acc_detail_pay_hero" aria-label="Thông tin account">
+        <div class="acc_detail_pay_cover">
+            <img class="acc_detail_pay_coverImg" alt="Ảnh nền" />
+        </div>
+
+        <div class="acc_detail_pay_heroContent">
+            <div class="acc_detail_pay_heroCard">
+                <div class="acc_detail_pay_avatar" aria-label="Ảnh đại diện">
+                    <img class="acc_detail_pay_avatarImg" alt="Ảnh đại diện" />
+                </div>
+
+                <div class="acc_detail_pay_meta">
+                    <div class="acc_detail_pay_titleRow">
+                        <div class="acc_detail_pay_metaLeft">
+                            <h1 class="acc_detail_pay_title" id="acc_detail_pay_title">...</h1>
+                            <div class="acc_detail_pay_subMeta">
+                                <span class="acc_detail_pay_pill">
+                                    <span class="acc_detail_pay_statusDot" aria-hidden="true"></span>
+                                    ID: <strong id="acc_detail_pay_id">0</strong>
+                                </span>
+
+                                <span class="acc_detail_pay_pill">
+                                    <i class="fa-solid fa-tag" aria-hidden="true"></i>
+                                    <strong id="acc_detail_pay_status">...</strong>
+                                </span>
+
+                                <span class="acc_detail_pay_pill">
+                                    <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+                                    Game: <strong id="acc_detail_pay_gameId">0</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="acc_detail_pay_priceBig" aria-label="Giá">
+                            <div class="acc_detail_pay_priceLabel">Giá</div>
+                            <div class="acc_detail_pay_priceValue" id="acc_detail_pay_price">
+                                0 <span class="acc_detail_pay_currency">VNĐ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acc_detail_pay_actions" aria-label="Hành động">
+                        <a class="acc_detail_pay_btn acc_detail_pay_btnGhost" href="javascript:history.back()">
+                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Quay lại
+                        </a>
+
+                        <a class="acc_detail_pay_btn" id="acc_detail_pay_btnAddCart" href="#">
+                            <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ
+                        </a>
+
+                        <a class="acc_detail_pay_btn acc_detail_pay_btnPrimary" id="acc_detail_pay_btnBuy" href="#">
+                            <i class="fa-solid fa-bolt" aria-hidden="true"></i> Mua ngay
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT GRID -->
+    <section class="acc_detail_pay_grid" aria-label="Nội dung chi tiết">
+        <!-- LEFT -->
+        <div class="acc_detail_pay_panel">
+            <div class="acc_detail_pay_panelHeader">
+                <h2 class="acc_detail_pay_h2">
+                    <i class="fa-solid fa-images" aria-hidden="true"></i> Hình ảnh mô tả
+                </h2>
+                <span class="acc_detail_pay_pill" id="acc_detail_pay_galleryCount">
+                    <i class="fa-solid fa-camera" aria-hidden="true"></i> 0 ảnh
+                </span>
+            </div>
+
+            <div class="acc_detail_pay_panelBody">
+                <div class="acc_detail_pay_gallery">
+                    <div class="acc_detail_pay_mainShot">
+                        <img id="acc_detail_pay_mainShot" class="acc_detail_pay_mainShotImg" alt="Ảnh mô tả" />
+                    </div>
+                    <div class="acc_detail_pay_thumbs" id="acc_detail_pay_thumbs" aria-label="Ảnh thu nhỏ"></div>
+                </div>
+
+                <div class="acc_detail_pay_spacer"></div>
+
+                <div class="acc_detail_pay_subPanel">
+                    <div class="acc_detail_pay_panelHeader">
+                        <h2 class="acc_detail_pay_h2">
+                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Mô tả
+                        </h2>
+                    </div>
+                    <div class="acc_detail_pay_panelBody">
+                        <p class="acc_detail_pay_desc" id="acc_detail_pay_desc">...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="acc_detail_pay_panel" aria-label="Thuộc tính & thông tin">
+            <div class="acc_detail_pay_panelHeader">
+                <h2 class="acc_detail_pay_h2">
+                    <i class="fa-solid fa-list-check" aria-hidden="true"></i> Thông số
+                </h2>
+                <span class="acc_detail_pay_pill">
+                    <i class="fa-solid fa-shield-heart" aria-hidden="true"></i> Cam kết
+                </span>
+            </div>
+
+            <div class="acc_detail_pay_panelBody">
+                <div class="acc_detail_pay_kv" id="acc_detail_pay_kv"></div>
+
+                <div class="acc_detail_pay_spacer"></div>
+
+                <div class="acc_detail_pay_subPanel">
+                    <div class="acc_detail_pay_panelHeader">
+                        <h2 class="acc_detail_pay_h2">
+                            <i class="fa-solid fa-key" aria-hidden="true"></i> Login Info
+                        </h2>
+                    </div>
+                    <div class="acc_detail_pay_panelBody">
+                        <p class="acc_detail_pay_desc" id="acc_detail_pay_loginInfo">...</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<!-- MODAL zoom -->
+<div class="acc_detail_pay_modal" id="acc_detail_pay_modal" aria-hidden="true" role="dialog" aria-label="Xem ảnh">
+    <div class="acc_detail_pay_modalCard">
+        <div class="acc_detail_pay_modalTop">
+            <div class="acc_detail_pay_modalTitle" id="acc_detail_pay_modalTitle">Xem ảnh</div>
+            <button class="acc_detail_pay_modalClose" id="acc_detail_pay_modalClose" aria-label="Đóng">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <img class="acc_detail_pay_modalImg" id="acc_detail_pay_modalImg" alt="Ảnh phóng to" />
+    </div>
+</div>
+
+<script>
+    // dữ liệu thật từ server
+    window.acc_detail_pay_account = @Html.Raw(JsonSerializer.Serialize(Model, jsonOptions));
+</script>
+
+<script>
+    /* Giữ nguyên JS của bạn (render từ window.acc_detail_pay_account) */
+    (() => {
+      const account = window.acc_detail_pay_account || {};
+      const $ = (sel) => document.querySelector(sel);
+
+      function fmtVND(n) {
+        try { return (n ?? 0).toLocaleString("vi-VN"); }
+        catch { return String(n ?? 0); }
+      }
+
+      function pickMedia(type) {
+        return (account.media || [])
+          .filter((m) => String(m.mediaType || "").toUpperCase() === type)
+          .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+      }
+
+      const cover = pickMedia("COVER")[0]?.url || pickMedia("GALLERY")[0]?.url || "";
+      const avatar = pickMedia("AVATAR")[0]?.url || cover || "";
+      const gallery = pickMedia("GALLERY").map((x) => x.url);
+
+      const coverImg = $(".acc_detail_pay_coverImg");
+      const avatarImg = $(".acc_detail_pay_avatarImg");
+      if (coverImg) coverImg.src = cover;
+      if (avatarImg) avatarImg.src = avatar;
+
+      $("#acc_detail_pay_title").textContent = account.title || "Account";
+      $("#acc_detail_pay_id").textContent = String(account.accountId ?? "");
+      $("#acc_detail_pay_gameId").textContent = String(account.gameId ?? "");
+      $("#acc_detail_pay_status").textContent = String(account.status ?? "UNKNOWN");
+      $("#acc_detail_pay_price").innerHTML = `${fmtVND(account.price)} <span class="acc_detail_pay_currency">VNĐ</span>`;
+      $("#acc_detail_pay_desc").textContent = account.description || "Chưa có mô tả.";
+      $("#acc_detail_pay_loginInfo").textContent = account.loginInfo || "Thông tin đăng nhập sẽ hiển thị sau khi thanh toán.";
+
+      const st = String(account.status || "").toUpperCase();
+      const dot = $(".acc_detail_pay_statusDot");
+      if (dot && st !== "AVAILABLE") {
+        dot.style.background = "var(--warn)";
+        dot.style.boxShadow = "0 0 0 6px color-mix(in oklab, var(--warn) 18%, transparent)";
+      }
+
+      const btnBuy = $("#acc_detail_pay_btnBuy");
+      const btnAddCart = $("#acc_detail_pay_btnAddCart");
+      if (btnBuy) btnBuy.href = `/order/buy?id=${encodeURIComponent(account.accountId)}`;
+      if (btnAddCart) btnAddCart.href = `/cart/add?id=${encodeURIComponent(account.accountId)}`;
+
+      if (st !== "AVAILABLE" && btnBuy) {
+        btnBuy.classList.remove("acc_detail_pay_btnPrimary");
+        btnBuy.classList.add("acc_detail_pay_btnGhost");
+        btnBuy.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("Account hiện không khả dụng để mua.");
+        });
+      }
+
+      const kv = $("#acc_detail_pay_kv");
+      kv.innerHTML = "";
+      const attrs = Array.isArray(account.attributes) ? account.attributes : [];
+      if (attrs.length === 0) {
+        kv.innerHTML = `
+          <div class="acc_detail_pay_kvRow">
+            <div class="acc_detail_pay_k">Thông tin</div>
+            <div class="acc_detail_pay_v">Chưa có thuộc tính</div>
+          </div>`;
+      } else {
+        for (const a of attrs) {
+          const row = document.createElement("div");
+          row.className = "acc_detail_pay_kvRow";
+          row.innerHTML = `<div class="acc_detail_pay_k">${a.key ?? ""}</div><div class="acc_detail_pay_v">${a.value ?? ""}</div>`;
+          kv.appendChild(row);
+        }
+      }
+
+      const allShots = [cover, ...gallery].filter(Boolean);
+      const mainShot = $("#acc_detail_pay_mainShot");
+      const thumbs = $("#acc_detail_pay_thumbs");
+      const galleryCount = $("#acc_detail_pay_galleryCount");
+
+      if (galleryCount) {
+        galleryCount.innerHTML = `<i class="fa-solid fa-camera" aria-hidden="true"></i> ${allShots.length} ảnh`;
+      }
+
+      const defaultMain = gallery[0] || cover;
+      if (mainShot) mainShot.src = defaultMain || cover;
+
+      thumbs.innerHTML = "";
+      for (let i = 0; i < allShots.length; i++) {
+        const url = allShots[i];
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "acc_detail_pay_thumb";
+        b.setAttribute("aria-label", `Ảnh ${i + 1}`);
+        b.innerHTML = `<img src="${url}" alt="Ảnh ${i + 1}" loading="lazy" />`;
+        if (mainShot && url === mainShot.src) b.setAttribute("aria-current", "true");
+
+        b.addEventListener("click", () => {
+          if (mainShot) mainShot.src = url;
+          [...thumbs.querySelectorAll(".acc_detail_pay_thumb")].forEach((x) => x.removeAttribute("aria-current"));
+          b.setAttribute("aria-current", "true");
+        });
+
+        thumbs.appendChild(b);
+      }
+
+      const modal = $("#acc_detail_pay_modal");
+      const modalImg = $("#acc_detail_pay_modalImg");
+      const modalClose = $("#acc_detail_pay_modalClose");
+
+      function openModal(src) {
+        modal.dataset.open = "true";
+        modal.setAttribute("aria-hidden", "false");
+        modalImg.src = src;
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal() {
+        modal.dataset.open = "false";
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+        document.body.style.overflow = "";
+      }
+
+      if (mainShot && modal) mainShot.addEventListener("click", () => openModal(mainShot.src));
+      if (modalClose) modalClose.addEventListener("click", closeModal);
+      if (modal) modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+      window.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal?.dataset?.open === "true") closeModal(); });
+    })();
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnAddCart = document.getElementById("acc_detail_pay_btnAddCart");
+      if (!btnAddCart) return;
+
+      btnAddCart.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const account = window.acc_detail_pay_account || {};
+        const id = account.accountId;
+        if (!id) {
+          alert("Không tìm thấy AccountId.");
+          return;
+        }
+
+        const res = await fetch(`/api/cart/add/${encodeURIComponent(id)}`, {
+          method: "POST",
+          headers: { "X-Requested-With": "XMLHttpRequest" }
+        });
+
+        const data = await res.json().catch(() => null);
+
+        if (!res.ok) {
+          alert(data?.message || "Thêm giỏ hàng thất bại.");
+          return;
+        }
+
+        alert(data?.message || "Đã thêm vào giỏ hàng!");
+        // window.location.href = "/home/cart";
+      });
+    });
+</script>

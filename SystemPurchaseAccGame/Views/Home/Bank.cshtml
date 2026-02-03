@@ -1,0 +1,354 @@
+﻿@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    decimal balance = ViewBag.WalletBalance ?? 0m;
+}
+<main class="main">
+    <section class="topup">
+        <!-- Tabs -->
+        <div class="topup__tabs"
+             role="tablist"
+             aria-label="Chọn phương thức nạp">
+            <a class="topup__tab is-active"
+               href="#card"
+               role="tab"
+               aria-selected="true"
+               data-tab="card">
+                NẠP THẺ CÀO
+            </a>
+
+            <a class="topup__tab"
+               href="#bank"
+               role="tab"
+               aria-selected="false"
+               data-tab="bank">
+                BANK / ATM
+            </a>
+        </div>
+
+        <!-- =========================
+             PANEL: NẠP THẺ CÀO
+        ========================== -->
+        <div class="topup__panel" data-panel="card" id="panel-card">
+            <!-- Alert -->
+            <div class="topup__alert">Chiết khấu nạp thẻ cào 13-14%</div>
+
+            <!-- Balance -->
+            <div class="topup__balance">
+                <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                <span>Số dư: @balance.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))đ</span>
+            </div>
+
+            <!-- Form -->
+            <form class="topup__form"
+                  action="/client/topup/card"
+                  method="post"
+                  autocomplete="off">
+                <label class="topup__label" for="provider">Loại thẻ:</label>
+                <div class="topup__control">
+                    <select class="topup__select"
+                            id="provider"
+                            name="provider"
+                            required>
+                        <option value="VIETTEL">VIETTEL</option>
+                        <option value="VINAPHONE">VINAPHONE</option>
+                        <option value="MOBIFONE">MOBIFONE</option>
+                        <option value="ZING">ZING</option>
+                        <option value="GARENA">GARENA</option>
+                    </select>
+                </div>
+
+                <label class="topup__label" for="amount">Mệnh giá:</label>
+                <div class="topup__control">
+                    <select class="topup__select" id="amount" name="amount" required>
+                        <option value="" selected disabled>
+                            CHỌN ĐÚNG MỆNH GIÁ, NẾU SAI SẼ MẤT 50%
+                        </option>
+                        <option value="10000">10.000</option>
+                        <option value="20000">20.000</option>
+                        <option value="50000">50.000</option>
+                        <option value="100000">100.000</option>
+                        <option value="200000">200.000</option>
+                        <option value="500000">500.000</option>
+                    </select>
+                </div>
+
+                <label class="topup__label" for="pin">Mã thẻ:</label>
+                <div class="topup__control">
+                    <input class="topup__input"
+                           id="pin"
+                           name="pin"
+                           type="text"
+                           inputmode="numeric"
+                           required />
+                </div>
+
+                <label class="topup__label" for="serial">Số Serial:</label>
+                <div class="topup__control">
+                    <input class="topup__input"
+                           id="serial"
+                           name="serial"
+                           type="text"
+                           inputmode="numeric"
+                           required />
+                </div>
+
+                <p class="topup__hint">Vui lòng kiểm tra kĩ mệnh giá thẻ nạp</p>
+
+                <div class="topup__submitWrap">
+                    <button class="topup__submit" type="submit">Nạp thẻ</button>
+                </div>
+            </form>
+
+            <!-- Warning -->
+            <div class="topup__warning">
+                <span class="w-danger">CHÚ Ý:</span>
+                <span class="w-info"> NẠP THẺ ĐÚNG MỆNH GIÁ</span>,
+                <span class="w-danger"> SAI MỆNH GIÁ -50%.</span>
+                <br />
+                <span class="w-danger">
+                    Cố tình nạp sai thẻ, spam nhiều lần sẽ bị khóa tài khoản !
+                </span>
+            </div>
+        </div>
+
+        <!-- =========================
+             PANEL: BANK / ATM
+        ========================== -->
+        <div class="topup__panel" data-panel="bank" id="panel-bank" hidden>
+            <!-- Balance -->
+            <div class="topup__balance">
+                <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                <span>Số dư: @balance.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))đ</span>
+            </div>
+
+            <!-- Alert -->
+            <div class="topup__alert">
+                <span style="color: var(--danger); font-weight: 1000">Lưu ý:</span>
+                <span style="color: inherit; font-weight: 950">
+                    Vui lòng chuyển khoản đúng nội dung!
+                </span>
+            </div>
+
+            <!-- Transfer info + QR -->
+            <div class="bankGrid">
+                <div class="bankInfo">
+                    <div class="bankRow">
+                        <div class="bankLabel">Ngân hàng</div>
+                        <div class="bankValue" id="bank-name">TIMO</div>
+                    </div>
+
+                    <div class="bankRow">
+                        <div class="bankLabel">Số tài khoản</div>
+                        <div class="bankValue" id="bank-account">9021758421767</div>
+                    </div>
+
+                    <div class="bankRow">
+                        <div class="bankLabel">Tên tài khoản</div>
+                        <div class="bankValue" id="bank-owner">NGUYEN DINH CUONG</div>
+                    </div>
+
+                    <div class="bankRow">
+                        <div class="bankLabel">Nội dung CK</div>
+                        <div class="bankValue bankValue--mono" id="bank-content">
+                            cuongbufffsao gxxxxxxxxxxxxxxxx
+                        </div>
+                    </div>
+
+                    <div class="bankNote">
+                        Vui lòng kiểm tra kỹ thông tin trước khi chuyển khoản
+                    </div>
+                </div>
+
+                <div class="bankQR">
+                    <!-- ĐỔI PATH ẢNH QR TẠI ĐÂY -->
+                    <img src="~/img/QR.png" alt="VietQR" />
+                    <div class="bankQRText">Quét QR để chuyển khoản</div>
+                </div>
+            </div>
+
+            <!-- ATM Form -->
+            <form class="bankForm"
+                  action="/client/topup/bank"
+                  method="post"
+                  autocomplete="off"
+                  id="bankTopupForm">
+                <div class="bankForm__grid">
+                    <label class="topup__label" for="bankAmount">Số tiền nạp:</label>
+                    <div class="topup__control">
+                        <!-- input hiển thị 1.000.000 -->
+                        <input class="topup__input"
+                               id="bankAmountView"
+                               type="text"
+                               inputmode="numeric"
+                               placeholder="Nhập số tiền bạn muốn nạp"
+                               autocomplete="off"
+                               required />
+
+                        <!-- input thật để submit về controller -->
+                        <input type="hidden" id="bankAmount" name="amount" value="" />
+                    </div>
+
+
+                    <label class="topup__label" for="bankTxn">Mã giao dịch:</label>
+                    <div class="topup__control">
+                        <input class="topup__input"
+                               id="bankTxn"
+                               name="txn_code"
+                               type="text"
+                               readonly
+                               required />
+                    </div>
+
+                    <!-- Các thông số gửi tiền (để backend đối soát / log) -->
+                    <input type="hidden" name="bank_name" value="TIMO" />
+                    <input type="hidden" name="bank_account" value="9021758421767" />
+                    <input type="hidden"
+                           name="bank_owner"
+                           value="NGUYEN DINH CUONG" />
+                    <input type="hidden"
+                           name="transfer_prefix"
+                           value="cuongbufffsao" />
+                    <input type="hidden"
+                           name="transfer_content"
+                           id="bankContentHidden"
+                           value="" />
+
+                    <p class="topup__hint">
+                        Nội dung chuyển khoản sẽ tự ghép theo mã giao dịch để hệ thống
+                        đối soát.
+                    </p>
+
+                    <div class="topup__submitWrap">
+                        <button class="topup__submit" type="submit">
+                            Gửi yêu cầu nạp
+                        </button>
+                    </div>
+                </div>
+
+                <div class="topup__warning">
+                    <span class="w-danger">CHÚ Ý:</span>
+                    <span class="w-info"> CHUYỂN KHOẢN ĐÚNG NỘI DUNG</span>,
+                    <span class="w-danger"> SAI NỘI DUNG CÓ THỂ CHẬM XỬ LÝ.</span>
+                    <br />
+                    <span class="w-danger">
+                        Nếu chuyển khoản xong nhưng chưa cộng tiền, vui lòng liên hệ hỗ
+                        trợ và cung cấp mã giao dịch.
+                    </span>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+<script>
+    (() => {
+      const $ = (s, root = document) => root.querySelector(s);
+      const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+
+      // =========================================================
+      // Tabs: Card / Bank + Render mã giao dịch & nội dung CK
+      // =========================================================
+      const tabs = $$("[data-tab]");
+      const panels = $$("[data-panel]");
+
+      const bankTxn = $("#bankTxn");
+      const bankContentText = $("#bank-content");
+      const bankContentHidden = $("#bankContentHidden");
+
+      // TODO: đổi prefix này theo user từ server nếu cần
+      const transferPrefix = "cuongbufffsao";
+
+      function makeTxnCode() {
+        const ts = Date.now().toString(); // ms
+        const rnd = Math.floor(1000 + Math.random() * 9000); // 4 digits
+        return `g${ts}${rnd}`;
+      }
+
+      function syncTransferContent() {
+        if (!bankTxn) return;
+        const code = bankTxn.value || "";
+        const content = `${transferPrefix} ${code}`.trim();
+        if (bankContentText) bankContentText.textContent = content;
+        if (bankContentHidden) bankContentHidden.value = content;
+      }
+
+      function ensureTxn() {
+        if (!bankTxn) return;
+        if (!bankTxn.value) bankTxn.value = makeTxnCode();
+        syncTransferContent();
+      }
+
+      function setActiveTab(name) {
+        tabs.forEach((t) => {
+          const active = t.dataset.tab === name;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        panels.forEach((p) => {
+          const show = p.dataset.panel === name;
+          p.hidden = !show;
+        });
+
+        if (name === "bank") ensureTxn();
+      }
+
+      tabs.forEach((t) => {
+        t.addEventListener("click", (e) => {
+          e.preventDefault(); // không chuyển trang
+          const name = t.dataset.tab;
+          setActiveTab(name);
+
+          // update hash cho tiện share link
+          const href = t.getAttribute("href") || "";
+          if (href.startsWith("#")) history.replaceState(null, "", href);
+        });
+      });
+
+      // Auto open theo hash
+      if (location.hash === "#bank") setActiveTab("bank");
+      else setActiveTab("card");
+
+      // Sync nội dung CK khi nhập số tiền (mã giữ nguyên)
+      const bankAmount = $("#bankAmount");
+      bankAmount?.addEventListener("input", () => {
+        syncTransferContent();
+      });
+    })();
+</script>
+<script>
+    (() => {
+      const view = document.getElementById("bankAmountView");
+      const hidden = document.getElementById("bankAmount");
+      if (!view || !hidden) return;
+
+      const formatVND = (n) => n.toLocaleString("vi-VN"); // 1.000.000
+      const onlyDigits = (s) => (s || "").replace(/[^\d]/g, "");
+
+      function sync() {
+        const raw = onlyDigits(view.value);
+        if (!raw) {
+          hidden.value = "";
+          return;
+        }
+        const num = Number(raw);
+        hidden.value = String(num);
+        view.value = formatVND(num);
+      }
+
+      // Khi gõ: chỉ giữ số và format lại
+      view.addEventListener("input", () => {
+        const raw = onlyDigits(view.value);
+        if (!raw) {
+          hidden.value = "";
+          return;
+        }
+        const num = Number(raw);
+        hidden.value = String(num);
+        // format ngay (ok cho đa số trường hợp)
+        view.value = formatVND(num);
+      });
+
+      // Khi rời ô: đảm bảo format chuẩn
+      view.addEventListener("blur", sync);
+    })();
+</script>

@@ -34,15 +34,15 @@
                 <!-- Left menu -->
                 <ul class="menu menu--left" role="list">
                     <li>
-                        <a class="link" href="/view/listdichvu.html">
+                        <a class="link" asp-controller="Home" asp-action="Cart">
                             <i class="fa-solid fa-layer-group icon"
                                aria-hidden="true"></i>
-                            DỊCH VỤ
+                            GIỎ HÀNG
                         </a>
                     </li>
 
                     <li>
-                        <a class="link" href="/client/topup">
+                        <a class="link" asp-controller="home" asp-action="bank">
                             <i class="fa-solid fa-wallet icon" aria-hidden="true"></i>
                             NẠP TIỀN
                         </a>
@@ -75,7 +75,8 @@
 
                             <a class="dropdown__item"
                                role="menuitem"
-                               href="/client/history">
+                               asp-controller="Home"
+                               asp-action="HistoryPayment">
                                 LỊCH SỬ MUA ACC
                                 <i class="fa-solid fa-clock-rotate-left icon"
                                    aria-hidden="true"></i>

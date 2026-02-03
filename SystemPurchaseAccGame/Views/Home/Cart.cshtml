@@ -1,0 +1,289 @@
+﻿@using System.Globalization
+@model SystemPurchaseAccGame.ViewModel.CartVm
+
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    var vi = new CultureInfo("vi-VN");
+    string Vnd(long n) => n.ToString("N0", vi) + " VNĐ";
+}
+
+<section class="cart-wrap" aria-label="Giỏ hàng">
+    <div class="cart-title">
+        <h1>Giỏ hàng</h1>
+        <div class="underline" aria-hidden="true"></div>
+    </div>
+
+    <div class="cart-layout">
+        <!-- ===================== LEFT: CART ITEMS ===================== -->
+        <div class="cart-panel" aria-label="Danh sách sản phẩm trong giỏ">
+            <div class="cart-panel__head">
+                <h2>
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                    Danh sách sản phẩm
+                </h2>
+
+                <div class="cart-actions">
+                    <span class="cart-muted">Số lượng: <strong id="cartCount">0</strong></span>
+                    <button class="cart-btn cart-btn--ghost" type="button" id="cartClear">
+                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                        Xóa tất cả
+                    </button>
+                </div>
+            </div>
+
+            <ul class="cart-list" id="cartList">
+                @foreach (var item in Model.Items)
+                {
+                    <li class="cart-item"
+                        data-id="@item.AccountId"
+                        data-title="@item.Title"
+                        data-price="@item.UnitPrice">
+                        <div class="cart-item__media">
+                            <img src="@item.ThumbnailUrl"
+                                 alt="Ảnh sản phẩm"
+                                 loading="lazy" />
+                        </div>
+
+                        <div class="cart-item__body">
+                            <div>
+                                <h3 class="cart-item__title">@item.Title</h3>
+
+                                <div class="cart-item__meta">
+                                    <span class="cart-chip">
+                                        <i class="fa-solid fa-hashtag" aria-hidden="true"></i> ID:
+                                        <strong>@item.AccountId</strong>
+                                    </span>
+                                    <span class="cart-chip">
+                                        <i class="fa-solid fa-tag" aria-hidden="true"></i>
+                                        @item.Status
+                                    </span>
+                                </div>
+
+                                <div class="cart-item__controls">
+                                    <!-- bạn có thể thay bằng form post / api remove -->
+                                    <form method="post" asp-controller="Home" asp-action="ApiCartRemove" asp-route-accountId="@item.AccountId">
+                                        <button class="cart-btn cart-btn--danger cart-remove" type="submit">
+                                            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                                            Xóa
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="cart-price" aria-label="Giá">
+                                <span class="cart-price__label">Đơn giá</span>
+                                <div class="cart-price__value">
+                                    <span class="cart-price__number">@item.UnitPrice.ToString("N0", vi)</span>
+                                    <span class="currency">VNĐ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+
+        </div>
+
+        <!-- ===================== RIGHT: SUMMARY ===================== -->
+        <aside class="cart-panel cart-summary" aria-label="Tóm tắt đơn hàng">
+            <div class="cart-panel__head">
+                <h2>
+                    <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+                    Tóm tắt
+                </h2>
+                <span class="cart-muted">Thanh toán</span>
+            </div>
+
+            <div class="cart-summary__body">
+                <div class="cart-row">
+                    <span class="cart-muted">Số lượng: <strong id="cartCount">@Model.Items.Count</strong></span>
+                </div>
+                <div class="cart-row">
+                    <span>Tạm tính</span>
+                    <span id="cartSubtotal">@Vnd(Model.Subtotal)</span>
+                </div>
+
+                <div class="cart-row">
+                    <span>Phí dịch vụ</span>
+                    <span id="cartFee">@Vnd(Model.Fee)</span>
+                </div>
+
+                <div class="cart-divider" aria-hidden="true"></div>
+
+                <div class="cart-row cart-total">
+                    <span>Tổng cộng</span>
+                    <span id="cartTotal">@Vnd(Model.Total)</span>
+                </div>
+
+                <p class="cart-note">
+                    Vui lòng kiểm tra lại thông tin sản phẩm trước khi thanh toán.
+                </p>
+
+                <!-- Ví dụ: mã giảm giá (optional) -->
+                <input class="cart-input"
+                       id="cartCoupon"
+                       type="text"
+                       placeholder="Mã giảm giá (tuỳ chọn)" />
+
+                <div class="cart-summary__actions">
+                    <!-- Nút này bạn đổi thành form post .NET cũng được -->
+                    <a class="cart-btn cart-btn--primary" asp-controller="home" asp-action="checkout" >
+                        <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                        Thanh toán
+                    </a>
+
+                    <a class="cart-btn" asp-controller="Home" asp-action="HomePage">
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                        Tiếp tục mua
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div class="cart-empty" id="cartEmpty" data-show="@(Model.Items.Count == 0 ? "true" : "false")">
+        Giỏ hàng của bạn đang trống. Hãy quay lại danh sách để chọn account.
+    </div>
+
+</section>
+
+<!-- Toast -->
+<div class="cart-toast" id="cartToast" data-show="false" role="status" aria-live="polite">
+    <p class="cart-toast__title">Thông báo</p>
+    <p class="cart-toast__msg" id="cartToastMsg">...</p>
+</div>
+
+<script>
+    (() => {
+      const $ = (s, root = document) => root.querySelector(s);
+      const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+
+      const cartList = $("#cartList");
+      const cartEmpty = $("#cartEmpty");
+
+      // Lưu ý: bạn đang dùng id="cartCount" 2 lần (trùng id).
+      // Dùng querySelectorAll để update cả 2 chỗ.
+      const cartCountEls = $$("#cartCount");
+
+      const cartSubtotalEl = $("#cartSubtotal");
+      const cartFeeEl = $("#cartFee");
+      const cartTotalEl = $("#cartTotal");
+
+      const cartClearBtn = $("#cartClear");
+
+      const cartToast = $("#cartToast");
+      const cartToastMsg = $("#cartToastMsg");
+      let cartToastTimer = null;
+
+      function cartFormatVND(n) {
+        const num = Number(n || 0);
+        return num.toLocaleString("vi-VN") + " VNĐ";
+      }
+
+      function cartShowToast(msg) {
+        if (!cartToast || !cartToastMsg) return;
+        cartToastMsg.textContent = msg;
+        cartToast.dataset.show = "true";
+        clearTimeout(cartToastTimer);
+        cartToastTimer = setTimeout(() => {
+          cartToast.dataset.show = "false";
+        }, 1800);
+      }
+
+      function cartGetItems() {
+        if (!cartList) return [];
+        return $$(".cart-item", cartList);
+      }
+
+      function cartSetEmptyState(isEmpty) {
+        if (cartEmpty) cartEmpty.dataset.show = isEmpty ? "true" : "false";
+      }
+
+      function cartComputeTotals() {
+        const items = cartGetItems();
+        let subtotal = 0;
+
+        for (const li of items) {
+          subtotal += Number(li.dataset.price || 0);
+        }
+
+        const fee = 0;
+        const total = subtotal + fee;
+
+        // update count (all elements with same id)
+        cartCountEls.forEach((el) => (el.textContent = String(items.length)));
+
+        if (cartSubtotalEl) cartSubtotalEl.textContent = cartFormatVND(subtotal);
+        if (cartFeeEl) cartFeeEl.textContent = cartFormatVND(fee);
+        if (cartTotalEl) cartTotalEl.textContent = cartFormatVND(total);
+
+        cartSetEmptyState(items.length === 0);
+      }
+
+      async function postJson(url) {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { "X-Requested-With": "XMLHttpRequest" },
+        });
+
+        // server trả ApiResult: { ok, message, data }
+        const data = await res.json().catch(() => null);
+
+        if (!res.ok) {
+          const msg = data?.message || `Request lỗi (${res.status})`;
+          throw new Error(msg);
+        }
+
+        return data;
+      }
+
+      async function handleRemoveClick(e, li) {
+        e.preventDefault();
+
+        const accountId = li?.dataset?.id;
+        if (!accountId) return;
+
+        try {
+          const rs = await postJson(`/api/cart/remove/${encodeURIComponent(accountId)}`);
+
+          li.remove();
+          cartComputeTotals();
+          cartShowToast(rs?.message || "Đã xóa sản phẩm khỏi giỏ hàng.");
+        } catch (err) {
+          cartShowToast(err?.message || "Xóa thất bại.");
+        }
+      }
+
+      async function handleClearAll() {
+        const items = cartGetItems();
+        if (items.length === 0) return;
+
+        try {
+          const rs = await postJson(`/api/cart/clear`);
+
+          items.forEach((li) => li.remove());
+          cartComputeTotals();
+          cartShowToast(rs?.message || "Đã xóa toàn bộ giỏ hàng.");
+        } catch (err) {
+          cartShowToast(err?.message || "Xóa tất cả thất bại.");
+        }
+      }
+
+      function bindItem(li) {
+        // Bắt click nút Xóa
+        const removeBtn = $(".cart-remove", li);
+        removeBtn?.addEventListener("click", (e) => handleRemoveClick(e, li));
+
+        // Nếu bạn vẫn giữ <form>, chặn submit để khỏi reload trang
+        const form = li.querySelector("form");
+        form?.addEventListener("submit", (e) => handleRemoveClick(e, li));
+      }
+
+      // Init
+      cartGetItems().forEach(bindItem);
+      cartComputeTotals();
+
+      cartClearBtn?.addEventListener("click", handleClearAll);
+    })();
+</script>
+

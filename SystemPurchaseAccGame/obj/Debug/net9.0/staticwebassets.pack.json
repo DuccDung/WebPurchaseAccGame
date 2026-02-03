@@ -461,6 +461,10 @@
       "PackagePath": "staticwebassets\\css\\home\\acc_detail.css"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\bank.css",
+      "PackagePath": "staticwebassets\\css\\home\\bank.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\main.css",
       "PackagePath": "staticwebassets\\css\\home\\main.css"
     },
@@ -539,6 +543,10 @@
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143750513_334dea43a74d47588bd91f856d7771d4.gif",
       "PackagePath": "staticwebassets\\img\\20260202143750513_334dea43a74d47588bd91f856d7771d4.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
+      "PackagePath": "staticwebassets\\img\\QR.png"
     },
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\btn-view-all.gif",

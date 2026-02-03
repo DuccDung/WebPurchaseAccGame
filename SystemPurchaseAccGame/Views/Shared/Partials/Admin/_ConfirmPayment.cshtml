@@ -1,0 +1,507 @@
+﻿@using SystemPurchaseAccGame.ViewModel
+@model List<AdminTopupVm>
+
+<div class="container-fluid pt-4 px-4">
+    <!-- Header -->
+    <div class="bg-secondary rounded p-4 mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div>
+                <h5 class="mb-1">Duyệt nạp tiền</h5>
+                <small class="text-muted">
+                    Danh sách yêu cầu nạp tiền đang chờ • Admin xác thực & cộng
+                    số dư
+                </small>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-light btn-sm" type="button">
+                    <i class="fa fa-sync me-1"></i> Làm mới
+                </button>
+                <button class="btn btn-primary btn-sm" type="button">
+                    <i class="fa fa-download me-1"></i> Xuất danh sách
+                </button>
+            </div>
+        </div>
+
+        <hr class="border-secondary my-3" />
+
+        <!-- Filters -->
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Tìm user / mã giao dịch</label>
+                <input class="form-control bg-dark border-0"
+                       placeholder="VD: dung, #TXN123..." />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Phương thức</label>
+                <select class="form-select bg-dark border-0">
+                    <option>Tất cả</option>
+                    <option>Thủ công</option>
+                    <option>Thẻ</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Khoảng thời gian</label>
+                <div class="d-flex gap-2">
+                    <input type="date" class="form-control bg-dark border-0" />
+                    <input type="date" class="form-control bg-dark border-0" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Trạng thái</label>
+                <select class="form-select bg-dark border-0">
+                    <option selected>CHỜ DUYỆT</option>
+                    <option>ĐÃ DUYỆT</option>
+                    <option>TỪ CHỐI</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="row g-4 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="bg-secondary rounded p-4 h-100 stat-card">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Đang chờ</small>
+                    <i class="fa fa-hourglass-half text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">@ViewBag.PendingCount</h3>
+                <small class="text-muted">yêu cầu</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="bg-secondary rounded p-4 h-100 stat-card">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Tổng tiền khai báo</small>
+                    <i class="fa fa-wallet text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">
+                    @("₫" + Convert.ToInt64(ViewBag.PendingTotalAmount ?? 0).ToString("N0"))
+                </h3>
+                <small class="text-muted">trong hàng chờ</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="bg-secondary rounded p-4 h-100 stat-card">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Thẻ cào</small>
+                    <i class="fa fa-hand-holding-usd text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">@ViewBag.PendingCardCount</h3>
+                <small class="text-muted">yêu cầu</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="bg-secondary rounded p-4 h-100 stat-card">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="text-muted">Thẻ</small>
+                    <i class="fa fa-credit-card text-primary"></i>
+                </div>
+                <h3 class="mb-0 mt-2">@ViewBag.PendingManualCount</h3>
+                <small class="text-muted">yêu cầu</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending List -->
+    <div class="bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+            <h6 class="mb-0">Danh sách nạp tiền đang chờ</h6>
+
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-light btn-sm">
+                    <i class="fa fa-sort-amount-down me-1"></i> Sắp xếp
+                </button>
+                <button type="button" class="btn btn-outline-light btn-sm">
+                    <i class="fa fa-filter me-1"></i> Lọc nâng cao
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th style="width: 270px">Khách hàng</th>
+                        <th>Phương thức</th>
+                        <th class="text-end">Số tiền</th>
+                        <th>Mã giao dịch</th>
+                        <th>Thời gian</th>
+                        <th>Ghi chú</th>
+                        <th class="text-end" style="width: 220px">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <!-- ROW  -->
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div>
+                                        <div class="fw-semibold">@item.UserName</div>
+                                        <small class="text-muted">@item.UserName • ID: @item.UserId</small>
+                                    </div>
+                                </div>
+                            </td>
+                            @if (item.Method == "BANK")
+                            {
+                                <td>
+                                    <span class="badge bg-dark badge-method">
+                                        <i class="fa fa-credit-card me-1"></i> ATM
+                                    </span>
+                                    <div class="small text-muted mt-1">
+                                        Chuyển khoản ngân hàng
+                                    </div>
+                                </td>
+                            }
+                            @if (item.Method == "Card")
+                            {
+
+                                <td>
+                                    <span class="badge bg-dark badge-method">
+                                        <i class="fa fa-hand-holding-usd me-1"></i> Thẻ cào
+                                    </span>
+                                    <div class="small text-muted mt-1">
+                                        @item.Provider
+                                    </div>
+                                </td>
+                            }
+
+                            <td class="text-end">
+                                <div class="fw-bold text-primary">
+                                    @("₫" + item.Amount.ToString("N0"))
+                                </div>
+                                <small class="text-muted">Khai báo</small>
+                            </td>
+                            @if (item.Method == "BANK")
+                            {
+                                <td>
+                                    <div class="fw-semibold">@item.ReferenceCode</div>
+                                    <small class="text-muted">Nội Dung</small>
+                                </td>
+                            }
+                            @if (item.Method == "Card")
+                            {
+                                <td>
+                                    <div class="fw-semibold">@item.Provider</div>
+                                    <small class="text-muted">Nhà mạng</small>
+                                </td>
+                            }
+
+                            <td>
+                                <div class="fw-semibold">@item.CreatedAt.ToString("dd/MM/yyyy")</div>
+                                <small class="text-muted">@item.CreatedAt.ToString("HH:mm")</small>
+                            </td>
+                            @if (item.Method == "BANK")
+                            {
+                                <td>
+                                    <div class="note-clamp text-muted">
+                                        “CK nội dung: @item.ReferenceCode”
+                                    </div>
+                                </td>
+                            }
+                            @if (item.Method == "Card")
+                            {
+                                <td>
+                                    <div class="note-clamp text-muted">
+                                        Nạp thẻ @item.Provider  @("₫" + item.Amount.ToString("N0"))
+                                    </div>
+                                </td>
+                            }
+
+
+                            <td class="text-end">
+                                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                                    <button class="btn btn-primary btn-sm"
+                                            type="button"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#approveModal">
+                                        <i class="fa fa-check me-1"></i> Xác thực
+                                    </button>
+
+                                    <button class="btn btn-outline-light btn-sm"
+                                            type="button"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#rejectModal">
+                                        <i class="fa fa-times me-1"></i> Từ chối
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- Pagination (static) -->
+        <div class="d-flex align-items-center justify-content-between mt-3 flex-wrap gap-2">
+            <small class="text-muted">Hiển thị 1–10 / 27 yêu cầu</small>
+            <nav aria-label="Page navigation">
+                <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                        <a class="page-link bg-dark border-0 text-muted" href="#">Prev</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link bg-dark border-0" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark border-0 text-muted" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark border-0 text-muted" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link bg-dark border-0 text-muted" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- APPROVE MODAL -->
+<div class="modal fade"
+     id="approveModal"
+     tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <i class="fa fa-check-circle me-2"></i>Xác thực & cộng tiền
+                </h5>
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Context summary (static) -->
+                <div class="bg-dark rounded p-3 mb-3 border-soft">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div>
+                            <div class="fw-semibold">
+                                Nguyễn Văn A
+                                <span class="text-muted">(user_a • ID: 10021)</span>
+                            </div>
+                            <small class="text-muted">
+                                Yêu cầu: #TXN-20260202-001 • Phương thức: Thủ
+                                công
+                            </small>
+                        </div>
+                        <span class="badge bg-warning text-dark">CHỜ DUYỆT</span>
+                    </div>
+                    <hr class="border-secondary my-2" />
+                    <div class="row g-2">
+                        <div class="col-md-4">
+                            <small class="text-muted d-block">Số tiền khách khai</small>
+                            <div class="fw-bold text-primary">₫1,200,000</div>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted d-block">Thời gian</small>
+                            <div class="fw-semibold">02/02/2026 10:35</div>
+                        </div>
+                        <div class="col-md-4">
+                            <small class="text-muted d-block">Nguồn</small>
+                            <div class="fw-semibold">VCB / Momo / Card</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <i class="fa fa-exclamation-triangle me-2"></i>
+                    <b>Lưu ý:</b> Cộng tiền sẽ ảnh hưởng số dư ví của khách. Hãy
+                    kiểm tra chứng từ/mã thẻ trước khi xác nhận.
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Số tiền cộng (thực tế)</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-dark border-0">₫</span>
+                            <input type="number"
+                                   class="form-control bg-dark border-0"
+                                   placeholder="VD: 1200000" />
+                        </div>
+                        <small class="text-muted">Có thể khác số khách khai nếu trừ phí/chiết khấu</small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Phí (tuỳ chọn)</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-dark border-0">₫</span>
+                            <input type="number"
+                                   class="form-control bg-dark border-0"
+                                   placeholder="VD: 0" />
+                        </div>
+                        <small class="text-muted">Ghi nhận phí nhà cung cấp/thẻ</small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Trạng thái sau duyệt</label>
+                        <select class="form-select bg-dark border-0">
+                            <option selected>APPROVED (Đã duyệt)</option>
+                            <option>NEED_MORE_INFO (Cần bổ sung)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Mã đối soát / Ref (tuỳ chọn)</label>
+                        <input class="form-control bg-dark border-0"
+                               placeholder="VD: BANKREF-8821 / CARDREF-..." />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Ghi chú admin</label>
+                        <textarea class="form-control bg-dark border-0"
+                                  rows="4"
+                                  placeholder="VD: đã nhận tiền VCB, đối soát OK..."></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   role="switch"
+                                   checked />
+                            <label class="form-check-label">Gửi thông báo cho khách sau khi duyệt</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="bg-dark rounded p-3 border-soft">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="text-muted">Tóm tắt</div>
+                                <span class="badge bg-dark">Preview</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <span class="text-muted">Số tiền cộng:</span>
+                                <span class="fw-semibold">₫1,200,000</span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-1">
+                                <span class="text-muted">Phí:</span>
+                                <span class="fw-semibold">₫0</span>
+                            </div>
+                            <hr class="border-secondary my-2" />
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Thực nhận vào ví:</span>
+                                <span class="fw-bold text-primary">₫1,200,000</span>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">
+                            * Đây là UI tĩnh. Khi gắn backend, phần “Preview” sẽ tính
+                            tự động.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button"
+                        class="btn btn-outline-light"
+                        data-bs-dismiss="modal">
+                    Đóng
+                </button>
+                <button type="button" class="btn btn-primary">
+                    <i class="fa fa-check me-1"></i> Xác nhận & cộng tiền
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- REJECT MODAL -->
+<div class="modal fade"
+     id="rejectModal"
+     tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <i class="fa fa-times-circle me-2"></i>Từ chối yêu cầu
+                </h5>
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-dark border-0">
+                    <div class="fw-semibold">Bạn sắp từ chối yêu cầu:</div>
+                    <div class="text-muted mt-1">
+                        #TXN-20260202-001 • Nguyễn Văn A
+                    </div>
+                </div>
+
+                <label class="form-label">Lý do từ chối</label>
+                <select class="form-select bg-dark border-0 mb-3">
+                    <option>
+                        Không tìm thấy giao dịch / không khớp nội dung
+                    </option>
+                    <option>Mã thẻ sai / thẻ đã sử dụng</option>
+                    <option>Thiếu chứng từ</option>
+                    <option>Khác</option>
+                </select>
+
+                <label class="form-label">Ghi chú (tuỳ chọn)</label>
+                <textarea class="form-control bg-dark border-0"
+                          rows="4"
+                          placeholder="VD: vui lòng gửi ảnh bill hoặc nội dung chuyển khoản đúng..."></textarea>
+
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input"
+                           type="checkbox"
+                           role="switch"
+                           checked />
+                    <label class="form-check-label">Gửi thông báo cho khách</label>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button"
+                        class="btn btn-outline-light"
+                        data-bs-dismiss="modal">
+                    Hủy
+                </button>
+                <button type="button" class="btn btn-danger">
+                    <i class="fa fa-times me-1"></i> Xác nhận từ chối
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* subtle borders like DarkPan */
+    .stat-card {
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .border-soft {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .badge-method {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.45rem 0.55rem;
+    }
+
+    .note-clamp {
+        max-width: 320px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* pagination fit dark theme */
+    .pagination .page-link {
+        border-radius: 10px;
+        margin-left: 6px;
+    }
+</style>

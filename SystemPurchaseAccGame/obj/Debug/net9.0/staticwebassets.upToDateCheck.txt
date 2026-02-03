@@ -43,6 +43,7 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseA
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\assets_admin\lib\tempusdominus\js\tempusdominus-bootstrap-4.js
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\assets_admin\lib\owlcarousel\owl.carousel.min.js
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\css\home\bank.css
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\lib\bootstrap\dist\js\bootstrap.js
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\css\home\main.css
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
@@ -199,6 +200,7 @@ wwwroot\assets_admin\scss\bootstrap\scss\mixins\_visually-hidden.scss
 wwwroot\assets_admin\scss\bootstrap\scss\utilities\_api.scss
 wwwroot\assets_admin\scss\bootstrap\scss\vendor\_rfs.scss
 wwwroot\css\home\acc_detail.css
+wwwroot\css\home\bank.css
 wwwroot\css\home\main.css
 wwwroot\favicon.ico
 wwwroot\img\20260202140822931_9e3b28ef58fc4eeab1a37157e5e0688b.gif
@@ -221,6 +223,7 @@ wwwroot\img\20260202143748234_94365cfe58054bf7bb311cbcac141889.gif
 wwwroot\img\20260202143750513_334dea43a74d47588bd91f856d7771d4.gif
 wwwroot\img\btn-view-all.gif
 wwwroot\img\logo.png
+wwwroot\img\QR.png
 wwwroot\js\home\main.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

@@ -1,0 +1,350 @@
+﻿@model SystemPurchaseAccGame.ViewModel.PaymentHistoryVm
+@using System.Globalization
+
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+
+    string Money(long v) => string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:n0}", v);
+    string Dt(System.DateTime d) => d.ToString("yyyy-MM-dd HH:mm:ss");
+}
+
+<main class="payment_history__main">
+    <section class="payment_history__sectionTitle" aria-label="Lịch sử giao dịch">
+        <h1 class="payment_history__titleText">Lịch sử giao dịch</h1>
+        <div class="payment_history__underline" aria-hidden="true"></div>
+    </section>
+
+    <section class="payment_history__panel" aria-label="Bảng lịch sử">
+        <div class="payment_history__panelHead">
+
+            <div class="payment_history__tabs" role="tablist" aria-label="Chọn loại giao dịch">
+                <button class="payment_history__tabBtn" type="button"
+                        data-payment_history-tab="all" data-payment_history-active="true">
+                    <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Tất cả
+                </button>
+
+                <button class="payment_history__tabBtn" type="button"
+                        data-payment_history-tab="topup" data-payment_history-active="false">
+                    <i class="fa-solid fa-wallet" aria-hidden="true"></i> Nạp tiền
+                </button>
+
+                <button class="payment_history__tabBtn" type="button"
+                        data-payment_history-tab="order" data-payment_history-active="false">
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Mua account
+                </button>
+            </div>
+
+            <div class="payment_history__toolbar">
+                <div class="payment_history__searchBox">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="payment_history__searchBox" type="search"
+                           placeholder="Tìm theo mã, phương thức, trạng thái, tiêu đề..." />
+                </div>
+
+                <div class="payment_history__hint">
+                    Hiển thị:
+                    <strong id="payment_history__countVisible">0</strong> /
+                    <strong id="payment_history__countTotal">0</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALL -->
+        <div class="payment_history__section" id="payment_history__section-all" data-payment_history-show="true">
+            <div class="payment_history__tableWrap">
+                <table class="payment_history__table" aria-label="Tất cả giao dịch">
+                    <thead class="payment_history__thead">
+                        <tr>
+                            <th>Loại</th>
+                            <th>Mã</th>
+                            <th>Nội dung</th>
+                            <th>Số tiền</th>
+                            <th>Phí</th>
+                            <th>Trạng thái</th>
+                            <th>Thời gian</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="payment_history__tbody-all">
+                        @* TOPUP *@
+                        @foreach (var t in Model.Topups)
+                        {
+                            var search = $"topup {t.TopupId} {t.Method} {t.Amount} {t.Fee} {t.Status} {t.Provider} {t.ReferenceCode} {t.CreatedAt:yyyy-MM-dd}";
+                            <tr data-payment_history-search="@search.ToLowerInvariant()">
+                                <td><strong>Nạp</strong></td>
+                                <td class="payment_history__mono">#@t.TopupId</td>
+                                <td>
+                                    <strong>@t.Method</strong>
+                                    <span class="payment_history__subNote">
+                                        Provider: <span class="payment_history__muted">@(t.Provider ?? "NULL")</span> • Ref:
+                                        <span class="payment_history__muted">@(t.ReferenceCode ?? "NULL")</span>
+                                    </span>
+                                </td>
+                                <td class="payment_history__amount">@Money(t.Amount)</td>
+                                <td class="payment_history__muted">@Money(t.Fee)</td>
+                                <td>
+                                    <span class="payment_history__pillStatus" data-payment_history-status="@t.Status">
+                                        <span class="payment_history__dot"></span> @t.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment_history__mono">@Dt(t.CreatedAt)</div>
+                                    <div class="payment_history__subNote">
+                                        Completed: <span class="payment_history__muted">@(t.CompletedAt.HasValue? Dt(t.CompletedAt.Value) : "NULL")</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a class="payment_history__btn"
+                                       asp-controller="Topup"
+                                       asp-action="Detail"
+                                       asp-route-id="@t.TopupId">
+                                        <i class="fa-solid fa-eye" aria-hidden="true"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                        @* ORDER *@
+                        @foreach (var o in Model.Orders)
+                        {
+                            var titles = string.Join(" | ", o.Items.Select(x => x.Title));
+                            var firstItem = o.Items.FirstOrDefault();
+                            var content = firstItem != null
+                            ? $"Account #{firstItem.AccountId} - {firstItem.Title}"
+                            : "Đơn hàng";
+
+                            var search = $"order {o.OrderId} {o.PaymentMethod} {o.TotalAmount} {o.Status} {titles} {o.CreatedAt:yyyy-MM-dd}";
+                            <tr data-payment_history-search="@search.ToLowerInvariant()">
+                                <td><strong>Mua</strong></td>
+                                <td class="payment_history__mono">#@o.OrderId</td>
+                                <td>
+                                    <strong>@content</strong>
+                                    @if (!string.IsNullOrWhiteSpace(titles))
+                                    {
+                                        <span class="payment_history__subNote">@titles</span>
+                                    }
+                                </td>
+                                <td class="payment_history__amount">@Money(o.TotalAmount)</td>
+                                <td class="payment_history__muted">—</td>
+                                <td>
+                                    <span class="payment_history__pillStatus" data-payment_history-status="@o.Status">
+                                        <span class="payment_history__dot"></span> @o.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="payment_history__mono">@Dt(o.CreatedAt)</div>
+                                    <div class="payment_history__subNote">
+                                        Paid: <span class="payment_history__muted">@(o.PaidAt.HasValue? Dt(o.PaidAt.Value) : "NULL")</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a class="payment_history__btn"
+                                       asp-controller="Orders"
+                                       asp-action="Detail"
+                                       asp-route-id="@o.OrderId">
+                                        <i class="fa-solid fa-eye" aria-hidden="true"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="payment_history__empty" id="payment_history__empty-all">Không có giao dịch phù hợp.</div>
+        </div>
+
+        <!-- TOPUP -->
+        <div class="payment_history__section" id="payment_history__section-topup" data-payment_history-show="false">
+            <div class="payment_history__tableWrap">
+                <table class="payment_history__table" aria-label="Lịch sử nạp tiền">
+                    <thead class="payment_history__thead">
+                        <tr>
+                            <th>TopupId</th>
+                            <th>Method</th>
+                            <th>Amount</th>
+                            <th>Fee</th>
+                            <th>Status</th>
+                            <th>Provider</th>
+                            <th>ReferenceCode</th>
+                            <th>CreatedAt</th>
+                            <th>CompletedAt</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="payment_history__tbody-topup">
+                        @foreach (var t in Model.Topups)
+                        {
+                            var search = $"{t.TopupId} {t.Method} {t.Amount} {t.Fee} {t.Status} {t.Provider} {t.ReferenceCode} {t.CreatedAt:yyyy-MM-dd}";
+                            <tr data-payment_history-search="@search.ToLowerInvariant()">
+                                <td class="payment_history__mono">@t.TopupId</td>
+                                <td><strong>@t.Method</strong></td>
+                                <td class="payment_history__amount">@Money(t.Amount)</td>
+                                <td class="payment_history__muted">@Money(t.Fee)</td>
+                                <td>
+                                    <span class="payment_history__pillStatus" data-payment_history-status="@t.Status">
+                                        <span class="payment_history__dot"></span> @t.Status
+                                    </span>
+                                </td>
+                                <td class="payment_history__muted">@(t.Provider ?? "NULL")</td>
+                                <td class="payment_history__mono">@(t.ReferenceCode ?? "NULL")</td>
+                                <td class="payment_history__mono">@Dt(t.CreatedAt)</td>
+                                <td class="payment_history__muted">@(t.CompletedAt.HasValue? Dt(t.CompletedAt.Value) : "NULL")</td>
+                                <td>
+                                    <a class="payment_history__btn"
+                                       asp-controller="Topup"
+                                       asp-action="Detail"
+                                       asp-route-id="@t.TopupId">
+                                        <i class="fa-solid fa-eye" aria-hidden="true"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="payment_history__empty" id="payment_history__empty-topup">
+                Không có giao dịch nạp tiền phù hợp.
+            </div>
+        </div>
+
+        <!-- ORDER -->
+        <div class="payment_history__section" id="payment_history__section-order" data-payment_history-show="false">
+            <div class="payment_history__tableWrap">
+                <table class="payment_history__table" aria-label="Lịch sử mua account">
+                    <thead class="payment_history__thead">
+                        <tr>
+                            <th>OrderId</th>
+                            <th>Payment</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Items</th>
+                            <th>CreatedAt</th>
+                            <th>PaidAt</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="payment_history__tbody-order">
+                        @foreach (var o in Model.Orders)
+                        {
+                            var titles = string.Join(" | ", o.Items.Select(x => x.Title));
+                            var search = $"{o.OrderId} {o.PaymentMethod} {o.TotalAmount} {o.Status} {titles} {o.CreatedAt:yyyy-MM-dd}";
+                            <tr data-payment_history-search="@search.ToLowerInvariant()">
+                                <td class="payment_history__mono">@o.OrderId</td>
+                                <td><strong>@o.PaymentMethod</strong></td>
+                                <td class="payment_history__amount">@Money(o.TotalAmount)</td>
+                                <td>
+                                    <span class="payment_history__pillStatus" data-payment_history-status="@o.Status">
+                                        <span class="payment_history__dot"></span> @o.Status
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (o.Items.Count == 0)
+                                    {
+                                        <span class="payment_history__muted">Không có item</span>
+                                    }
+                                    else
+                                    {
+                                        <strong>@($"({o.Items.Count})")</strong>
+                                        <span class="payment_history__subNote">@titles</span>
+                                    }
+                                </td>
+                                <td class="payment_history__mono">@Dt(o.CreatedAt)</td>
+                                <td class="payment_history__muted">@(o.PaidAt.HasValue? Dt(o.PaidAt.Value) : "NULL")</td>
+                                <td>
+                                    <a class="payment_history__btn"
+                                       asp-controller="Orders"
+                                       asp-action="Detail"
+                                       asp-route-id="@o.OrderId">
+                                        <i class="fa-solid fa-eye" aria-hidden="true"></i> Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="payment_history__empty" id="payment_history__empty-order">
+                Không có đơn mua account phù hợp.
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    (() => {
+      const tabBtns = Array.from(document.querySelectorAll(".payment_history__tabBtn"));
+
+      const sections = {
+        all: document.getElementById("payment_history__section-all"),
+        topup: document.getElementById("payment_history__section-topup"),
+        order: document.getElementById("payment_history__section-order"),
+      };
+
+      const searchBox = document.getElementById("payment_history__searchBox");
+      const countVisible = document.getElementById("payment_history__countVisible");
+      const countTotal = document.getElementById("payment_history__countTotal");
+
+      const emptyAll = document.getElementById("payment_history__empty-all");
+      const emptyTopup = document.getElementById("payment_history__empty-topup");
+      const emptyOrder = document.getElementById("payment_history__empty-order");
+
+      function norm(s) {
+        return (s || "").toString().trim().toLowerCase();
+      }
+
+      function currentTab() {
+        return (
+          tabBtns.find((b) => b.dataset.payment_historyActive === "true")?.dataset.payment_historyTab ||
+          "all"
+        );
+      }
+
+      function getRowsForTab(tab) {
+        if (tab === "all") return Array.from(document.querySelectorAll("#payment_history__tbody-all tr"));
+        if (tab === "topup") return Array.from(document.querySelectorAll("#payment_history__tbody-topup tr"));
+        return Array.from(document.querySelectorAll("#payment_history__tbody-order tr"));
+      }
+
+      function setTab(tab) {
+        for (const b of tabBtns) {
+          b.dataset.payment_historyActive = b.dataset.payment_historyTab === tab ? "true" : "false";
+        }
+        for (const key of Object.keys(sections)) {
+          sections[key].dataset.payment_historyShow = key === tab ? "true" : "false";
+        }
+        applyFilter();
+      }
+
+      function applyFilter() {
+        const tab = currentTab();
+        const q = norm(searchBox.value);
+        const rows = getRowsForTab(tab);
+
+        let visible = 0;
+        for (const r of rows) {
+          const hay = norm(r.getAttribute("data-payment_history-search")) || norm(r.textContent);
+          const match = q === "" ? true : hay.includes(q);
+          r.style.display = match ? "" : "none";
+          if (match) visible++;
+        }
+
+        countTotal.textContent = String(rows.length);
+        countVisible.textContent = String(visible);
+
+        emptyAll.dataset.show = tab === "all" && visible === 0 ? "true" : "false";
+        emptyTopup.dataset.show = tab === "topup" && visible === 0 ? "true" : "false";
+        emptyOrder.dataset.show = tab === "order" && visible === 0 ? "true" : "false";
+      }
+
+      tabBtns.forEach((btn) => btn.addEventListener("click", () => setTab(btn.dataset.payment_historyTab)));
+      searchBox.addEventListener("input", applyFilter);
+
+      setTab("all");
+    })();
+</script>

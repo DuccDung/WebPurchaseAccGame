@@ -1,0 +1,413 @@
+﻿/* =========================
+   MAIN CONTENT (Topup + Bank)
+========================= */
+
+.main {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 26px 16px 60px;
+}
+
+/* TOPUP THEME TOKENS (chỉ dùng cho main) */
+:root {
+    --teal: #0f7f8f;
+    --teal-2: rgba(15, 127, 143, 0.22);
+    --danger: #ff3b3b;
+    --info: #4aa8ff;
+}
+
+/* =========================
+   TOPUP
+========================= */
+.topup {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.topup__tabs {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    margin: 4px 0 14px;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.topup__tab {
+    text-decoration: none;
+    color: color-mix(in oklab, var(--muted) 85%, white 15%);
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+    .topup__tab:hover {
+        color: var(--text);
+    }
+
+    .topup__tab.is-active {
+        color: color-mix(in oklab, var(--info) 70%, var(--text));
+        border-bottom-color: color-mix(in oklab, var(--info) 70%, transparent);
+    }
+
+.topup__title {
+    margin: 0 0 16px;
+    font-size: clamp(22px, 3vw, 40px);
+    font-weight: 1000;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.topup__panel {
+    border: 1px solid var(--surface-border);
+    border-radius: 10px;
+    background: color-mix(in oklab, var(--surface-strong) 82%, transparent);
+    padding: 22px 22px 18px;
+}
+
+.topup__alert {
+    border: 1px solid color-mix(in oklab, var(--surface-border) 80%, transparent);
+    background: var(--teal-2);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: var(--danger);
+    letter-spacing: 0.3px;
+    font-weight: 900;
+}
+
+.topup__balance {
+    margin: 18px auto 10px;
+    max-width: 620px;
+    border-radius: 6px;
+    padding: 14px 16px;
+    background: color-mix(in oklab, var(--teal) 86%, black 14%);
+    color: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 900;
+}
+
+/* (Form CSS vẫn giữ ở đây nếu bạn còn dùng topup thẻ cào) */
+.topup__form {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 14px 18px;
+    align-items: center;
+}
+
+.topup__label {
+    text-align: right;
+    color: color-mix(in oklab, var(--muted) 88%, white 12%);
+    letter-spacing: 0.2px;
+    font-weight: 800;
+}
+
+.topup__control {
+    width: 100%;
+    max-width: 560px;
+}
+
+.topup__input,
+.topup__select {
+    width: 100%;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid color-mix(in oklab, var(--surface-border) 85%, transparent);
+    background: color-mix(in oklab, var(--surface) 15%, transparent);
+    color: var(--text);
+    padding: 0 12px;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+    .topup__input:focus,
+    .topup__select:focus {
+        border-color: color-mix(in oklab, var(--teal) 70%, var(--surface-border));
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--teal) 25%, transparent);
+    }
+
+.topup__hint {
+    grid-column: 1 / -1;
+    margin: 2px 0 0;
+    text-align: center;
+    color: color-mix(in oklab, var(--muted) 92%, white 8%);
+    font-weight: 750;
+    font-size: 12px;
+}
+
+.topup__submitWrap {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.topup__submit {
+    width: 100%;
+    max-width: 620px;
+    height: 52px;
+    border: 0;
+    border-radius: 6px;
+    background: color-mix(in oklab, var(--teal) 86%, black 14%);
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    font-weight: 1000;
+    text-transform: uppercase;
+    transition: transform var(--transition), filter var(--transition);
+}
+
+    .topup__submit:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+    }
+
+    .topup__submit:active {
+        transform: translateY(0);
+    }
+
+.topup__warning {
+    margin-top: 18px;
+    border-radius: 6px;
+    border: 1px solid color-mix(in oklab, var(--surface-border) 80%, transparent);
+    background: var(--teal-2);
+    padding: 14px 16px;
+    line-height: 1.5;
+    font-size: small;
+    font-weight: 800;
+}
+
+    .topup__warning .w-danger {
+        color: var(--danger);
+    }
+
+    .topup__warning .w-info {
+        color: var(--info);
+    }
+
+@media (max-width: 720px) {
+    .topup__form {
+        grid-template-columns: 1fr;
+    }
+
+    .topup__label {
+        text-align: left;
+    }
+
+    .topup__control,
+    .topup__balance,
+    .topup__submit {
+        max-width: 100%;
+    }
+}
+
+/* =========================
+   BANK / ATM
+========================= */
+.Bank_card {
+    margin-top: 18px;
+    border: 1px solid var(--surface-border);
+    border-radius: 10px;
+    background: color-mix(in oklab, var(--surface-strong) 82%, transparent);
+    padding: 18px;
+}
+
+.Bank_grid {
+    display: grid;
+    grid-template-columns: 1.35fr 0.9fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.Bank_info {
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.Bank_row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 16px;
+    padding: 14px 6px;
+    border-bottom: 1px solid color-mix(in oklab, var(--surface-border) 70%, transparent);
+}
+
+    .Bank_row:last-child {
+        border-bottom: 0;
+    }
+
+.Bank_label {
+    color: color-mix(in oklab, var(--muted) 85%, white 15%);
+    font-weight: 850;
+    letter-spacing: 0.2px;
+}
+
+.Bank_value {
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: left;
+}
+
+.Bank_valueMono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: 900;
+    word-break: break-word;
+}
+
+.Bank_note {
+    margin-top: 12px;
+    padding: 10px 12px;
+    color: var(--danger);
+    font-weight: 1000;
+    letter-spacing: 0.2px;
+}
+
+.Bank_qr {
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Bank_qrBox {
+    width: min(320px, 100%);
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+    .Bank_qrBox img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+.Bank_qrHint {
+    margin-top: 10px;
+    font-weight: 1000;
+    letter-spacing: 0.2px;
+    color: color-mix(in oklab, var(--info) 75%, var(--text));
+}
+
+@media (max-width: 860px) {
+    .Bank_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .Bank_row {
+        grid-template-columns: 1fr;
+    }
+}
+/* ===== Bank Actions ===== */
+.Bank_actions {
+    margin-top: 16px;
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+}
+
+.Bank_actionsHint {
+    margin: 0;
+    font-weight: 800;
+    font-size: 12px;
+    color: color-mix(in oklab, var(--muted) 92%, white 8%);
+    text-align: center;
+}
+
+/* Button style (giống tone teal) */
+.Bank_btnPaid {
+    width: 100%;
+    max-width: 620px;
+    height: 52px;
+    border: 0;
+    border-radius: 6px;
+    background: color-mix(in oklab, var(--teal) 86%, black 14%);
+    color: rgba(255, 255, 255, 0.92);
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    font-weight: 1000;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform var(--transition), filter var(--transition);
+}
+
+    .Bank_btnPaid:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+    }
+
+    .Bank_btnPaid:active {
+        transform: translateY(0);
+    }
+
+/* Ghost button */
+.Bank_btnGhost {
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 6px;
+    border: 1px solid color-mix(in oklab, var(--surface-border) 85%, transparent);
+    background: color-mix(in oklab, var(--surface-strong) 55%, transparent);
+    color: var(--text);
+    font-weight: 900;
+    cursor: pointer;
+}
+
+/* ===== Modal ===== */
+.Bank_modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+}
+
+.Bank_modalBackdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.Bank_modalCard {
+    position: relative;
+    width: min(560px, 100%);
+    border-radius: 12px;
+    border: 1px solid var(--surface-border);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow);
+    padding: 18px 18px 14px;
+}
+
+.Bank_modalTitle {
+    margin: 0 0 10px;
+    font-weight: 1000;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.Bank_modalText {
+    margin: 0 0 14px;
+    font-weight: 800;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.Bank_modalActions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
