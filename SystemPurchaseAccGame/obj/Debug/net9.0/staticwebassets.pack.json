@@ -457,6 +457,10 @@
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\vendor\\_rfs.scss"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\acc_detail.css",
+      "PackagePath": "staticwebassets\\css\\home\\acc_detail.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\main.css",
       "PackagePath": "staticwebassets\\css\\home\\main.css"
     },

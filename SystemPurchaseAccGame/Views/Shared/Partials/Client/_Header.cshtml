@@ -102,29 +102,44 @@
                         </div>
                     </li>
                 </ul>
+                @if (ViewBag.IsAuthenticated == true)
+                {
+                    <ul class="menu menu--right" role="list">
+                        <li>
+                            <a class="pill pill--ghost"
+                               href=""
+                               title="Tài khoản">
+                                <i class="fa-solid fa-circle-user icon" aria-hidden="true"></i>
+                                @ViewBag.AccountName
+                            </a>
+                        </li>
 
-                <!-- Right menu -->
-                <ul class="menu menu--right" role="list">
-                    <li>
-                        <a class="pill pill--ghost"
-                           href="/client/user"
-                           title="Tài khoản">
-                            <i class="fa-solid fa-circle-user icon"
-                               aria-hidden="true"></i>
-                            Dũng Nguyễn
-                        </a>
-                    </li>
+                        <li>
+                            <a class="pill pill--outline"
+                            asp-controller="home"
+                            asp-action="logout"
+                               title="Đăng xuất">
+                                <i class="fa-solid fa-arrow-right-from-bracket icon" aria-hidden="true"></i>
+                                Đăng xuất
+                            </a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="menu menu--right" role="list">
+                        <li>
+                            <a class="pill pill--ghost"
+                            asp-controller="home"
+                            asp-action="login"
+                               title="Đăng nhập / Đăng kí">
+                                <i class="fa-solid fa-right-to-bracket icon" aria-hidden="true"></i>
+                                ĐĂNG NHẬP
+                            </a>
+                        </li>
+                    </ul>
 
-                    <li>
-                        <a class="pill pill--outline"
-                           href="/client/logout"
-                           title="Đăng xuất">
-                            <i class="fa-solid fa-arrow-right-from-bracket icon"
-                               aria-hidden="true"></i>
-                            ĐĂNG XUẤT
-                        </a>
-                    </li>
-                </ul>
+                }
             </div>
         </div>
     </nav>

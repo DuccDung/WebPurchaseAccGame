@@ -1,0 +1,438 @@
+﻿@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+<main class="login-main">
+    <section class="login-panel" aria-label="Đăng nhập / Đăng ký">
+        <div class="login-panel__head">
+            <div class="login-titleRow">
+                <h1 class="login-panel__title">Tài khoản</h1>
+                <div class="login-tabs" role="tablist" aria-label="Chọn form">
+                    <button class="login-tabBtn"
+                            type="button"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="tab-login"
+                            id="btn-login"
+                            data-tab="login">
+                        Đăng nhập
+                    </button>
+                    <button class="login-tabBtn"
+                            type="button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="tab-register"
+                            id="btn-register"
+                            data-tab="register">
+                        Đăng ký
+                    </button>
+                </div>
+            </div>
+            <p class="login-subText">
+                Đăng nhập để mua acc nhanh hơn, lưu lịch sử và nhận hỗ trợ ưu tiên.
+            </p>
+        </div>
+
+        <div class="login-panel__body">
+            <div class="login-authWrap">
+                <!-- LEFT: FORMS -->
+                <div class="login-panel-left"
+                     style="box-shadow: none; background: transparent; border: 0">
+                    <!-- LOGIN -->
+                    <form class="login-form"
+                          id="tab-login"
+                          role="tabpanel"
+                          aria-labelledby="btn-login"
+                          method="post"
+                          asp-controller="Home"
+                          asp-action="Login">
+                        @if (ViewBag.LoginError != null)
+                        {
+                            <div style="margin:12px 0; padding:10px 12px; border:1px solid rgba(255,0,0,.25); border-radius:12px;">
+                                @ViewBag.LoginError
+                            </div>
+                        }
+
+                        @if (ViewBag.RegisterError != null)
+                        {
+                            <div style="margin:12px 0; padding:10px 12px; border:1px solid rgba(255,0,0,.25); border-radius:12px;">
+                                @ViewBag.RegisterError
+                            </div>
+                        }
+                        <div class="login-field">
+                            <label class="login-label" for="login-identity">Email</label>
+                            <div class="login-inputWrap">
+                                <i class="fa-solid fa-user login-inputIcon"
+                                   aria-hidden="true"></i>
+                                <input class="login-input"
+                                       id="login-identity"
+                                       name="Identity"
+                                       type="text"
+                                       autocomplete="username"
+                                       placeholder="vd: dungnguyen@gmail.com"
+                                       required />
+                            </div>
+                        </div>
+
+                        <div class="login-field">
+                            <label class="login-label" for="login-password">Mật khẩu</label>
+                            <div class="login-inputWrap">
+                                <i class="fa-solid fa-lock login-inputIcon"
+                                   aria-hidden="true"></i>
+                                <input class="login-input"
+                                       id="login-password"
+                                       name="Password"
+                                       type="password"
+                                       autocomplete="current-password"
+                                       placeholder="Nhập mật khẩu"
+                                       required />
+                                <button class="login-actionIcon"
+                                        type="button"
+                                        aria-label="Hiện/ẩn mật khẩu"
+                                        data-toggle-password="#login-password">
+                                    <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="login-formRowInline">
+                            <label class="login-checkbox">
+                                <input type="checkbox" name="Remember" />
+                                Ghi nhớ đăng nhập
+                            </label>
+                            <a class="login-linkish" href="/view/quenmatkhau.html">Quên mật khẩu?</a>
+                        </div>
+
+                        <div class="login-btnRow">
+                            <button class="login-btn login-btn--brand" type="submit">
+                                <i class="fa-solid fa-right-to-bracket"
+                                   aria-hidden="true"></i>
+                                Đăng nhập
+                            </button>
+
+                            <div class="login-dividerLine">Hoặc</div>
+
+                            <button class="login-btn login-btn--google"
+                                    type="button"
+                                    id="btnGoogleLogin">
+                                <i class="fa-brands fa-google" aria-hidden="true"></i>
+                                Đăng nhập bằng Google
+                            </button>
+
+                            <p class="login-hint">
+                                Chưa có tài khoản?
+                                <a class="login-linkish" href="#" data-switch="register">Đăng ký ngay</a>
+                            </p>
+                        </div>
+                    </form>
+
+                    <!-- REGISTER -->
+                    <form class="login-form login-hidden"
+                          id="tab-register"
+                          role="tabpanel"
+                          aria-labelledby="btn-register"
+                          method="post"
+                          asp-controller="Home"
+                          asp-action="Register">
+                        @if (ViewBag.LoginError != null)
+                        {
+                            <div style="margin:12px 0; padding:10px 12px; border:1px solid rgba(255,0,0,.25); border-radius:12px;">
+                                @ViewBag.LoginError
+                            </div>
+                        }
+
+                        @if (ViewBag.RegisterError != null)
+                        {
+                            <div style="margin:12px 0; padding:10px 12px; border:1px solid rgba(255,0,0,.25); border-radius:12px;">
+                                @ViewBag.RegisterError
+                            </div>
+                        }
+
+                        <div class="login-row">
+                            <div class="login-field">
+                                <label class="login-label" for="reg-name">Họ & tên</label>
+                                <div class="login-inputWrap">
+                                    <i class="fa-solid fa-id-badge login-inputIcon"
+                                       aria-hidden="true"></i>
+                                    <input class="login-input"
+                                           id="reg-name"
+                                           name="Name"
+                                           type="text"
+                                           autocomplete="name"
+                                           placeholder="vd: Dũng Nguyễn"
+                                           required />
+                                </div>
+                            </div>
+
+                            <div class="login-field">
+                                <label class="login-label" for="reg-phone">Số điện thoại</label>
+                                <div class="login-inputWrap">
+                                    <i class="fa-solid fa-phone login-inputIcon"
+                                       aria-hidden="true"></i>
+                                    <input class="login-input"
+                                           id="reg-phone"
+                                           name="Phone"
+                                           type="tel"
+                                           autocomplete="tel"
+                                           placeholder="vd: 09xxxxxxxx"
+                                           required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="login-field">
+                            <label class="login-label" for="reg-email">Email</label>
+                            <div class="login-inputWrap">
+                                <i class="fa-solid fa-envelope login-inputIcon"
+                                   aria-hidden="true"></i>
+                                <input class="login-input"
+                                       id="reg-email"
+                                       name="Email"
+                                       type="email"
+                                       autocomplete="email"
+                                       placeholder="vd: dungnguyen@gmail.com"
+                                       required />
+                            </div>
+                        </div>
+
+                        <div class="login-row">
+                            <div class="login-field">
+                                <label class="login-label" for="reg-password">Mật khẩu</label>
+                                <div class="login-inputWrap">
+                                    <i class="fa-solid fa-lock login-inputIcon"
+                                       aria-hidden="true"></i>
+                                    <input class="login-input"
+                                           id="reg-password"
+                                           name="Password"
+                                           type="password"
+                                           autocomplete="new-password"
+                                           placeholder="Tối thiểu 6 ký tự"
+                                           minlength="6"
+                                           required />
+                                    <button class="login-actionIcon"
+                                            type="button"
+                                            aria-label="Hiện/ẩn mật khẩu"
+                                            data-toggle-password="#reg-password">
+                                        <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="login-field">
+                                <label class="login-label" for="reg-password2">Nhập lại mật khẩu</label>
+                                <div class="login-inputWrap">
+                                    <i class="fa-solid fa-lock login-inputIcon"
+                                       aria-hidden="true"></i>
+                                    <input class="login-input"
+                                           id="reg-password2"
+                                           name="Password2"
+                                           type="password"
+                                           autocomplete="new-password"
+                                           placeholder="Nhập lại mật khẩu"
+                                           minlength="6"
+                                           required />
+                                    <button class="login-actionIcon"
+                                            type="button"
+                                            aria-label="Hiện/ẩn mật khẩu"
+                                            data-toggle-password="#reg-password2">
+                                        <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label class="login-checkbox">
+                            <input type="checkbox" name="Terms" required />
+                            Tôi đồng ý với
+                            <a class="login-linkish" href="/view/chinhsach.html">Chính sách</a>
+                            & Điều khoản
+                        </label>
+
+                        <div class="login-btnRow">
+                            <button class="login-btn login-btn--brand" type="submit">
+                                <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                                Tạo tài khoản
+                            </button>
+
+                            <div class="login-dividerLine">Hoặc</div>
+
+                            <button class="login-btn login-btn--google"
+                                    type="button"
+                                    id="btnGoogleRegister">
+                                <i class="fa-brands fa-google" aria-hidden="true"></i>
+                                Đăng ký bằng Google
+                            </button>
+
+                            <p class="login-hint">
+                                Đã có tài khoản?
+                                <a class="login-linkish" href="#" data-switch="login">Đăng nhập</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- RIGHT: INFO -->
+                <aside class="login-panel login-side" aria-label="Thông tin">
+                    <div class="login-badge">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        Bảo mật & nhanh
+                    </div>
+
+                    <div class="login-sideCard">
+                        <h3>Lợi ích</h3>
+                        <p>
+                            Đăng nhập để mua acc nhanh, lưu lịch sử và nhận thông báo ưu
+                            đãi.
+                        </p>
+                        <ul class="login-bullet">
+                            <li>
+                                <i class="fa-solid fa-bolt" aria-hidden="true"></i>Thanh
+                                toán nhanh hơn
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-clock-rotate-left"
+                                   aria-hidden="true"></i>
+                                Xem lịch sử mua
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-headset" aria-hidden="true"></i>Hỗ trợ
+                                ưu tiên
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="login-sideCard">
+                        <h3>Gợi ý</h3>
+                        <p>
+                            Bạn có thể dùng Google để đăng nhập nhanh (không cần nhớ mật
+                            khẩu).
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    (() => {
+      const $ = (s, root = document) => root.querySelector(s);
+      const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+
+      // ===== Theme =====
+      const themeRoot = document.documentElement;
+      const themeToggle = $("[data-theme-toggle]");
+      const THEME_KEY = "site-theme"; // 'light' | 'dark' | 'system'
+
+      function getSystemTheme() {
+        return window.matchMedia?.("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      function applyTheme(theme) {
+        themeRoot.dataset.theme = theme;
+        if (!themeToggle) return;
+        const effective = theme === "system" ? getSystemTheme() : theme;
+        themeToggle.innerHTML =
+          effective === "dark"
+            ? '<i class="fa-solid fa-moon" aria-hidden="true"></i>'
+            : '<i class="fa-solid fa-sun" aria-hidden="true"></i>';
+      }
+
+      function initTheme() {
+        const saved = localStorage.getItem(THEME_KEY) || "system";
+        applyTheme(saved);
+
+        const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+        mq?.addEventListener?.("change", () => {
+          if ((themeRoot.dataset.theme || "system") === "system")
+            applyTheme("system");
+        });
+      }
+
+      themeToggle?.addEventListener("click", () => {
+        const current = themeRoot.dataset.theme || "system";
+        const next =
+          current === "system" ? "light" : current === "light" ? "dark" : "system";
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+
+      initTheme();
+
+      // ===== Tabs switch =====
+      const tabLoginBtn = $("#btn-login");
+      const tabRegisterBtn = $("#btn-register");
+      const tabLogin = $("#tab-login");
+      const tabRegister = $("#tab-register");
+
+      function setTab(tab) {
+        const isLogin = tab === "login";
+
+        tabLoginBtn?.setAttribute("aria-selected", String(isLogin));
+        tabRegisterBtn?.setAttribute("aria-selected", String(!isLogin));
+
+        tabLogin?.classList.toggle("login-hidden", !isLogin);
+        tabRegister?.classList.toggle("login-hidden", isLogin);
+      }
+
+      tabLoginBtn?.addEventListener("click", () => setTab("login"));
+      tabRegisterBtn?.addEventListener("click", () => setTab("register"));
+
+      $$("[data-switch]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          setTab(a.dataset.switch);
+        });
+      });
+
+      // ===== Show/hide password =====
+      $$("[data-toggle-password]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const sel = btn.getAttribute("data-toggle-password");
+          const input = $(sel);
+          if (!input) return;
+          const isPw = input.type === "password";
+          input.type = isPw ? "text" : "password";
+          btn.innerHTML = isPw
+            ? '<i class="fa-solid fa-eye-slash" aria-hidden="true"></i>'
+            : '<i class="fa-solid fa-eye" aria-hidden="true"></i>';
+        });
+      });
+
+      // ===== Client-side validate register password match (optional) =====
+      // (Nếu không khớp thì chặn submit và bật tab register)
+      tabRegister?.addEventListener("submit", (e) => {
+        const pw = $("#reg-password")?.value || "";
+        const pw2 = $("#reg-password2")?.value || "";
+        if (pw !== pw2) {
+          e.preventDefault();
+          setTab("register");
+          alert("Mật khẩu nhập lại không khớp.");
+        }
+      });
+
+      // ===== Auto open tab from server (ViewBag.ActiveTab) =====
+      // Trong Razor: ViewBag.ActiveTab = "login" hoặc "register"
+      const activeTab = "@(ViewBag.ActiveTab ?? "")";
+      if (activeTab === "register") setTab("register");
+      else setTab("login"); // mặc định
+
+      // ===== Show register success from TempData =====
+      if (registerSuccess) {
+        setTab("login");
+        alert("Đăng kí thành công. Bạn hãy đăng nhập nhé!");
+      }
+
+      // ===== Google login buttons (UI hook) =====
+      $("#btnGoogleLogin")?.addEventListener("click", () => {
+        alert("Demo: Nút Google. Bạn hãy nối OAuth/GSI để chạy thật.");
+        // Ví dụ redirect:
+        // window.location.href = "/auth/google";
+      });
+
+      $("#btnGoogleRegister")?.addEventListener("click", () => {
+        alert("Demo: Nút Google (đăng ký). Bạn hãy nối OAuth/GSI để chạy thật.");
+      });
+    })();
+</script>

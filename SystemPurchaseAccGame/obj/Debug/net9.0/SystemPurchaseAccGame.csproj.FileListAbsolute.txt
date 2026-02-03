@@ -430,7 +430,6 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseA
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\g6yjzbie14-94qvvqzebk.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\ztyhdsu4u0-5bii02sqr4.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\fhch19m0ng-uydiqv09h2.gz
-D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\hqy23cc361-6ki15ddld7.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\txpmrmte78-61n19gt1b8.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\c355l57x7w-le0cl9s7hr.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\592x6eyk64-bqjiyaj88i.gz
@@ -511,3 +510,5 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseA
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\SystemPurchaseAccGame.genruntimeconfig.cache
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\ref\SystemPurchaseAccGame.dll
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\p2lwm3f9z1-qgmotc4azc.gz
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\31eyr2cxnv-flxpqqh61z.gz
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\hqy23cc361-ld8frm2f7u.gz

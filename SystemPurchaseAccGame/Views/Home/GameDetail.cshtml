@@ -1,111 +1,86 @@
-﻿@model List<SystemPurchaseAccGame.ViewModel.AccountListingVm>
-<!doctype html>
-<html lang="vi" data-theme="system">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ACC Play Together - Danh sách Account</title>
+﻿@using SystemPurchaseAccGame.ViewModel
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+@model List<AccountListingVm>
 
-    <!-- Font Awesome (icons) -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-          referrerpolicy="no-referrer" />
-   <link href="~/css/home/acc_detail.css" asp-append-version="true" rel="stylesheet" />
-</head>
-
-<body>
-    <header class="header">
-        <nav class="nav" aria-label="Điều hướng chính">
-            <div class="nav__container">
-                <a class="nav__brand" href="/" aria-label="Trang chủ">
-                    <img class="nav__logo" src="~/img/logo.png" alt="Logo" />
-                </a>
-
-                <div class="nav__actions">
-                    <button class="themeBtn"
-                            type="button"
-                            aria-label="Đổi giao diện (sáng/tối)"
-                            data-theme-toggle
-                            title="Đổi giao diện">
-                        <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="main">
-        <section class="sectionTitle" aria-label="Danh sách account">
+<main>
+    <main class="acc_detail_main">
+        <section class="acc_detail_sectionTitle" aria-label="Danh sách account">
             <h1>Danh sách Account</h1>
-            <div class="underline" aria-hidden="true"></div>
+            <div class="acc_detail_underline" aria-hidden="true"></div>
         </section>
 
-        <!-- SEARCH: lọc theo TITLE -->
-        <section class="toolbar" aria-label="Tìm kiếm">
-            <div class="searchBox">
+        <!-- SEARCH -->
+        <section class="acc_detail_toolbar" aria-label="Tìm kiếm">
+            <div class="acc_detail_searchBox">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                 <input id="searchTitle"
                        type="search"
                        placeholder="Tìm theo tiêu đề (title)..." />
             </div>
-            <div class="resultHint" id="resultHint">
+            <div class="acc_detail_resultHint" id="resultHint">
                 Hiển thị: <strong id="countVisible">0</strong> /
                 <strong id="countTotal">0</strong>
             </div>
         </section>
 
-        <div class="empty" id="emptyState">Không tìm thấy account phù hợp.</div>
+        <div class="acc_detail_empty" id="emptyState">
+            Không tìm thấy account phù hợp.
+        </div>
 
         <!-- GRID -->
-        <section class="accountsGrid"
+        <section class="acc_detail_accountsGrid"
                  id="accountsGrid"
                  aria-label="Danh sách account">
-            <!-- ====== DATA DEMO (bạn thay bằng foreach Razor) ====== -->
-            @foreach(var item in Model)
+           
+            @foreach (var item in Model)
             {
-                <article class="account-card" data-title="đây là nick nhiều sao nhất">
-                    <div class="account-card__media">
-                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1400&auto=format&fit=crop"
+                <article class="acc_detail_account-card"
+                         data-title="đây là nick nhiều sao nhất">
+                    <div class="acc_detail_account-card__media">
+                        <img src="@item.urlPhoto"
                              alt="Ảnh account"
                              loading="lazy" />
                     </div>
 
-                    <div class="account-card__overlay">
-                        <span class="badge">
-                            <span class="statusDot" aria-hidden="true"></span> ID:
-                            <strong>2</strong>
+                    <div class="acc_detail_account-card__overlay">
+                        <span class="acc_detail_badge">
+                            <span class="acc_detail_statusDot" aria-hidden="true"></span> ID:
+                            <strong>@item.AccountListingId</strong>
                         </span>
-                        <span class="badge">
+                        <span class="acc_detail_badge">
                             <i class="fa-solid fa-tag" aria-hidden="true"></i>
                             AVAILABLE
                         </span>
                     </div>
 
-                    <div class="account-card__body">
-                        <h3 class="account-title">Đây là nick nhiều sao nhất</h3>
-                        <div class="priceRow">
-                            <span class="priceLabel">Giá</span>
-                            <div class="priceValue">
-                                1,222,222 <span class="currency">VNĐ</span>
+                    <div class="acc_detail_account-card__body">
+                        <h3 class="acc_detail_account-title">@item.Title</h3>
+                        <div class="acc_detail_priceRow">
+                            <span class="acc_detail_priceLabel">Giá</span>
+                            <div class="acc_detail_priceValue">
+                                @item.Price.ToString("N0", new System.Globalization.CultureInfo("vi-VN"))
+                                <span class="acc_detail_currency">VNĐ</span>
                             </div>
                         </div>
-                        <p class="desc">NULL</p>
+                        <p class="acc_detail_desc">@item.Description</p>
                     </div>
 
-                    <div class="account-card__actions">
-                        <a class="btn" href="/account/details?id=2">
+                    <div class="acc_detail_account-card__actions">
+                        <a class="acc_detail_btn" asp-controller="home" asp-action="detail_acc" asp-route-id="@item.AccountListingId">
                             <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Chi
                             tiết
                         </a>
-                        <a class="btn btn--primary" href="/order/buy?id=2">
+                        <a class="acc_detail_btn acc_detail_btn--primary" asp-controller="home" asp-action="purchase" asp-route-id="@item.AccountListingId">
                             <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Mua
                             ngay
                         </a>
                     </div>
                 </article>
+
             }
         </section>
-
     </main>
 
     <script>
@@ -153,7 +128,9 @@
         // ===== Search theo TITLE =====
         (() => {
           const input = document.getElementById("searchTitle");
-          const cards = Array.from(document.querySelectorAll(".account-card"));
+          const cards = Array.from(
+            document.querySelectorAll(".acc_detail_account-card"),
+          );
           const empty = document.getElementById("emptyState");
           const countVisible = document.getElementById("countVisible");
           const countTotal = document.getElementById("countTotal");
@@ -167,10 +144,11 @@
             let visible = 0;
 
             for (const card of cards) {
-              // ưu tiên lấy từ data-title (đã lower), nếu không có thì lấy text title
               const t =
                 norm(card.getAttribute("data-title")) ||
-                norm(card.querySelector(".account-title")?.textContent);
+                norm(
+                  card.querySelector(".acc_detail_account-title")?.textContent,
+                );
 
               const match = q === "" ? true : t.includes(q);
               card.style.display = match ? "" : "none";
@@ -186,5 +164,5 @@
           applyFilter();
         })();
     </script>
-</body>
-</html>
+</main>
+

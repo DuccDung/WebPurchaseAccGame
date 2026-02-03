@@ -31,5 +31,20 @@
     {
         public List<GameCategoryVm> Categories { get; set; } = new();
     }
+    public class LoginVm
+    {
+        public string Identity { get; set; } = "";
+        public string Password { get; set; } = "";
+        public bool Remember { get; set; }
+    }
 
+    public class RegisterVm
+    {
+        public string Name { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string Password { get; set; } = "";
+        public string Password2 { get; set; } = "";
+        public bool Terms { get; set; }
+    }
 }
