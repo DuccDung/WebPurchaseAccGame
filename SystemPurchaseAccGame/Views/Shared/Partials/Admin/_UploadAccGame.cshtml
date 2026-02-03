@@ -882,8 +882,37 @@
         return;
       }
 
-      console.log("Server response raw:", raw);
-      alert("Gửi thành công!");
+        console.log("Server response raw:", raw);
+    // lấy message từ server nếu có (server bạn đang trả JSON)
+    let msg = "Đăng bài thành công.";
+    try {
+      const json = JSON.parse(raw);
+      if (json?.message) msg = json.message;
+    } catch {}
+
+    // set nội dung modal
+    document.getElementById("successMessage").textContent = msg;
+
+    // mở modal thành công
+    const successModalEl = document.getElementById("successModal");
+    const successModal = new bootstrap.Modal(successModalEl);
+    successModal.show();
+
+    // khi bấm "Tạo bài mới" => reset + đóng modal
+    document.getElementById("btnSuccessReset").onclick = () => {
+      successModal.hide();
+      resetFormToInitial();
+    };
+
+    // (tuỳ chọn) auto reset ngay khi modal đóng (kể cả bấm X)
+    successModalEl.addEventListener("hidden.bs.modal", function onHidden() {
+      // comment dòng dưới nếu bạn không muốn auto reset khi đóng modal
+      // resetFormToInitial();
+
+      // tránh bị add event nhiều lần
+      successModalEl.removeEventListener("hidden.bs.modal", onHidden);
+    });
+
     }
 
     document.getElementById("btnSubmit").addEventListener("click", submitToServer);
@@ -893,6 +922,74 @@
     addAttrRow("server", "");
     setStep(1);
     refreshPreview();
+        function resetFormToInitial() {
+      // Step về 1
+      setStep(1);
+
+      // Clear step 1
+      document.getElementById("gameId").value = "";
+      document.getElementById("title").value = "";
+      document.getElementById("price").value = "";
+      document.getElementById("description").value = "";
+      document.getElementById("status").value = "HIDDEN"; // hoặc "DRAFT" nếu bạn muốn
+
+      // Clear step 4 (login)
+      document.getElementById("loginUser").value = "";
+      document.getElementById("loginPass").value = "";
+      document.getElementById("loginNote").value = "";
+      document.getElementById("maskLoginPreview").checked = true;
+
+      // Clear publish action
+      document.getElementById("publishAction").value = "save";
+
+      // Clear attributes table về mặc định 2 dòng
+      const tbody = document.getElementById("attrTableBody");
+      tbody.innerHTML = "";
+      addAttrRow("rank", "");
+      addAttrRow("server", "");
+
+      // Clear media state + input file
+      accBgSrc = "";
+      accThumbSrc = "";
+      gallerySrcList = [];
+
+      document.getElementById("accBackground").value = "";
+      document.getElementById("accThumbnail").value = "";
+      document.getElementById("accGallery").value = "";
+
+      // Clear gallery preview UI
+      const wrap = document.getElementById("galleryPreview");
+      if (wrap) wrap.innerHTML = "";
+
+      // Refresh preview
+      refreshPreview();
+    }
+
 </script>
 
 <!-- Form End -->
+      // modal
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <i class="fa fa-check-circle text-success me-2"></i>Thành công
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-dark border-0 mb-0">
+                    <div id="successMessage">Đăng bài thành công.</div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnSuccessReset">
+                    Tạo bài mới
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

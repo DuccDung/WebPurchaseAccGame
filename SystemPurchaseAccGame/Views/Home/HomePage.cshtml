@@ -1,105 +1,101 @@
-﻿@{
+﻿@using SystemPurchaseAccGame.ViewModel
+@model List<GameCategoryVm>
+@{
     Layout = "~/Views/Shared/_ClientLayout.cshtml";
 }
+<style>
+    /* Base CTA (nếu bạn muốn đồng bộ luôn cho nút thường) */
+    .acc-card__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        user-select: none;
+        transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    }
+
+    /* Nút HẾT HÀNG */
+    .acc-card__cta--soldout {
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: .75;
+        border: 1px solid rgba(0, 0, 0, .12);
+        color: rgb(0 0 0 / 63%);
+        box-shadow: none;
+        background: #222121;
+    }
+
+        .acc-card__cta--soldout .cta__icon {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: rgba(0,0,0,.06);
+            font-size: 14px;
+        }
+
+        .acc-card__cta--soldout .cta__text {
+            letter-spacing: .2px;
+            font-size: 14px;
+        }
+
+</style>
 <main class="main">
-    <section class="sectionTitle" aria-label="ACC Play Together">
-        <h1>ACC PLAY TOGETHER</h1>
-        <div class="underline" aria-hidden="true"></div>
-    </section>
+    @foreach (var cat in Model)
+    {
+        <section class="sectionTitle" aria-label="@cat.Name">
+            <h1>@cat.Name</h1>
+            <div class="underline" aria-hidden="true"></div>
+        </section>
 
-    <section class="productsGrid" aria-label="Danh sách acc">
-        <!-- CARD 1 -->
-        <div class="acc-card">
-            <div class="acc-card__media">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDFqNDdqM2cxMjE3enc5NWk2NDloNm15bTg2c3Rnd3lydTExMjA3YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MXzMJLx7cfLNSpvGet/giphy.gif"
-                     alt="Nick có nhiều tiền sao"
-                     loading="lazy" />
-            </div>
+        <section class="productsGrid" aria-label="Danh sách acc">
+            @foreach (var game in cat.Games)
+            {
+                var isSoldOut = game.RemainingCount == 0;
+                <div class="acc-card">
+                    <div class="acc-card__media">
+                        <img src="@(string.IsNullOrWhiteSpace(game.ThumbnailUrl) ? "https://via.placeholder.com/600x400" : game.ThumbnailUrl)"
+                             alt="@game.Name"
+                             loading="lazy" />
+                    </div>
 
-            <div class="acc-card__body">
-                <p class="acc-card__title">
-                    Nick có nhiều tiền sao và là nick vip nhất bạn có thể mua
-                </p>
-                <p class="acc-card__line">Đã bán: <strong>8391</strong></p>
-                <p class="acc-card__line">Còn lại: <strong>2229</strong></p>
-            </div>
+                    <div class="acc-card__body">
+                        <p class="acc-card__title">@game.Name</p>
+                        <p class="acc-card__line">Đã bán: <strong>@game.SoldCount</strong></p>
+                        <p class="acc-card__line">Còn lại: <strong>@game.RemainingCount</strong></p>
+                    </div>
+                    @if (game.RemainingCount == 0)
+                    {
+                        <a class="acc-card__cta acc-card__cta--soldout"
+                           href="javascript:void(0)"
+                           aria-disabled="true"
+                           tabindex="-1"
+                           aria-label="Hết hàng">
+                            <span class="cta__icon" aria-hidden="true">⛔</span>
+                            <span class="cta__text">Hết hàng</span>
+                        </a>
 
-            <a class="acc-card__cta"
-               href="/view/listaccount.html?g=1"
-               aria-label="Xem tất cả">
-                <img src="./assets/img/btn-view-all.gif"
-                     alt="Xem tất cả"
-                     loading="lazy" />
-            </a>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="acc-card">
-            <div class="acc-card__media">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDFqNDdqM2cxMjE3enc5NWk2NDloNm15bTg2c3Rnd3lydTExMjA3YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MXzMJLx7cfLNSpvGet/giphy.gif"
-                     alt="Nick VIP có nhiều xe quần áo"
-                     loading="lazy" />
-            </div>
-
-            <div class="acc-card__body">
-                <p class="acc-card__title">Nick VIP có nhiều xe quần áo</p>
-                <p class="acc-card__line">Đã bán: <strong>1180</strong></p>
-                <p class="acc-card__line">Còn lại: <strong>45</strong></p>
-            </div>
-
-            <a class="acc-card__cta"
-               href="/view/listaccount.html?g=2"
-               aria-label="Xem tất cả">
-                <img src="./assets/img/btn-view-all.gif"
-                     alt="Xem tất cả"
-                     loading="lazy" />
-            </a>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="acc-card">
-            <div class="acc-card__media">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDFqNDdqM2cxMjE3enc5NWk2NDloNm15bTg2c3Rnd3lydTExMjA3YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MXzMJLx7cfLNSpvGet/giphy.gif"
-                     alt="Nick clone có khí 90k 1 nick"
-                     loading="lazy" />
-            </div>
-
-            <div class="acc-card__body">
-                <p class="acc-card__title">Nick clone có khí 90k 1 nick</p>
-                <p class="acc-card__line">Đã bán: <strong>5939</strong></p>
-                <p class="acc-card__line">Còn lại: <strong>1272</strong></p>
-            </div>
-
-            <a class="acc-card__cta"
-               href="/view/listaccount.html?g=3"
-               aria-label="Xem tất cả">
-                <img src="./assets/img/btn-view-all.gif"
-                     alt="Xem tất cả"
-                     loading="lazy" />
-            </a>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="acc-card">
-            <div class="acc-card__media">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDFqNDdqM2cxMjE3enc5NWk2NDloNm15bTg2c3Rnd3lydTExMjA3YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MXzMJLx7cfLNSpvGet/giphy.gif"
-                     alt="Nick clone kim cương"
-                     loading="lazy" />
-            </div>
-
-            <div class="acc-card__body">
-                <p class="acc-card__title">Nick clone kim cương</p>
-                <p class="acc-card__line">Đã bán: <strong>38872</strong></p>
-                <p class="acc-card__line">Còn lại: <strong>4136</strong></p>
-            </div>
-
-            <a class="acc-card__cta"
-               href="/view/listaccount.html?g=4"
-               aria-label="Xem tất cả">
-                <img src="./assets/img/btn-view-all.gif"
-                     alt="Xem tất cả"
-                     loading="lazy" />
-            </a>
-        </div>
-    </section>
+                    }
+                    else
+                    {
+                        <a class="acc-card__cta"
+                           asp-controller="Home"
+                           asp-action="GameDetail"
+                           asp-route-id="@game.GameId"
+                           aria-label="Xem tất cả">
+                            <img src="~/img/btn-view-all.gif" alt="Xem tất cả" loading="lazy" />
+                        </a>
+                    }
+                   
+                </div>
+            }
+        </section>
+    }
 </main>

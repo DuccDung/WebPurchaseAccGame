@@ -3,7 +3,7 @@
     const routes = {
         item_bar_account: "/Admin/AccGame",
         item_bar_upload_acc: "/Admin/UploadAccGame",
-        item_bar_sold: "/Admin/SoldAccGame" // nếu chưa có action này thì bạn tạo sau
+        item_bar_sold: "/Admin/SoldAccGame",// nếu chưa có action này thì bạn tạo sau
     };
 
     function setActiveMenu(clickedId) {
@@ -59,10 +59,49 @@
 
     $("#item_bar_sold").on("click", function (e) {
         e.preventDefault();
-        // Nếu bạn chưa có action SoldAccGame thì comment dòng này lại
         loadPartial(routes.item_bar_sold, "item_bar_sold");
     });
-
     // Option: load mặc định khi vào Dashboard (ví dụ mở "Tài khoản")
-    loadPartial(routes.item_bar_account, "item_bar_account");
+    //loadPartial(routes.item_bar_account, "item_bar_account");
+});
+$(function () {
+
+    function clearActiveAll() {
+        $(".sidebar .nav-link").removeClass("active");
+        $(".sidebar .dropdown-item").removeClass("active");
+    }
+
+    function setParentActive($childDropdownItem) {
+        // tìm dropdown cha gần nhất
+        const $dropdown = $childDropdownItem.closest(".nav-item.dropdown");
+        // active cái link cha (dropdown-toggle)
+        $dropdown.children(".nav-link.dropdown-toggle").addClass("active");
+    }
+
+    // Click menu con (dropdown-item)
+    $(document).on("click", ".sidebar .dropdown-item", function (e) {
+        e.preventDefault();
+
+        clearActiveAll();
+
+        // active item con
+        $(this).addClass("active");
+
+        // active item cha
+        setParentActive($(this));
+    });
+
+    // Click menu cha (dropdown-toggle)
+    $(document).on("click", ".sidebar .nav-item.dropdown > .nav-link.dropdown-toggle", function () {
+        // Nếu bạn muốn bấm cha cũng active (giữ trạng thái mở dropdown)
+        // KHÔNG clearActiveAll() để tránh mất active của item con nếu đang active
+        $(this).addClass("active");
+    });
+
+    // Click menu thường (nav-link không phải dropdown-toggle)
+    $(document).on("click", ".sidebar .navbar-nav > .nav-link:not(.dropdown-toggle)", function () {
+        clearActiveAll();
+        $(this).addClass("active");
+    });
+
 });
