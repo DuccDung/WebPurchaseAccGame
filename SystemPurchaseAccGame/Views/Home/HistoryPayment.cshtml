@@ -62,7 +62,6 @@
                             <th>Phí</th>
                             <th>Trạng thái</th>
                             <th>Thời gian</th>
-                            <th>Chi tiết</th>
                         </tr>
                     </thead>
 
@@ -93,14 +92,6 @@
                                     <div class="payment_history__subNote">
                                         Completed: <span class="payment_history__muted">@(t.CompletedAt.HasValue? Dt(t.CompletedAt.Value) : "NULL")</span>
                                     </div>
-                                </td>
-                                <td>
-                                    <a class="payment_history__btn"
-                                       asp-controller="Topup"
-                                       asp-action="Detail"
-                                       asp-route-id="@t.TopupId">
-                                        <i class="fa-solid fa-eye" aria-hidden="true"></i> Detail
-                                    </a>
                                 </td>
                             </tr>
                         }

@@ -14,7 +14,7 @@
         public string? ReferenceCode { get; set; }
         public string? RawPayload { get; set; }
         public DateTime CreatedAt { get; set; }
-
+        public DateTime? CompletedAt { get; set; }
         public string? Provider { get; set; }  // card provider
 
     }

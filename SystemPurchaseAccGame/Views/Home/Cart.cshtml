@@ -127,10 +127,13 @@
 
                 <div class="cart-summary__actions">
                     <!-- Nút này bạn đổi thành form post .NET cũng được -->
-                    <a class="cart-btn cart-btn--primary" asp-controller="home" asp-action="checkout" >
-                        <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
-                        Thanh toán
-                    </a>
+                    <form method="post" asp-controller="Home" asp-action="AccountInfo" style="margin:0;">
+                        <input type="hidden" name="orderId" value="@Model.OrderId" />
+                        <button class="cart-btn cart-btn--primary" type="submit">
+                            <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+                            Thanh toán
+                        </button>
+                    </form>
 
                     <a class="cart-btn" asp-controller="Home" asp-action="HomePage">
                         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>

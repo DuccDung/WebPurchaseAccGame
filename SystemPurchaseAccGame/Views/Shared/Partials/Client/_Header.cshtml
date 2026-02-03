@@ -68,7 +68,7 @@
                              role="menu"
                              aria-label="Tài khoản"
                              data-dropdown-menu>
-                            <a class="dropdown__item" role="menuitem" href="/client/user">
+                            <a class="dropdown__item" role="menuitem" asp-controller="home" asp-action="about">
                                 THÔNG TIN TÀI KHOẢN
                                 <i class="fa-solid fa-id-card icon" aria-hidden="true"></i>
                             </a>
@@ -77,15 +77,16 @@
                                role="menuitem"
                                asp-controller="Home"
                                asp-action="HistoryPayment">
-                                LỊCH SỬ MUA ACC
+                                LỊCH SỬ GIAO DỊCH
                                 <i class="fa-solid fa-clock-rotate-left icon"
                                    aria-hidden="true"></i>
                             </a>
 
                             <a class="dropdown__item"
                                role="menuitem"
-                               href="/client/orders">
-                                LỊCH SỬ DỊCH VỤ
+                               asp-controller="home"
+                               asp-action="AccountInfoHis">
+                                LỊCH SỬ MUA HÀNG
                                 <i class="fa-solid fa-receipt icon" aria-hidden="true"></i>
                             </a>
 
@@ -95,7 +96,8 @@
 
                             <a class="dropdown__item"
                                role="menuitem"
-                               href="/client/logout">
+                               asp-controller="Home"
+                               asp-action="Logout">
                                 ĐĂNG XUẤT
                                 <i class="fa-solid fa-right-from-bracket icon"
                                    aria-hidden="true"></i>
@@ -117,8 +119,8 @@
 
                         <li>
                             <a class="pill pill--outline"
-                            asp-controller="home"
-                            asp-action="logout"
+                               asp-controller="home"
+                               asp-action="logout"
                                title="Đăng xuất">
                                 <i class="fa-solid fa-arrow-right-from-bracket icon" aria-hidden="true"></i>
                                 Đăng xuất
@@ -131,8 +133,8 @@
                     <ul class="menu menu--right" role="list">
                         <li>
                             <a class="pill pill--ghost"
-                            asp-controller="home"
-                            asp-action="login"
+                               asp-controller="home"
+                               asp-action="login"
                                title="Đăng nhập / Đăng kí">
                                 <i class="fa-solid fa-right-to-bracket icon" aria-hidden="true"></i>
                                 ĐĂNG NHẬP

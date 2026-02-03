@@ -123,36 +123,30 @@ namespace SystemPurchaseAccGame.Controllers
         }
 
         // ============================================================
-        // 2) API: Approve topup (cộng tiền vào ví)
-        // POST /admin/topup/approve
+        // API: Approve / Reject (JSON)
         // ============================================================
-        public class ApproveTopupReq
+        public class ApproveTopupJson
         {
             public long TopupId { get; set; }
-            public long? AmountActual { get; set; } // nếu admin muốn cộng khác Amount khai báo
-            public long? Fee { get; set; }          // optional
-            public string? Ref { get; set; }        // optional đối soát
-            public string? AdminNote { get; set; }  // optional
+            public long? AmountActual { get; set; }
+            public long? Fee { get; set; }
+            public string? Ref { get; set; }
+            public string? AdminNote { get; set; }
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ApproveTopup([FromForm] ApproveTopupReq req)
+        [Route("/admin/api/topup/approve")]
+        [IgnoreAntiforgeryToken] // nếu bạn muốn dùng token thì bỏ dòng này và gửi token từ JS
+        public async Task<IActionResult> ApiApproveTopup([FromBody] ApproveTopupJson req)
         {
-            if (!IsAdmin()) return Unauthorized();
-
-            if (req.TopupId <= 0)
+            if (req == null || req.TopupId <= 0)
                 return BadRequest(new { success = false, message = "TopupId không hợp lệ." });
 
-            // lock row theo transaction để tránh duyệt 2 lần
             await using var tx = await _context.Database.BeginTransactionAsync();
 
-            var topup = await _context.Topups
-                .Include(t => t.User)
-                .FirstOrDefaultAsync(t => t.TopupId == req.TopupId);
-
+            var topup = await _context.Topups.FirstOrDefaultAsync(t => t.TopupId == req.TopupId);
             if (topup == null)
-                return NotFound(new { success = false, message = "Không tìm thấy topup." });
+                return NotFound(new { success = false, message = "Không tìm thấy yêu cầu topup." });
 
             if (!string.Equals(topup.Status, "PENDING", StringComparison.OrdinalIgnoreCase))
                 return BadRequest(new { success = false, message = $"Topup không ở trạng thái PENDING (hiện tại: {topup.Status})." });
@@ -163,23 +157,21 @@ namespace SystemPurchaseAccGame.Controllers
             if (amount < 0 || fee < 0)
                 return BadRequest(new { success = false, message = "Số tiền/phí không hợp lệ." });
 
-            // cập nhật topup
             topup.Amount = amount;
-            topup.Fee = fee;
-            topup.Status = "APPROVED";
+            topup.Status = "SUCCESS";
             topup.CompletedAt = DateTime.UtcNow;
-            if (!string.IsNullOrWhiteSpace(req.Ref)) topup.ReferenceCode = req.Ref;
 
-            // lưu note vào RawPayload (vì bảng chưa có cột Note riêng)
+            if (!string.IsNullOrWhiteSpace(req.Ref))
+                topup.ReferenceCode = req.Ref.Trim();
+
             if (!string.IsNullOrWhiteSpace(req.AdminNote))
             {
-                var note = $"ADMIN_NOTE: {req.AdminNote}";
+                var note = $"ADMIN_NOTE: {req.AdminNote.Trim()}";
                 topup.RawPayload = string.IsNullOrWhiteSpace(topup.RawPayload)
                     ? note
                     : (topup.RawPayload + "\n" + note);
             }
 
-            // cộng tiền vào ví (thực nhận = amount - fee)
             var net = Math.Max(0, amount - fee);
 
             var wallet = await _context.Wallets.FirstOrDefaultAsync(w => w.UserId == topup.UserId);
@@ -192,14 +184,11 @@ namespace SystemPurchaseAccGame.Controllers
                     UpdatedAt = DateTime.UtcNow
                 };
                 _context.Wallets.Add(wallet);
-                await _context.SaveChangesAsync(); // để có WalletId
+                await _context.SaveChangesAsync();
             }
 
             wallet.Balance += net;
             wallet.UpdatedAt = DateTime.UtcNow;
-
-            // TODO (optional): ghi WalletTransaction nếu bạn muốn audit
-            // _context.WalletTransactions.Add(new WalletTransaction { ... });
 
             await _context.SaveChangesAsync();
             await tx.CommitAsync();
@@ -207,22 +196,20 @@ namespace SystemPurchaseAccGame.Controllers
             return Json(new
             {
                 success = true,
-                message = "Đã duyệt topup & cộng tiền vào ví.",
+                message = "Đã xác thực & cộng tiền vào ví.",
                 data = new
                 {
                     topupId = topup.TopupId,
                     userId = topup.UserId,
+                    amount = amount,
+                    fee = fee,
                     netAdded = net,
                     walletBalance = wallet.Balance
                 }
             });
         }
 
-        // ============================================================
-        // 3) API: Reject topup
-        // POST /admin/topup/reject
-        // ============================================================
-        public class RejectTopupReq
+        public class RejectTopupJson
         {
             public long TopupId { get; set; }
             public string? Reason { get; set; }
@@ -230,34 +217,33 @@ namespace SystemPurchaseAccGame.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RejectTopup([FromForm] RejectTopupReq req)
+        [Route("/admin/api/topup/reject")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiRejectTopup([FromBody] RejectTopupJson req)
         {
-            if (!IsAdmin()) return Unauthorized();
-
-            if (req.TopupId <= 0)
+            if (req == null || req.TopupId <= 0)
                 return BadRequest(new { success = false, message = "TopupId không hợp lệ." });
 
             var topup = await _context.Topups.FirstOrDefaultAsync(t => t.TopupId == req.TopupId);
             if (topup == null)
-                return NotFound(new { success = false, message = "Không tìm thấy topup." });
+                return NotFound(new { success = false, message = "Không tìm thấy yêu cầu topup." });
 
             if (!string.Equals(topup.Status, "PENDING", StringComparison.OrdinalIgnoreCase))
                 return BadRequest(new { success = false, message = $"Topup không ở trạng thái PENDING (hiện tại: {topup.Status})." });
 
-            topup.Status = "REJECTED";
+            topup.Status = "FAILED";
             topup.CompletedAt = DateTime.UtcNow;
 
-            // lưu reason/note vào RawPayload
             var sb = new StringBuilder();
-            if (!string.IsNullOrWhiteSpace(req.Reason)) sb.AppendLine("REJECT_REASON: " + req.Reason);
-            if (!string.IsNullOrWhiteSpace(req.AdminNote)) sb.AppendLine("ADMIN_NOTE: " + req.AdminNote);
+            if (!string.IsNullOrWhiteSpace(req.Reason)) sb.AppendLine("REJECT_REASON: " + req.Reason.Trim());
+            if (!string.IsNullOrWhiteSpace(req.AdminNote)) sb.AppendLine("ADMIN_NOTE: " + req.AdminNote.Trim());
 
             if (sb.Length > 0)
             {
+                var extra = sb.ToString().Trim();
                 topup.RawPayload = string.IsNullOrWhiteSpace(topup.RawPayload)
-                    ? sb.ToString().Trim()
-                    : (topup.RawPayload + "\n" + sb.ToString().Trim());
+                    ? extra
+                    : (topup.RawPayload + "\n" + extra);
             }
 
             await _context.SaveChangesAsync();
@@ -269,5 +255,5 @@ namespace SystemPurchaseAccGame.Controllers
                 data = new { topupId = topup.TopupId }
             });
         }
-    }
+}
 }

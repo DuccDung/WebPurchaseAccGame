@@ -7,36 +7,29 @@
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
             <div>
                 <h5 class="mb-1">Duyệt nạp tiền</h5>
-                <small class="text-muted">
-                    Danh sách yêu cầu nạp tiền đang chờ • Admin xác thực & cộng
-                    số dư
-                </small>
+                <small class="text-muted">Danh sách yêu cầu nạp tiền đang chờ • Admin xác thực & cộng số dư</small>
             </div>
             <div class="d-flex gap-2">
-                <button class="btn btn-outline-light btn-sm" type="button">
+                <button class="btn btn-outline-light btn-sm" type="button" onclick="location.reload()">
                     <i class="fa fa-sync me-1"></i> Làm mới
-                </button>
-                <button class="btn btn-primary btn-sm" type="button">
-                    <i class="fa fa-download me-1"></i> Xuất danh sách
                 </button>
             </div>
         </div>
 
         <hr class="border-secondary my-3" />
 
-        <!-- Filters -->
+        <!-- Filters (UI tĩnh - bạn có thể gắn sau) -->
         <div class="row g-3">
             <div class="col-md-3">
                 <label class="form-label">Tìm user / mã giao dịch</label>
-                <input class="form-control bg-dark border-0"
-                       placeholder="VD: dung, #TXN123..." />
+                <input class="form-control bg-dark border-0" placeholder="VD: dung, #TXN123..." />
             </div>
             <div class="col-md-3">
                 <label class="form-label">Phương thức</label>
                 <select class="form-select bg-dark border-0">
-                    <option>Tất cả</option>
-                    <option>Thủ công</option>
-                    <option>Thẻ</option>
+                    <option selected>Tất cả</option>
+                    <option>BANK</option>
+                    <option>CARD</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -49,9 +42,9 @@
             <div class="col-md-3">
                 <label class="form-label">Trạng thái</label>
                 <select class="form-select bg-dark border-0">
-                    <option selected>CHỜ DUYỆT</option>
-                    <option>ĐÃ DUYỆT</option>
-                    <option>TỪ CHỐI</option>
+                    <option selected>PENDING</option>
+                    <option>APPROVED</option>
+                    <option>REJECTED</option>
                 </select>
             </div>
         </div>
@@ -65,61 +58,56 @@
                     <small class="text-muted">Đang chờ</small>
                     <i class="fa fa-hourglass-half text-primary"></i>
                 </div>
-                <h3 class="mb-0 mt-2">@ViewBag.PendingCount</h3>
+                <h3 class="mb-0 mt-2" id="statPendingCount">@ViewBag.PendingCount</h3>
                 <small class="text-muted">yêu cầu</small>
             </div>
         </div>
+
         <div class="col-6 col-md-3">
             <div class="bg-secondary rounded p-4 h-100 stat-card">
                 <div class="d-flex align-items-center justify-content-between">
                     <small class="text-muted">Tổng tiền khai báo</small>
                     <i class="fa fa-wallet text-primary"></i>
                 </div>
-                <h3 class="mb-0 mt-2">
+                <h3 class="mb-0 mt-2" id="statPendingTotal">
                     @("₫" + Convert.ToInt64(ViewBag.PendingTotalAmount ?? 0).ToString("N0"))
                 </h3>
                 <small class="text-muted">trong hàng chờ</small>
             </div>
         </div>
+
         <div class="col-6 col-md-3">
             <div class="bg-secondary rounded p-4 h-100 stat-card">
                 <div class="d-flex align-items-center justify-content-between">
                     <small class="text-muted">Thẻ cào</small>
                     <i class="fa fa-hand-holding-usd text-primary"></i>
                 </div>
-                <h3 class="mb-0 mt-2">@ViewBag.PendingCardCount</h3>
+                <h3 class="mb-0 mt-2" id="statPendingCard">@ViewBag.PendingCardCount</h3>
                 <small class="text-muted">yêu cầu</small>
             </div>
         </div>
+
         <div class="col-6 col-md-3">
             <div class="bg-secondary rounded p-4 h-100 stat-card">
                 <div class="d-flex align-items-center justify-content-between">
-                    <small class="text-muted">Thẻ</small>
+                    <small class="text-muted">Chuyển khoản</small>
                     <i class="fa fa-credit-card text-primary"></i>
                 </div>
-                <h3 class="mb-0 mt-2">@ViewBag.PendingManualCount</h3>
+                <h3 class="mb-0 mt-2" id="statPendingBank">@ViewBag.PendingManualCount</h3>
                 <small class="text-muted">yêu cầu</small>
             </div>
         </div>
     </div>
 
+
     <!-- Pending List -->
     <div class="bg-secondary rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
             <h6 class="mb-0">Danh sách nạp tiền đang chờ</h6>
-
-            <div class="d-flex gap-2">
-                <button type="button" class="btn btn-outline-light btn-sm">
-                    <i class="fa fa-sort-amount-down me-1"></i> Sắp xếp
-                </button>
-                <button type="button" class="btn btn-outline-light btn-sm">
-                    <i class="fa fa-filter me-1"></i> Lọc nâng cao
-                </button>
-            </div>
         </div>
 
         <div class="table-responsive">
-            <table class="table table-dark table-hover align-middle mb-0">
+            <table class="table table-dark table-hover align-middle mb-0" id="topupTable">
                 <thead>
                     <tr>
                         <th style="width: 270px">Khách hàng</th>
@@ -131,11 +119,15 @@
                         <th class="text-end" style="width: 220px">Thao tác</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <!-- ROW  -->
-                        <tr>
+                        var methodUpper = (item.Method ?? "").ToUpper();
+                        var isBank = methodUpper == "BANK";
+                        var isCard = methodUpper == "CARD" || item.Method == "Card";
+
+                        <tr data-row-topupid="@item.TopupId">
                             <td>
                                 <div class="d-flex align-items-center gap-2">
                                     <div>
@@ -144,86 +136,99 @@
                                     </div>
                                 </div>
                             </td>
-                            @if (item.Method == "BANK")
-                            {
-                                <td>
-                                    <span class="badge bg-dark badge-method">
-                                        <i class="fa fa-credit-card me-1"></i> ATM
-                                    </span>
-                                    <div class="small text-muted mt-1">
-                                        Chuyển khoản ngân hàng
-                                    </div>
-                                </td>
-                            }
-                            @if (item.Method == "Card")
-                            {
 
-                                <td>
+                            <td>
+                                @if (isBank)
+                                {
                                     <span class="badge bg-dark badge-method">
-                                        <i class="fa fa-hand-holding-usd me-1"></i> Thẻ cào
+                                        <i class="fa fa-credit-card me-1"></i> BANK
                                     </span>
-                                    <div class="small text-muted mt-1">
-                                        @item.Provider
-                                    </div>
-                                </td>
-                            }
+                                    <div class="small text-muted mt-1">Chuyển khoản ngân hàng</div>
+                                }
+                                else if (isCard)
+                                {
+                                    <span class="badge bg-dark badge-method">
+                                        <i class="fa fa-hand-holding-usd me-1"></i> CARD
+                                    </span>
+                                    <div class="small text-muted mt-1">@item.Provider</div>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-dark badge-method">@item.Method</span>
+                                }
+                            </td>
 
                             <td class="text-end">
-                                <div class="fw-bold text-primary">
-                                    @("₫" + item.Amount.ToString("N0"))
-                                </div>
+                                <div class="fw-bold text-primary">@("₫" + item.Amount.ToString("N0"))</div>
                                 <small class="text-muted">Khai báo</small>
                             </td>
-                            @if (item.Method == "BANK")
-                            {
-                                <td>
+
+                            <td>
+                                @if (isBank)
+                                {
                                     <div class="fw-semibold">@item.ReferenceCode</div>
-                                    <small class="text-muted">Nội Dung</small>
-                                </td>
-                            }
-                            @if (item.Method == "Card")
-                            {
-                                <td>
+                                    <small class="text-muted">Nội dung</small>
+                                }
+                                else if (isCard)
+                                {
                                     <div class="fw-semibold">@item.Provider</div>
                                     <small class="text-muted">Nhà mạng</small>
-                                </td>
-                            }
+                                }
+                                else
+                                {
+                                    <div class="fw-semibold">@item.ReferenceCode</div>
+                                }
+                            </td>
 
                             <td>
                                 <div class="fw-semibold">@item.CreatedAt.ToString("dd/MM/yyyy")</div>
                                 <small class="text-muted">@item.CreatedAt.ToString("HH:mm")</small>
                             </td>
-                            @if (item.Method == "BANK")
-                            {
-                                <td>
-                                    <div class="note-clamp text-muted">
-                                        “CK nội dung: @item.ReferenceCode”
-                                    </div>
-                                </td>
-                            }
-                            @if (item.Method == "Card")
-                            {
-                                <td>
-                                    <div class="note-clamp text-muted">
-                                        Nạp thẻ @item.Provider  @("₫" + item.Amount.ToString("N0"))
-                                    </div>
-                                </td>
-                            }
 
+                            <td>
+                                @if (isBank)
+                                {
+                                    <div class="note-clamp text-muted">“CK nội dung: @item.ReferenceCode”</div>
+                                }
+                                else if (isCard)
+                                {
+                                    <div class="note-clamp text-muted">Nạp thẻ @item.Provider @("₫" + item.Amount.ToString("N0"))</div>
+                                }
+                                else
+                                {
+                                    <div class="note-clamp text-muted">@item.RawPayload</div>
+                                }
+                            </td>
 
                             <td class="text-end">
                                 <div class="d-flex justify-content-end gap-2 flex-wrap">
-                                    <button class="btn btn-primary btn-sm"
+                                    <button class="btn btn-primary btn-sm btn-approve"
                                             type="button"
                                             data-bs-toggle="modal"
-                                            data-bs-target="#approveModal">
+                                            data-bs-target="#approveModal"
+                                            data-topupid="@item.TopupId"
+                                            data-method="@item.Method"
+                                            data-amount="@item.Amount"
+                                            data-ref="@item.ReferenceCode"
+                                            data-provider="@item.Provider"
+                                            data-username="@item.UserName"
+                                            data-userid="@item.UserId"
+                                            data-created="@item.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")">
                                         <i class="fa fa-check me-1"></i> Xác thực
                                     </button>
 
-                                    <button class="btn btn-outline-light btn-sm"
+                                    <button class="btn btn-outline-light btn-sm btn-reject"
                                             type="button"
                                             data-bs-toggle="modal"
-                                            data-bs-target="#rejectModal">
+                                            data-bs-target="#rejectModal"
+                                            data-topupid="@item.TopupId"
+                                            data-method="@item.Method"
+                                            data-amount="@item.Amount"
+                                            data-ref="@item.ReferenceCode"
+                                            data-provider="@item.Provider"
+                                            data-username="@item.UserName"
+                                            data-userid="@item.UserId"
+                                            data-created="@item.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")">
                                         <i class="fa fa-times me-1"></i> Từ chối
                                     </button>
                                 </div>
@@ -231,90 +236,59 @@
                         </tr>
                     }
                 </tbody>
-
             </table>
-        </div>
-
-        <!-- Pagination (static) -->
-        <div class="d-flex align-items-center justify-content-between mt-3 flex-wrap gap-2">
-            <small class="text-muted">Hiển thị 1–10 / 27 yêu cầu</small>
-            <nav aria-label="Page navigation">
-                <ul class="pagination mb-0">
-                    <li class="page-item disabled">
-                        <a class="page-link bg-dark border-0 text-muted" href="#">Prev</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link bg-dark border-0" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-dark border-0 text-muted" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-dark border-0 text-muted" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-dark border-0 text-muted" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>
 
-<!-- APPROVE MODAL -->
-<div class="modal fade"
-     id="approveModal"
-     tabindex="-1"
-     aria-hidden="true">
+<!-- ===================== APPROVE MODAL ===================== -->
+<div class="modal fade" id="approveModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content bg-secondary">
             <div class="modal-header border-0">
                 <h5 class="modal-title">
                     <i class="fa fa-check-circle me-2"></i>Xác thực & cộng tiền
                 </h5>
-                <button type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
-                <!-- Context summary (static) -->
+                <!-- Context summary (dynamic) -->
                 <div class="bg-dark rounded p-3 mb-3 border-soft">
                     <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                         <div>
                             <div class="fw-semibold">
-                                Nguyễn Văn A
-                                <span class="text-muted">(user_a • ID: 10021)</span>
+                                <span id="ap_userName">...</span>
+                                <span class="text-muted">(ID: <span id="ap_userId">0</span>)</span>
                             </div>
                             <small class="text-muted">
-                                Yêu cầu: #TXN-20260202-001 • Phương thức: Thủ
-                                công
+                                Yêu cầu: <span id="ap_refCode">...</span> • Phương thức: <span id="ap_methodText">...</span>
                             </small>
                         </div>
-                        <span class="badge bg-warning text-dark">CHỜ DUYỆT</span>
+                        <span class="badge bg-warning text-dark">PENDING</span>
                     </div>
+
                     <hr class="border-secondary my-2" />
+
                     <div class="row g-2">
                         <div class="col-md-4">
                             <small class="text-muted d-block">Số tiền khách khai</small>
-                            <div class="fw-bold text-primary">₫1,200,000</div>
+                            <div class="fw-bold text-primary" id="ap_amountText">₫0</div>
                         </div>
                         <div class="col-md-4">
                             <small class="text-muted d-block">Thời gian</small>
-                            <div class="fw-semibold">02/02/2026 10:35</div>
+                            <div class="fw-semibold" id="ap_timeText">--/--/---- --:--</div>
                         </div>
                         <div class="col-md-4">
                             <small class="text-muted d-block">Nguồn</small>
-                            <div class="fw-semibold">VCB / Momo / Card</div>
+                            <div class="fw-semibold" id="ap_sourceText">...</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="alert alert-warning">
                     <i class="fa fa-exclamation-triangle me-2"></i>
-                    <b>Lưu ý:</b> Cộng tiền sẽ ảnh hưởng số dư ví của khách. Hãy
-                    kiểm tra chứng từ/mã thẻ trước khi xác nhận.
+                    <b>Lưu ý:</b> Cộng tiền sẽ ảnh hưởng số dư ví của khách. Hãy kiểm tra chứng từ/mã thẻ trước khi xác nhận.
                 </div>
 
                 <div class="row g-3">
@@ -322,9 +296,7 @@
                         <label class="form-label">Số tiền cộng (thực tế)</label>
                         <div class="input-group">
                             <span class="input-group-text bg-dark border-0">₫</span>
-                            <input type="number"
-                                   class="form-control bg-dark border-0"
-                                   placeholder="VD: 1200000" />
+                            <input id="ap_amountActual" type="number" class="form-control bg-dark border-0" placeholder="VD: 1200000" />
                         </div>
                         <small class="text-muted">Có thể khác số khách khai nếu trừ phí/chiết khấu</small>
                     </div>
@@ -333,79 +305,34 @@
                         <label class="form-label">Phí (tuỳ chọn)</label>
                         <div class="input-group">
                             <span class="input-group-text bg-dark border-0">₫</span>
-                            <input type="number"
-                                   class="form-control bg-dark border-0"
-                                   placeholder="VD: 0" />
+                            <input id="ap_fee" type="number" class="form-control bg-dark border-0" placeholder="VD: 0" />
                         </div>
                         <small class="text-muted">Ghi nhận phí nhà cung cấp/thẻ</small>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Trạng thái sau duyệt</label>
-                        <select class="form-select bg-dark border-0">
-                            <option selected>APPROVED (Đã duyệt)</option>
-                            <option>NEED_MORE_INFO (Cần bổ sung)</option>
+                        <select id="ap_status" class="form-select bg-dark border-0">
+                            <option value="APPROVED" selected>APPROVED (Đã duyệt)</option>
+                            <option value="NEED_MORE_INFO">NEED_MORE_INFO (Cần bổ sung)</option>
                         </select>
                     </div>
 
                     <div class="col-md-6">
                         <label class="form-label">Mã đối soát / Ref (tuỳ chọn)</label>
-                        <input class="form-control bg-dark border-0"
-                               placeholder="VD: BANKREF-8821 / CARDREF-..." />
+                        <input id="ap_ref" class="form-control bg-dark border-0" placeholder="VD: BANKREF-8821 / CARDREF-..." />
                     </div>
 
                     <div class="col-12">
                         <label class="form-label">Ghi chú admin</label>
-                        <textarea class="form-control bg-dark border-0"
-                                  rows="4"
-                                  placeholder="VD: đã nhận tiền VCB, đối soát OK..."></textarea>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input"
-                                   type="checkbox"
-                                   role="switch"
-                                   checked />
-                            <label class="form-check-label">Gửi thông báo cho khách sau khi duyệt</label>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="bg-dark rounded p-3 border-soft">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="text-muted">Tóm tắt</div>
-                                <span class="badge bg-dark">Preview</span>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <span class="text-muted">Số tiền cộng:</span>
-                                <span class="fw-semibold">₫1,200,000</span>
-                            </div>
-                            <div class="d-flex justify-content-between mt-1">
-                                <span class="text-muted">Phí:</span>
-                                <span class="fw-semibold">₫0</span>
-                            </div>
-                            <hr class="border-secondary my-2" />
-                            <div class="d-flex justify-content-between">
-                                <span class="text-muted">Thực nhận vào ví:</span>
-                                <span class="fw-bold text-primary">₫1,200,000</span>
-                            </div>
-                        </div>
-                        <small class="text-muted d-block mt-2">
-                            * Đây là UI tĩnh. Khi gắn backend, phần “Preview” sẽ tính
-                            tự động.
-                        </small>
+                        <textarea id="ap_note" class="form-control bg-dark border-0" rows="4" placeholder="VD: đã nhận tiền VCB, đối soát OK..."></textarea>
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer border-0">
-                <button type="button"
-                        class="btn btn-outline-light"
-                        data-bs-dismiss="modal">
-                    Đóng
-                </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnApproveSubmit">
                     <i class="fa fa-check me-1"></i> Xác nhận & cộng tiền
                 </button>
             </div>
@@ -413,62 +340,39 @@
     </div>
 </div>
 
-<!-- REJECT MODAL -->
-<div class="modal fade"
-     id="rejectModal"
-     tabindex="-1"
-     aria-hidden="true">
+<!-- ===================== REJECT MODAL ===================== -->
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content bg-secondary">
             <div class="modal-header border-0">
                 <h5 class="modal-title">
                     <i class="fa fa-times-circle me-2"></i>Từ chối yêu cầu
                 </h5>
-                <button type="button"
-                        class="btn-close btn-close-white"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
                 <div class="alert alert-dark border-0">
                     <div class="fw-semibold">Bạn sắp từ chối yêu cầu:</div>
-                    <div class="text-muted mt-1">
-                        #TXN-20260202-001 • Nguyễn Văn A
-                    </div>
+                    <div class="text-muted mt-1" id="rj_summaryText">...</div>
                 </div>
 
                 <label class="form-label">Lý do từ chối</label>
-                <select class="form-select bg-dark border-0 mb-3">
-                    <option>
-                        Không tìm thấy giao dịch / không khớp nội dung
-                    </option>
+                <select id="rj_reason" class="form-select bg-dark border-0 mb-3">
+                    <option>Không tìm thấy giao dịch / không khớp nội dung</option>
                     <option>Mã thẻ sai / thẻ đã sử dụng</option>
                     <option>Thiếu chứng từ</option>
                     <option>Khác</option>
                 </select>
 
                 <label class="form-label">Ghi chú (tuỳ chọn)</label>
-                <textarea class="form-control bg-dark border-0"
-                          rows="4"
+                <textarea id="rj_note" class="form-control bg-dark border-0" rows="4"
                           placeholder="VD: vui lòng gửi ảnh bill hoặc nội dung chuyển khoản đúng..."></textarea>
-
-                <div class="form-check form-switch mt-3">
-                    <input class="form-check-input"
-                           type="checkbox"
-                           role="switch"
-                           checked />
-                    <label class="form-check-label">Gửi thông báo cho khách</label>
-                </div>
             </div>
 
             <div class="modal-footer border-0">
-                <button type="button"
-                        class="btn btn-outline-light"
-                        data-bs-dismiss="modal">
-                    Hủy
-                </button>
-                <button type="button" class="btn btn-danger">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger" id="btnRejectSubmit">
                     <i class="fa fa-times me-1"></i> Xác nhận từ chối
                 </button>
             </div>
@@ -477,7 +381,6 @@
 </div>
 
 <style>
-    /* subtle borders like DarkPan */
     .stat-card {
         border: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -498,10 +401,261 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-
-    /* pagination fit dark theme */
-    .pagination .page-link {
-        border-radius: 10px;
-        margin-left: 6px;
-    }
 </style>
+
+<script>
+    (() => {
+      const $ = (s, root = document) => root.querySelector(s);
+
+      // ====== Money format ======
+      function vnd(n) {
+        const num = Number(n || 0);
+        return "₫" + num.toLocaleString("vi-VN");
+      }
+
+      // ====== Quick Stats DOM ======
+      const statPendingCountEl = $("#statPendingCount");
+      const statPendingTotalEl = $("#statPendingTotal");
+      const statPendingCardEl = $("#statPendingCard");
+      const statPendingBankEl = $("#statPendingBank");
+
+      function numFromText(el) {
+        if (!el) return 0;
+        // "₫58,200,000" -> "58200000"
+        const s = (el.textContent || "").replace(/[^\d]/g, "");
+        return Number(s || 0);
+      }
+
+      function setStat(el, value, isMoney = false) {
+        if (!el) return;
+        const v = Math.max(0, Number(value || 0));
+        el.textContent = isMoney ? vnd(v) : String(v);
+      }
+
+      function applyStatsDelta({ count = 0, totalAmount = 0, card = 0, bank = 0 }) {
+        if (count) setStat(statPendingCountEl, numFromText(statPendingCountEl) + count, false);
+        if (totalAmount) setStat(statPendingTotalEl, numFromText(statPendingTotalEl) + totalAmount, true);
+        if (card) setStat(statPendingCardEl, numFromText(statPendingCardEl) + card, false);
+        if (bank) setStat(statPendingBankEl, numFromText(statPendingBankEl) + bank, false);
+      }
+
+      // ====== Helpers ======
+      function methodText(m) {
+        const x = String(m || "").toUpperCase();
+        if (x === "BANK") return "BANK (Chuyển khoản)";
+        if (x === "CARD" || x === "CARD") return "CARD (Thẻ cào)";
+        return m || "N/A";
+      }
+
+      // "2026-02-03 12:06:08" -> dd/MM/yyyy + HH:mm
+      function fmtFromSqlLike(s) {
+        if (!s) return { d: "--/--/----", t: "--:--" };
+        const parts = String(s).split(" ");
+        const date = parts[0] || "";
+        const time = (parts[1] || "").slice(0, 5);
+        const [yyyy, mm, dd] = date.split("-");
+        return { d: `${dd}/${mm}/${yyyy}`, t: time || "--:--" };
+      }
+
+      function getBtnData(btn) {
+        return {
+          topupId: Number(btn.dataset.topupid || 0),
+          method: btn.dataset.method || "",
+          amount: Number(btn.dataset.amount || 0),
+          fee: Number(btn.dataset.fee || 0),
+          ref: btn.dataset.ref || "",
+          provider: btn.dataset.provider || "",
+          userName: btn.dataset.username || "",
+          userId: btn.dataset.userid || "",
+          created: btn.dataset.created || ""
+        };
+      }
+
+      // ====== Modal Elements ======
+      const approveModalEl = $("#approveModal");
+      const rejectModalEl = $("#rejectModal");
+
+      // Approve fields
+      const ap_amountActual = $("#ap_amountActual");
+      const ap_fee = $("#ap_fee");
+      const ap_ref = $("#ap_ref");
+      const ap_note = $("#ap_note");
+      const ap_status = $("#ap_status");
+      const btnApproveSubmit = $("#btnApproveSubmit");
+
+      // Approve summary
+      const ap_userName = $("#ap_userName");
+      const ap_userId = $("#ap_userId");
+      const ap_refCode = $("#ap_refCode");
+      const ap_methodText = $("#ap_methodText");
+      const ap_amountText = $("#ap_amountText");
+      const ap_timeText = $("#ap_timeText");
+      const ap_sourceText = $("#ap_sourceText");
+
+      // Reject fields
+      const rj_reason = $("#rj_reason");
+      const rj_note = $("#rj_note");
+      const btnRejectSubmit = $("#btnRejectSubmit");
+      const rj_summaryText = $("#rj_summaryText");
+
+      let current = null; // { topupId, rowEl, method, amount, ... }
+
+      // ====== Map data -> Modal when click buttons ======
+      document.addEventListener("click", (e) => {
+        const approveBtn = e.target.closest(".btn-approve");
+        const rejectBtn = e.target.closest(".btn-reject");
+
+        if (approveBtn) {
+          const d = getBtnData(approveBtn);
+          current = { ...d, rowEl: approveBtn.closest("tr") };
+
+          const dt = fmtFromSqlLike(d.created);
+          const m = String(d.method || "").toUpperCase();
+
+          ap_userName.textContent = d.userName || "N/A";
+          ap_userId.textContent = d.userId || "0";
+          ap_refCode.textContent = d.ref || `#TOPUP-${d.topupId}`;
+          ap_methodText.textContent = methodText(d.method);
+          ap_amountText.textContent = vnd(d.amount);
+          ap_timeText.textContent = `${dt.d} ${dt.t}`;
+
+          if (m === "BANK") ap_sourceText.textContent = "BANK / Chuyển khoản";
+          else if (m === "CARD") ap_sourceText.textContent = d.provider ? `CARD / ${d.provider}` : "CARD / Thẻ cào";
+          else ap_sourceText.textContent = d.method || "N/A";
+
+          ap_amountActual.value = String(d.amount || 0);
+          ap_fee.value = String(d.fee || 0);
+          ap_ref.value = d.ref || "";
+          ap_note.value = "";
+          ap_status.value = "APPROVED";
+          return;
+        }
+
+        if (rejectBtn) {
+          const d = getBtnData(rejectBtn);
+          current = { ...d, rowEl: rejectBtn.closest("tr") };
+
+          const dt = fmtFromSqlLike(d.created);
+          const m = String(d.method || "").toUpperCase();
+          const refText = d.ref ? d.ref : `#TOPUP-${d.topupId}`;
+          const src = (m === "BANK") ? "BANK" : (m === "CARD" ? `CARD ${d.provider || ""}` : d.method);
+
+          rj_note.value = "";
+          rj_reason.selectedIndex = 0;
+          rj_summaryText.textContent =
+            `${refText} • ${d.userName} (ID: ${d.userId}) • ${src} • ${dt.d} ${dt.t} • ${vnd(d.amount)}`;
+          return;
+        }
+      });
+
+      // ====== Approve API ======
+      btnApproveSubmit?.addEventListener("click", async () => {
+        if (!current?.topupId) return alert("Không xác định được topupId.");
+
+        const payload = {
+          topupId: current.topupId,
+          amountActual: ap_amountActual.value ? Number(ap_amountActual.value) : null,
+          fee: ap_fee.value ? Number(ap_fee.value) : null,
+          ref: ap_ref.value ? ap_ref.value.trim() : null,
+          adminNote: ap_note.value ? ap_note.value.trim() : null
+        };
+
+        btnApproveSubmit.disabled = true;
+        try {
+          const res = await fetch("/admin/api/topup/approve", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json().catch(() => null);
+          if (!res.ok || !data?.success) {
+            alert(data?.message || "Duyệt topup thất bại.");
+            return;
+          }
+
+          // remove row
+          current.rowEl?.remove();
+
+          // update stats (trừ theo số tiền KHAI BÁO trong list)
+          const mm = String(current.method || "").toUpperCase();
+          const amountRemoved = Number(current.amount || 0);
+          applyStatsDelta({
+            count: -1,
+            totalAmount: -amountRemoved,
+            card: (mm === "CARD" ? -1 : 0),
+            bank: (mm === "BANK" ? -1 : 0)
+          });
+
+          // hide modal
+          if (window.bootstrap && approveModalEl) {
+            const inst = window.bootstrap.Modal.getInstance(approveModalEl) || new window.bootstrap.Modal(approveModalEl);
+            inst.hide();
+          }
+
+          alert(data?.message || "OK");
+          current = null;
+        } catch (err) {
+          console.error(err);
+          alert("Lỗi mạng / server.");
+        } finally {
+          btnApproveSubmit.disabled = false;
+        }
+      });
+
+      // ====== Reject API ======
+      btnRejectSubmit?.addEventListener("click", async () => {
+        if (!current?.topupId) return alert("Không xác định được topupId.");
+
+        const payload = {
+          topupId: current.topupId,
+          reason: rj_reason.value ? rj_reason.value : null,
+          adminNote: rj_note.value ? rj_note.value.trim() : null
+        };
+
+        btnRejectSubmit.disabled = true;
+        try {
+          const res = await fetch("/admin/api/topup/reject", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json().catch(() => null);
+          if (!res.ok || !data?.success) {
+            alert(data?.message || "Từ chối thất bại.");
+            return;
+          }
+
+          // remove row
+          current.rowEl?.remove();
+
+          // update stats
+          const mm = String(current.method || "").toUpperCase();
+          const amountRemoved = Number(current.amount || 0);
+          applyStatsDelta({
+            count: -1,
+            totalAmount: -amountRemoved,
+            card: (mm === "CARD" ? -1 : 0),
+            bank: (mm === "BANK" ? -1 : 0)
+          });
+
+          // hide modal
+          if (window.bootstrap && rejectModalEl) {
+            const inst = window.bootstrap.Modal.getInstance(rejectModalEl) || new window.bootstrap.Modal(rejectModalEl);
+            inst.hide();
+          }
+
+          alert(data?.message || "OK");
+          current = null;
+        } catch (err) {
+          console.error(err);
+          alert("Lỗi mạng / server.");
+        } finally {
+          btnRejectSubmit.disabled = false;
+        }
+      });
+
+    })();
+</script>
+

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Text.Json;
 using SystemPurchaseAccGame.Dtos;
 using SystemPurchaseAccGame.Models;
 using SystemPurchaseAccGame.ViewModel;
@@ -77,7 +78,8 @@ public class HomeController : Controller
             Username = model.Name,
             PasswordHash = model.Password
         };
-        try {
+        try
+        {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
         }
@@ -93,9 +95,9 @@ public class HomeController : Controller
 
         ViewBag.RegisterError = "Đăng ký không thành công. Vui lòng kiểm tra lại thông tin.";
         ViewBag.ActiveTab = "register";
-        return View("Login"); 
+        return View("Login");
     }
-   
+
     [HttpGet]
     public async Task<IActionResult> Logout()
     {
@@ -201,13 +203,13 @@ public class HomeController : Controller
         }
         var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (int.TryParse(userIdStr, out var userId))
-        { 
+        {
             var wallet = await _context.Wallets
                 .AsNoTracking()
                 .FirstOrDefaultAsync(w => w.UserId == userId);
-            ViewBag.WalletBalance = wallet != null ? wallet.Balance / 100m : 0m;
+            ViewBag.WalletBalance = wallet != null ? wallet.Balance : 0m;
         }
-            await Task.CompletedTask;
+        await Task.CompletedTask;
         return View();
     }
     public async Task<IActionResult> PaymentSuccess()
@@ -530,7 +532,7 @@ public class HomeController : Controller
 
         var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (!long.TryParse(userIdStr, out var userId))
-            return RedirectToAction("Login", "Auth");
+            return RedirectToAction("Login", "Home");
 
         ViewBag.Email = User.FindFirstValue(ClaimTypes.Name);
 
@@ -677,5 +679,176 @@ public class HomeController : Controller
     {
         await Task.CompletedTask;
         return View();
+    }
+
+    [HttpGet]
+    public IActionResult AccountInfo() => View(new AccountInfoVm());
+
+    [HttpPost]
+    [ValidateAntiForgeryToken] 
+    public async Task<IActionResult> AccountInfo(long orderId)
+    {
+        ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
+        if (!ViewBag.IsAuthenticated)
+            return RedirectToAction("Login", "Home");
+
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!long.TryParse(userIdStr, out var userId))
+            return RedirectToAction("Login", "Home");
+
+        var order = await _context.Orders
+            .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Account) 
+            .FirstOrDefaultAsync(o => o.OrderId == orderId && o.UserId == userId && o.Status == "PENDING");
+
+        if (order == null)
+            return NotFound("Không tìm thấy đơn hàng.");
+        var wallet = await _context.Wallets.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+        if (wallet.Balance < order.TotalAmount || wallet == null)
+        {
+            RedirectToAction("bank", "home");
+        }
+        // (Tuỳ bạn) nếu cần kiểm tra trạng thái
+        // if (!string.Equals(order.Status, "PENDING", StringComparison.OrdinalIgnoreCase))
+        //    return BadRequest("Đơn hàng không ở trạng thái PENDING.");
+
+        // (Tuỳ bạn) cập nhật thanh toán: đổi status order/account...
+        // order.Status = "PAID";
+        // await _context.SaveChangesAsync();
+
+        var vm = new AccountInfoVm { OrderId = order.OrderId };
+
+        foreach (var oi in order.OrderItems)
+        {
+            var acc = oi.Account;
+            var info = ParseLoginInfo(acc?.LoginInfo);
+
+            // nếu MaskPublic=true: có thể che thông tin khi show public
+            // còn đây là trang “vừa mua” => thường show full,
+            // nhưng mình vẫn để logic cho bạn tuỳ chọn.
+
+            vm.Items.Add(new BoughtAccountRowVm
+            {
+                AccountId = oi.AccountId,
+                GameId = acc?.GameId ?? 0,
+                Title = acc?.Title ?? "",
+                Price = oi.UnitPrice,
+                Description = acc?.Description,
+                LoginInfoRaw = acc?.LoginInfo,
+                Status = acc?.Status ?? "",
+                CreatedAt = acc?.CreatedAt ?? DateTime.UtcNow,
+
+                Username = info.User,
+                Password = info.Pass,
+                Note = info.Note,
+                MaskPublic = info.MaskPublic
+            });
+        }
+        order.Status = "PAID";
+        foreach (var oi in order.OrderItems)
+        {
+            var acc = oi.Account;
+            if (acc != null)
+            {
+                acc.Status = "SOLD";
+            }
+        }
+       
+        if(wallet != null)
+        wallet.Balance = wallet.Balance - order.TotalAmount;
+        await _context.SaveChangesAsync();
+        return View(vm);
+    }
+
+    public async Task<IActionResult> AccountInfoHis()
+    {
+        ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
+        if (!ViewBag.IsAuthenticated)
+            return RedirectToAction("Login", "Home");
+
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!long.TryParse(userIdStr, out var userId))
+            return RedirectToAction("Login", "Home");
+
+        var order = await _context.Orders
+            .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Account)
+            .FirstOrDefaultAsync(o => o.UserId == userId && o.Status == "PAID");
+
+        if (order == null)
+            return NotFound("Không có lịch sử giao dịch!");
+        var vm = new AccountInfoVm { OrderId = order.OrderId };
+
+        foreach (var oi in order.OrderItems)
+        {
+            var acc = oi.Account;
+            var info = ParseLoginInfo(acc?.LoginInfo);
+
+            vm.Items.Add(new BoughtAccountRowVm
+            {
+                AccountId = oi.AccountId,
+                GameId = acc?.GameId ?? 0,
+                Title = acc?.Title ?? "",
+                Price = oi.UnitPrice,
+                Description = acc?.Description,
+                LoginInfoRaw = acc?.LoginInfo,
+                Status = acc?.Status ?? "",
+                CreatedAt = acc?.CreatedAt ?? DateTime.UtcNow,
+
+                Username = info.User,
+                Password = info.Pass,
+                Note = info.Note,
+                MaskPublic = info.MaskPublic
+            });
+        }
+        return View(vm);
+    }
+    private static LoginInfoJson ParseLoginInfo(string? json)
+    {
+        if (string.IsNullOrWhiteSpace(json)) return new LoginInfoJson();
+
+        try
+        {
+            return JsonSerializer.Deserialize<LoginInfoJson>(
+                json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+            ) ?? new LoginInfoJson();
+        }
+        catch
+        {
+            return new LoginInfoJson();
+        }
+    }
+
+    private static string Mask(string? s)
+    {
+        if (string.IsNullOrEmpty(s)) return "";
+        if (s.Length <= 2) return new string('*', s.Length);
+        return s.Substring(0, 2) + new string('*', Math.Max(0, s.Length - 2));
+    }
+   public async Task<IActionResult> About()
+    {
+        ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
+        if (!ViewBag.IsAuthenticated)
+            return RedirectToAction("Login", "Home");
+
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!long.TryParse(userIdStr, out var userId))
+            return RedirectToAction("Login", "Home");
+
+        var user = _context.Users.Find(userId);
+        var wallet = await _context.Wallets.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+        var result = new UserProfileDto
+        {
+            UserId = user.UserId,
+            FullName = user.FullName,
+            Email = user.Email,
+            Phone = user.Phone,
+            Username = user.Username,
+            CreatedAt = user.CreatedAt,
+            WalletBalance = wallet != null ? wallet.Balance : 0m,
+        };
+        await Task.CompletedTask;
+        return View(result);
     }
 }

@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\shared\\partials\\admin\\_confirmpayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\shared\\partials\\admin\\_confirmpayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\viewmodel\\admintopupvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\viewmodel\\admintopupvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\controllers\\topupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\controllers\\topupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\viewmodel\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\viewmodel\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\models\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\models\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\shared\\partials\\client\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\shared\\partials\\client\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\models\\topup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\models\\topup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\shared\\partials\\admin\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\shared\\partials\\admin\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\purchase.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\purchase.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\wwwroot\\assets_admin\\js\\left_menu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\wwwroot\\assets_admin\\js\\left_menu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\accountinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\accountinfo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\accountinfohis.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\accountinfohis.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\historypayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\historypayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|d:\\laptrinhweb\\code_outsrc\\webpurchaseaccgame\\webpurchaseaccgame\\systempurchaseaccgame\\views\\home\\paymentsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B4C3D5D7-1B83-4B9D-8308-C5784655965F}|SystemPurchaseAccGame\\SystemPurchaseAccGame.csproj|solutionrelative:systempurchaseaccgame\\views\\home\\paymentsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,143 +49,143 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1348,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 1670,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminTopupVm.cs",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\ViewModel\\AdminTopupVm.cs",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\ViewModel\\AdminTopupVm.cs",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\ViewModel\\AdminTopupVm.cs",
-              "RelativeToolTip": "SystemPurchaseAccGame\\ViewModel\\AdminTopupVm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBMAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T16:11:16.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_ConfirmPayment.cshtml",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_ConfirmPayment.cshtml",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_ConfirmPayment.cshtml",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_ConfirmPayment.cshtml",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_ConfirmPayment.cshtml",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAswM8AAABjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-03T15:41:29.507Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAIMBAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T16:45:52.864Z",
+              "Title": "About.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\About.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\About.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T19:47:57.819Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TopupController.cs",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\TopupController.cs",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Controllers\\TopupController.cs",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\TopupController.cs",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Controllers\\TopupController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAD4vxcAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T16:46:30.138Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Wallet.cs",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Models\\Wallet.cs",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Models\\Wallet.cs",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Models\\Wallet.cs",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Models\\Wallet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T15:52:31.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Topup.cs",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Models\\Topup.cs",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Models\\Topup.cs",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Models\\Topup.cs",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Models\\Topup.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAqwCcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T15:51:58.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "left_menu.js",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
-              "RelativeToolTip": "SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
-              "ViewState": "AgIAACgAAAAAAAAAAAAQwEEAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-03T15:43:14.915Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 622,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAtwFcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T15:38:18.172Z",
+              "DocumentIndex": 2,
+              "Title": "_Header.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Shared\\Partials\\Client\\_Header.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Shared\\Partials\\Client\\_Header.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Shared\\Partials\\Client\\_Header.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Shared\\Partials\\Client\\_Header.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEYAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T19:32:06.793Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "_SideBar.cshtml",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_SideBar.cshtml",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_SideBar.cshtml",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_SideBar.cshtml",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Shared\\Partials\\Admin\\_SideBar.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAzAAAAAAAAAA==",
+              "Title": "AccountInfoHis.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\AccountInfoHis.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\AccountInfoHis.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\AccountInfoHis.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\AccountInfoHis.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAD8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-03T15:46:46.327Z",
+              "WhenOpened": "2026-02-03T19:28:56.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HistoryPayment.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\HistoryPayment.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\HistoryPayment.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\HistoryPayment.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\HistoryPayment.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAF8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T19:19:57.656Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Dashboard.cshtml",
-              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Admin\\Dashboard.cshtml",
-              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Admin\\Dashboard.cshtml",
-              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Admin\\Dashboard.cshtml",
-              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Admin\\Dashboard.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "PaymentSuccess.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\PaymentSuccess.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\PaymentSuccess.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\PaymentSuccess.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\PaymentSuccess.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-03T15:38:27.632Z",
+              "WhenOpened": "2026-02-03T19:19:43.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomePage.cs",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\ViewModel\\HomePage.cs",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\ViewModel\\HomePage.cs",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\ViewModel\\HomePage.cs",
+              "RelativeToolTip": "SystemPurchaseAccGame\\ViewModel\\HomePage.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAswL8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T18:39:00.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\Cart.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\Cart.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\Cart.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\Cart.cshtml",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAIcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T18:33:29.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountInfo.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\AccountInfo.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\AccountInfo.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\AccountInfo.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\AccountInfo.cshtml",
+              "ViewState": "AgIAADkBAAAAAAAAAAAIwDsBAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T18:27:07.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAD8DAAAAAAAAAAAQwFMDAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T18:17:19.928Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 137,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Purchase.cshtml",
+              "DocumentMoniker": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\Purchase.cshtml",
+              "RelativeDocumentMoniker": "SystemPurchaseAccGame\\Views\\Home\\Purchase.cshtml",
+              "ToolTip": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\Views\\Home\\Purchase.cshtml",
+              "RelativeToolTip": "SystemPurchaseAccGame\\Views\\Home\\Purchase.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-03T18:17:30.112Z",
               "EditorCaption": ""
             }
           ]

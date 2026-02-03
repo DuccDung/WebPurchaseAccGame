@@ -133,4 +133,65 @@
         public long UnitPrice { get; set; }
         public string Title { get; set; } = "";
     }
+
+    public class LoginInfoJson
+    {
+        public string? User { get; set; }
+        public string? Pass { get; set; }
+        public string? Note { get; set; }
+        public bool MaskPublic { get; set; }
+    }
+    // Removed duplicate definition of BoughtAccountRowVm
+    public class BoughtAccountRowVm
+    {
+        public long AccountId { get; set; }
+        public int GameId { get; set; }
+        public string Title { get; set; } = "";
+        public long Price { get; set; }
+        public string? Description { get; set; }
+        public string? LoginInfoRaw { get; set; }
+        public string Status { get; set; } = "";
+        public DateTime CreatedAt { get; set; }
+
+        // Tách từ LoginInfo JSON
+        public string Username { get; set; } = "";
+        public string Password { get; set; } = "";
+        public string? Note { get; set; }
+        public bool MaskPublic { get; set; }
+    }
+
+    public class AccountInfoVm
+    {
+        public long OrderId { get; set; }
+        public List<BoughtAccountRowVm> Items { get; set; } = new();
+    }
+    public class UserProfileDto
+    {
+        public long UserId { get; set; }
+
+        public string Username { get; set; } = string.Empty;
+
+        // Lưu ý: thực tế không nên trả Password ra view.
+        // Nhưng bạn đang yêu cầu hiển thị theo ảnh, nên mình để field này.
+        public string Password { get; set; } = string.Empty;
+
+        public string FullName { get; set; } = string.Empty;
+
+        public string Email { get; set; } = string.Empty;
+
+        public string Phone { get; set; } = string.Empty;
+
+        // Trong ảnh đang là 1/0 (hoặc 1/NULL). Để int cho đúng DB.
+        public int Status { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime? UpdatedAt { get; set; }
+
+        public string Role { get; set; } = "User";
+        public decimal WalletBalance
+        {
+            get; set;
+        }
+    }
 }

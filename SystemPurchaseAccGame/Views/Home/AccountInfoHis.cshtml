@@ -1,0 +1,342 @@
+﻿@model AccountInfoVm
+@using System.Globalization
+@using System.Text.Json
+@using SystemPurchaseAccGame.ViewModel
+<style>
+    .accTable .mono {
+        -webkit-text-security: none !important;
+        text-security: none !important;
+    }
+
+    .accTable input[type="password"] {
+        -webkit-text-security: none !important;
+        text-security: none !important;
+    }
+</style>
+
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    var vi = new CultureInfo("vi-VN");
+
+    string Vnd(long n) => "₫" + n.ToString("N0", vi);
+    string Safe(string? s) => s ?? "";
+
+    // Parse LoginInfo JSON:
+    // 1) {"User":"...","Pass":"...","Note":null,"MaskPublic":true}
+    // 2) HOẶC bị serialize 2 lần: "\"{\\\"User\\\":...}\""
+    (string user, string pass, string note, bool mask) ParseLogin(string? json)
+    {
+        if (string.IsNullOrWhiteSpace(json)) return ("", "", "", false);
+
+        try
+        {
+            using var doc = JsonDocument.Parse(json);
+            var root = doc.RootElement;
+
+            // Nếu root là string -> JSON bị lồng, parse thêm lần nữa
+            if (root.ValueKind == JsonValueKind.String)
+            {
+                var inner = root.GetString();
+                if (string.IsNullOrWhiteSpace(inner)) return ("", "", "", false);
+
+                using var doc2 = JsonDocument.Parse(inner);
+                root = doc2.RootElement;
+            }
+
+            string u = root.TryGetProperty("User", out var uEl) ? (uEl.GetString() ?? "") : "";
+            string p = root.TryGetProperty("Pass", out var pEl) ? (pEl.GetString() ?? "") : "";
+            string n = root.TryGetProperty("Note", out var nEl)
+                ? (nEl.ValueKind == JsonValueKind.Null ? "" : (nEl.GetString() ?? ""))
+                : "";
+            bool m = root.TryGetProperty("MaskPublic", out var mEl) && mEl.ValueKind == JsonValueKind.True;
+
+            return (u, p, n, m);
+        }
+        catch
+        {
+            return ("", "", "", false);
+        }
+    }
+}
+
+<section class="purchases" aria-label="Danh sách acc vừa mua">
+    <div class="sectionTitle" style="margin-top: 36px">
+        <h1>LỊCH SỬ MUA</h1>
+        <div class="underline" aria-hidden="true"></div>
+    </div>
+
+    <div class="tableWrap">
+        <div class="tableHead">
+            <div>
+                <div class="tableTitle">Danh sách tài khoản</div>
+                <div class="tableSub">
+                    Hiển thị các acc bạn vừa mua
+                    @if (Model?.OrderId > 0)
+                    {
+                        <span class="muted"> • Order: <b>#@Model.OrderId</b></span>
+                    }
+                </div>
+            </div>
+
+            <div class="tableActions">
+                <button class="pill pill--ghost" type="button" onclick="location.reload()">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                    Làm mới
+                </button>
+            </div>
+        </div>
+
+        <div class="tableResponsive">
+            <table class="accTable" id="recentBoughtTable">
+                <thead>
+                    <tr>
+                        <th>AccountId</th>
+                        <th>GameId</th>
+                        <th>Title</th>
+                        <th class="text-right">Price</th>
+                        <th>Status</th>
+                        <th>CreatedAt</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model?.Items == null || Model.Items.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="8" class="muted" style="padding: 16px;">
+                                Chưa có dữ liệu. Hãy thanh toán đơn hàng để xem account vừa mua.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.Items)
+                        {
+                            // Ưu tiên dùng item.Username/Password nếu controller set sẵn.
+                            // Nếu chưa có => parse từ LoginInfoRaw.
+                            var raw = Safe(item.LoginInfoRaw);
+                            var (u, p, note, mask) = ParseLogin(raw);
+
+                            var userText = !string.IsNullOrWhiteSpace(item.Username) ? item.Username : u;
+                            var passText = !string.IsNullOrWhiteSpace(item.Password) ? item.Password : p;
+
+                            <tr>
+                                <td>#@item.AccountId</td>
+                                <td>@item.GameId</td>
+                                <td class="strong">@Safe(item.Title)</td>
+                                <td class="text-right price">@Vnd(item.Price)</td>
+
+                                <td>
+                                    <span class="badge badge--ok">@Safe(item.Status)</span>
+                                </td>
+
+                                <td class="muted">@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+
+                                <!-- SHOW THẲNG USERNAME -->
+                                <td>
+                                    <div class="copyCell">
+                                        <span class="mono" data-copy="@userText">@userText</span>
+                                        <button class="copyBtn" type="button" data-copy-btn title="Copy">
+                                            <i class="fa-regular fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </td>
+
+                                <!-- SHOW THẲNG PASSWORD -->
+                                <td>
+                                    <div class="copyCell">
+                                        <span class="mono" data-copy="@passText">@passText</span>
+                                        <button class="copyBtn" type="button" data-copy-btn title="Copy">
+                                            <i class="fa-regular fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            // Nếu bạn muốn hiển thị Note (tuỳ chọn) thì thêm 1 dòng nhỏ:
+                            // <tr><td colspan="8" class="muted">Note: @note</td></tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<style>
+    .purchases .tableWrap {
+        border: 1px solid var(--surface-border);
+        border-radius: 18px;
+        background: color-mix(in oklab, var(--surface-strong) 92%, transparent);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+    }
+
+    .tableHead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--surface-border);
+        background: color-mix(in oklab, var(--surface) 85%, transparent);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .tableTitle {
+        font-weight: 1000;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+    }
+
+    .tableSub {
+        margin-top: 4px;
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 13px;
+    }
+
+    .tableActions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .tableResponsive {
+        width: 100%;
+        overflow: auto;
+    }
+
+    .accTable {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        min-width: 1100px;
+    }
+
+        .accTable thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            text-align: left;
+            font-size: 12px;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: color-mix(in oklab, var(--brand) 70%, var(--text));
+            background: color-mix(in oklab, var(--surface-strong) 92%, transparent);
+            border-bottom: 1px solid var(--surface-border);
+            padding: 12px 12px;
+            white-space: nowrap;
+        }
+
+        .accTable tbody td {
+            padding: 12px 12px;
+            border-bottom: 1px solid color-mix(in oklab, var(--surface-border) 70%, transparent);
+            color: var(--text);
+            vertical-align: top;
+            background: transparent;
+        }
+
+        .accTable tbody tr:hover td {
+            background: color-mix(in oklab, var(--surface-strong) 55%, transparent);
+        }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .strong {
+        font-weight: 950;
+    }
+
+    .muted {
+        color: var(--muted);
+        font-weight: 750;
+    }
+
+    .price {
+        font-weight: 1000;
+        color: color-mix(in oklab, var(--brand) 85%, var(--text));
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-weight: 900;
+        letter-spacing: .4px;
+        font-size: 12px;
+        border: 1px solid var(--surface-border);
+        background: color-mix(in oklab, var(--surface-strong) 55%, transparent);
+    }
+
+    .badge--ok {
+        border-color: color-mix(in oklab, #19c37d 40%, var(--surface-border));
+        color: color-mix(in oklab, #19c37d 70%, var(--text));
+    }
+
+    .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-weight: 850;
+        /* KHÔNG CHE PASSWORD */
+        -webkit-text-security: none;
+        text-security: none;
+    }
+
+    .copyCell {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        min-width: 180px;
+    }
+
+    .copyBtn {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        border: 1px solid var(--surface-border);
+        background: color-mix(in oklab, var(--surface-strong) 55%, transparent);
+        color: var(--text);
+        cursor: pointer;
+        transition: background var(--transition), transform var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .copyBtn:hover {
+            background: color-mix(in oklab, var(--surface-strong) 75%, transparent);
+        }
+
+        .copyBtn:active {
+            transform: translateY(1px);
+        }
+</style>
+
+<script>
+    // Copy username/pass khi bấm icon
+    (() => {
+      document.addEventListener("click", async (e) => {
+        const btn = e.target.closest("[data-copy-btn]");
+        if (!btn) return;
+
+        const cell = btn.closest("td");
+        const span = cell?.querySelector("[data-copy]");
+        const text = span?.getAttribute("data-copy") || span?.textContent || "";
+        if (!text) return;
+
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+          setTimeout(() => (btn.innerHTML = '<i class="fa-regular fa-copy"></i>'), 800);
+        } catch {
+          alert("Không copy được. Trình duyệt không cho phép.");
+        }
+      });
+    })();
+</script>
