@@ -67,6 +67,11 @@
         e.preventDefault();
         loadPartial(routes.item_bar_confirm_payment, "item_bar_confirm_payment");
     });
+    //detail_payment_user
+    $("#detail_payment_user").on("click", function (e) {
+        e.preventDefault();
+        loadPartial(routes.item_bar_confirm_payment, "item_bar_confirm_payment");
+    });
     // Option: load mặc định khi vào Dashboard (ví dụ mở "Tài khoản")
     //loadPartial(routes.item_bar_account, "item_bar_account");
 });

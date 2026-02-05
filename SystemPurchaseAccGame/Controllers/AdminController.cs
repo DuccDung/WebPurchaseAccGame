@@ -56,8 +56,66 @@ namespace SystemPurchaseAccGame.Controllers
             return Json(new { success = true, redirectUrl = Url.Action("Dashboard", "Admin") });
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
+            // if (!IsAdmin()) return Unauthorized();
+
+            var now = DateTime.UtcNow;
+            var monthStart = new DateTime(now.Year, now.Month, 1);
+
+            // Doanh thu tháng + số đơn PAID tháng
+            var paidThisMonth = await _context.Orders
+                .AsNoTracking()
+                .Where(o => o.Status == "PAID" && o.CreatedAt >= monthStart)
+                .ToListAsync();
+
+            ViewBag.RevenueMonth = paidThisMonth.Sum(x => x.TotalAmount);
+            ViewBag.SoldCountMonth = paidThisMonth.Count;
+
+            // Topup PENDING (đổ vào bảng, lấy 10 cái đầu)
+            var pendingTopups = await _context.Topups
+                .AsNoTracking()
+                .Where(t => t.Status == "PENDING")
+                .Include(t => t.User)
+                .OrderByDescending(t => t.CreatedAt)
+                .Select(t => new AdminTopupVm
+                {
+                    TopupId = t.TopupId,
+                    UserId = t.UserId,
+                    UserName = t.User.Username ?? t.User.FullName ?? "",
+                    Email = t.User.Email ?? "",
+                    Phone = t.User.Phone ?? "",
+                    Method = t.Method,
+                    Amount = t.Amount,
+                    Status = t.Status,
+                    ReferenceCode = t.ReferenceCode,
+                    RawPayload = t.RawPayload,
+                    CreatedAt = t.CreatedAt,
+                    Provider = t.Provider
+                })
+                .ToListAsync();
+
+            ViewBag.PendingTopups = pendingTopups;
+
+            // Recent PAID Orders (top 5)
+            var recentPaidOrders = await _context.Orders
+                .AsNoTracking()
+                .Where(o => o.Status == "PAID")
+                .Include(o => o.User)
+                .OrderByDescending(o => o.PaidAt ?? o.CreatedAt)
+                .Select(o => new
+                {
+                    o.OrderId,
+                    UserName = o.User.Username ?? o.User.FullName ?? "Khách",
+                    o.TotalAmount,
+                    o.CreatedAt,
+                    o.PaidAt
+                })
+                .Take(5)
+                .ToListAsync();
+
+            ViewBag.RecentPaidOrders = recentPaidOrders;
+
             return View();
         }
 
