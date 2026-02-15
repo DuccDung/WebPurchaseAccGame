@@ -1,0 +1,45 @@
+﻿@model SystemPurchaseAccGame.ViewModel.PaidAccountInfoVm
+
+<div class="acc_detail_pay_modal" data-open="true" aria-hidden="false" role="dialog">
+    <div class="acc_detail_pay_modalCard">
+        <div class="acc_detail_pay_modalTop">
+            <div class="acc_detail_pay_modalTitle">Thanh toán thành công</div>
+            <button class="acc_detail_pay_modalClose js-close-modal" type="button" aria-label="Đóng">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="p-3">
+            <div class="mb-2"><strong>@Model.Title</strong></div>
+            <div class="mb-3">Mã đơn: <strong>#@Model.OrderId</strong> • Account ID: <strong>@Model.AccountId</strong></div>
+
+            <div class="border rounded-4 p-3 mb-3">
+                <div class="fw-bold mb-2">Thông tin đăng nhập</div>
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div><span class="text-muted">User:</span> <strong id="paid_user">@Model.Username</strong></div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary js-copy" data-copy="#paid_user">Copy</button>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div><span class="text-muted">Pass:</span> <strong id="paid_pass">@Model.Password</strong></div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary js-copy" data-copy="#paid_pass">Copy</button>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(Model.Note))
+                {
+                    <div class="mt-2"><span class="text-muted">Ghi chú:</span> <strong>@Model.Note</strong></div>
+                }
+            </div>
+
+            <div class="alert alert-info mb-3" role="alert">
+                <i class="fa-solid fa-circle-info me-2"></i>@Model.Hint
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+                <a class="btn btn-outline-primary" href="/home/paymenthistory">Lịch sử mua</a>
+                <button class="btn btn-primary js-close-modal" type="button">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using System.Security.Claims;
+using System.Text.Json;
 using SystemPurchaseAccGame.Dtos;
 using SystemPurchaseAccGame.Models;
 using SystemPurchaseAccGame.ViewModel;
@@ -182,7 +186,7 @@ public class OrderController : Controller
 
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
-
+            await RefreshBalanceClaimAsync(wallet.Balance);
             _context.OrderItems.Add(new OrderItem
             {
                 OrderId = order.OrderId,
@@ -198,12 +202,50 @@ public class OrderController : Controller
             await _context.SaveChangesAsync();
             await tx.CommitAsync();
 
+            //return Ok(new AjaxModalResponse
+            //{
+            //    Ok = true,
+            //    Code = "PAID_OK",
+            //    Message = "Thanh toán thành công!",
+            //    RedirectUrl = Url.Action("Success", "Order", new { id = order.OrderId })
+            //});
+            // Parse LoginInfo JSON từ acc.LoginInfo
+            LoginInfoJson? li = null;
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(acc.LoginInfo))
+                    li = JsonSerializer.Deserialize<LoginInfoJson>(acc.LoginInfo);
+            }
+            catch
+            {
+                // nếu JSON lỗi thì li = null
+            }
+
+            var paidVm = new PaidAccountInfoVm
+            {
+                OrderId = order.OrderId,
+                AccountId = acc.AccountId,
+                Title = acc.Title ?? $"Account #{acc.AccountId}",
+                Price = price,
+                Username = li?.User ?? "(trống)",
+                Password = li?.Pass ?? "(trống)",
+                Note = li?.Note,
+                MaskPublic = li?.MaskPublic ?? false,
+                Hint = "Thông tin tài khoản được lưu ở lịch sử mua hàng."
+            };
+
+            var paidHtml = await RenderPartialViewToStringAsync(
+                "~/Views/Shared/Partials/New/_PaidAccountInfoModal.cshtml",
+                paidVm
+            );
+
             return Ok(new AjaxModalResponse
             {
                 Ok = true,
                 Code = "PAID_OK",
                 Message = "Thanh toán thành công!",
-                RedirectUrl = Url.Action("Success", "Order", new { id = order.OrderId })
+                Html = paidHtml,
+                RedirectUrl = null // nếu muốn ở lại xem info
             });
         }
         catch (DbUpdateException ex)
@@ -251,5 +293,29 @@ public class OrderController : Controller
 
         await viewResult.View.RenderAsync(viewContext);
         return sw.ToString();
+    }
+    private async Task RefreshBalanceClaimAsync(long newBalance)
+    {
+        // nếu chưa đăng nhập thì thôi
+        if (User?.Identity?.IsAuthenticated != true) return;
+
+        var identity = User.Identity as ClaimsIdentity;
+        if (identity == null) return;
+
+        // xóa claim balance cũ
+        var old = identity.FindFirst("balance");
+        if (old != null) identity.RemoveClaim(old);
+
+        // add claim balance mới
+        identity.AddClaim(new Claim("balance", newBalance.ToString(CultureInfo.InvariantCulture)));
+
+        // phát hành lại cookie
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(identity),
+            new AuthenticationProperties
+            {
+                IsPersistent = true // hoặc đọc từ cookie hiện tại nếu bạn muốn chuẩn hơn
+            });
     }
 }

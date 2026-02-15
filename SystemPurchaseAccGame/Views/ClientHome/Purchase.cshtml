@@ -181,9 +181,36 @@
               return;
             }
 
-            alert(data.message || "Thanh toán thành công!");
-            closeModal();
-            if (data.redirectUrl) window.location.href = data.redirectUrl;
+            // alert(data.message || "Thanh toán thành công!");
+            // closeModal();
+            // if (data.redirectUrl) window.location.href = data.redirectUrl;
+                if (data?.html) {
+              // show modal info account
+                mountModal(data.html);
+              // bật copy buttons
+              host.querySelectorAll(".js-copy").forEach(btn => {
+                btn.addEventListener("click", async () => {
+                  const sel = btn.getAttribute("data-copy");
+                  const el = host.querySelector(sel);
+                  const txt = el ? el.textContent.trim() : "";
+                  if (!txt) return;
+
+                  try {
+                    await navigator.clipboard.writeText(txt);
+                    btn.textContent = "Đã copy";
+                    setTimeout(() => btn.textContent = "Copy", 1200);
+                  } catch {
+                    alert("Không copy được. Hãy copy thủ công.");
+                  }
+                });
+              });
+
+                return;
+    }
+
+    alert(data.message || "Thanh toán thành công!");
+    closeModal();
+    if (data.redirectUrl) window.location.href = data.redirectUrl;
           });
         }
       }
