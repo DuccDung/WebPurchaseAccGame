@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using SystemPurchaseAccGame.Models;
 using SystemPurchaseAccGame.ViewModel;
 
@@ -313,5 +315,490 @@ namespace SystemPurchaseAccGame.Controllers
                 data = new { topupId = topup.TopupId }
             });
         }
-}
+
+        // =========================
+        // VIEW: Category (Partial)
+        // =========================
+        [HttpGet]
+        public async Task<IActionResult> Category()
+        {
+            // if (!IsAdmin()) return Unauthorized();
+
+            var list = await _context.GameCategories
+                .AsNoTracking()
+                .OrderByDescending(x => x.CategoryId)
+                .Select(x => new CategoryRowVm
+                {
+                    CategoryId = x.CategoryId,
+                    Name = x.Name,
+                    Slug = x.Slug,
+                    CreatedAt = x.CreatedAt,
+                    GameCount = x.Games.Count
+                })
+                .ToListAsync();
+
+            return PartialView("Partials/Admin/_Category", list);
+        }
+
+        // =========================
+        // API: LIST
+        // =========================
+        [HttpGet]
+        [Route("/admin/api/category/list")]
+        public async Task<IActionResult> ApiCategoryList()
+        {
+            var list = await _context.GameCategories
+                .AsNoTracking()
+                .OrderByDescending(x => x.CategoryId)
+                .Select(x => new
+                {
+                    x.CategoryId,
+                    x.Name,
+                    x.Slug,
+                    CreatedAt = x.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    GameCount = x.Games.Count
+                })
+                .ToListAsync();
+
+            return Json(new { success = true, data = list });
+        }
+
+        // =========================
+        // API: CREATE
+        // =========================
+        public class CategoryCreateJson
+        {
+            public string? Name { get; set; }
+            public string? Slug { get; set; } // optional
+        }
+
+        [HttpPost]
+        [Route("/admin/api/category/create")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiCategoryCreate([FromBody] CategoryCreateJson req)
+        {
+            var name = (req?.Name ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(name) || name.Length > 80)
+                return BadRequest(new { success = false, message = "Tên danh mục không hợp lệ (1-80 ký tự)." });
+
+            var slug = (req?.Slug ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(slug))
+                slug = Slugify(name);
+            if (slug.Length > 120)
+                return BadRequest(new { success = false, message = "Slug quá dài (tối đa 120 ký tự)." });
+
+            // unique check
+            var existsName = await _context.GameCategories.AnyAsync(x => x.Name == name);
+            if (existsName)
+                return BadRequest(new { success = false, message = "Tên danh mục đã tồn tại." });
+
+            var existsSlug = await _context.GameCategories.AnyAsync(x => x.Slug == slug);
+            if (existsSlug)
+                return BadRequest(new { success = false, message = "Slug đã tồn tại." });
+
+            var entity = new GameCategory
+            {
+                Name = name,
+                Slug = slug,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.GameCategories.Add(entity);
+            await _context.SaveChangesAsync();
+
+            return Json(new
+            {
+                success = true,
+                message = "Đã thêm danh mục.",
+                data = new
+                {
+                    entity.CategoryId,
+                    entity.Name,
+                    entity.Slug,
+                    CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    GameCount = 0
+                }
+            });
+        }
+
+        // =========================
+        // API: UPDATE
+        // =========================
+        public class CategoryUpdateJson
+        {
+            public int CategoryId { get; set; }
+            public string? Name { get; set; }
+            public string? Slug { get; set; } // optional
+        }
+
+        [HttpPost]
+        [Route("/admin/api/category/update")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiCategoryUpdate([FromBody] CategoryUpdateJson req)
+        {
+            if (req == null || req.CategoryId <= 0)
+                return BadRequest(new { success = false, message = "CategoryId không hợp lệ." });
+
+            var entity = await _context.GameCategories.FirstOrDefaultAsync(x => x.CategoryId == req.CategoryId);
+            if (entity == null)
+                return NotFound(new { success = false, message = "Không tìm thấy danh mục." });
+
+            var name = (req.Name ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(name) || name.Length > 80)
+                return BadRequest(new { success = false, message = "Tên danh mục không hợp lệ (1-80 ký tự)." });
+
+            var slug = (req.Slug ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(slug))
+                slug = Slugify(name);
+            if (slug.Length > 120)
+                return BadRequest(new { success = false, message = "Slug quá dài (tối đa 120 ký tự)." });
+
+            // unique check (exclude self)
+            var existsName = await _context.GameCategories.AnyAsync(x => x.Name == name && x.CategoryId != entity.CategoryId);
+            if (existsName)
+                return BadRequest(new { success = false, message = "Tên danh mục đã tồn tại." });
+
+            var existsSlug = await _context.GameCategories.AnyAsync(x => x.Slug == slug && x.CategoryId != entity.CategoryId);
+            if (existsSlug)
+                return BadRequest(new { success = false, message = "Slug đã tồn tại." });
+
+            entity.Name = name;
+            entity.Slug = slug;
+
+            await _context.SaveChangesAsync();
+
+            var gameCount = await _context.Games.CountAsync(g => g.CategoryId == entity.CategoryId);
+
+            return Json(new
+            {
+                success = true,
+                message = "Đã cập nhật danh mục.",
+                data = new
+                {
+                    entity.CategoryId,
+                    entity.Name,
+                    entity.Slug,
+                    CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    GameCount = gameCount
+                }
+            });
+        }
+
+        // =========================
+        // API: DELETE
+        // =========================
+        public class CategoryDeleteJson
+        {
+            public int CategoryId { get; set; }
+        }
+
+        [HttpPost]
+        [Route("/admin/api/category/delete")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiCategoryDelete([FromBody] CategoryDeleteJson req)
+        {
+            if (req == null || req.CategoryId <= 0)
+                return BadRequest(new { success = false, message = "CategoryId không hợp lệ." });
+
+            var entity = await _context.GameCategories
+                .Include(x => x.Games)
+                .FirstOrDefaultAsync(x => x.CategoryId == req.CategoryId);
+
+            if (entity == null)
+                return NotFound(new { success = false, message = "Không tìm thấy danh mục." });
+
+            if (entity.Games.Any())
+                return BadRequest(new { success = false, message = "Danh mục đang có game, không thể xóa." });
+
+            _context.GameCategories.Remove(entity);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true, message = "Đã xóa danh mục." });
+        }
+
+        // =========================
+        // Helper: slugify
+        // =========================
+        private static string Slugify(string input)
+        {
+            input = (input ?? "").Trim().ToLowerInvariant();
+
+            // bỏ dấu tiếng việt cơ bản
+            input = input
+                .Replace("đ", "d")
+                .Normalize(NormalizationForm.FormD);
+
+            var chars = input.Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark).ToArray();
+            input = new string(chars).Normalize(NormalizationForm.FormC);
+
+            // ký tự không hợp lệ -> -
+            input = Regex.Replace(input, @"[^a-z0-9]+", "-");
+            input = Regex.Replace(input, @"-+", "-").Trim('-');
+
+            return string.IsNullOrWhiteSpace(input) ? "category" : input;
+        }
+        // =========================
+        // VIEW: Game (Partial)
+        // =========================
+        [HttpGet]
+        public async Task<IActionResult> Game()
+        {
+            // if (!IsAdmin()) return Unauthorized();
+
+            var categories = await _context.GameCategories
+                .AsNoTracking()
+                .OrderBy(x => x.Name)
+                .Select(x => new { x.CategoryId, x.Name })
+                .ToListAsync();
+
+            ViewBag.Categories = categories;
+
+            var list = await _context.Games
+                .AsNoTracking()
+                .Include(x => x.Category)
+                .OrderByDescending(x => x.GameId)
+                .Select(x => new GameRowVm
+                {
+                    GameId = x.GameId,
+                    CategoryId = x.CategoryId,
+                    CategoryName = x.Category.Name,
+                    Name = x.Name,
+                    Slug = x.Slug,
+                    ThumbnailUrl = x.ThumbnailUrl,
+                    IsActive = x.IsActive,
+                    CreatedAt = x.CreatedAt,
+                    ListingCount = x.AccountListings.Count
+                })
+                .ToListAsync();
+
+            return PartialView("Partials/Admin/_Game", list);
+        }
+
+        // =========================
+        // API: LIST
+        // =========================
+        [HttpGet]
+        [Route("/admin/api/game/list")]
+        public async Task<IActionResult> ApiGameList()
+        {
+            var list = await _context.Games
+                .AsNoTracking()
+                .Include(x => x.Category)
+                .OrderByDescending(x => x.GameId)
+                .Select(x => new
+                {
+                    x.GameId,
+                    x.CategoryId,
+                    CategoryName = x.Category.Name,
+                    x.Name,
+                    x.Slug,
+                    x.Description,
+                    x.ThumbnailUrl,
+                    x.IsActive,
+                    CreatedAt = x.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ListingCount = x.AccountListings.Count
+                })
+                .ToListAsync();
+
+            return Json(new { success = true, data = list });
+        }
+
+        // =========================
+        // API: CREATE
+        // =========================
+        public class GameCreateJson
+        {
+            public int CategoryId { get; set; }
+            public string? Name { get; set; }
+            public string? Slug { get; set; } // optional
+            public string? Description { get; set; }
+            public string? ThumbnailUrl { get; set; }
+            public bool IsActive { get; set; } = true;
+        }
+
+        [HttpPost]
+        [Route("/admin/api/game/create")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiGameCreate([FromBody] GameCreateJson req)
+        {
+            if (req == null) return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ." });
+
+            if (req.CategoryId <= 0)
+                return BadRequest(new { success = false, message = "Vui lòng chọn Category." });
+
+            var catOk = await _context.GameCategories.AnyAsync(x => x.CategoryId == req.CategoryId);
+            if (!catOk)
+                return BadRequest(new { success = false, message = "Category không tồn tại." });
+
+            var name = (req.Name ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(name) || name.Length > 120)
+                return BadRequest(new { success = false, message = "Tên game không hợp lệ (1-120 ký tự)." });
+
+            var slug = (req.Slug ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(slug)) slug = Slugify(name);
+            if (slug.Length > 160)
+                return BadRequest(new { success = false, message = "Slug quá dài (tối đa 160 ký tự)." });
+
+            // unique slug
+            var existsSlug = await _context.Games.AnyAsync(x => x.Slug == slug);
+            if (existsSlug)
+                return BadRequest(new { success = false, message = "Slug đã tồn tại." });
+
+            var thumb = (req.ThumbnailUrl ?? "").Trim();
+            if (thumb.Length > 500) return BadRequest(new { success = false, message = "ThumbnailUrl quá dài (tối đa 500)." });
+
+            var entity = new Game
+            {
+                CategoryId = req.CategoryId,
+                Name = name,
+                Slug = slug,
+                Description = string.IsNullOrWhiteSpace(req.Description) ? null : req.Description.Trim(),
+                ThumbnailUrl = string.IsNullOrWhiteSpace(thumb) ? null : thumb,
+                IsActive = req.IsActive,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.Games.Add(entity);
+            await _context.SaveChangesAsync();
+
+            var categoryName = await _context.GameCategories
+                .Where(x => x.CategoryId == entity.CategoryId)
+                .Select(x => x.Name)
+                .FirstAsync();
+
+            return Json(new
+            {
+                success = true,
+                message = "Đã thêm game.",
+                data = new
+                {
+                    entity.GameId,
+                    entity.CategoryId,
+                    CategoryName = categoryName,
+                    entity.Name,
+                    entity.Slug,
+                    entity.Description,
+                    entity.ThumbnailUrl,
+                    entity.IsActive,
+                    CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ListingCount = 0
+                }
+            });
+        }
+
+        // =========================
+        // API: UPDATE
+        // =========================
+        public class GameUpdateJson
+        {
+            public int GameId { get; set; }
+            public int CategoryId { get; set; }
+            public string? Name { get; set; }
+            public string? Slug { get; set; } // optional
+            public string? Description { get; set; }
+            public string? ThumbnailUrl { get; set; }
+            public bool IsActive { get; set; } = true;
+        }
+
+        [HttpPost]
+        [Route("/admin/api/game/update")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiGameUpdate([FromBody] GameUpdateJson req)
+        {
+            if (req == null || req.GameId <= 0)
+                return BadRequest(new { success = false, message = "GameId không hợp lệ." });
+
+            var entity = await _context.Games.FirstOrDefaultAsync(x => x.GameId == req.GameId);
+            if (entity == null)
+                return NotFound(new { success = false, message = "Không tìm thấy game." });
+
+            if (req.CategoryId <= 0)
+                return BadRequest(new { success = false, message = "Vui lòng chọn Category." });
+
+            var catOk = await _context.GameCategories.AnyAsync(x => x.CategoryId == req.CategoryId);
+            if (!catOk)
+                return BadRequest(new { success = false, message = "Category không tồn tại." });
+
+            var name = (req.Name ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(name) || name.Length > 120)
+                return BadRequest(new { success = false, message = "Tên game không hợp lệ (1-120 ký tự)." });
+
+            var slug = (req.Slug ?? "").Trim();
+            if (string.IsNullOrWhiteSpace(slug)) slug = Slugify(name);
+            if (slug.Length > 160)
+                return BadRequest(new { success = false, message = "Slug quá dài (tối đa 160 ký tự)." });
+
+            // unique slug exclude self
+            var existsSlug = await _context.Games.AnyAsync(x => x.Slug == slug && x.GameId != entity.GameId);
+            if (existsSlug)
+                return BadRequest(new { success = false, message = "Slug đã tồn tại." });
+
+            var thumb = (req.ThumbnailUrl ?? "").Trim();
+            if (thumb.Length > 500) return BadRequest(new { success = false, message = "ThumbnailUrl quá dài (tối đa 500)." });
+
+            entity.CategoryId = req.CategoryId;
+            entity.Name = name;
+            entity.Slug = slug;
+            entity.Description = string.IsNullOrWhiteSpace(req.Description) ? null : req.Description.Trim();
+            entity.ThumbnailUrl = string.IsNullOrWhiteSpace(thumb) ? null : thumb;
+            entity.IsActive = req.IsActive;
+
+            await _context.SaveChangesAsync();
+
+            var categoryName = await _context.GameCategories
+                .Where(x => x.CategoryId == entity.CategoryId)
+                .Select(x => x.Name)
+                .FirstAsync();
+
+            var listingCount = await _context.AccountListings.CountAsync(a => a.GameId == entity.GameId);
+
+            return Json(new
+            {
+                success = true,
+                message = "Đã cập nhật game.",
+                data = new
+                {
+                    entity.GameId,
+                    entity.CategoryId,
+                    CategoryName = categoryName,
+                    entity.Name,
+                    entity.Slug,
+                    entity.Description,
+                    entity.ThumbnailUrl,
+                    entity.IsActive,
+                    CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+                    ListingCount = listingCount
+                }
+            });
+        }
+
+        // =========================
+        // API: DELETE
+        // =========================
+        public class GameDeleteJson { public int GameId { get; set; } }
+
+        [HttpPost]
+        [Route("/admin/api/game/delete")]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> ApiGameDelete([FromBody] GameDeleteJson req)
+        {
+            if (req == null || req.GameId <= 0)
+                return BadRequest(new { success = false, message = "GameId không hợp lệ." });
+
+            var entity = await _context.Games
+                .Include(x => x.AccountListings)
+                .FirstOrDefaultAsync(x => x.GameId == req.GameId);
+
+            if (entity == null)
+                return NotFound(new { success = false, message = "Không tìm thấy game." });
+
+            if (entity.AccountListings.Any())
+                return BadRequest(new { success = false, message = "Game đang có account listing, không thể xóa." });
+
+            _context.Games.Remove(entity);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true, message = "Đã xóa game." });
+        }
+    }
 }

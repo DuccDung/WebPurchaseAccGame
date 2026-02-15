@@ -3,53 +3,80 @@
 @{
     Layout = "~/Views/Shared/_ClientLayout.cshtml";
 }
-<style>
-    /* Base CTA (nếu bạn muốn đồng bộ luôn cho nút thường) */
-    .acc-card__cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-height: 40px;
-        padding: 10px 14px;
-        border-radius: 12px;
-        font-weight: 700;
-        text-decoration: none;
-        user-select: none;
-        transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-    }
 
-    /* Nút HẾT HÀNG */
-    .acc-card__cta--soldout {
-        pointer-events: none;
-        cursor: not-allowed;
-        opacity: .75;
-        border: 1px solid rgba(0, 0, 0, .12);
-        color: rgb(0 0 0 / 63%);
-        box-shadow: none;
-        background: #222121;
-    }
+@{
+    var cheapCat = Model.FirstOrDefault(x => x.CategoryId == 6);
+}
 
-        .acc-card__cta--soldout .cta__icon {
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            background: rgba(0,0,0,.06);
-            font-size: 14px;
-        }
-
-        .acc-card__cta--soldout .cta__text {
-            letter-spacing: .2px;
-            font-size: 14px;
-        }
-
-</style>
 <main class="main">
+
+    <!-- =========================
+         SECTION GAME GIÁ RẺ (CATE=6) - LÊN ĐẦU
+    ========================= -->
+    @if (cheapCat != null)
+    {
+        <section class="sectionTitle" aria-label="Game giá rẻ">
+            <h1>@cheapCat.Name</h1>
+            <div class="underline" aria-hidden="true"></div>
+        </section>
+
+        <section class="productsGrid" aria-label="Danh sách game giá rẻ">
+            @foreach (var game in cheapCat.Games)
+            {
+                var isSoldOut = game.RemainingCount == 0;
+                <div class="cheat-card">
+                    <div class="cheat-card__media">
+                        <img src="@(string.IsNullOrWhiteSpace(game.ThumbnailUrl) ? "https://via.placeholder.com/600x400" : game.ThumbnailUrl)"
+                             alt="@game.Name"
+                             loading="lazy" />
+                    </div>
+
+                    <div class="cheat-card__body">
+                        <p class="cheat-card__title">@game.Name</p>
+                        <p class="cheat-card__line">Đã bán: <strong>@game.SoldCount</strong></p>
+                        <p class="cheat-card__line">Còn lại: <strong>@game.RemainingCount</strong></p>
+                    </div>
+
+                    <div class="cheat-card__actions">
+                        <a class="cheat-btn cheat-btn--detail"
+                           asp-controller="Home"
+                           asp-action="GameDetail"
+                           asp-route-id="@game.GameId">
+                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                            Chi tiết
+                        </a>
+
+                        @if (isSoldOut)
+                        {
+                            <button class="cheat-btn cheat-btn--buy" type="button" disabled style="opacity:.65;cursor:not-allowed;">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                Hết hàng
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="cheat-btn cheat-btn--buy btn-cheap-buy"
+                                    type="button"
+                                    data-game-id="@game.GameId"
+                                    data-game-name="@game.Name"
+                                    data-remaining="@game.RemainingCount">
+                                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                                Mua ngay
+                            </button>
+                        }
+                    </div>
+                </div>
+            }
+        </section>
+    }
+
+    <!-- =========================
+         SECTION CŨ (BỎ QUA CATE=6)
+    ========================= -->
     @foreach (var cat in Model)
     {
+        if (cat.CategoryId == 6) continue;
+
         <section class="sectionTitle" aria-label="@cat.Name">
             <h1>@cat.Name</h1>
             <div class="underline" aria-hidden="true"></div>
@@ -71,7 +98,8 @@
                         <p class="acc-card__line">Đã bán: <strong>@game.SoldCount</strong></p>
                         <p class="acc-card__line">Còn lại: <strong>@game.RemainingCount</strong></p>
                     </div>
-                    @if (game.RemainingCount == 0)
+
+                    @if (isSoldOut)
                     {
                         <a class="acc-card__cta acc-card__cta--soldout"
                            href="javascript:void(0)"
@@ -81,7 +109,6 @@
                             <span class="cta__icon" aria-hidden="true">⛔</span>
                             <span class="cta__text">Hết hàng</span>
                         </a>
-
                     }
                     else
                     {
@@ -93,9 +120,140 @@
                             <img src="~/img/btn-view-all.gif" alt="Xem tất cả" loading="lazy" />
                         </a>
                     }
-                   
                 </div>
             }
         </section>
     }
+
 </main>
+
+<!-- =========================
+     MODAL CHỌN SỐ LƯỢNG + MUA
+========================= -->
+<div class="modal fade" id="cheapBuyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <i class="fa fa-bag-shopping me-2"></i>Mua acc giá rẻ
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-dark border-0 mb-3">
+                    <div><b>Game:</b> <span id="cheapModalGameName">---</span></div>
+                    <div class="text-muted small mt-1">
+                        Chọn số lượng acc muốn mua (server sẽ tự chọn acc AVAILABLE bất kỳ).
+                    </div>
+                </div>
+
+                <input type="hidden" id="cheapModalGameId" />
+                <input type="hidden" id="cheapModalRemaining" />
+
+                <label class="form-label">Số lượng</label>
+                <input type="number" class="form-control bg-dark border-0 text-white"
+                       id="cheapModalQty"
+                       min="1"
+                       value="1" />
+
+                <small class="text-muted d-block mt-2">
+                    Tối đa hiện có: <b id="cheapModalMaxText">0</b>
+                </small>
+
+                <div class="alert alert-warning mt-3 mb-0">
+                    <i class="fa fa-triangle-exclamation me-2"></i>
+                    Nếu có người khác mua trước, hệ thống có thể báo “không đủ hàng”.
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnCheapConfirmBuy">
+                    <i class="fa fa-check me-1"></i>Mua & thêm vào giỏ
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const $ = (s, root=document) => root.querySelector(s);
+
+      const modalEl = $("#cheapBuyModal");
+      const btnConfirm = $("#btnCheapConfirmBuy");
+
+      function toast(msg){ alert(msg); }
+
+      // Nếu bootstrap chưa load => báo rõ
+      if (!window.bootstrap || !window.bootstrap.Modal) {
+        console.error("Bootstrap JS chưa được load => modal không mở.");
+      }
+
+      // mở modal
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".btn-cheap-buy");
+        if(!btn) return;
+
+        const gameId = Number(btn.dataset.gameId || 0);
+        const gameName = btn.dataset.gameName || "---";
+        const remaining = Number(btn.dataset.remaining || 0);
+
+        $("#cheapModalGameId").value = String(gameId);
+        $("#cheapModalGameName").textContent = gameName;
+        $("#cheapModalRemaining").value = String(remaining);
+        $("#cheapModalMaxText").textContent = String(remaining);
+
+        const qtyInput = $("#cheapModalQty");
+        qtyInput.max = String(remaining);
+        qtyInput.value = "1";
+
+        // show modal
+        const m = window.bootstrap
+          ? (window.bootstrap.Modal.getOrCreateInstance(modalEl))
+          : null;
+
+        if (!m) return toast("Thiếu Bootstrap JS (bootstrap.bundle.min.js).");
+        m.show();
+      });
+
+      // confirm buy -> call API -> redirect cart
+      btnConfirm.addEventListener("click", async () => {
+        const gameId = Number($("#cheapModalGameId").value || 0);
+        const remaining = Number($("#cheapModalRemaining").value || 0);
+        let qty = Number($("#cheapModalQty").value || 1);
+
+        if(!gameId) return toast("Thiếu GameId.");
+        if(qty < 1) qty = 1;
+        if(qty > remaining) qty = remaining;
+
+        btnConfirm.disabled = true;
+
+        try{
+          const res = await fetch("/api/cart/add-cheap", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ gameId, quantity: qty })
+          });
+
+          const raw = await res.text();
+          let json = null;
+          try { json = JSON.parse(raw); } catch {}
+
+          if(!res.ok || !json?.ok){
+            toast(json?.message || ("Lỗi: " + res.status + "\n" + raw));
+            return;
+          }
+
+          // OK -> redirect sang cart
+          window.location.href = "/Home/Cart";
+        }catch(err){
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        }finally{
+          btnConfirm.disabled = false;
+        }
+      });
+    });
+</script>

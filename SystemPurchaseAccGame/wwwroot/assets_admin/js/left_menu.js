@@ -4,7 +4,11 @@
         item_bar_account: "/Admin/AccGame",
         item_bar_upload_acc: "/Admin/UploadAccGame",
         item_bar_sold: "/Admin/SoldAccGame",// nếu chưa có action này thì bạn tạo sau
-        item_bar_confirm_payment: "/Admin/ConfirmPayment"
+        item_bar_confirm_payment: "/Admin/ConfirmPayment",
+        item_bar_category: "/Admin/Category",
+        item_bar_game: "/Admin/Game",
+        item_bar_cheap_game: "/AdminCheap/CheapGames",
+        item_bar_cheap_acc: "/AdminCheap/CheapAccountListing",
     };
 
     function setActiveMenu(clickedId) {
@@ -71,6 +75,28 @@
     $("#detail_payment_user").on("click", function (e) {
         e.preventDefault();
         loadPartial(routes.item_bar_confirm_payment, "item_bar_confirm_payment");
+    });
+    //item_bar_upload_cate
+    $("#item_bar_upload_cate").on("click", function (e) {
+        e.preventDefault();
+        loadPartial(routes.item_bar_category, "item_bar_upload_cate");
+    });
+    //item_bar_upload_game
+    $("#item_bar_upload_game").on("click", function (e) {
+        e.preventDefault();
+        loadPartial(routes.item_bar_game, "item_bar_upload_game");
+    });
+    //item_bar_upload_cheap_game
+    $("#item_bar_upload_cheap_game").on("click", function (e) {
+        e.preventDefault();
+        loadPartial(routes.item_bar_cheap_game, "item_bar_upload_cheap_game");
+    });
+
+    //item_bar_upload_cheap_acc
+
+    $("#item_bar_upload_cheap_acc").on("click", function (e) {
+        e.preventDefault();
+        loadPartial(routes.item_bar_cheap_acc, "item_bar_upload_cheap_acc");
     });
     // Option: load mặc định khi vào Dashboard (ví dụ mở "Tài khoản")
     //loadPartial(routes.item_bar_account, "item_bar_account");

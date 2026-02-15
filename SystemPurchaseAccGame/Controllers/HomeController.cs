@@ -146,6 +146,7 @@ public class HomeController : Controller
                     Name = g.Name,
                     Slug = g.Slug,
                     ThumbnailUrl = g.ThumbnailUrl,
+                    Price = g.Price,
                     SoldCount = g.AccountListings.Count(al => al.Status == "SOLD"),
                     RemainingCount = g.AccountListings.Count(al => al.Status == "AVAILABLE")
                 }).ToList()
@@ -188,7 +189,7 @@ public class HomeController : Controller
                     .Where(x => x.MediaType == "thumbnail")
                     .Select(x => x.Url)
                     .FirstOrDefault() ?? string.Empty,
-                Price = al.Price / 100m
+                Price = al.Price
             })
             .ToList();
         return View(accounts);
@@ -526,6 +527,12 @@ public class HomeController : Controller
             return StatusCode(500, new ApiResult { Ok = false, Message = "Lỗi hệ thống: " + ex.Message });
         }
     }
+    public class AddCheapToCartReq
+    {
+        public int GameId { get; set; }
+        public int Quantity { get; set; }
+    }
+
     public async Task<IActionResult> HistoryPayment()
     {
         ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;

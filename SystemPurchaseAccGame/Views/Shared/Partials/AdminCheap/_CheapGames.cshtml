@@ -1,0 +1,388 @@
+﻿@using SystemPurchaseAccGame.ViewModel
+@model List<CheapGameRowVm>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary rounded p-4 mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div>
+                <h5 class="mb-1">Quản lý Game giá rẻ</h5>
+                <small class="text-muted">CRUD riêng • Tự add CategoryId = 6</small>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#cheapGameCreateModal">
+                    <i class="fa fa-plus me-1"></i> Thêm game giá rẻ
+                </button>
+                <button class="btn btn-outline-light btn-sm" type="button" onclick="location.reload()">
+                    <i class="fa fa-sync me-1"></i> Làm mới
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-secondary rounded p-4">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0" id="cheapGameTable">
+                <thead>
+                    <tr>
+                        <th style="width:90px">ID</th>
+                        <th>Tên</th>
+                        <th>Slug</th>
+                        <th class="text-end" style="width:140px">Giá game</th>
+                        <th style="width:120px">Active</th>
+                        <th style="width:170px">Ngày tạo</th>
+                        <th class="text-end" style="width:230px">Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var g in Model)
+                    {
+                        <tr data-game-id="@g.GameId"
+                            data-game-name="@g.Name"
+                            data-game-slug="@g.Slug"
+                            data-game-thumb="@(g.ThumbnailUrl ?? "")"
+                            data-game-active="@(g.IsActive ? "1" : "0")"
+                            data-game-price="@(g.Price ?? 0)">
+                            <td class="text-muted">#@g.GameId</td>
+                            <td class="fw-semibold">@g.Name</td>
+                            <td class="text-muted">@g.Slug</td>
+                            <td class="text-end text-primary fw-bold">₫@Convert.ToInt64(g.Price ?? 0).ToString("N0")</td>
+                            <td>
+                                @if (g.IsActive)
+                                {
+                                    <span class="badge bg-success">ON</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">OFF</span>
+                                }
+                            </td>
+                            <td class="text-muted">@g.CreatedAt.ToString("dd/MM/yyyy")</td>
+                            <td class="text-end">
+                                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                                    <button class="btn btn-outline-light btn-sm btn-cheapgame-edit" type="button" data-bs-toggle="modal" data-bs-target="#cheapGameEditModal">
+                                        <i class="fa fa-pen me-1"></i> Sửa
+                                    </button>
+                                    <button class="btn btn-danger btn-sm btn-cheapgame-delete" type="button">
+                                        <i class="fa fa-trash me-1"></i> Xóa
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ============ CREATE MODAL ============ -->
+<div class="modal fade" id="cheapGameCreateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title"><i class="fa fa-plus-circle me-2"></i>Thêm Game giá rẻ</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <label class="form-label">Tên game</label>
+                <input id="cgCreateName" class="form-control bg-dark border-0" placeholder="VD: Free Fire 90k" />
+
+                <label class="form-label mt-3">Slug (tuỳ chọn)</label>
+                <input id="cgCreateSlug" class="form-control bg-dark border-0" placeholder="VD: free-fire-90k" />
+
+                <label class="form-label mt-3">ThumbnailUrl (tuỳ chọn)</label>
+                <input id="cgCreateThumb" class="form-control bg-dark border-0" placeholder="VD: /img/game.png hoặc https://..." />
+
+                <label class="form-label mt-3">Giá game (VND)</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-0">₫</span>
+                    <input id="cgCreatePrice" type="number" min="0" class="form-control bg-dark border-0" placeholder="VD: 90000" />
+                </div>
+
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="cgCreateActive" checked>
+                    <label class="form-check-label" for="cgCreateActive">IsActive</label>
+                </div>
+
+                <small class="text-muted d-block mt-2">CategoryId sẽ tự set = 6.</small>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnCgCreate">
+                    <i class="fa fa-plus me-1"></i> Tạo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ EDIT MODAL ============ -->
+<div class="modal fade" id="cheapGameEditModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title"><i class="fa fa-pen me-2"></i>Sửa Game giá rẻ</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="cgEditId" />
+
+                <label class="form-label">Tên game</label>
+                <input id="cgEditName" class="form-control bg-dark border-0" />
+
+                <label class="form-label mt-3">Slug</label>
+                <input id="cgEditSlug" class="form-control bg-dark border-0" />
+
+                <label class="form-label mt-3">ThumbnailUrl</label>
+                <input id="cgEditThumb" class="form-control bg-dark border-0" />
+
+                <label class="form-label mt-3">Giá game (VND)</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-0">₫</span>
+                    <input id="cgEditPrice" type="number" min="0" class="form-control bg-dark border-0" />
+                </div>
+
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="cgEditActive">
+                    <label class="form-check-label" for="cgEditActive">IsActive</label>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnCgUpdate">
+                    <i class="fa fa-save me-1"></i> Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+      const $ = (s, root=document) => root.querySelector(s);
+
+      const tbl = $("#cheapGameTable");
+      const createModalEl = $("#cheapGameCreateModal");
+      const editModalEl = $("#cheapGameEditModal");
+
+      const cgCreateName = $("#cgCreateName");
+      const cgCreateSlug = $("#cgCreateSlug");
+      const cgCreateThumb = $("#cgCreateThumb");
+      const cgCreatePrice = $("#cgCreatePrice");
+      const cgCreateActive = $("#cgCreateActive");
+      const btnCgCreate = $("#btnCgCreate");
+
+      const cgEditId = $("#cgEditId");
+      const cgEditName = $("#cgEditName");
+      const cgEditSlug = $("#cgEditSlug");
+      const cgEditThumb = $("#cgEditThumb");
+      const cgEditPrice = $("#cgEditPrice");
+      const cgEditActive = $("#cgEditActive");
+      const btnCgUpdate = $("#btnCgUpdate");
+
+      function toast(msg){ alert(msg); }
+
+      function escapeHtml(s){
+        return String(s ?? "")
+          .replaceAll("&","&amp;")
+          .replaceAll("<","&lt;")
+          .replaceAll(">","&gt;")
+          .replaceAll('"',"&quot;")
+          .replaceAll("'","&#039;");
+      }
+
+      function hideModal(el){
+        if (!window.bootstrap || !el) return;
+        const inst = window.bootstrap.Modal.getInstance(el) || new window.bootstrap.Modal(el);
+        inst.hide();
+      }
+
+      function fmtVND(n){
+        const x = Number(n || 0);
+        return "₫" + x.toLocaleString("vi-VN");
+      }
+
+      function rowHtml(d){
+        const createdDate = (d.createdAt || "").slice(0,10).split("-").reverse().join("/");
+        const onOff = d.isActive ? `<span class="badge bg-success">ON</span>` : `<span class="badge bg-secondary">OFF</span>`;
+        const priceText = fmtVND(d.price || 0);
+
+        return `
+          <tr data-game-id="${d.gameId}"
+              data-game-name="${escapeHtml(d.name)}"
+              data-game-slug="${escapeHtml(d.slug)}"
+              data-game-thumb="${escapeHtml(d.thumbnailUrl || "")}"
+              data-game-active="${d.isActive ? "1" : "0"}"
+              data-game-price="${d.price ?? 0}">
+            <td class="text-muted">#${d.gameId}</td>
+            <td class="fw-semibold">${escapeHtml(d.name)}</td>
+            <td class="text-muted">${escapeHtml(d.slug)}</td>
+            <td class="text-end text-primary fw-bold">${priceText}</td>
+            <td>${onOff}</td>
+            <td class="text-muted">${createdDate || "--/--/----"}</td>
+            <td class="text-end">
+              <div class="d-flex justify-content-end gap-2 flex-wrap">
+                <button class="btn btn-outline-light btn-sm btn-cheapgame-edit" type="button" data-bs-toggle="modal" data-bs-target="#cheapGameEditModal">
+                  <i class="fa fa-pen me-1"></i> Sửa
+                </button>
+                <button class="btn btn-danger btn-sm btn-cheapgame-delete" type="button">
+                  <i class="fa fa-trash me-1"></i> Xóa
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }
+
+      // click edit/delete
+      document.addEventListener("click", (e) => {
+        const btnEdit = e.target.closest(".btn-cheapgame-edit");
+        const btnDel = e.target.closest(".btn-cheapgame-delete");
+
+        if (btnEdit) {
+          const tr = btnEdit.closest("tr");
+          cgEditId.value = tr.dataset.gameId || "";
+          cgEditName.value = tr.dataset.gameName || "";
+          cgEditSlug.value = tr.dataset.gameSlug || "";
+          cgEditThumb.value = tr.dataset.gameThumb || "";
+          cgEditPrice.value = tr.dataset.gamePrice || "0";
+          cgEditActive.checked = (tr.dataset.gameActive === "1");
+          return;
+        }
+
+        if (btnDel) {
+          const tr = btnDel.closest("tr");
+          const id = Number(tr.dataset.gameId || 0);
+          const name = tr.dataset.gameName || "";
+
+          if (!confirm(`Xóa game "${name}"? (Nếu có bài đăng sẽ bị chặn)`)) return;
+
+          (async () => {
+            btnDel.disabled = true;
+            try {
+              const res = await fetch("/admin/cheap/api/game/delete",{
+                method:"POST",
+                headers:{ "Content-Type":"application/json" },
+                body: JSON.stringify({ gameId: id })
+              });
+
+              const data = await res.json().catch(()=>null);
+              if(!res.ok || !data?.success){
+                toast(data?.message || "Xóa thất bại.");
+                return;
+              }
+
+              tr.remove();
+              toast(data?.message || "OK");
+            } catch (err) {
+              console.error(err);
+              toast("Lỗi mạng / server.");
+            } finally {
+              btnDel.disabled = false;
+            }
+          })();
+
+          return;
+        }
+      });
+
+      // create
+      btnCgCreate?.addEventListener("click", async () => {
+        const name = (cgCreateName.value || "").trim();
+        const slug = (cgCreateSlug.value || "").trim();
+        const thumbnailUrl = (cgCreateThumb.value || "").trim();
+        const price = cgCreatePrice.value ? Number(cgCreatePrice.value) : 0;
+        const isActive = !!cgCreateActive.checked;
+
+        if(!name) return toast("Vui lòng nhập tên game.");
+
+        btnCgCreate.disabled = true;
+        try {
+          const res = await fetch("/admin/cheap/api/game/create",{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ name, slug, thumbnailUrl, price, isActive })
+          });
+
+          const data = await res.json().catch(()=>null);
+          if(!res.ok || !data?.success){
+            toast(data?.message || "Thêm thất bại.");
+            return;
+          }
+
+          tbl.querySelector("tbody").insertAdjacentHTML("afterbegin", rowHtml(data.data));
+
+          cgCreateName.value = "";
+          cgCreateSlug.value = "";
+          cgCreateThumb.value = "";
+          cgCreatePrice.value = "";
+          cgCreateActive.checked = true;
+          hideModal(createModalEl);
+
+          toast(data?.message || "OK");
+        } catch (err) {
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        } finally {
+          btnCgCreate.disabled = false;
+        }
+      });
+
+      // update
+      btnCgUpdate?.addEventListener("click", async () => {
+        const gameId = Number(cgEditId.value || 0);
+        const name = (cgEditName.value || "").trim();
+        const slug = (cgEditSlug.value || "").trim();
+        const thumbnailUrl = (cgEditThumb.value || "").trim();
+        const price = cgEditPrice.value ? Number(cgEditPrice.value) : 0;
+        const isActive = !!cgEditActive.checked;
+
+        if(!gameId) return toast("Thiếu GameId.");
+        if(!name) return toast("Vui lòng nhập tên game.");
+
+        btnCgUpdate.disabled = true;
+        try {
+          const res = await fetch("/admin/cheap/api/game/update",{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ gameId, name, slug, thumbnailUrl, price, isActive })
+          });
+
+          const data = await res.json().catch(()=>null);
+          if(!res.ok || !data?.success){
+            toast(data?.message || "Cập nhật thất bại.");
+            return;
+          }
+
+          const tr = tbl.querySelector(`tr[data-game-id="${gameId}"]`);
+          if(tr){
+            tr.dataset.gameName = data.data.name;
+            tr.dataset.gameSlug = data.data.slug;
+            tr.dataset.gameThumb = data.data.thumbnailUrl || "";
+            tr.dataset.gameActive = data.data.isActive ? "1" : "0";
+            tr.dataset.gamePrice = data.data.price ?? 0;
+
+            tr.children[1].textContent = data.data.name;
+            tr.children[2].textContent = data.data.slug;
+            tr.children[3].textContent = fmtVND(data.data.price || 0);
+            tr.children[4].innerHTML = data.data.isActive ? `<span class="badge bg-success">ON</span>` : `<span class="badge bg-secondary">OFF</span>`;
+          }
+
+          hideModal(editModalEl);
+          toast(data?.message || "OK");
+        } catch (err) {
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        } finally {
+          btnCgUpdate.disabled = false;
+        }
+      });
+
+    })();
+</script>

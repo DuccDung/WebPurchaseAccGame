@@ -1,0 +1,255 @@
+﻿@using SystemPurchaseAccGame.ViewModel
+@using System.Globalization
+@model List<AccountListingVm>
+
+@{
+    Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
+    var vi = new CultureInfo("vi-VN");
+}
+
+<div class="container my-4">
+    <h2 class="category-name text-center fw-bold text-uppercase mb-1 title-acc" style="color:#092e96">
+        Tài Khoản - CẦN VIP-VVIP
+    </h2>
+    <div class="underline_cate mx-auto" style="background:#0d1b82"></div>
+
+    <!-- FILTER BAR -->
+    <div class="container my-3">
+        <div class="filter-bar">
+            <div class="row g-3 align-items-end">
+
+                <!-- Chọn mức giá -->
+                <div class="col-12 col-lg-3">
+                    <label class="filter-label">Chọn Mức Giá:</label>
+                    <select id="priceRange" class="form-select filter-control">
+                        <option value="" selected>Mặc định</option>
+                        <option value="lt100">Dưới 100.000</option>
+                        <option value="100-500">100.000 - 500.000</option>
+                        <option value="gt500">Trên 500.000</option>
+                    </select>
+                </div>
+
+                <!-- Sắp xếp theo -->
+                <div class="col-12 col-lg-3">
+                    <label class="filter-label">Sắp Xếp Theo:</label>
+                    <select id="sortBy" class="form-select filter-control">
+                        <option value="" selected>Mặc định</option>
+                        <option value="priceAsc">Giá tăng dần</option>
+                        <option value="priceDesc">Giá giảm dần</option>
+                        <option value="newest">Mới nhất</option>
+                    </select>
+                </div>
+
+                <!-- Tìm kiếm -->
+                <div class="col-12 col-lg-3">
+                    <label class="filter-label">Tìm Kiếm:</label>
+                    <input id="keyword"
+                           type="text"
+                           class="form-control filter-control"
+                           placeholder="Tìm mã sản phẩm, tiêu đề,..." />
+                </div>
+
+                <!-- Buttons -->
+                <div class="col-12 col-lg-3">
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="btnApply" type="button" class="btn btn-search w-100">
+                                <i class="fa-solid fa-magnifying-glass me-2"></i>Tìm Kiếm
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button id="btnReset" type="button" class="btn btn-reset w-100">
+                                <i class="fa-solid fa-rotate-left me-2"></i>Đặt Lại
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hint -->
+                    <div class="mt-2 small text-muted">
+                        Hiển thị: <strong id="countVisible">0</strong> /
+                        <strong id="countTotal">0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMPTY -->
+    <div id="emptyState" class="text-center py-4" style="display:none;">
+        Không tìm thấy account phù hợp.
+    </div>
+
+    <!-- GRID -->
+    <div id="grid" class="row g-3">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-12 col-sm-6 col-lg-3 account-item"
+                     data-id="@item.AccountListingId"
+                     data-title="@item.Title"
+                     data-price="@item.Price">
+
+                    <div class="product-card-v2 h-100">
+                        <div class="ms-tag-v2">MS: @item.AccountListingId</div>
+
+                        <!-- bạn chưa có discount/old price => ẩn hoặc để cứng nếu muốn -->
+                        @* <div class="sale-tag-v2">-40%</div> *@
+
+                        <div class="product-hero-v2">
+                            <img src="@(string.IsNullOrWhiteSpace(item.urlPhoto) ? "/assets/img/no-image.png" : item.urlPhoto)"
+                                 alt="@item.Title"
+                                 loading="lazy" />
+                        </div>
+
+                        <div class="product-title-v2">@item.Title</div>
+
+                        <div class="product-info-v2">
+                            <!-- bạn chưa có fields như: TÀI KHOẢN, THÔNG TIN, MÁY CHỦ, CẤP ĐỘ => lấy Description thay thế -->
+                            <div class="info-row-v2 info-blue">
+                                <span class="info-icon-v2">★</span>
+                                <span>ID: @item.AccountListingId</span>
+                            </div>
+
+                            <div class="info-row-v2 info-red">
+                                <span class="info-icon-v2">★</span>
+                                <span>@(string.IsNullOrWhiteSpace(item.Description) ? "THÔNG TIN: ĐANG CẬP NHẬT" : item.Description)</span>
+                            </div>
+
+                            <div class="remain-box-v2">
+                                Trạng thái <span class="remain-num-v2">AVAILABLE</span>
+                            </div>
+
+                            <div class="row g-2 align-items-center mt-2">
+                                <div class="col-6">
+                                    @* nếu sau này có old price/discount thì render ở đây *@
+                                    <div class="price-new-v2">
+                                        @item.Price.ToString("N0", vi) ₫
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <a class="btn btn-buy-v2 w-100 d-flex justify-content-center align-items-center"
+                                       asp-controller="ClientHome"
+                                       asp-action="Purchase"
+                                       asp-route-id="@item.AccountListingId">
+                                        <i class="fa-solid fa-cart-shopping me-2"></i>Mua
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row g-2 mt-2">
+                                <div class="col-12">
+                                    <a class="btn btn-outline-primary w-100"
+                                       asp-controller="Home"
+                                       asp-action="Purchase"
+                                       asp-route-id="@item.AccountListingId">
+                                        <i class="fa-solid fa-circle-info me-2"></i>Chi tiết
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+
+      const priceRange = $("priceRange");
+      const sortBy = $("sortBy");
+      const keyword = $("keyword");
+      const btnApply = $("btnApply");
+      const btnReset = $("btnReset");
+
+      const grid = $("grid");
+      const emptyState = $("emptyState");
+      const countVisible = $("countVisible");
+      const countTotal = $("countTotal");
+
+      let items = Array.from(document.querySelectorAll(".account-item"));
+
+      const norm = (s) => (s || "").toString().trim().toLowerCase();
+
+      function parsePrice(el) {
+        const p = el.getAttribute("data-price");
+        const n = Number(p);
+        return isNaN(n) ? 0 : n;
+      }
+
+      function matchPriceRange(price, range) {
+        if (!range) return true;
+        if (range === "lt100") return price < 100000;
+        if (range === "100-500") return price >= 100000 && price <= 500000;
+        if (range === "gt500") return price > 500000;
+        return true;
+      }
+
+      function applyFilterAndSort() {
+        const q = norm(keyword.value);
+        const range = priceRange.value;
+        const sort = sortBy.value;
+
+        // filter
+        let filtered = [];
+        for (const el of items) {
+          const title = norm(el.getAttribute("data-title"));
+          const id = norm(el.getAttribute("data-id"));
+          const price = parsePrice(el);
+
+          const okText = !q || title.includes(q) || id.includes(q);
+          const okPrice = matchPriceRange(price, range);
+
+          const ok = okText && okPrice;
+          el.style.display = ok ? "" : "none";
+          if (ok) filtered.push(el);
+        }
+
+        // sort: thao tác DOM theo list filtered
+        if (sort) {
+          filtered.sort((a, b) => {
+            const pa = parsePrice(a);
+            const pb = parsePrice(b);
+
+            if (sort === "priceAsc") return pa - pb;
+            if (sort === "priceDesc") return pb - pa;
+
+            // newest: bạn chưa có CreatedAt -> tạm coi ID lớn hơn là mới hơn
+            if (sort === "newest") {
+              const ida = Number(a.getAttribute("data-id")) || 0;
+              const idb = Number(b.getAttribute("data-id")) || 0;
+              return idb - ida;
+            }
+            return 0;
+          });
+
+          for (const el of filtered) grid.appendChild(el);
+        }
+
+        // counts + empty
+        countTotal.textContent = String(items.length);
+        countVisible.textContent = String(filtered.length);
+        emptyState.style.display = filtered.length === 0 ? "block" : "none";
+      }
+
+      btnApply.addEventListener("click", applyFilterAndSort);
+
+      // realtime search như mẫu của bạn (gõ là lọc)
+      keyword.addEventListener("input", applyFilterAndSort);
+      priceRange.addEventListener("change", applyFilterAndSort);
+      sortBy.addEventListener("change", applyFilterAndSort);
+
+      btnReset.addEventListener("click", () => {
+        priceRange.value = "";
+        sortBy.value = "";
+        keyword.value = "";
+        applyFilterAndSort();
+      });
+
+      applyFilterAndSort();
+    })();
+</script>

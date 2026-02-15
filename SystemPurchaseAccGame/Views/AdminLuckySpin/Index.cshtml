@@ -1,0 +1,54 @@
+﻿@using SystemPurchaseAccGame.Models
+@model List<LuckySpinItem>
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Admin - Lucky Spin Items</h3>
+        <a class="btn btn-success" asp-action="Create">+ Tạo item</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Tier</th>
+                    <th>Value</th>
+                    <th>Weight</th>
+                    <th>Remaining</th>
+                    <th>Active</th>
+                    <th>LastWin</th>
+                    <th style="width:180px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.ItemId</td>
+                        <td>@x.Title</td>
+                        <td>@x.PrizeTier</td>
+                        <td>@x.PrizeValue</td>
+                        <td>@x.Weight</td>
+                        <td>@(x.Remaining == null ? "∞" : x.Remaining.ToString())</td>
+                        <td>@(x.IsActive ? "YES" : "NO")</td>
+                        <td>
+                            @(x.LastWonAt == null ? "-" : x.LastWonAt.Value.ToString("yyyy-MM-dd HH:mm"))
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@x.ItemId">Edit</a>
+                            <form asp-action="Delete" asp-route-id="@x.ItemId" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Xóa item này?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

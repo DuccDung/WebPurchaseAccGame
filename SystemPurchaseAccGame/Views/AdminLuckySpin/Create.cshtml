@@ -1,0 +1,76 @@
+﻿@using SystemPurchaseAccGame.Models
+@model LuckySpinItem
+@{
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    var isEdit = Model.ItemId > 0;
+}
+
+<div class="container py-4" style="max-width:720px;">
+    <h3 class="mb-3">@((isEdit ? "Edit" : "Create") + " Lucky Spin Item")</h3>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+        @if (isEdit)
+        {
+            <input type="hidden" asp-for="ItemId" />
+        }
+
+        <div class="mb-3">
+            <label class="form-label">Title (hiển thị vòng quay)</label>
+            <input class="form-control" asp-for="Title" />
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label class="form-label">giá trị acc (1k/10k/100k)</label>
+                <input class="form-control" asp-for="PrizeTier" />
+            </div>
+            <div class="col-md-8 mb-3">
+                <label class="form-label">Giá trị acc (1000/10000/100000)</label>
+                <input class="form-control" asp-for="PrizeValue" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">AccountUser</label>
+                <input class="form-control" asp-for="AccountUser" />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">AccountPass</label>
+                <input class="form-control" asp-for="AccountPass" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Tỉ lệ thắng (tỉ lệ: (50 - 30 - 15 - 5))</label>
+                <input class="form-control" asp-for="Weight" />
+                <div class="form-text">Ví dụ: 50, 30, 15, 5...</div>
+            </div>
+            <input class="form-control" hidden value="1" asp-for="Remaining" />
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Active</label>
+                <select class="form-select" asp-for="IsActive">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Lời nhắn tới người thắng</label>
+            <input class="form-control" asp-for="WinMessage" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Note (admin)</label>
+            <textarea class="form-control" asp-for="Note" rows="3"></textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
+        </div>
+    </form>
+</div>

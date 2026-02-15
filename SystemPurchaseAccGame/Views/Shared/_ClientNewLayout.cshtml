@@ -1,0 +1,512 @@
+﻿@using System.Security.Claims
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Trang chủ</title>
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;600;700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+          <link href="~/assets_new/css/main.css" asp-append-version="true" rel="stylesheet" />
+    <link href="~/assets_new/css/login.css" asp-append-version="true" rel="stylesheet" />
+    <link href="~/assets_new/css/product_detail.css" asp-append-version="true" rel="stylesheet" />
+</head>
+@{
+        var isAuth = User?.Identity?.IsAuthenticated == true;
+        var email = isAuth ? (User.FindFirstValue(ClaimTypes.Name) ?? "Khách") : "Khách";
+}
+@using System.Globalization
+@{
+        var vi = new CultureInfo("vi-VN");
+        decimal bal = 0;
+
+        var balStr = User?.FindFirst("balance")?.Value;
+        if (!string.IsNullOrWhiteSpace(balStr))
+                decimal.TryParse(balStr, NumberStyles.Any, CultureInfo.InvariantCulture, out bal);
+}
+
+<body>
+    <header class="nav-header">
+        <div class="nav-container">
+            <!-- LEFT -->
+            <div class="nav-left">
+                <a class="nav-brand" href="#" aria-label="Trang chủ">
+                    <img src="~/assets_new/img/logo_acc_play.png"
+                         alt="logo"
+                         class="nav-logo" />
+                </a>
+            </div>
+
+            <!-- MAIN MENU -->
+            <nav class="nav-main" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li>
+                        <a class="nav-toplink" href="#">
+                            <span class="nav-icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                                    <path d="M3 13h8V3H3v10Zm10 8h8V11h-8v10Zm0-18v6h8V3h-8ZM3 21h8v-6H3v6Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.6" />
+                                </svg>
+                            </span>
+                            <span class="text-box">Trang Chủ</span>
+                        </a>
+                    </li>
+
+                    <!-- dropdown: Lịch sử đơn hàng -->
+                    <li class="nav-has-children" data-dropdown>
+                        <a class="nav-toplink">
+                            <span class="nav-icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                                    <path d="M6 6h15l-2 8H7L6 6Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.8"
+                                          stroke-linejoin="round" />
+                                    <path d="M6 6H3"
+                                          stroke="currentColor"
+                                          stroke-width="1.8"
+                                          stroke-linecap="round" />
+                                    <path d="M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.8" />
+                                </svg>
+                            </span>
+                            <span class="text-box">Lịch Sử Đơn Hàng</span>
+                        </a>
+                    </li>
+
+                    <!-- dropdown: Nạp tiền -->
+                    <li class="nav-has-children" data-dropdown>
+                        <a class="nav-toplink">
+                            <span class="nav-icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                                    <path d="M3 7h18v10H3V7Z"
+                                          stroke="currentColor"
+                                          stroke-width="1.8" />
+                                    <path d="M3 10h18"
+                                          stroke="currentColor"
+                                          stroke-width="1.8" />
+                                </svg>
+                            </span>
+                            <span class="text-box">Nạp Tiền</span>
+                            <svg class="nav-caret"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 aria-hidden="true">
+                                <path d="m19 9-7 7-7-7"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round" />
+                            </svg>
+                        </a>
+
+                        <ul class="nav-submenu" role="menu" aria-label="Nạp Tiền">
+                            <li><a href="#" role="menuitem">Thẻ Cào</a></li>
+                            <li><a href="#" role="menuitem">Ngân Hàng</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- RIGHT TOOLS -->
+            <div class="nav-tools">
+                <button id="themeMood"
+                        type="button"
+                        aria-label="Chuyển sáng/tối"
+                        title="Sáng/Tối">
+                    <iconify-icon id="themeIcon"
+                                  icon="line-md:sunny-outline-to-moon-alt-loop-transition"></iconify-icon>
+                </button>
+
+                <button id="grayScale"
+                        type="button"
+                        aria-label="Bật/tắt grayscale"
+                        title="Grayscale">
+                    <iconify-icon id="grayIcon"
+                                  icon="line-md:circle-to-confirm-circle-transition"></iconify-icon>
+                </button>
+
+                <button class="nav-icon-btn"
+                        type="button"
+                        aria-label="Mở menu"
+                        id="mobileMenuBtn">
+                    <svg class="nav-icon"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         aria-hidden="true">
+                        <path d="M4 6h16M4 12h16m-7 6h7"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <div class="nav-user"
+                     id="userBtn"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Tài khoản">
+                    <div class="nav-avatar">
+                        <img src="~/assets_new/img/avatar_default.svg" alt="Avatar" />
+                    </div>
+
+                    <div class="nav-user-meta">
+                        <div class="name">@email</div>
+                        <small class="balance">@bal.ToString("N0", vi) ₫</small>
+                    </div>
+
+                    <svg class="nav-user-caret"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         aria-hidden="true">
+                        <path d="m19 9-7 7-7-7"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+
+                    <div class="nav-user-menu" role="menu" aria-label="User menu">
+                        @if (!isAuth)
+                        {
+                            <a asp-controller="ClientHome" asp-action="Login" role="menuitem">Đăng Nhập</a>
+                            <a asp-controller="ClientHome" asp-action="Login" role="menuitem">Tạo Tài Khoản</a>
+                            <a href="#" role="menuitem">Quên Mật Khẩu?</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="ClientHome" asp-action="Logout" role="menuitem">Đăng xuất</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- MOBILE MENU (OFFCANVAS) -->
+    <div class="nav-mobile-overlay" id="mobileOverlay" hidden></div>
+
+    <aside class="nav-mobile" id="mobileMenu" aria-hidden="true">
+        <div class="nav-mobile-head">
+            <div class="nav-mobile-title">Menu</div>
+            <button class="nav-mobile-close"
+                    id="mobileCloseBtn"
+                    type="button"
+                    aria-label="Đóng menu">
+                <svg viewBox="0 0 24 24"
+                     width="20"
+                     height="20"
+                     fill="none"
+                     aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="nav-mobile-body">
+            <!-- Bạn có thể giữ link giống menu desktop -->
+            <a class="nav-mobile-link" href="#">Trang Chủ</a>
+            <button class="nav-mobile-acc" type="button" data-m-acc>
+                <span>Lịch Sử Đơn Hàng</span>
+
+                <button class="nav-mobile-acc" type="button" data-m-acc>
+                    <span>Nạp Tiền</span>
+                    <svg class="nav-mobile-caret"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         aria-hidden="true">
+                        <path d="m19 9-7 7-7-7"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="nav-mobile-sub" data-m-panel>
+                    <a class="nav-mobile-sublink" href="#">Thẻ Cào</a>
+                    <a class="nav-mobile-sublink" href="#">Ngân Hàng</a>
+                </div>
+
+                <div class="nav-mobile-sep"></div>
+
+                <!-- User actions (vì trên mobile bạn đang ẩn userBtn) -->
+                <a class="nav-mobile-link" href="#">Đăng Nhập</a>
+                <a class="nav-mobile-link" href="#">Tạo Tài Khoản</a>
+                <a class="nav-mobile-link" href="#">Quên Mật Khẩu?</a>
+        </div>
+    </aside>
+    @RenderBody()
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-container">
+                <!-- LEFT -->
+                <div class="footer-col footer-left">
+                    <img class="footer-logo"
+                         src="~/assets_new/img/logo_acc_play.png"
+                         alt="SHOPACCPLAY" />
+
+                    <div class="footer-slogan">
+                        KHO ACC &amp; DỊCH VỤ TỰ ĐỘNG GIÁ TỐT NHẤT THỊ TRƯỜNG VIỆT NAM
+                    </div>
+
+                    <a class="footer-btn" href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="footer-col footer-right">
+                    <div class="footer-title">LIÊN HỆ HỖ TRỢ</div>
+                    <div class="footer-subtitle">HÃY LIÊN HỆ KHI BẠN CẦN HỖ TRỢ VÀ TƯ VẤN</div>
+
+                    <a class="footer-btn" href="tel:0767624456" aria-label="Gọi hỗ trợ">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>0767624456</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- back to top -->
+            <button class="footer-top" type="button" aria-label="Lên đầu trang">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-bottom-left">Phát triển bởi SHOPACCPLAY.COM</div>
+                <div class="footer-bottom-right">Phiên bản: Local</div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Scroll to top (nhẹ, không ảnh hưởng phần khác)
+        document.querySelector(".footer-top")?.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+    <script>
+              /* =========================
+                1) THEME (light/dark) + persist
+              ========================== */
+              const root = document.documentElement;
+              const themeBtn = document.getElementById("themeMood");
+              const themeIcon = document.getElementById("themeIcon");
+
+              function setTheme(theme) {
+                root.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+
+                const isDark = theme === "dark";
+                themeIcon.setAttribute(
+                  "icon",
+                  isDark
+                    ? "line-md:moon-to-sunny-outline-loop-transition"
+                    : "line-md:sunny-outline-to-moon-alt-loop-transition",
+                );
+
+                themeBtn.title = isDark ? "Chế độ sáng" : "Chế độ tối";
+                themeBtn.setAttribute(
+                  "aria-label",
+                  isDark ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối",
+                );
+              }
+
+              const savedTheme = localStorage.getItem("theme");
+              const systemDark =
+                window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches;
+              setTheme(savedTheme || (systemDark ? "dark" : "light"));
+
+              themeBtn.addEventListener("click", () => {
+                const cur = root.getAttribute("data-theme") || "light";
+                setTheme(cur === "dark" ? "light" : "dark");
+              });
+
+            /* =========================
+           MENU JS (DESKTOP + MOBILE)
+           - Safe: không lỗi khi thiếu submenu/panel
+        ========================= */
+
+        /* ---------- helpers ---------- */
+        const $ = (sel, root = document) => root.querySelector(sel);
+        const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+        /* =========================
+           1) DESKTOP DROPDOWN (li[data-dropdown])
+           HTML của bạn không có data-dropdown-trigger nữa
+        ========================= */
+        const dropdownLis = $$('li[data-dropdown]');
+
+        function closeAllDesktopDropdowns() {
+          dropdownLis.forEach((li) => li.setAttribute("data-open", "false"));
+        }
+
+        dropdownLis.forEach((li) => {
+          // clickable area: .nav-toplink
+          const trigger = $(".nav-toplink", li);
+          const submenu = $(".nav-submenu", li);
+
+          // Nếu không có submenu thì thôi (ví dụ item "Lịch Sử Đơn Hàng" bạn để trống)
+          if (!trigger || !submenu) return;
+
+          // đảm bảo có role/aria cơ bản (optional)
+          trigger.setAttribute("aria-haspopup", "true");
+
+          trigger.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const willOpen = li.getAttribute("data-open") !== "true";
+            closeAllDesktopDropdowns();
+            li.setAttribute("data-open", willOpen ? "true" : "false");
+          });
+        });
+
+        // click ra ngoài -> đóng dropdown desktop
+        document.addEventListener("click", (e) => {
+          const insideDropdown = e.target.closest('li[data-dropdown]');
+          const insideUser = e.target.closest("#userBtn"); // bạn vẫn có user menu
+          if (!insideDropdown && !insideUser) {
+            closeAllDesktopDropdowns();
+          }
+        });
+
+        // ESC -> đóng dropdown desktop
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeAllDesktopDropdowns();
+        });
+
+        /* =========================
+           2) USER DROPDOWN (#userBtn)
+        ========================= */
+        const userBtn = $("#userBtn");
+
+        function closeUserMenu() {
+          if (userBtn) userBtn.setAttribute("data-open", "false");
+        }
+
+        if (userBtn) {
+          userBtn.addEventListener("click", () => {
+            const willOpen = userBtn.getAttribute("data-open") !== "true";
+            userBtn.setAttribute("data-open", willOpen ? "true" : "false");
+          });
+
+          userBtn.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              userBtn.click();
+            }
+          });
+
+          document.addEventListener("click", (e) => {
+            const insideUser = e.target.closest("#userBtn");
+            if (!insideUser) closeUserMenu();
+          });
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeUserMenu();
+          });
+        }
+
+        /* =========================
+           3) MOBILE OFFCANVAS
+        ========================= */
+        const mobileMenuBtn = $("#mobileMenuBtn");
+        const mobileMenu = $("#mobileMenu");
+        const mobileOverlay = $("#mobileOverlay");
+        const mobileCloseBtn = $("#mobileCloseBtn");
+
+        function openMobileMenu() {
+          if (!mobileMenu || !mobileOverlay) return;
+
+          mobileOverlay.hidden = false;
+          mobileMenu.setAttribute("data-open", "true");
+          mobileMenu.setAttribute("aria-hidden", "false");
+          document.body.classList.add("nav-lock");
+        }
+
+        function closeMobileMenu() {
+          if (!mobileMenu || !mobileOverlay) return;
+
+          mobileMenu.setAttribute("data-open", "false");
+          mobileMenu.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("nav-lock");
+
+          // đợi animation xong rồi hidden overlay
+          setTimeout(() => {
+            mobileOverlay.hidden = true;
+          }, 220);
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", openMobileMenu);
+        if (mobileCloseBtn) mobileCloseBtn.addEventListener("click", closeMobileMenu);
+        if (mobileOverlay) mobileOverlay.addEventListener("click", closeMobileMenu);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && mobileMenu?.getAttribute("data-open") === "true") {
+            closeMobileMenu();
+          }
+        });
+
+        // click link trong mobile -> đóng menu (UX tốt hơn)
+        if (mobileMenu) {
+          mobileMenu.addEventListener("click", (e) => {
+            const a = e.target.closest("a");
+            if (a && a.classList.contains("nav-mobile-link")) closeMobileMenu();
+            if (a && a.classList.contains("nav-mobile-sublink")) closeMobileMenu();
+          });
+        }
+
+        /* =========================
+           4) MOBILE ACCORDION (data-m-acc + data-m-panel)
+           - Safe: nếu item không có panel -> không lỗi
+           - Chỉ toggle panel ngay sau button
+        ========================= */
+        function closeAllMobilePanels() {
+          if (!mobileMenu) return;
+
+          $$("[data-m-panel]", mobileMenu).forEach((p) => {
+            p.setAttribute("data-open", "false");
+            const caret = p.previousElementSibling?.querySelector(".nav-mobile-caret");
+            if (caret) caret.style.transform = "rotate(0deg)";
+          });
+        }
+
+        if (mobileMenu) {
+          const accBtns = $$("[data-m-acc]", mobileMenu);
+
+          accBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const panel = btn.nextElementSibling;
+
+              // Không có panel hoặc panel không đúng loại -> bỏ qua (VD: "Lịch Sử Đơn Hàng")
+              if (!panel || !panel.hasAttribute("data-m-panel")) return;
+
+              const isOpen = panel.getAttribute("data-open") === "true";
+
+              // nếu muốn chỉ mở 1 panel tại 1 thời điểm:
+              closeAllMobilePanels();
+
+              // toggle panel hiện tại
+              panel.setAttribute("data-open", isOpen ? "false" : "true");
+
+              const caret = btn.querySelector(".nav-mobile-caret");
+              if (caret) caret.style.transform = isOpen ? "rotate(0deg)" : "rotate(180deg)";
+            });
+          });
+        }
+    </script>
+</body>
+</html>

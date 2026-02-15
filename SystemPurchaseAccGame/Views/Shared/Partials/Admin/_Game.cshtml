@@ -1,0 +1,493 @@
+﻿@using SystemPurchaseAccGame.ViewModel
+@model List<GameRowVm>
+
+@{
+    // ViewBag.Categories = List<{CategoryId, Name}>
+    var cats = ViewBag.Categories as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary rounded p-4 mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div>
+                <h5 class="mb-1">Quản lý Game</h5>
+                <small class="text-muted">Thêm / sửa / xóa game • gán Category • bật/tắt hiển thị</small>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#gameCreateModal">
+                    <i class="fa fa-plus me-1"></i> Thêm game
+                </button>
+                <button class="btn btn-outline-light btn-sm" type="button" onclick="location.reload()">
+                    <i class="fa fa-sync me-1"></i> Làm mới
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-secondary rounded p-4">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0" id="gameTable">
+                <thead>
+                    <tr>
+                        <th style="width:90px">ID</th>
+                        <th style="width:70px">Ảnh</th>
+                        <th>Game</th>
+                        <th>Category</th>
+                        <th>Slug</th>
+                        <th class="text-center" style="width:110px">Hiển thị</th>
+                        <th class="text-end" style="width:110px">Listing</th>
+                        <th style="width:160px">Ngày tạo</th>
+                        <th class="text-end" style="width:230px">Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var g in Model)
+                    {
+                        <tr data-game-id="@g.GameId"
+                            data-category-id="@g.CategoryId"
+                            data-name="@g.Name"
+                            data-slug="@g.Slug"
+                            data-thumb="@g.ThumbnailUrl"
+                            data-active="@(g.IsActive ? "true" : "false")">
+                            <td class="text-muted">#@g.GameId</td>
+
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(g.ThumbnailUrl))
+                                {
+                                    <img src="@g.ThumbnailUrl" alt="thumb"
+                                         style="width:46px;height:46px;border-radius:10px;object-fit:cover;border:1px solid rgba(255,255,255,.12)" />
+                                }
+                                else
+                                {
+                                    <div class="text-muted">--</div>
+                                }
+                            </td>
+
+                            <td>
+                                <div class="fw-semibold">@g.Name</div>
+                                <small class="text-muted">Category: @g.CategoryName</small>
+                            </td>
+
+                            <td class="text-muted">@g.CategoryName</td>
+                            <td class="text-muted">@g.Slug</td>
+
+                            <td class="text-center">
+                                @if (g.IsActive)
+                                {
+                                    <span class="badge bg-success">ON</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">OFF</span>
+                                }
+                            </td>
+
+                            <td class="text-end">
+                                <span class="badge bg-dark" style="border:1px solid rgba(255,255,255,.12)">@g.ListingCount</span>
+                            </td>
+
+                            <td class="text-muted">@g.CreatedAt.ToString("dd/MM/yyyy")</td>
+
+                            <td class="text-end">
+                                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                                    <button class="btn btn-outline-light btn-sm btn-game-edit" type="button"
+                                            data-bs-toggle="modal" data-bs-target="#gameEditModal">
+                                        <i class="fa fa-pen me-1"></i> Sửa
+                                    </button>
+                                    <button class="btn btn-danger btn-sm btn-game-delete" type="button">
+                                        <i class="fa fa-trash me-1"></i> Xóa
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ============ CREATE MODAL ============ -->
+<div class="modal fade" id="gameCreateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title"><i class="fa fa-plus-circle me-2"></i>Thêm Game</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Tên game</label>
+                        <input id="gameCreateName" class="form-control bg-dark border-0" placeholder="VD: Play Together" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <select id="gameCreateCategoryId" class="form-select bg-dark border-0">
+                            <option value="0" selected>-- Chọn category --</option>
+                            @foreach (var c in cats)
+                            {
+                                <option value="@c.CategoryId">@c.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Slug (tuỳ chọn)</label>
+                        <input id="gameCreateSlug" class="form-control bg-dark border-0" placeholder="VD: play-together" />
+                        <small class="text-muted">Bỏ trống sẽ tự tạo từ tên.</small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">ThumbnailUrl (tuỳ chọn)</label>
+                        <input id="gameCreateThumb" class="form-control bg-dark border-0" placeholder="https://..." />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Mô tả (tuỳ chọn)</label>
+                        <textarea id="gameCreateDesc" class="form-control bg-dark border-0" rows="4"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="gameCreateActive" checked />
+                            <label class="form-check-label" for="gameCreateActive">Hiển thị (IsActive)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnGameCreate">
+                    <i class="fa fa-plus me-1"></i> Tạo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ EDIT MODAL ============ -->
+<div class="modal fade" id="gameEditModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title"><i class="fa fa-pen me-2"></i>Sửa Game</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="gameEditId" />
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Tên game</label>
+                        <input id="gameEditName" class="form-control bg-dark border-0" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <select id="gameEditCategoryId" class="form-select bg-dark border-0">
+                            <option value="0">-- Chọn category --</option>
+                            @foreach (var c in cats)
+                            {
+                                <option value="@c.CategoryId">@c.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Slug</label>
+                        <input id="gameEditSlug" class="form-control bg-dark border-0" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">ThumbnailUrl</label>
+                        <input id="gameEditThumb" class="form-control bg-dark border-0" placeholder="https://..." />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Mô tả</label>
+                        <textarea id="gameEditDesc" class="form-control bg-dark border-0" rows="4"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="gameEditActive" />
+                            <label class="form-check-label" for="gameEditActive">Hiển thị (IsActive)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnGameUpdate">
+                    <i class="fa fa-save me-1"></i> Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+      const $ = (s, root=document) => root.querySelector(s);
+
+      const gameTable = $("#gameTable");
+      const createModalEl = $("#gameCreateModal");
+      const editModalEl = $("#gameEditModal");
+
+      // Create
+      const gameCreateName = $("#gameCreateName");
+      const gameCreateCategoryId = $("#gameCreateCategoryId");
+      const gameCreateSlug = $("#gameCreateSlug");
+      const gameCreateThumb = $("#gameCreateThumb");
+      const gameCreateDesc = $("#gameCreateDesc");
+      const gameCreateActive = $("#gameCreateActive");
+      const btnGameCreate = $("#btnGameCreate");
+
+      // Edit
+      const gameEditId = $("#gameEditId");
+      const gameEditName = $("#gameEditName");
+      const gameEditCategoryId = $("#gameEditCategoryId");
+      const gameEditSlug = $("#gameEditSlug");
+      const gameEditThumb = $("#gameEditThumb");
+      const gameEditDesc = $("#gameEditDesc");
+      const gameEditActive = $("#gameEditActive");
+      const btnGameUpdate = $("#btnGameUpdate");
+
+      function toast(msg){ alert(msg); }
+
+      function escapeHtml(s){
+        return String(s ?? "")
+          .replaceAll("&","&amp;")
+          .replaceAll("<","&lt;")
+          .replaceAll(">","&gt;")
+          .replaceAll('"',"&quot;")
+          .replaceAll("'","&#039;");
+      }
+
+      function hideModal(el){
+        if (!window.bootstrap || !el) return;
+        const inst = window.bootstrap.Modal.getInstance(el) || new window.bootstrap.Modal(el);
+        inst.hide();
+      }
+
+      function boolText(isActive){
+        return isActive ? `<span class="badge bg-success">ON</span>` : `<span class="badge bg-secondary">OFF</span>`;
+      }
+
+      function createdText(sqlLike){
+        const d = (sqlLike || "").slice(0,10);
+        if(!d.includes("-")) return "--/--/----";
+        return d.split("-").reverse().join("/");
+      }
+
+      function rowHtml(d){
+        const thumb = d.thumbnailUrl
+          ? `<img src="${escapeHtml(d.thumbnailUrl)}" alt="thumb" style="width:46px;height:46px;border-radius:10px;object-fit:cover;border:1px solid rgba(255,255,255,.12)" />`
+          : `<div class="text-muted">--</div>`;
+
+        return `
+          <tr data-game-id="${d.gameId}"
+              data-category-id="${d.categoryId}"
+              data-name="${escapeHtml(d.name)}"
+              data-slug="${escapeHtml(d.slug)}"
+              data-thumb="${escapeHtml(d.thumbnailUrl || "")}"
+              data-desc="${escapeHtml(d.description || "")}"
+              data-active="${d.isActive ? "true":"false"}">
+            <td class="text-muted">#${d.gameId}</td>
+            <td>${thumb}</td>
+            <td>
+              <div class="fw-semibold">${escapeHtml(d.name)}</div>
+              <small class="text-muted">Category: ${escapeHtml(d.categoryName || "")}</small>
+            </td>
+            <td class="text-muted">${escapeHtml(d.categoryName || "")}</td>
+            <td class="text-muted">${escapeHtml(d.slug || "")}</td>
+            <td class="text-center">${boolText(!!d.isActive)}</td>
+            <td class="text-end"><span class="badge bg-dark" style="border:1px solid rgba(255,255,255,.12)">${d.listingCount ?? 0}</span></td>
+            <td class="text-muted">${createdText(d.createdAt)}</td>
+            <td class="text-end">
+              <div class="d-flex justify-content-end gap-2 flex-wrap">
+                <button class="btn btn-outline-light btn-sm btn-game-edit" type="button" data-bs-toggle="modal" data-bs-target="#gameEditModal">
+                  <i class="fa fa-pen me-1"></i> Sửa
+                </button>
+                <button class="btn btn-danger btn-sm btn-game-delete" type="button">
+                  <i class="fa fa-trash me-1"></i> Xóa
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }
+
+      // Click edit/delete
+      document.addEventListener("click", (e) => {
+        const btnEdit = e.target.closest(".btn-game-edit");
+        const btnDel = e.target.closest(".btn-game-delete");
+
+        if (btnEdit) {
+          const tr = btnEdit.closest("tr");
+          gameEditId.value = tr.dataset.gameId || "";
+          gameEditName.value = tr.dataset.name || "";
+          gameEditSlug.value = tr.dataset.slug || "";
+          gameEditThumb.value = tr.dataset.thumb || "";
+          gameEditDesc.value = tr.dataset.desc || "";
+          gameEditActive.checked = (tr.dataset.active === "true");
+
+          const cid = tr.dataset.categoryId || "0";
+          gameEditCategoryId.value = cid;
+          return;
+        }
+
+        if (btnDel) {
+          const tr = btnDel.closest("tr");
+          const id = Number(tr.dataset.gameId || 0);
+          const name = tr.dataset.name || "";
+
+          const listingCount = Number(tr.querySelector("span.badge")?.textContent || "0");
+          if (listingCount > 0) return toast("Game đang có account listing, không thể xóa.");
+
+          if (!confirm(`Xóa game "${name}"?`)) return;
+
+          (async () => {
+            btnDel.disabled = true;
+            try{
+              const res = await fetch("/admin/api/game/delete",{
+                method:"POST",
+                headers:{ "Content-Type":"application/json" },
+                body: JSON.stringify({ gameId: id })
+              });
+              const data = await res.json().catch(()=>null);
+
+              if(!res.ok || !data?.success){
+                toast(data?.message || "Xóa thất bại.");
+                return;
+              }
+
+              tr.remove();
+              toast(data?.message || "OK");
+            }catch(err){
+              console.error(err);
+              toast("Lỗi mạng / server.");
+            }finally{
+              btnDel.disabled = false;
+            }
+          })();
+
+          return;
+        }
+      });
+
+      // CREATE
+      btnGameCreate?.addEventListener("click", async () => {
+        const categoryId = Number(gameCreateCategoryId.value || 0);
+        const name = (gameCreateName.value || "").trim();
+        const slug = (gameCreateSlug.value || "").trim();
+        const thumbnailUrl = (gameCreateThumb.value || "").trim();
+        const description = (gameCreateDesc.value || "").trim();
+        const isActive = !!gameCreateActive.checked;
+
+        if(!name) return toast("Vui lòng nhập tên game.");
+        if(!categoryId) return toast("Vui lòng chọn category.");
+
+        btnGameCreate.disabled = true;
+        try{
+          const res = await fetch("/admin/api/game/create",{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ categoryId, name, slug, thumbnailUrl, description, isActive })
+          });
+
+          const data = await res.json().catch(()=>null);
+          if(!res.ok || !data?.success){
+            toast(data?.message || "Thêm thất bại.");
+            return;
+          }
+
+          gameTable.querySelector("tbody").insertAdjacentHTML("afterbegin", rowHtml(data.data));
+
+          // reset
+          gameCreateName.value = "";
+          gameCreateSlug.value = "";
+          gameCreateThumb.value = "";
+          gameCreateDesc.value = "";
+          gameCreateCategoryId.value = "0";
+          gameCreateActive.checked = true;
+
+          hideModal(createModalEl);
+          toast(data?.message || "OK");
+        }catch(err){
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        }finally{
+          btnGameCreate.disabled = false;
+        }
+      });
+
+      // UPDATE
+      btnGameUpdate?.addEventListener("click", async () => {
+        const gameId = Number(gameEditId.value || 0);
+        const categoryId = Number(gameEditCategoryId.value || 0);
+        const name = (gameEditName.value || "").trim();
+        const slug = (gameEditSlug.value || "").trim();
+        const thumbnailUrl = (gameEditThumb.value || "").trim();
+        const description = (gameEditDesc.value || "").trim();
+        const isActive = !!gameEditActive.checked;
+
+        if(!gameId) return toast("Thiếu GameId.");
+        if(!name) return toast("Vui lòng nhập tên game.");
+        if(!categoryId) return toast("Vui lòng chọn category.");
+
+        btnGameUpdate.disabled = true;
+        try{
+          const res = await fetch("/admin/api/game/update",{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ gameId, categoryId, name, slug, thumbnailUrl, description, isActive })
+          });
+
+          const data = await res.json().catch(()=>null);
+          if(!res.ok || !data?.success){
+            toast(data?.message || "Cập nhật thất bại.");
+            return;
+          }
+
+          const d = data.data;
+          const tr = gameTable.querySelector(`tr[data-game-id="${d.gameId}"]`);
+          if(tr){
+            tr.dataset.categoryId = d.categoryId;
+            tr.dataset.name = d.name;
+            tr.dataset.slug = d.slug;
+            tr.dataset.thumb = d.thumbnailUrl || "";
+            tr.dataset.desc = d.description || "";
+            tr.dataset.active = d.isActive ? "true" : "false";
+
+            // update visible cells
+            tr.children[1].innerHTML = d.thumbnailUrl
+              ? `<img src="${escapeHtml(d.thumbnailUrl)}" alt="thumb" style="width:46px;height:46px;border-radius:10px;object-fit:cover;border:1px solid rgba(255,255,255,.12)" />`
+              : `<div class="text-muted">--</div>`;
+
+            tr.children[2].innerHTML = `<div class="fw-semibold">${escapeHtml(d.name)}</div><small class="text-muted">Category: ${escapeHtml(d.categoryName || "")}</small>`;
+            tr.children[3].textContent = d.categoryName || "";
+            tr.children[4].textContent = d.slug || "";
+            tr.children[5].innerHTML = boolText(!!d.isActive);
+          }
+
+          hideModal(editModalEl);
+          toast(data?.message || "OK");
+        }catch(err){
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        }finally{
+          btnGameUpdate.disabled = false;
+        }
+      });
+
+    })();
+</script>

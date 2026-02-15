@@ -79,5 +79,102 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SystemPurchaseAccGame.Controllers.CheapCartController",
+    "Method": "AddCheap",
+    "RelativePath": "api/cart/add-cheap",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "SystemPurchaseAccGame.Controllers.CheapCartController\u002BAddCheapToCartReq",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SystemPurchaseAccGame.Controllers.CheapAccountListingsController",
+    "Method": "Create",
+    "RelativePath": "api/cheap-account-listings",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "GameId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AttributesJson",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LoginInfo.User",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LoginInfo.Pass",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LoginInfo.Note",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LoginInfo.MaskPublic",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "BackgroundFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "ThumbnailFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "GalleryFiles",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Action",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

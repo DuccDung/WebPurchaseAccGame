@@ -31,6 +31,9 @@ public partial class Game
     [Precision(0)]
     public DateTime CreatedAt { get; set; }
 
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal? Price { get; set; }
+
     [InverseProperty("Game")]
     public virtual ICollection<AccountListing> AccountListings { get; set; } = new List<AccountListing>();
 

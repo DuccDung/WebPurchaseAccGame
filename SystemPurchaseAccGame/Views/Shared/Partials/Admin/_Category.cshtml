@@ -1,0 +1,320 @@
+﻿@using SystemPurchaseAccGame.ViewModel
+@model List<CategoryRowVm>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary rounded p-4 mb-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <div>
+                <h5 class="mb-1">Quản lý Category</h5>
+                <small class="text-muted">Thêm / sửa / xóa danh mục game</small>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#catCreateModal">
+                    <i class="fa fa-plus me-1"></i> Thêm danh mục
+                </button>
+                <button class="btn btn-outline-light btn-sm" type="button" onclick="location.reload()">
+                    <i class="fa fa-sync me-1"></i> Làm mới
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-secondary rounded p-4">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0" id="catTable">
+                <thead>
+                    <tr>
+                        <th style="width:90px">ID</th>
+                        <th>Tên</th>
+                        <th>Slug</th>
+                        <th class="text-end" style="width:110px">Game</th>
+                        <th style="width:160px">Ngày tạo</th>
+                        <th class="text-end" style="width:230px">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr data-cat-id="@c.CategoryId"
+                            data-cat-name="@c.Name"
+                            data-cat-slug="@c.Slug">
+                            <td class="text-muted">#@c.CategoryId</td>
+                            <td class="fw-semibold">@c.Name</td>
+                            <td class="text-muted">@c.Slug</td>
+                            <td class="text-end">
+                                <span class="badge bg-dark" style="border:1px solid rgba(255,255,255,.12)">@c.GameCount</span>
+                            </td>
+                            <td class="text-muted">@c.CreatedAt.ToString("dd/MM/yyyy")</td>
+                            <td class="text-end">
+                                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                                    <button class="btn btn-outline-light btn-sm btn-cat-edit" type="button"
+                                            data-bs-toggle="modal" data-bs-target="#catEditModal">
+                                        <i class="fa fa-pen me-1"></i> Sửa
+                                    </button>
+                                    <button class="btn btn-danger btn-sm btn-cat-delete" type="button">
+                                        <i class="fa fa-trash me-1"></i> Xóa
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ============ CREATE MODAL ============ -->
+<div class="modal fade" id="catCreateModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title"><i class="fa fa-plus-circle me-2"></i>Thêm Category</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label class="form-label">Tên</label>
+                <input id="catCreateName" class="form-control bg-dark border-0" placeholder="VD: Play Together" />
+
+                <label class="form-label mt-3">Slug (tuỳ chọn)</label>
+                <input id="catCreateSlug" class="form-control bg-dark border-0" placeholder="VD: play-together" />
+
+                <small class="text-muted d-block mt-2">Bỏ trống Slug sẽ tự tạo theo Tên.</small>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnCatCreate">
+                    <i class="fa fa-plus me-1"></i> Tạo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ EDIT MODAL ============ -->
+<div class="modal fade" id="catEditModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-0">
+                <h5 class="modal-title"><i class="fa fa-pen me-2"></i>Sửa Category</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden" id="catEditId" />
+
+                <label class="form-label">Tên</label>
+                <input id="catEditName" class="form-control bg-dark border-0" />
+
+                <label class="form-label mt-3">Slug</label>
+                <input id="catEditSlug" class="form-control bg-dark border-0" />
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="btnCatUpdate">
+                    <i class="fa fa-save me-1"></i> Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+      const $ = (s, root=document) => root.querySelector(s);
+
+      const catTable = $("#catTable");
+      const createModalEl = $("#catCreateModal");
+      const editModalEl = $("#catEditModal");
+
+      const catCreateName = $("#catCreateName");
+      const catCreateSlug = $("#catCreateSlug");
+      const btnCatCreate = $("#btnCatCreate");
+
+      const catEditId = $("#catEditId");
+      const catEditName = $("#catEditName");
+      const catEditSlug = $("#catEditSlug");
+      const btnCatUpdate = $("#btnCatUpdate");
+
+      function toast(msg){ alert(msg); }
+
+      function escapeHtml(s){
+        return String(s ?? "")
+          .replaceAll("&","&amp;")
+          .replaceAll("<","&lt;")
+          .replaceAll(">","&gt;")
+          .replaceAll('"',"&quot;")
+          .replaceAll("'","&#039;");
+      }
+
+      function hideModal(el){
+        if (!window.bootstrap || !el) return;
+        const inst = window.bootstrap.Modal.getInstance(el) || new window.bootstrap.Modal(el);
+        inst.hide();
+      }
+
+      function rowHtml(d){
+        const createdDate = (d.createdAt || "").slice(0,10).split("-").reverse().join("/");
+        return `
+          <tr data-cat-id="${d.categoryId}" data-cat-name="${escapeHtml(d.name)}" data-cat-slug="${escapeHtml(d.slug)}">
+            <td class="text-muted">#${d.categoryId}</td>
+            <td class="fw-semibold">${escapeHtml(d.name)}</td>
+            <td class="text-muted">${escapeHtml(d.slug)}</td>
+            <td class="text-end"><span class="badge bg-dark" style="border:1px solid rgba(255,255,255,.12)">${d.gameCount ?? 0}</span></td>
+            <td class="text-muted">${createdDate || "--/--/----"}</td>
+            <td class="text-end">
+              <div class="d-flex justify-content-end gap-2 flex-wrap">
+                <button class="btn btn-outline-light btn-sm btn-cat-edit" type="button" data-bs-toggle="modal" data-bs-target="#catEditModal">
+                  <i class="fa fa-pen me-1"></i> Sửa
+                </button>
+                <button class="btn btn-danger btn-sm btn-cat-delete" type="button">
+                  <i class="fa fa-trash me-1"></i> Xóa
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }
+
+      // CLICK edit/delete
+      document.addEventListener("click", (e) => {
+        const btnEdit = e.target.closest(".btn-cat-edit");
+        const btnDel = e.target.closest(".btn-cat-delete");
+
+        if (btnEdit) {
+          const tr = btnEdit.closest("tr");
+          catEditId.value = tr.dataset.catId || "";
+          catEditName.value = tr.dataset.catName || "";
+          catEditSlug.value = tr.dataset.catSlug || "";
+          return;
+        }
+
+        if (btnDel) {
+          const tr = btnDel.closest("tr");
+          const id = Number(tr.dataset.catId || 0);
+          const name = tr.dataset.catName || "";
+          const gameCount = Number(tr.querySelector("span.badge")?.textContent || "0");
+
+          if (gameCount > 0) return toast("Danh mục đang có game, không thể xóa.");
+
+          if (!confirm(`Xóa danh mục "${name}"?`)) return;
+
+          (async () => {
+            btnDel.disabled = true;
+            try{
+              const res = await fetch("/admin/api/category/delete",{
+                method:"POST",
+                headers:{ "Content-Type":"application/json" },
+                body: JSON.stringify({ categoryId: id })
+              });
+              const data = await res.json().catch(()=>null);
+
+              if(!res.ok || !data?.success){
+                toast(data?.message || "Xóa thất bại.");
+                return;
+              }
+
+              tr.remove();
+              toast(data?.message || "OK");
+            }catch(err){
+              console.error(err);
+              toast("Lỗi mạng / server.");
+            }finally{
+              btnDel.disabled = false;
+            }
+          })();
+
+          return;
+        }
+      });
+
+      // CREATE
+      btnCatCreate?.addEventListener("click", async () => {
+        const name = (catCreateName.value || "").trim();
+        const slug = (catCreateSlug.value || "").trim();
+
+        if(!name) return toast("Vui lòng nhập tên.");
+        btnCatCreate.disabled = true;
+
+        try{
+          const res = await fetch("/admin/api/category/create",{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ name, slug })
+          });
+
+          const data = await res.json().catch(()=>null);
+          if(!res.ok || !data?.success){
+            toast(data?.message || "Thêm thất bại.");
+            return;
+          }
+
+          const d = {
+            categoryId: data.data.categoryId,
+            name: data.data.name,
+            slug: data.data.slug,
+            createdAt: data.data.createdAt,
+            gameCount: data.data.gameCount ?? 0
+          };
+
+          catTable.querySelector("tbody").insertAdjacentHTML("afterbegin", rowHtml(d));
+
+          catCreateName.value = "";
+          catCreateSlug.value = "";
+          hideModal(createModalEl);
+
+          toast(data?.message || "OK");
+        }catch(err){
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        }finally{
+          btnCatCreate.disabled = false;
+        }
+      });
+
+      // UPDATE
+      btnCatUpdate?.addEventListener("click", async () => {
+        const categoryId = Number(catEditId.value || 0);
+        const name = (catEditName.value || "").trim();
+        const slug = (catEditSlug.value || "").trim();
+
+        if(!categoryId) return toast("Thiếu CategoryId.");
+        if(!name) return toast("Vui lòng nhập tên.");
+
+        btnCatUpdate.disabled = true;
+        try{
+          const res = await fetch("/admin/api/category/update",{
+            method:"POST",
+            headers:{ "Content-Type":"application/json" },
+            body: JSON.stringify({ categoryId, name, slug })
+          });
+
+          const data = await res.json().catch(()=>null);
+          if(!res.ok || !data?.success){
+            toast(data?.message || "Cập nhật thất bại.");
+            return;
+          }
+
+          const tr = catTable.querySelector(`tr[data-cat-id="${categoryId}"]`);
+          if(tr){
+            tr.dataset.catName = data.data.name;
+            tr.dataset.catSlug = data.data.slug;
+
+            tr.children[1].textContent = data.data.name;
+            tr.children[2].textContent = data.data.slug;
+          }
+
+          hideModal(editModalEl);
+          toast(data?.message || "OK");
+        }catch(err){
+          console.error(err);
+          toast("Lỗi mạng / server.");
+        }finally{
+          btnCatUpdate.disabled = false;
+        }
+      });
+
+    })();
+</script>

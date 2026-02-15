@@ -1,0 +1,246 @@
+﻿.filter-bar {
+    padding: 6px 0;
+}
+
+.filter-label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.filter-control {
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 6px rgba(2, 6, 23, 0.06);
+    font-weight: 500;
+}
+
+    .filter-control::placeholder {
+        font-weight: 600;
+        color: #9aa3af;
+    }
+
+/* nút Tìm Kiếm xanh */
+.btn-search {
+    height: 44px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: #0b2a7a;
+    border: 0;
+    padding: 0 18px;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+    .btn-search:hover {
+        filter: brightness(0.95);
+    }
+
+/* nút Đặt Lại đỏ */
+.btn-reset {
+    height: 44px;
+    border-radius: 12px;
+    color: #fff;
+    background: #ff4b4b;
+    border: 0;
+    padding: 0 18px;
+    white-space: nowrap;
+
+    font-weight: 600;
+    font-size: 13px;
+}
+
+    .btn-reset:hover {
+        filter: brightness(0.95);
+    }
+
+/* Responsive: mobile xếp dọc đẹp hơn */
+@media (max-width: 991.98px) {
+    .filter-label {
+        font-size: 18px;
+    }
+}
+
+/* Card: không fixed width nữa */
+.product-card-v2 {
+    width: 100%;
+    background: #0b1b3a;
+    border: 2px solid #102a63;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 14px 30px rgba(2, 6, 23, 0.16);
+}
+
+/* TAGS nhỏ hơn */
+.ms-tag-v2 {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background: #ff2aa6;
+    color: #fff;
+    font-weight: 900;
+    padding: 6px 10px;
+    border-radius: 0 10px 10px 0;
+    font-size: 14px;
+    z-index: 3;
+}
+
+.sale-tag-v2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff3b30;
+    color: #fff;
+    font-weight: 900;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    z-index: 3;
+}
+
+/* Banner nhỏ hơn */
+.product-hero-v2 {
+    background: #0a2347;
+    padding: 12px 12px 6px 12px;
+}
+
+    .product-hero-v2 img {
+        width: 100%;
+        height: 120px; /* mobile */
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+    }
+
+/* Title nhỏ hơn */
+.product-title-v2 {
+    background: #0a2d7a;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+    padding: 10px 10px;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+}
+
+/* body */
+.product-info-v2 {
+    padding: 10px 10px 12px 10px;
+}
+
+/* row info nhỏ hơn */
+.info-row-v2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    padding: 9px 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.info-icon-v2 {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.info-blue {
+    background: #1e88ff;
+}
+
+.info-red {
+    background: #c3002f;
+}
+
+.info-navy {
+    background: #2f4474;
+}
+
+/* remain */
+.remain-box-v2 {
+    border: 1px solid #ff3b30;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.remain-num-v2 {
+    color: #22c55e;
+}
+
+/* price */
+.price-old-v2 {
+    border: 1px dashed rgba(255, 255, 255, 0.55);
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 13px;
+    text-decoration: line-through;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.price-new-v2 {
+    margin-top: 8px;
+    border: 1px dashed #ff3b30;
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* buy btn */
+.btn-buy-v2 {
+    height: 46px;
+    border-radius: 12px;
+    background: #0b3aa5;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+    .btn-buy-v2:hover {
+        filter: brightness(0.95);
+    }
+
+/* Desktop tăng nhẹ cho đẹp */
+@media (min-width: 992px) {
+    .product-hero-v2 img {
+        height: 140px;
+    }
+
+    .product-title-v2 {
+        font-size: 17px;
+    }
+
+    .info-row-v2 {
+        font-size: 14px;
+    }
+
+    .btn-buy-v2 {
+        font-size: 13px;
+    }
+}
+

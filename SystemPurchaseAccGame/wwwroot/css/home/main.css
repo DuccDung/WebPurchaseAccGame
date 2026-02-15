@@ -3325,3 +3325,226 @@ a {
     font-size: 12px;
     line-height: 1.4;
 }
+/* ===== NÚT SOLD OUT CŨ ===== */
+.acc-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.acc-card__cta--soldout {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: .75;
+    border: 1px solid rgba(0, 0, 0, .12);
+    color: rgb(0 0 0 / 63%);
+    box-shadow: none;
+    background: #222121;
+}
+
+    .acc-card__cta--soldout .cta__icon {
+        width: 24px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: rgba(0,0,0,.06);
+        font-size: 14px;
+    }
+
+    .acc-card__cta--soldout .cta__text {
+        letter-spacing: .2px;
+        font-size: 14px;
+    }
+
+/* =========================
+           GRID + CHEAP CARD (THEO BẠN)
+        ========================= */
+.productsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+@media (max-width: 1100px) {
+    .productsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 820px) {
+    .productsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .productsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cheat-card {
+    border: 1px solid var(--surface-border);
+    border-radius: 18px;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--surface-strong) 92%, transparent);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    transition: transform var(--transition), border-color var(--transition);
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+}
+
+    .cheat-card:hover {
+        transform: translateY(-2px);
+        border-color: color-mix(in oklab, var(--brand) 35%, var(--surface-border));
+    }
+
+.cheat-card__media {
+    padding: 12px 12px 0;
+    text-align: center;
+}
+
+    .cheat-card__media img {
+        width: 100%;
+        max-height: 170px;
+        object-fit: cover;
+        border-radius: 14px;
+        display: block;
+    }
+
+.cheat-card__body {
+    padding: 14px 16px 10px;
+    text-align: center;
+    flex: 1;
+}
+
+.cheat-card__title {
+    margin: 6px 0 12px;
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: color-mix(in oklab, var(--brand) 85%, var(--text));
+    line-height: 1.2;
+}
+
+.cheat-card__line {
+    margin: 8px 0;
+    color: var(--text);
+    font-weight: 800;
+}
+
+.cheat-card__actions {
+    padding: 14px 16px 16px;
+    display: grid;
+    gap: 10px;
+}
+
+.cheat-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 999px;
+    font-weight: 1000;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--surface-border);
+    background: color-mix(in oklab, var(--surface-strong) 55%, transparent);
+    color: var(--text);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    transition: transform var(--transition), filter var(--transition), background var(--transition);
+    cursor: pointer;
+}
+
+    .cheat-btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        background: color-mix(in oklab, var(--surface-strong) 75%, transparent);
+    }
+
+    .cheat-btn:active {
+        transform: translateY(0);
+    }
+
+.cheat-btn--detail {
+    background: color-mix(in oklab, var(--surface-strong) 45%, transparent);
+}
+
+.cheat-btn--buy {
+    border-color: color-mix(in oklab, var(--brand) 35%, var(--surface-border));
+    background: color-mix(in oklab, var(--brand) 22%, var(--surface-strong));
+}
+
+/*quA*/
+/* Floating Gift */
+.floating-gift {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    display: none; /* mặc định ẩn, JS sẽ bật */
+    place-items: center;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 9999;
+    background: color-mix(in oklab, var(--surface-strong) 85%, transparent);
+    border: 1px solid color-mix(in oklab, var(--brand) 35%, var(--surface-border));
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    animation: giftFloat 3.2s ease-in-out infinite, giftWiggle 1.3s ease-in-out infinite;
+    user-select: none;
+}
+
+    .floating-gift:hover {
+        transform: translateY(-2px) scale(1.03);
+    }
+
+@keyframes giftFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+@keyframes giftWiggle {
+    0%,100% {
+        rotate: 0deg;
+    }
+
+    25% {
+        rotate: -4deg;
+    }
+
+    75% {
+        rotate: 4deg;
+    }
+}
+
+/* hiệu ứng lóe nhẹ xung quanh */
+.floating-gift::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 22px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 64, .18), rgba(0,0,0,0) 60%);
+    filter: blur(6px);
+    pointer-events: none;
+}

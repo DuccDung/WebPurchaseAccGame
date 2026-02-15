@@ -316,3 +316,67 @@
       });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // ====== Thêm vào giỏ hàng (giữ nguyên của bạn) ======
+      const btnAddCart = document.getElementById("acc_detail_pay_btnAddCart");
+      if (btnAddCart) {
+        btnAddCart.addEventListener("click", async (e) => {
+          e.preventDefault();
+
+          const account = window.acc_detail_pay_account || {};
+          const id = account.accountId;
+          if (!id) {
+            alert("Không tìm thấy AccountId.");
+            return;
+          }
+
+          const res = await fetch(`/api/cart/add/${encodeURIComponent(id)}`, {
+            method: "POST",
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+          });
+
+          const data = await res.json().catch(() => null);
+
+          if (!res.ok) {
+            alert(data?.message || "Thêm giỏ hàng thất bại.");
+            return;
+          }
+
+          alert(data?.message || "Đã thêm vào giỏ hàng!");
+          // window.location.href = "/home/cart";
+        });
+      }
+
+      // ====== Mua ngay (giống hệt add cart + chuyển trang) ======
+      const btnBuy = document.getElementById("acc_detail_pay_btnBuy");
+      if (btnBuy) {
+        btnBuy.addEventListener("click", async (e) => {
+          e.preventDefault();
+
+          const account = window.acc_detail_pay_account || {};
+          const id = account.accountId;
+          if (!id) {
+            alert("Không tìm thấy AccountId.");
+            return;
+          }
+
+          const res = await fetch(`/api/cart/add/${encodeURIComponent(id)}`, {
+            method: "POST",
+            headers: { "X-Requested-With": "XMLHttpRequest" }
+          });
+
+          const data = await res.json().catch(() => null);
+
+          if (!res.ok) {
+            alert(data?.message || "Mua ngay thất bại.");
+            return;
+          }
+
+          alert(data?.message || "Đã thêm vào giỏ hàng!");
+          window.location.href = "/home/cart";
+        });
+      }
+    });
+</script>

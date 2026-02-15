@@ -1,0 +1,91 @@
+﻿@using SystemPurchaseAccGame.ViewModel
+@model LoginVm
+
+@{
+    Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
+}
+
+<!-- LOGIN -->
+<section class="login-page">
+    <div class="login-wrap">
+        <div class="login-card">
+            <h1 class="login-title">Đăng Nhập</h1>
+            <div class="login-subtitle">Đăng Nhập Vào Hệ Thống</div>
+
+            @* Thông báo lỗi từ server *@
+            @if (ViewBag.LoginError != null)
+            {
+                <div class="login-alert">
+                    @ViewBag.LoginError
+                </div>
+            }
+
+            <form class="login-form"
+                  method="post"
+                  asp-controller="ClientHome"
+                  asp-action="Login">
+
+                <div class="login-field">
+                    <label class="login-label" for="loginUser">Tài Khoản</label>
+                    <input id="loginUser"
+                           name="Identity"
+                           type="text"
+                           class="login-input"
+                           placeholder="Nhập Tên Tài Khoản"
+                           autocomplete="username"
+                           value="@(Model?.Identity ?? "")"
+                           required />
+                </div>
+
+                <div class="login-field">
+                    <label class="login-label" for="loginPass">Mật Khẩu</label>
+                    <input id="loginPass"
+                           name="Password"
+                           type="password"
+                           class="login-input"
+                           placeholder="Nhập Mật Khẩu Của Bạn"
+                           autocomplete="current-password"
+                           required />
+                </div>
+
+                <div class="login-row">
+                    <label class="login-remember">
+                        <input class="login-check"
+                               type="checkbox"
+                               name="Remember"
+                               value="true"
+                               @(Model?.Remember == true ? "checked" : "") />
+                        <span>Ghi Nhớ Tài Khoản</span>
+                    </label>
+
+                    <a class="login-forgot" href="/Home/ForgotPassword">Bạn Quên Mật Khẩu?</a>
+                </div>
+
+                <button class="login-btn" type="submit">Đăng Nhập</button>
+
+                <div class="login-divider">
+                    <span>Or continue with</span>
+                </div>
+
+                <div class="login-bottom">
+                    <span class="login-bottom-text">BẠN CHƯA CÓ TÀI KHOẢN?</span>
+                    <a class="login-bottom-link" asp-controller="ClientHome" asp-action="Register">ĐĂNG KÝ NGAY</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* alert nhỏ gọn theo style form */
+    .login-alert {
+        margin: 14px 0 0;
+        padding: 10px 12px;
+        border: 1px solid rgba(239,68,68,.35);
+        background: rgba(239,68,68,.06);
+        border-radius: 8px;
+        font-family: "Signika", sans-serif;
+        font-weight: 600;
+        color: #0f172a;
+    }
+</style>

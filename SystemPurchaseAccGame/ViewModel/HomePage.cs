@@ -6,7 +6,7 @@
         public string Name { get; set; } = "";
         public string? Slug { get; set; }
         public string? ThumbnailUrl { get; set; }
-
+        public decimal? Price { get; set; }
         public int SoldCount { get; set; }
         public int RemainingCount { get; set; }
     }
@@ -17,6 +17,15 @@
         public string Description { get; set; } = "";
         public string urlPhoto { get; set; } = "";
         public decimal Price { get; set; }
+
+        // NEW: render hết thuộc tính (Rank, Server, Level...)
+        public List<AttrDto> Attributes { get; set; } = new();
+    }
+
+    public class AttrDto
+    {
+        public string Key { get; set; } = "";
+        public string Value { get; set; } = "";
     }
     public class GameCategoryVm
     {
@@ -68,11 +77,6 @@
         public int SortOrder { get; set; }
     }
 
-    public class AttrDto
-    {
-        public string Key { get; set; } = "";
-        public string Value { get; set; } = "";
-    }
     public class CartVm
     {
         public long? OrderId { get; set; }
@@ -192,6 +196,25 @@
         public decimal WalletBalance
         {
             get; set;
+        }
+        public class ConfirmPayVm
+        {
+            public long AccountId { get; set; }
+            public string Title { get; set; } = "";
+            public long Price { get; set; }
+            public long Balance { get; set; }
+        }
+
+        public class NeedTopupVm
+        {
+            public long AccountId { get; set; }
+            public string Title { get; set; } = "";
+            public long Price { get; set; }
+            public long Balance { get; set; }
+            public long NeedMore { get; set; }
+
+            public string? QrImageUrl { get; set; } // ảnh QR (nếu dùng VietQR dạng ảnh)
+            public string? TopupNote { get; set; }  // nội dung chuyển khoản / mã nạp
         }
     }
 }

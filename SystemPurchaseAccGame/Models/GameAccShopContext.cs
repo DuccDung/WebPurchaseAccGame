@@ -44,9 +44,28 @@ public partial class GameAccShopContext : DbContext
     public virtual DbSet<WalletTransaction> WalletTransactions { get; set; }
 
     public virtual DbSet<vw_GameAccountStat> vw_GameAccountStats { get; set; }
-
+    public DbSet<LuckySpinItem> LuckySpinItems => Set<LuckySpinItem>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        modelBuilder.Entity<LuckySpinItem>(e =>
+        {
+            e.ToTable("LuckySpinItems");
+            e.HasKey(x => x.ItemId);
+
+            e.Property(x => x.Title).HasMaxLength(200).IsRequired();
+            e.Property(x => x.AccountUser).HasMaxLength(200);
+            e.Property(x => x.AccountPass).HasMaxLength(200);
+            e.Property(x => x.WinMessage).HasMaxLength(300);
+            e.Property(x => x.Note).HasMaxLength(500);
+
+            e.Property(x => x.IsActive).HasDefaultValue(true);
+            e.Property(x => x.Weight).HasDefaultValue(0);
+            e.Property(x => x.PrizeValue).HasDefaultValue(0);
+
+            e.Property(x => x.RowVer).IsRowVersion();
+        });
+
         modelBuilder.Entity<AccountAttribute>(entity =>
         {
             entity.HasKey(e => e.AttrId).HasName("PK__AccountA__0108334F926D4231");
@@ -96,6 +115,8 @@ public partial class GameAccShopContext : DbContext
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(sysdatetime())");
             entity.Property(e => e.IsActive).HasDefaultValue(true);
+
+            entity.Property(e => e.Price).HasColumnType("decimal(18,2)");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Games)
                 .OnDelete(DeleteBehavior.ClientSetNull)

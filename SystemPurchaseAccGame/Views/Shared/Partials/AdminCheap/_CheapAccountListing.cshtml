@@ -1,0 +1,338 @@
+﻿@using SystemPurchaseAccGame.Models
+@{
+    var games = ViewBag.Games as List<Game> ?? new List<Game>();
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="bg-secondary rounded h-100 p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div>
+                        <h5 class="mb-1">Đăng bài Acc giá rẻ</h5>
+                        <small class="text-muted">Auto set Price = Game.Price • Chỉ game CategoryId=6</small>
+                    </div>
+                </div>
+
+                <form id="cheapListingForm" onsubmit="return false;">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Game giá rẻ</label>
+                            <select class="form-select bg-dark border-0" id="cheapGameId" required>
+                                <option value="">-- Chọn game --</option>
+                                @foreach (var g in games)
+                                {
+                                    <option value="@g.GameId"
+                                            data-game-name="@g.Name"
+                                            data-game-thumb="@(g.ThumbnailUrl ?? "")"
+                                            data-game-price="@(g.Price ?? 0)">
+                                        @g.Name
+                                    </option>
+                                }
+                            </select>
+                            <small class="text-muted">Giá của bài sẽ tự theo giá game.</small>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Trạng thái</label>
+                            <select class="form-select bg-dark border-0" id="cheapStatus" required>
+                                <option value="HIDDEN">HIDDEN (Nháp / Ẩn)</option>
+                                <option value="RESERVED">RESERVED</option>
+                                <option value="AVAILABLE" selected>AVAILABLE</option>
+                                <option value="SOLD">SOLD</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Tiêu đề bài đăng</label>
+                            <input class="form-control bg-dark border-0" id="cheapTitle" required />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Mô tả</label>
+                            <textarea class="form-control bg-dark border-0" id="cheapDescription" rows="5"></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Ảnh nền</label>
+                            <input class="form-control bg-dark border-0" type="file" id="cheapBg" accept="image/*" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Thumbnail</label>
+                            <input class="form-control bg-dark border-0" type="file" id="cheapThumb" accept="image/*" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Gallery</label>
+                            <input class="form-control bg-dark border-0" type="file" id="cheapGallery" accept="image/*" multiple />
+                        </div>
+
+                        <div class="col-12">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <div>
+                                    <h6 class="mb-0">Thuộc tính</h6>
+                                    <small class="text-muted">Key/Value động</small>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-primary" id="btnCheapAddAttr">
+                                    <i class="fa fa-plus me-1"></i> Thêm thuộc tính
+                                </button>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 35%">AttrKey</th>
+                                            <th>AttrValue</th>
+                                            <th style="width: 70px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cheapAttrBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <h6 class="mb-2">LoginInfo</h6>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">User/Email</label>
+                            <input class="form-control bg-dark border-0" id="cheapLoginUser" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control bg-dark border-0" id="cheapLoginPass" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Note</label>
+                            <textarea class="form-control bg-dark border-0" id="cheapLoginNote" rows="3"></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary w-100" id="btnCheapSubmit">
+                                <i class="fa fa-upload me-1"></i> Tạo bài acc giá rẻ
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- PREVIEW -->
+        <div class="col-lg-4">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-3">Preview nhanh</h6>
+
+                <div class="card bg-dark border-0 overflow-hidden">
+                    <div id="cheapPreviewBg" style="height: 140px;background-size:cover;background-position:center;"></div>
+                    <div class="card-body">
+                        <div class="d-flex gap-3">
+                            <div class="flex-shrink-0">
+                                <img id="cheapPreviewThumb" class="rounded" style="width:72px;height:72px;object-fit:cover" />
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex align-items-start justify-content-between gap-2">
+                                    <h6 class="mb-1" id="cheapPreviewTitle">---</h6>
+                                    <div class="text-primary fw-bold" id="cheapPreviewPrice">₫0</div>
+                                </div>
+                                <small class="text-muted" id="cheapPreviewGame">---</small>
+                            </div>
+                        </div>
+
+                        <hr class="border-secondary my-3" />
+                        <div class="small text-muted mb-2">Thuộc tính</div>
+                        <div class="d-flex flex-wrap gap-2" id="cheapPreviewAttrs"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (() => {
+      const $ = (s, root=document) => root.querySelector(s);
+
+      let bgSrc = "";
+      let thumbSrc = "";
+      let galleryFilesCount = 0;
+
+      const fmtVND = (n) => "₫" + Number(n||0).toLocaleString("vi-VN");
+
+      function readFileAsDataURL(file){
+        return new Promise((resolve)=>{
+          const r = new FileReader();
+          r.onload = () => resolve(r.result);
+          r.readAsDataURL(file);
+        });
+      }
+
+      function addAttrRow(key="", val=""){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><input class="form-control bg-dark border-0 c-key" value="${key}"></td>
+          <td><input class="form-control bg-dark border-0 c-val" value="${val}"></td>
+          <td class="text-end">
+            <button type="button" class="btn btn-sm btn-outline-light c-del"><i class="fa fa-trash"></i></button>
+          </td>
+        `;
+        $("#cheapAttrBody").appendChild(tr);
+
+        tr.querySelector(".c-del").onclick = () => { tr.remove(); refreshPreview(); };
+        tr.querySelectorAll("input").forEach(i => i.addEventListener("input", refreshPreview));
+      }
+
+      function collectAttrs(){
+        const keys = [...document.querySelectorAll("#cheapAttrBody .c-key")].map(x=>x.value.trim());
+        const vals = [...document.querySelectorAll("#cheapAttrBody .c-val")].map(x=>x.value.trim());
+        const out = [];
+        for(let i=0;i<Math.min(keys.length, vals.length);i++){
+          if(keys[i]) out.push({ key: keys[i], value: vals[i] || "" });
+        }
+        return out;
+      }
+
+      function getSelectedGame(){
+        const sel = $("#cheapGameId");
+        const opt = sel.options[sel.selectedIndex];
+        if(!opt || !sel.value) return { id:0, name:"---", price:0, thumb:"" };
+        return {
+          id: Number(sel.value),
+          name: opt.dataset.gameName || "---",
+          price: Number(opt.dataset.gamePrice || 0),
+          thumb: opt.dataset.gameThumb || ""
+        };
+      }
+
+      function refreshPreview(){
+        const g = getSelectedGame();
+        const title = $("#cheapTitle").value || "---";
+        const price = g.price || 0;
+
+        const bg = bgSrc || g.thumb || "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&auto=format&fit=crop";
+        const th = thumbSrc || g.thumb || "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&auto=format&fit=crop";
+
+        $("#cheapPreviewBg").style.backgroundImage = `url('${bg}')`;
+        $("#cheapPreviewThumb").src = th;
+        $("#cheapPreviewTitle").textContent = title;
+        $("#cheapPreviewPrice").textContent = fmtVND(price);
+        $("#cheapPreviewGame").textContent = g.name;
+
+        const wrap = $("#cheapPreviewAttrs");
+        wrap.innerHTML = "";
+        collectAttrs().slice(0,10).forEach(a=>{
+          const sp = document.createElement("span");
+          sp.className = "badge bg-secondary";
+          sp.style.border = "1px solid rgba(255,255,255,.15)";
+          sp.textContent = `${a.key}: ${a.value}`;
+          wrap.appendChild(sp);
+        });
+      }
+
+      $("#btnCheapAddAttr").onclick = () => addAttrRow("", "");
+
+      $("#cheapGameId").addEventListener("change", refreshPreview);
+      ["cheapTitle","cheapDescription","cheapStatus","cheapLoginUser","cheapLoginPass","cheapLoginNote"]
+        .forEach(id => $("#"+id).addEventListener("input", refreshPreview));
+
+      $("#cheapBg").addEventListener("change", async (e) => {
+        const f = e.target.files?.[0];
+        if(!f) return;
+        bgSrc = await readFileAsDataURL(f);
+        refreshPreview();
+      });
+
+      $("#cheapThumb").addEventListener("change", async (e) => {
+        const f = e.target.files?.[0];
+        if(!f) return;
+        thumbSrc = await readFileAsDataURL(f);
+        refreshPreview();
+      });
+
+      $("#cheapGallery").addEventListener("change", (e) => {
+        galleryFilesCount = (e.target.files || []).length;
+      });
+
+      async function submit(){
+        const g = getSelectedGame();
+        if(!g.id) return alert("Vui lòng chọn game.");
+
+        const formData = new FormData();
+        formData.append("GameId", String(g.id));
+        formData.append("Title", $("#cheapTitle").value || "");
+        // ✅ KHÔNG GỬI PRICE - server tự set theo game.Price
+        formData.append("Price", "0"); // giữ compatibility request DTO nếu bắt buộc
+        formData.append("Description", $("#cheapDescription").value || "");
+        formData.append("Status", $("#cheapStatus").value || "AVAILABLE");
+        formData.append("AttributesJson", JSON.stringify(collectAttrs()));
+
+        formData.append("LoginInfo.User", $("#cheapLoginUser").value || "");
+        formData.append("LoginInfo.Pass", $("#cheapLoginPass").value || "");
+        formData.append("LoginInfo.Note", $("#cheapLoginNote").value || "");
+        formData.append("LoginInfo.MaskPublic", "true");
+
+        const bgFile = $("#cheapBg").files[0];
+        const thumbFile = $("#cheapThumb").files[0];
+        const galleryFiles = $("#cheapGallery").files;
+
+        if (bgFile) formData.append("BackgroundFile", bgFile);
+        if (thumbFile) formData.append("ThumbnailFile", thumbFile);
+        for(let i=0;i<galleryFiles.length;i++){
+          formData.append("GalleryFiles", galleryFiles[i]);
+        }
+
+        const res = await fetch("/api/cheap-account-listings", {
+          method: "POST",
+          body: formData
+        });
+
+        const raw = await res.text();
+        if(!res.ok){
+          alert("Lỗi: " + res.status + "\n" + raw);
+          return;
+        }
+
+        let msg = "Tạo bài acc giá rẻ thành công.";
+        try{
+          const json = JSON.parse(raw);
+          msg = json?.message || msg;
+        }catch{}
+
+        alert(msg);
+
+        // reset
+        $("#cheapGameId").value = "";
+        $("#cheapTitle").value = "";
+        $("#cheapDescription").value = "";
+        $("#cheapStatus").value = "AVAILABLE";
+        $("#cheapLoginUser").value = "";
+        $("#cheapLoginPass").value = "";
+        $("#cheapLoginNote").value = "";
+        $("#cheapBg").value = "";
+        $("#cheapThumb").value = "";
+        $("#cheapGallery").value = "";
+
+        bgSrc = "";
+        thumbSrc = "";
+        galleryFilesCount = 0;
+
+        $("#cheapAttrBody").innerHTML = "";
+        addAttrRow("rank", "");
+        addAttrRow("server", "");
+        refreshPreview();
+      }
+
+      $("#btnCheapSubmit").onclick = submit;
+
+      // init
+      addAttrRow("rank", "");
+      addAttrRow("server", "");
+      refreshPreview();
+    })();
+</script>

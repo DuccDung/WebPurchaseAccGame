@@ -1,823 +1,919 @@
 {
   "Files": [
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SystemPurchaseAccGame.bundle.scp.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SystemPurchaseAccGame.bundle.scp.css",
       "PackagePath": "staticwebassets\\SystemPurchaseAccGame.ehmrh6enm4.bundle.scp.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\css\\acc_game_page.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\css\\acc_game_page.css",
       "PackagePath": "staticwebassets\\assets_admin\\css\\acc_game_page.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\css\\bootstrap.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\assets_admin\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\css\\style.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\css\\style.css",
       "PackagePath": "staticwebassets\\assets_admin\\css\\style.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\img\\testimonial-1.jpg",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\img\\testimonial-1.jpg",
       "PackagePath": "staticwebassets\\assets_admin\\img\\testimonial-1.jpg"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\img\\testimonial-2.jpg",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\img\\testimonial-2.jpg",
       "PackagePath": "staticwebassets\\assets_admin\\img\\testimonial-2.jpg"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\img\\user.jpg",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\img\\user.jpg",
       "PackagePath": "staticwebassets\\assets_admin\\img\\user.jpg"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
       "PackagePath": "staticwebassets\\assets_admin\\js\\left_menu.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\login.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\login.js",
       "PackagePath": "staticwebassets\\assets_admin\\js\\login.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\main.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\main.js",
       "PackagePath": "staticwebassets\\assets_admin\\js\\main.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\chart\\chart.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\chart\\chart.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\chart\\chart.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\easing\\easing.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\easing\\easing.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\easing\\easing.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\easing\\easing.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\easing\\easing.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\easing\\easing.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\LICENSE",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\LICENSE",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\ajax-loader.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\ajax-loader.gif",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\ajax-loader.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.carousel.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.carousel.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.carousel.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.carousel.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.default.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.default.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.default.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.default.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.video.play.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.video.play.png",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\assets\\owl.video.play.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\owl.carousel.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\owl.carousel.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\owl.carousel.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\owl.carousel.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\owl.carousel.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\owlcarousel\\owl.carousel.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.min.css",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\tempusdominus\\css\\tempusdominus-bootstrap-4.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\moment-timezone.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\moment-timezone.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\tempusdominus\\js\\moment-timezone.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\moment.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\moment.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\tempusdominus\\js\\moment.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\tempusdominus\\js\\tempusdominus-bootstrap-4.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\waypoints\\links.php",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\waypoints\\links.php",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\waypoints\\links.php"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\waypoints\\waypoints.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\waypoints\\waypoints.min.js",
       "PackagePath": "staticwebassets\\assets_admin\\lib\\waypoints\\waypoints.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_accordion.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_accordion.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_accordion.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_alert.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_alert.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_alert.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_badge.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_badge.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_badge.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_breadcrumb.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_breadcrumb.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_breadcrumb.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_button-group.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_button-group.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_button-group.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_buttons.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_buttons.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_buttons.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_card.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_card.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_card.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_carousel.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_carousel.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_carousel.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_close.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_close.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_close.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_containers.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_containers.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_containers.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_dropdown.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_dropdown.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_dropdown.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_forms.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_forms.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_forms.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_functions.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_functions.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_functions.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_grid.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_grid.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_grid.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_helpers.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_helpers.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_helpers.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_images.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_images.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_images.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_list-group.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_list-group.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_list-group.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_mixins.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_mixins.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_mixins.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_modal.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_modal.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_modal.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_nav.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_nav.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_nav.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_navbar.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_navbar.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_navbar.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_offcanvas.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_offcanvas.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_offcanvas.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_pagination.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_pagination.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_pagination.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_popover.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_popover.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_popover.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_progress.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_progress.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_progress.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_reboot.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_reboot.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_reboot.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_root.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_root.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_root.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_spinners.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_spinners.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_spinners.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_tables.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_tables.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_tables.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_toasts.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_toasts.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_toasts.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_tooltip.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_tooltip.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_tooltip.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_transitions.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_transitions.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_transitions.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_type.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_type.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_type.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_utilities.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_utilities.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_utilities.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_variables.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\_variables.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\_variables.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-grid.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-grid.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-grid.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-reboot.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-reboot.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-reboot.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-utilities.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-utilities.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\bootstrap-utilities.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\bootstrap.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\bootstrap.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_floating-labels.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_floating-labels.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_floating-labels.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-check.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-check.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-check.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-control.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-control.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-control.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-range.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-range.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-range.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-select.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-select.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-select.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-text.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-text.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_form-text.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_input-group.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_input-group.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_input-group.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_labels.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_labels.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_labels.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_validation.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\forms\\_validation.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\forms\\_validation.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_clearfix.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_clearfix.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_clearfix.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_colored-links.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_colored-links.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_colored-links.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_position.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_position.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_position.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_ratio.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_ratio.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_ratio.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_stretched-link.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_stretched-link.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_stretched-link.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_text-truncation.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_text-truncation.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_text-truncation.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_visually-hidden.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_visually-hidden.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\helpers\\_visually-hidden.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_alert.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_alert.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_alert.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_border-radius.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_border-radius.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_border-radius.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_box-shadow.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_box-shadow.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_box-shadow.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_breakpoints.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_breakpoints.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_breakpoints.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_buttons.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_buttons.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_buttons.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_caret.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_caret.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_caret.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_clearfix.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_clearfix.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_clearfix.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_color-scheme.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_color-scheme.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_color-scheme.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_container.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_container.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_container.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_deprecate.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_deprecate.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_deprecate.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_forms.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_forms.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_forms.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_gradients.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_gradients.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_gradients.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_grid.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_grid.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_grid.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_image.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_image.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_image.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_list-group.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_list-group.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_list-group.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_lists.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_lists.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_lists.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_pagination.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_pagination.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_pagination.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_reset-text.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_reset-text.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_reset-text.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_resize.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_resize.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_resize.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_table-variants.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_table-variants.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_table-variants.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_text-truncate.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_text-truncate.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_text-truncate.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_transition.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_transition.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_transition.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_utilities.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_utilities.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_utilities.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_visually-hidden.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_visually-hidden.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\mixins\\_visually-hidden.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\utilities\\_api.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\utilities\\_api.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\utilities\\_api.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\vendor\\_rfs.scss",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\scss\\bootstrap\\scss\\vendor\\_rfs.scss",
       "PackagePath": "staticwebassets\\assets_admin\\scss\\bootstrap\\scss\\vendor\\_rfs.scss"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\acc_detail.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\login.css",
+      "PackagePath": "staticwebassets\\assets_new\\css\\login.css"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\main.css",
+      "PackagePath": "staticwebassets\\assets_new\\css\\main.css"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\product_detail.css",
+      "PackagePath": "staticwebassets\\assets_new\\css\\product_detail.css"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\img\\avatar_default.svg",
+      "PackagePath": "staticwebassets\\assets_new\\img\\avatar_default.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\img\\gif_02.gif",
+      "PackagePath": "staticwebassets\\assets_new\\img\\gif_02.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\img\\logo_acc_play.png",
+      "PackagePath": "staticwebassets\\assets_new\\img\\logo_acc_play.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\img\\panel_img.jpg",
+      "PackagePath": "staticwebassets\\assets_new\\img\\panel_img.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\img\\view-all.gif",
+      "PackagePath": "staticwebassets\\assets_new\\img\\view-all.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\acc_detail.css",
       "PackagePath": "staticwebassets\\css\\home\\acc_detail.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\bank.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\bank.css",
       "PackagePath": "staticwebassets\\css\\home\\bank.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\main.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\css\\home\\main.css",
       "PackagePath": "staticwebassets\\css\\home\\main.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\favicon.ico",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822931_9e3b28ef58fc4eeab1a37157e5e0688b.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822931_9e3b28ef58fc4eeab1a37157e5e0688b.gif",
       "PackagePath": "staticwebassets\\img\\20260202140822931_9e3b28ef58fc4eeab1a37157e5e0688b.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822956_8ee68bc9b8b4439e96cfe5c48dca7edf.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822956_8ee68bc9b8b4439e96cfe5c48dca7edf.gif",
       "PackagePath": "staticwebassets\\img\\20260202140822956_8ee68bc9b8b4439e96cfe5c48dca7edf.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822960_b658d71d54de40ee8dfc1798e429e783.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822960_b658d71d54de40ee8dfc1798e429e783.png",
       "PackagePath": "staticwebassets\\img\\20260202140822960_b658d71d54de40ee8dfc1798e429e783.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822961_1a2d7a72543b49529082cfbf01ac096f.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822961_1a2d7a72543b49529082cfbf01ac096f.png",
       "PackagePath": "staticwebassets\\img\\20260202140822961_1a2d7a72543b49529082cfbf01ac096f.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822964_b1ac3e3beea24c7cb814d145e0305570.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202140822964_b1ac3e3beea24c7cb814d145e0305570.png",
       "PackagePath": "staticwebassets\\img\\20260202140822964_b1ac3e3beea24c7cb814d145e0305570.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214703_19146ac678204f05a2e62a25a87497bb.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214703_19146ac678204f05a2e62a25a87497bb.gif",
       "PackagePath": "staticwebassets\\img\\20260202142214703_19146ac678204f05a2e62a25a87497bb.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214715_f5e9e04c77984f2c9688ad4b1cd4a3f2.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214715_f5e9e04c77984f2c9688ad4b1cd4a3f2.gif",
       "PackagePath": "staticwebassets\\img\\20260202142214715_f5e9e04c77984f2c9688ad4b1cd4a3f2.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214718_336291bcaaf647ad8e139c72de04139d.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214718_336291bcaaf647ad8e139c72de04139d.png",
       "PackagePath": "staticwebassets\\img\\20260202142214718_336291bcaaf647ad8e139c72de04139d.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214720_97e24f2087aa40469ce24366c6f75b6f.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214720_97e24f2087aa40469ce24366c6f75b6f.png",
       "PackagePath": "staticwebassets\\img\\20260202142214720_97e24f2087aa40469ce24366c6f75b6f.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214723_5695957dc30a400ca25087746dbc14ba.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202142214723_5695957dc30a400ca25087746dbc14ba.png",
       "PackagePath": "staticwebassets\\img\\20260202142214723_5695957dc30a400ca25087746dbc14ba.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247837_d5600048ffa448d1bf2194e68fbc2ff1.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247837_d5600048ffa448d1bf2194e68fbc2ff1.png",
       "PackagePath": "staticwebassets\\img\\20260202143247837_d5600048ffa448d1bf2194e68fbc2ff1.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247851_01876c19ed1a444abac79250823e10de.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247851_01876c19ed1a444abac79250823e10de.gif",
       "PackagePath": "staticwebassets\\img\\20260202143247851_01876c19ed1a444abac79250823e10de.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247855_18f5fce20aa34c72a0b817e4f0d622dc.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247855_18f5fce20aa34c72a0b817e4f0d622dc.png",
       "PackagePath": "staticwebassets\\img\\20260202143247855_18f5fce20aa34c72a0b817e4f0d622dc.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247857_067084c843a74542b6adad633a2a5db3.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247857_067084c843a74542b6adad633a2a5db3.png",
       "PackagePath": "staticwebassets\\img\\20260202143247857_067084c843a74542b6adad633a2a5db3.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247860_62b7b83ce1dd414f9a0dc177b6e084c8.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143247860_62b7b83ce1dd414f9a0dc177b6e084c8.png",
       "PackagePath": "staticwebassets\\img\\20260202143247860_62b7b83ce1dd414f9a0dc177b6e084c8.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143745887_b1c6bc92235b485985e5318dfa7a0e63.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143745887_b1c6bc92235b485985e5318dfa7a0e63.gif",
       "PackagePath": "staticwebassets\\img\\20260202143745887_b1c6bc92235b485985e5318dfa7a0e63.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143748234_94365cfe58054bf7bb311cbcac141889.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143748234_94365cfe58054bf7bb311cbcac141889.gif",
       "PackagePath": "staticwebassets\\img\\20260202143748234_94365cfe58054bf7bb311cbcac141889.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143750513_334dea43a74d47588bd91f856d7771d4.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260202143750513_334dea43a74d47588bd91f856d7771d4.gif",
       "PackagePath": "staticwebassets\\img\\20260202143750513_334dea43a74d47588bd91f856d7771d4.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093316153_10c0de8080744aefb04307c8e48848f7.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093316153_10c0de8080744aefb04307c8e48848f7.gif",
       "PackagePath": "staticwebassets\\img\\20260204093316153_10c0de8080744aefb04307c8e48848f7.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093317660_fa9dcd375a4040c589d330c88f761f66.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093317660_fa9dcd375a4040c589d330c88f761f66.gif",
       "PackagePath": "staticwebassets\\img\\20260204093317660_fa9dcd375a4040c589d330c88f761f66.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093319656_373bec9381164896a9b6914c63460880.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093319656_373bec9381164896a9b6914c63460880.gif",
       "PackagePath": "staticwebassets\\img\\20260204093319656_373bec9381164896a9b6914c63460880.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093320902_4ee4395aab0c4da1a5350de9aee289da.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093320902_4ee4395aab0c4da1a5350de9aee289da.gif",
       "PackagePath": "staticwebassets\\img\\20260204093320902_4ee4395aab0c4da1a5350de9aee289da.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093322166_3af7143c430a46ea93ff30b88b85a91e.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260204093322166_3af7143c430a46ea93ff30b88b85a91e.gif",
       "PackagePath": "staticwebassets\\img\\20260204093322166_3af7143c430a46ea93ff30b88b85a91e.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260205091914870_9473f1614109488c841b0ab1a29ac9bf.gif",
+      "PackagePath": "staticwebassets\\img\\20260205091914870_9473f1614109488c841b0ab1a29ac9bf.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260205091914881_28b8ae397a964f3b853e658fb28a38b7.gif",
+      "PackagePath": "staticwebassets\\img\\20260205091914881_28b8ae397a964f3b853e658fb28a38b7.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092052175_dd3e54230f5e405ba3e0f2446d0b9c1a.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092052175_dd3e54230f5e405ba3e0f2446d0b9c1a.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092052185_e52c82f6b793479db54e6e504618d265.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092052185_e52c82f6b793479db54e6e504618d265.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092052189_1ebe21856a1d4b69a2e7965c786084c8.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092052189_1ebe21856a1d4b69a2e7965c786084c8.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092138372_004b6ce059fa4725ace72616617194ae.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092138372_004b6ce059fa4725ace72616617194ae.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092138375_d0a978a37aa04c93ae1809173981db71.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092138375_d0a978a37aa04c93ae1809173981db71.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092138378_d144551602d34362be9a51d1bb792019.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092138378_d144551602d34362be9a51d1bb792019.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092233673_51c12cb68d4a462b81344142fb74ffe5.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092233673_51c12cb68d4a462b81344142fb74ffe5.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092233676_4002eafb9e6445368637925dc6987374.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092233676_4002eafb9e6445368637925dc6987374.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206092233678_45a64e8de7014fcaaef29ed182f629cb.gif",
+      "PackagePath": "staticwebassets\\img\\20260206092233678_45a64e8de7014fcaaef29ed182f629cb.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206165759391_9aed6d45a0ed475a88275f3ffb4b52f1.gif",
+      "PackagePath": "staticwebassets\\img\\20260206165759391_9aed6d45a0ed475a88275f3ffb4b52f1.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206165759400_e98171246a3c4a39b00013552cc8ae51.gif",
+      "PackagePath": "staticwebassets\\img\\20260206165759400_e98171246a3c4a39b00013552cc8ae51.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206165759403_535ddb5cb0204797b78659c83bd13e72.png",
+      "PackagePath": "staticwebassets\\img\\20260206165759403_535ddb5cb0204797b78659c83bd13e72.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206165759405_6335368840b34f20889fce2d714a0d5f.png",
+      "PackagePath": "staticwebassets\\img\\20260206165759405_6335368840b34f20889fce2d714a0d5f.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260206165759408_db820f7daf964321bec462c390e1a39c.png",
+      "PackagePath": "staticwebassets\\img\\20260206165759408_db820f7daf964321bec462c390e1a39c.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
       "PackagePath": "staticwebassets\\img\\QR.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\btn-view-all.gif",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\btn-view-all.gif",
       "PackagePath": "staticwebassets\\img\\btn-view-all.gif"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\logo.png",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\logo.png",
       "PackagePath": "staticwebassets\\img\\logo.png"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\js\\home\\main.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\js\\home\\main.js",
       "PackagePath": "staticwebassets\\js\\home\\main.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {

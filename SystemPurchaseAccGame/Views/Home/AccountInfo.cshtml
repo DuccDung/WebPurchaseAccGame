@@ -12,6 +12,7 @@
         -webkit-text-security: none !important;
         text-security: none !important;
     }
+
 </style>
 
 @{
@@ -83,6 +84,10 @@
                     <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                     Làm mới
                 </button>
+                <button class="pill" type="button" id="btnCopyAllCred">
+                    <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                    Copy tất cả (acc/pass)
+                </button>
             </div>
         </div>
 
@@ -137,7 +142,7 @@
                                 <!-- SHOW THẲNG USERNAME -->
                                 <td>
                                     <div class="copyCell">
-                                        <span class="mono" data-copy="@userText">@userText</span>
+                                        <span class="mono" data-user="@userText">@userText</span>
                                         <button class="copyBtn" type="button" data-copy-btn title="Copy">
                                             <i class="fa-regular fa-copy"></i>
                                         </button>
@@ -147,7 +152,7 @@
                                 <!-- SHOW THẲNG PASSWORD -->
                                 <td>
                                     <div class="copyCell">
-                                        <span class="mono" data-copy="@passText">@passText</span>
+                                        <span class="mono" data-pass="@passText">@passText</span>
                                         <button class="copyBtn" type="button" data-copy-btn title="Copy">
                                             <i class="fa-regular fa-copy"></i>
                                         </button>
@@ -164,7 +169,9 @@
         </div>
     </div>
 </section>
-
+<a asp-action="Index" asp-controller="LuckySpin" id="floatingGift" class="floating-gift" title="Quà tặng 🎁 (click để ẩn)">
+    🎁
+</a>
 <style>
     .purchases .tableWrap {
         border: 1px solid var(--surface-border);
@@ -337,6 +344,75 @@
         } catch {
           alert("Không copy được. Trình duyệt không cho phép.");
         }
+      });
+    })();
+</script>
+<script>
+    // Copy tất cả acc/pass (mỗi dòng: user/pass)
+    (() => {
+      const btn = document.getElementById("btnCopyAllCred");
+      if (!btn) return;
+
+      btn.addEventListener("click", async () => {
+        const rows = Array.from(document.querySelectorAll("#recentBoughtTable tbody tr"));
+
+        const lines = [];
+        for (const tr of rows) {
+          const uEl = tr.querySelector("[data-user]");
+          const pEl = tr.querySelector("[data-pass]");
+          if (!uEl || !pEl) continue;
+
+          const user = uEl.getAttribute("data-user") || uEl.textContent || "";
+          const pass = pEl.getAttribute("data-pass") || pEl.textContent || "";
+          if (!user && !pass) continue;
+
+          lines.push(`${user}/${pass}`);
+        }
+
+        if (lines.length === 0) {
+          alert("Không có dữ liệu acc/pass để copy.");
+          return;
+        }
+
+        const text = lines.join("\n");
+
+        try {
+          await navigator.clipboard.writeText(text);
+          const old = btn.innerHTML;
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> Đã copy';
+          setTimeout(() => (btn.innerHTML = old), 900);
+        } catch {
+          // fallback nếu clipboard bị chặn
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+            alert("Đã copy (fallback).");
+          } catch {
+            alert("Không copy được. Trình duyệt không cho phép.");
+          }
+          document.body.removeChild(ta);
+        }
+      });
+    })();
+</script>
+<script>
+    (() => {
+      const gift = document.getElementById("floatingGift");
+      if(!gift) return;
+
+      // hiện sau 600ms cho mượt
+      setTimeout(() => {
+        gift.style.display = "grid";
+      }, 600);
+
+      // click để ẩn
+      gift.addEventListener("click", () => {
+        gift.style.display = "none";
       });
     })();
 </script>

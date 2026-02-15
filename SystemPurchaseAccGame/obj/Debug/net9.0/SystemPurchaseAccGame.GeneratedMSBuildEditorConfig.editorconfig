@@ -17,109 +17,165 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SystemPurchaseAccGame
 build_property.RootNamespace = SystemPurchaseAccGame
-build_property.ProjectDir = D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame\
+build_property.ProjectDir = D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\WebPurchaseAccGame\SystemPurchaseAccGame
+build_property.MSBuildProjectDirectory = D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Admin/Dashboard.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/AdminLuckySpin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5MdWNreVNwaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/AdminLuckySpin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5MdWNreVNwaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Admin/Login.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Admin/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/About.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/ClientHome/GameDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxHYW1lRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/ClientHome/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/ClientHome/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/ClientHome/Purchase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50SG9tZVxQdXJjaGFzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/AccountInfo.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/AccountInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2NvdW50SW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/AccountInfoHis.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/AccountInfoHis.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2NvdW50SW5mb0hpcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Bank.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Bank.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCYW5rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Cart.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Cart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/GameDetail.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/GameDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHYW1lRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/HistoryPayment.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/HistoryPayment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIaXN0b3J5UGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/HomePage.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/HomePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Login.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/PaymentSuccess.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/PaymentSuccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXltZW50U3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Purchase.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Home/Purchase.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQdXJjaGFzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_AccountGame.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/LuckySpin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVja3lTcGluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/AdminCheap/_CheapAccountListing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluQ2hlYXBcX0NoZWFwQWNjb3VudExpc3RpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/AdminCheap/_CheapGames.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluQ2hlYXBcX0NoZWFwR2FtZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_AccountGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9BY2NvdW50R2FtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_AdminHome.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_AdminHome.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9BZG1pbkhvbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_ConfirmPayment.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9DYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_ConfirmPayment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9Db25maXJtUGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_SideBar.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_Game.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9HYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_SideBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9TaWRlQmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_UploadAccGame.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Admin/_UploadAccGame.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXEFkbWluXF9VcGxvYWRBY2NHYW1lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Client/_Footer.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Client/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXENsaWVudFxfRm9vdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Client/_Header.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/Client/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXENsaWVudFxfSGVhZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/_AdminLayout.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/New/_ConfirmPayModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXE5ld1xfQ29uZmlybVBheU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/Partials/New/_NeedTopupModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXE5ld1xfTmVlZFRvcHVwTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/_ViewImports.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/_ClientNewLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DbGllbnROZXdMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/_ViewStart.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/_ClientLayout.cshtml]
+[D:/laptrinhweb/code_outsrc/WebPurchaseAccGame/ver_2/WebPurchaseAccGame/SystemPurchaseAccGame/Views/Shared/_ClientLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DbGllbnRMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3vdw0fz9a5
