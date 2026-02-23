@@ -1,7 +1,9 @@
 ﻿@model SystemPurchaseAccGame.ViewModel.NeedTopupMultiVm
 @using System.Globalization
+
 @{
     var vi = new CultureInfo("vi-VN");
+    var urlTopupBank = Url.Action("Bank", "ClientHome") ?? "/ClientHome/Bank";
 }
 
 <div class="acc_detail_pay_modal" data-open="true" aria-hidden="false" role="dialog">
@@ -16,23 +18,34 @@
         <div class="p-3">
             <div class="mb-2"><strong>@Model.GameName</strong></div>
             <div class="mb-1">Số lượng: <strong>@Model.Quantity</strong></div>
-            <div class="mb-1">Tổng tiền: <strong class="text-danger">@Model.TotalPrice.ToString("N0", vi) ₫</strong></div>
-            <div class="mb-1">Số dư hiện tại: <strong>@Model.Balance.ToString("N0", vi) ₫</strong></div>
-            <div class="mb-3">Cần nạp thêm: <strong class="text-danger">@Model.NeedMore.ToString("N0", vi) ₫</strong></div>
 
-            @if (!string.IsNullOrWhiteSpace(Model.QrImageUrl))
-            {
-                <div class="text-center mb-3">
-                    <img src="@Model.QrImageUrl" alt="QR nạp tiền" style="max-width:320px;width:100%;border-radius:12px;border:1px solid #eee" />
-                </div>
-            }
-
-            <div class="alert alert-warning">
-                Nội dung chuyển khoản: <b>@Model.TopupNote</b>
+            <div class="mb-1">
+                Tổng tiền:
+                <strong class="text-danger">@Model.TotalPrice.ToString("N0", vi) ₫</strong>
             </div>
 
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary js-close-modal">Đã hiểu</button>
+            <div class="mb-1">
+                Số dư hiện tại:
+                <strong>@Model.Balance.ToString("N0", vi) ₫</strong>
+            </div>
+
+            <div class="mb-3">
+                Cần nạp thêm:
+                <strong class="text-danger">@Model.NeedMore.ToString("N0", vi) ₫</strong>
+            </div>
+
+            <div class="alert alert-warning mb-3">
+                Bạn vui lòng nạp thêm tiền vào ví để tiếp tục thanh toán.
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-outline-secondary js-close-modal">
+                    Đóng
+                </button>
+
+                <a class="btn btn-primary" href="@urlTopupBank">
+                    Tới trang nạp tiền
+                </a>
             </div>
         </div>
     </div>

@@ -1,4 +1,10 @@
 ﻿@model SystemPurchaseAccGame.ViewModel.NeedTopupVm
+@using System.Globalization
+
+@{
+    var vi = new CultureInfo("vi-VN");
+    var urlTopupBank = Url.Action("Bank", "ClientHome") ?? "/ClientHome/Bank";
+}
 
 <div class="acc_detail_pay_modal" data-open="true" aria-hidden="false" role="dialog">
     <div class="acc_detail_pay_modalCard">
@@ -11,28 +17,34 @@
 
         <div class="p-3">
             <div class="mb-2"><strong>@Model.Title</strong></div>
-            <div class="mb-1">Giá: <strong>@Model.Price.ToString("N0") VNĐ</strong></div>
-            <div class="mb-1">Số dư ví: <strong>@Model.Balance.ToString("N0") VNĐ</strong></div>
-            <div class="mb-3">Cần nạp thêm: <strong>@Model.NeedMore.ToString("N0") VNĐ</strong></div>
 
-            <div class="border rounded-4 p-3 text-center">
-                <div class="fw-bold mb-2">Quét QR để nạp tiền</div>
-
-                @if (!string.IsNullOrWhiteSpace(Model.QrImageUrl))
-                {
-                    <img src="@Model.QrImageUrl" alt="QR nạp tiền" style="max-width:260px;width:100%;height:auto;" />
-                }
-
-                @if (!string.IsNullOrWhiteSpace(Model.TopupNote))
-                {
-                    <div class="text-muted small mt-2">Nội dung chuyển khoản:</div>
-                    <div class="fw-bold">@Model.TopupNote</div>
-                }
+            <div class="mb-1">
+                Giá:
+                <strong class="text-danger">@Model.Price.ToString("N0", vi) ₫</strong>
             </div>
 
-            <div class="d-flex gap-2 justify-content-end mt-3">
-                <button class="acc_detail_pay_btn acc_detail_pay_btnGhost js-close-modal" type="button">Đóng</button>
-                <a class="acc_detail_pay_btn acc_detail_pay_btnPrimary" href="/home/wallet">Đi tới ví</a>
+            <div class="mb-1">
+                Số dư ví:
+                <strong>@Model.Balance.ToString("N0", vi) ₫</strong>
+            </div>
+
+            <div class="mb-3">
+                Cần nạp thêm:
+                <strong class="text-danger">@Model.NeedMore.ToString("N0", vi) ₫</strong>
+            </div>
+
+            <div class="alert alert-warning mb-3">
+                Bạn vui lòng nạp thêm tiền vào ví để tiếp tục thanh toán.
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+                <button class="acc_detail_pay_btn acc_detail_pay_btnGhost js-close-modal" type="button">
+                    Đóng
+                </button>
+
+                <a class="acc_detail_pay_btn acc_detail_pay_btnPrimary" href="@urlTopupBank">
+                    Tới trang nạp tiền
+                </a>
             </div>
         </div>
     </div>
