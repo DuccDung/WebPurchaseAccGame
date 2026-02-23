@@ -1,0 +1,99 @@
+﻿@using SystemPurchaseAccGame.Dtos
+@model RegisterVm
+
+@{
+    Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
+}
+
+<section class="login-page">
+    <div class="login-wrap">
+        <div class="login-card">
+            <h1 class="login-title">Đăng Ký</h1>
+            <div class="login-subtitle">Tạo Tài Khoản Mới</div>
+
+            @if (ViewBag.RegisterError != null)
+            {
+                <div class="login-alert">
+                    @ViewBag.RegisterError
+                </div>
+            }
+
+            <form class="login-form"
+                  method="post"
+                  asp-controller="ClientHome"
+                  asp-action="Register">
+
+                @Html.AntiForgeryToken()
+
+                <div class="login-field">
+                    <label class="login-label">Email</label>
+                    <input name="Email"
+                           type="email"
+                           class="login-input"
+                           placeholder="Nhập Email"
+                           value="@(Model?.Email ?? "")"
+                           required />
+                </div>
+
+                <div class="login-field">
+                    <label class="login-label">Số điện thoại</label>
+                    <input name="Phone"
+                           type="text"
+                           class="login-input"
+                           placeholder="Nhập Số Điện Thoại"
+                           value="@(Model?.Phone ?? "")" />
+                </div>
+
+                <div class="login-field">
+                    <label class="login-label">Mật Khẩu</label>
+                    <input name="Password"
+                           type="password"
+                           class="login-input"
+                           placeholder="Nhập Mật Khẩu"
+                           required />
+                </div>
+
+                <div class="login-field">
+                    <label class="login-label">Xác Nhận Mật Khẩu</label>
+                    <input name="ConfirmPassword"
+                           type="password"
+                           class="login-input"
+                           placeholder="Nhập Lại Mật Khẩu"
+                           required />
+                </div>
+
+                <button class="login-btn" type="submit">
+                    Đăng Ký
+                </button>
+
+                <div class="login-divider">
+                    <span>Hoặc</span>
+                </div>
+
+                <div class="login-bottom">
+                    <span class="login-bottom-text">
+                        ĐÃ CÓ TÀI KHOẢN?
+                    </span>
+                    <a class="login-bottom-link"
+                       asp-controller="ClientHome"
+                       asp-action="Login">
+                        ĐĂNG NHẬP
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .login-alert {
+        margin: 14px 0 0;
+        padding: 10px 12px;
+        border: 1px solid rgba(239,68,68,.35);
+        background: rgba(239,68,68,.06);
+        border-radius: 8px;
+        font-family: "Signika", sans-serif;
+        font-weight: 600;
+        color: #0f172a;
+    }
+</style>

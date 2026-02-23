@@ -1,0 +1,72 @@
+﻿@model List<SystemPurchaseAccGame.ViewModel.OrderHistoryVm>
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "Lịch sử đơn hàng";
+    var vi = new CultureInfo("vi-VN");
+    Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
+}
+
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">📦 Lịch sử đơn hàng</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Bạn chưa có đơn hàng nào.
+        </div>
+    }
+    else
+    {
+        foreach (var order in Model)
+        {
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-dark text-white d-flex justify-content-between">
+                    <div>
+                        <b>Đơn #@order.OrderId</b>
+                        <span class="ms-3">@order.CreatedAt.ToLocalTime()</span>
+                    </div>
+                    <div>
+                        <span class="badge bg-success">@order.Status</span>
+                        <span class="ms-3 fw-bold">
+                            @order.TotalAmount.ToString("N0", vi) ₫
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    @foreach (var item in order.Items)
+                    {
+                        <div class="border rounded p-3 mb-3 bg-light">
+                            <h6 class="fw-bold">@item.Title</h6>
+
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    <b>Tài khoản:</b>
+                                    <div class="text-primary">@item.Username</div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <b>Mật khẩu:</b>
+                                    <div class="text-danger">@item.Password</div>
+                                </div>
+
+                                @if (!string.IsNullOrWhiteSpace(item.Note))
+                                {
+                                    <div class="col-md-4">
+                                        <b>Ghi chú:</b>
+                                        <div>@item.Note</div>
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="mt-2 text-muted small">
+                                Account ID: @item.AccountId
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

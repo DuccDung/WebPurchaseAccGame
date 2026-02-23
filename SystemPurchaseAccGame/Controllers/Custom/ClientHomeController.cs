@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Text.Json;
 using SystemPurchaseAccGame.Models;
 using SystemPurchaseAccGame.ViewModel;
 
@@ -119,38 +120,88 @@ namespace SystemPurchaseAccGame.Controllers.Custom
             return View();
         }
 
-        // POST: /Home/Register
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterVm model)
+        public async Task<IActionResult> Register(SystemPurchaseAccGame.Dtos.RegisterVm model)
         {
-            bool status = true;
-            var user = new User
+            if (string.IsNullOrWhiteSpace(model.Email) ||
+                string.IsNullOrWhiteSpace(model.Password))
             {
-                Email = model.Email,
-                Phone = model.Phone,
-                FullName = model.Name,
-                Username = model.Name,
-                PasswordHash = model.Password
-            };
-            try
-            {
-                await _context.Users.AddAsync(user);
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                status = false;
-            }
-            if (status)
-            {
-                TempData["RegisterSuccess"] = "Tạo tài khoản thành công. Vui lòng đăng nhập.";
-                return RedirectToAction(nameof(Login));
+                ViewBag.RegisterError = "Vui lòng nhập đầy đủ thông tin.";
+                return View(model);
             }
 
-            ViewBag.RegisterError = "Đăng ký không thành công. Vui lòng kiểm tra lại thông tin.";
-            ViewBag.ActiveTab = "register";
-            return View("Login");
+            if (model.Password != model.ConfirmPassword)
+            {
+                ViewBag.RegisterError = "Mật khẩu xác nhận không khớp.";
+                return View(model);
+            }
+
+            var existed = await _context.Users
+                .AnyAsync(x => x.Email == model.Email);
+            var existedPhone = await _context.Users
+                .AnyAsync(x => x.Phone == model.Phone);
+            if (existedPhone)
+            {
+                ViewBag.RegisterError = "Số điện thoại đã tồn tại.";
+                return View(model);
+            }
+            if (existed)
+            {
+                ViewBag.RegisterError = "Email đã tồn tại.";
+                return View(model);
+            }
+
+            var user = new User
+            {
+                Username = "" + model.Email.Split('@')[0], // Lấy phần trước dấu @ làm username tạm
+                Email = model.Email,
+                Phone = model.Phone,
+                PasswordHash = model.Password, // ⚠️ sau này nên hash
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            var existedWallet = await _context.Wallets
+     .AnyAsync(x => x.UserId == user.UserId);
+
+            if (!existedWallet)
+            {
+                var wallet = new Wallet
+                {
+                    UserId = user.UserId,
+                    Balance = 0,
+                    UpdatedAt = DateTime.UtcNow
+                };
+
+                _context.Wallets.Add(wallet);
+                await _context.SaveChangesAsync();
+            }
+
+            // Auto login sau khi đăng ký
+            var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier , user.UserId.ToString()),
+        new Claim(ClaimTypes.Name , user.Email),
+        new Claim("balance", "0")
+    };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                principal);
+
+            return RedirectToAction("Index", "ClientHome");
         }
 
         [HttpGet]
@@ -160,7 +211,7 @@ namespace SystemPurchaseAccGame.Controllers.Custom
 
             Response.Cookies.Delete("my_cookie");
 
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("Login", "ClientHome");
         }
 
         [HttpGet]
@@ -301,6 +352,116 @@ namespace SystemPurchaseAccGame.Controllers.Custom
             }
 
             return View(accounts);
+        }
+        public async Task<IActionResult> OrderHistory()
+        {
+            if (!User.Identity?.IsAuthenticated ?? true)
+                return RedirectToAction("Login");
+
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!long.TryParse(userIdStr, out var userId))
+                return RedirectToAction("Login");
+
+            var orders = await _context.Orders
+                .Where(o => o.UserId == userId)
+                .OrderByDescending(o => o.CreatedAt)
+                .Include(o => o.OrderItems)
+                    .ThenInclude(oi => oi.Account)
+                .ToListAsync();
+
+            var result = new List<OrderHistoryVm>();
+
+            foreach (var order in orders)
+            {
+                var vm = new OrderHistoryVm
+                {
+                    OrderId = order.OrderId,
+                    CreatedAt = order.CreatedAt,
+                    TotalAmount = order.TotalAmount,
+                    Status = order.Status
+                };
+
+                foreach (var item in order.OrderItems)
+                {
+                    var acc = item.Account;
+
+                    string username = "";
+                    string password = "";
+                    string? note = null;
+
+                    if (!string.IsNullOrWhiteSpace(acc?.LoginInfo))
+                    {
+                        try
+                        {
+                            var li = JsonSerializer.Deserialize<LoginInfoJson>(acc.LoginInfo);
+                            username = li?.User ?? "";
+                            password = li?.Pass ?? "";
+                            note = li?.Note;
+                        }
+                        catch { }
+                    }
+
+                    vm.Items.Add(new OrderHistoryItemVm
+                    {
+                        AccountId = acc?.AccountId ?? 0,
+                        Title = acc?.Title ?? "",
+                        Price = item.UnitPrice,
+                        Username = username,
+                        Password = password,
+                        Note = note
+                    });
+                }
+
+                result.Add(vm);
+            }
+
+            return View(result);
+        }
+        public async Task<IActionResult> Bank()
+        {
+            ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
+
+            if (!ViewBag.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "ClientHome");
+            }
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (int.TryParse(userIdStr, out var userId))
+            {
+                var wallet = await _context.Wallets
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(w => w.UserId == userId);
+                ViewBag.WalletBalance = wallet != null ? wallet.Balance : 0m;
+            }
+            await Task.CompletedTask;
+            return View();
+        }
+        public async Task<IActionResult> PaymentSuccess()
+        {
+            // bắt buộc đăng nhập
+            if (!User.Identity?.IsAuthenticated ?? true)
+                return RedirectToAction("Login", "ClientHome");
+
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!long.TryParse(userIdStr, out var userId))
+                return RedirectToAction("Login", "ClientHome");
+
+            // ====== CỘNG 1 LƯỢT QUAY ======
+            // Key theo từng user để tránh user khác dùng chung
+            var key = $"LUCKY_SPIN_CHANCE_{userId}";
+
+            // Nếu bạn muốn "mỗi lần mua chỉ 1 lượt và không cộng dồn", set = 1 luôn
+            // HttpContext.Session.SetInt32(key, 1);
+
+            // Nếu bạn muốn "mua nhiều lần cộng dồn lượt quay"
+            var current = HttpContext.Session.GetInt32(key) ?? 0;
+            HttpContext.Session.SetInt32(key, current + 1);
+
+            // (Tuỳ chọn) đưa cờ để home hiển thị nút "Quay ngay"
+            TempData["LuckySpinGranted"] = true;
+
+            await Task.CompletedTask;
+            return View();
         }
         private string MapMediaType(string? raw)
         {

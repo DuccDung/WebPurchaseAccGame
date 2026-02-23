@@ -776,3 +776,4 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPur
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\6372vnexmi-moxh2wz3bw.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\qq2malytrg-jmjadx83w3.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\sqa41nrta6-ctryl2kpar.gz
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\iqra6k2kaw-k3ar7t29vi.gz

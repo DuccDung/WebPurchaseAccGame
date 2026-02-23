@@ -1,0 +1,43 @@
+﻿@model List<SystemPurchaseAccGame.Models.LuckySpinItem>
+
+<h2>LuckySpinItems - Admin</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>PrizeValue</th>
+            <th>Weight</th>
+            <th>Remaining</th>
+            <th>Active</th>
+            <th>LastWinner</th>
+            <th>LastWonAt</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.ItemId</td>
+                <td>@x.Title</td>
+                <td>@x.PrizeValue</td>
+                <td>@x.Weight</td>
+                <td>@(x.Remaining?.ToString() ?? "∞")</td>
+                <td>@x.IsActive</td>
+                <td>@(x.LastWinnerUserId?.ToString() ?? "—")</td>
+                <td>@(x.LastWonAt?.ToString("yyyy-MM-dd HH:mm") ?? "—")</td>
+                <td style="display:flex; gap:8px;">
+                    <a class="btn btn-sm btn-primary" href="@Url.Action("Edit", new { id = x.ItemId })">Edit</a>
+
+                    <form asp-action="ResetWinner" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@x.ItemId" />
+                        <button type="submit" class="btn btn-sm btn-danger">Reset winner</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

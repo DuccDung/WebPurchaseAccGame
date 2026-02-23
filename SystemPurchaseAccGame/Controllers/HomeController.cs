@@ -65,38 +65,38 @@ public class HomeController : Controller
     }
 
     // POST: /Home/Register
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(RegisterVm model)
-    {
-        bool status = true;
-        var user = new User
-        {
-            Email = model.Email,
-            Phone = model.Phone,
-            FullName = model.Name,
-            Username = model.Name,
-            PasswordHash = model.Password
-        };
-        try
-        {
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-        }
-        catch
-        {
-            status = false;
-        }
-        if (status)
-        {
-            TempData["RegisterSuccess"] = "Tạo tài khoản thành công. Vui lòng đăng nhập.";
-            return RedirectToAction(nameof(Login));
-        }
+    //[HttpPost]
+    //[ValidateAntiForgeryToken]
+    //public async Task<IActionResult> Register(SystemPurchaseAccGame.Dtos.RegisterVm model)
+    //{
+    //    bool status = true;
+    //    var user = new User
+    //    {
+    //        Email = model.Email,
+    //        Phone = model.Phone,
+    //        FullName = model.Name,
+    //        Username = model.Name,
+    //        PasswordHash = model.Password
+    //    };
+    //    try
+    //    {
+    //        await _context.Users.AddAsync(user);
+    //        await _context.SaveChangesAsync();
+    //    }
+    //    catch
+    //    {
+    //        status = false;
+    //    }
+    //    if (status)
+    //    {
+    //        TempData["RegisterSuccess"] = "Tạo tài khoản thành công. Vui lòng đăng nhập.";
+    //        return RedirectToAction(nameof(Login));
+    //    }
 
-        ViewBag.RegisterError = "Đăng ký không thành công. Vui lòng kiểm tra lại thông tin.";
-        ViewBag.ActiveTab = "register";
-        return View("Login");
-    }
+    //    ViewBag.RegisterError = "Đăng ký không thành công. Vui lòng kiểm tra lại thông tin.";
+    //    ViewBag.ActiveTab = "register";
+    //    return View("Login");
+    //}
 
     [HttpGet]
     public async Task<IActionResult> Logout()

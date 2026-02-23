@@ -5,7 +5,46 @@
     Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
     var cheapCat = Model?.FirstOrDefault(x => x.CategoryId == 6);
 }
+<style>
+    .acc_detail_pay_modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 16px;
+    }
 
+    .acc_detail_pay_modalCard {
+        width: min(560px,100%);
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+
+    .acc_detail_pay_modalTop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .acc_detail_pay_modalTitle {
+        font-weight: 800;
+    }
+
+    .acc_detail_pay_modalClose {
+        border: 0;
+        background: transparent;
+        font-size: 18px;
+        padding: 6px 10px;
+        cursor: pointer;
+    }
+</style>
 <!-- =========================
    TOP AREA (Banner + Top nạp)
 ========================= -->
@@ -323,13 +362,96 @@
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
                 <button type="button" class="btn btn-primary" id="btnCheapConfirmBuy">
-                    <i class="fa fa-check me-1"></i>Mua & thêm vào giỏ
+                    <i class="fa fa-check me-1"></i>Tiếp tục thanh toán
                 </button>
             </div>
         </div>
     </div>
 </div>
+<div id="acc_detail_pay_modalHost"></div>
+@Html.AntiForgeryToken()
+<script>
+    (() => {
+      window.appModal = {
+        host: document.getElementById("acc_detail_pay_modalHost"),
+        getCsrf() {
+          const el = document.querySelector('input[name="__RequestVerificationToken"]');
+          return el ? el.value : "";
+        },
+        close() {
+          this.host.innerHTML = "";
+          document.body.style.overflow = "";
+          window.removeEventListener("keydown", this._esc);
+        },
+        _esc(e){ if(e.key==="Escape") window.appModal.close(); },
+        mount(html){
+          this.host.innerHTML = html || "";
+          if(!html) return;
+          document.body.style.overflow = "hidden";
+          window.addEventListener("keydown", this._esc);
 
+          this.host.querySelectorAll(".js-close-modal").forEach(b => b.addEventListener("click", () => this.close()));
+          const overlay = this.host.querySelector(".acc_detail_pay_modal");
+          if (overlay) overlay.addEventListener("click", (e) => { if (e.target === overlay) this.close(); });
+
+          // copy
+          this.host.querySelectorAll(".js-copy").forEach(btn => {
+            btn.addEventListener("click", async () => {
+              const sel = btn.getAttribute("data-copy");
+              const el = this.host.querySelector(sel);
+              const txt = el ? el.textContent.trim() : "";
+              if(!txt) return;
+              try {
+                await navigator.clipboard.writeText(txt);
+                btn.textContent = "Đã copy";
+                setTimeout(() => btn.textContent = "Copy", 1200);
+              } catch {
+                alert("Không copy được. Hãy copy thủ công.");
+              }
+            });
+          });
+
+          // confirm multi pay
+          const btnPay = this.host.querySelector(".js-confirm-cheap-pay");
+          if (btnPay) {
+            btnPay.addEventListener("click", async () => {
+              const gameId = btnPay.getAttribute("data-game-id");
+              const qty = btnPay.getAttribute("data-qty");
+
+              const res = await fetch("/Order/ConfirmPayCheap", {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+                  "X-Requested-With": "XMLHttpRequest"
+                },
+                body: new URLSearchParams({
+                  "__RequestVerificationToken": this.getCsrf(),
+                  "gameId": gameId,
+                  "qty": qty
+                })
+              });
+
+              const text = await res.text();
+              let data = null;
+              try { data = JSON.parse(text); } catch {}
+
+              if (res.status === 401) {
+                alert(data?.message || "Bạn cần đăng nhập.");
+                if (data?.redirectUrl) window.location.href = data.redirectUrl;
+                return;
+              }
+              if (!res.ok || !data?.ok) {
+                alert(data?.message || "Thanh toán thất bại.");
+                return;
+              }
+              if (data?.html) this.mount(data.html);
+            });
+          }
+        }
+      };
+    })();
+</script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const $ = (s, root = document) => root.querySelector(s);
@@ -366,40 +488,60 @@
             });
 
             // confirm buy -> call API -> redirect cart
-            btnConfirm?.addEventListener("click", async () => {
-                const gameId = Number($("#cheapModalGameId").value || 0);
-                const remaining = Number($("#cheapModalRemaining").value || 0);
-                let qty = Number($("#cheapModalQty").value || 1);
+               btnConfirm?.addEventListener("click", async () => {
+      const gameId = Number($("#cheapModalGameId").value || 0);
+      const remaining = Number($("#cheapModalRemaining").value || 0);
+      let qty = Number($("#cheapModalQty").value || 1);
 
-                if (!gameId) return toast("Thiếu GameId.");
-                if (qty < 1) qty = 1;
-                if (qty > remaining) qty = remaining;
+      if (!gameId) return toast("Thiếu GameId.");
+      if (qty < 1) qty = 1;
+      if (qty > remaining) qty = remaining;
 
-                btnConfirm.disabled = true;
+      btnConfirm.disabled = true;
 
-                try {
-                    const res = await fetch("/api/cart/add-cheap", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ gameId, quantity: qty })
-                    });
+      try {
+        const res = await fetch("/Order/PreparePayCheap", {
+          method: "POST",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "X-Requested-With": "XMLHttpRequest"
+          },
+          body: new URLSearchParams({
+            "__RequestVerificationToken": window.appModal.getCsrf(),
+            "gameId": String(gameId),
+            "qty": String(qty)
+          })
+        });
 
-                    const raw = await res.text();
-                    let json = null;
-                    try { json = JSON.parse(raw); } catch { }
+        const text = await res.text();
+        let json = null;
+        try { json = JSON.parse(text); } catch {}
 
-                    if (!res.ok || !json?.ok) {
-                        toast(json?.message || ("Lỗi: " + res.status + "\n" + raw));
-                        return;
-                    }
+        if (res.status === 401) {
+          alert(json?.message || "Bạn cần đăng nhập.");
+          if (json?.redirectUrl) window.location.href = json.redirectUrl;
+          return;
+        }
 
-                    window.location.href = "/Home/Cart";
-                } catch (err) {
-                    console.error(err);
-                    toast("Lỗi mạng / server.");
-                } finally {
-                    btnConfirm.disabled = false;
-                }
-            });
+        if (!res.ok || !json?.ok) {
+          toast(json?.message || ("Lỗi: " + res.status + "\n" + text));
+          return;
+        }
+
+        // đóng bootstrap modal số lượng
+        const m = window.bootstrap ? window.bootstrap.Modal.getOrCreateInstance(modalEl) : null;
+        m?.hide();
+
+        // mở modal confirm/topup
+        window.appModal.mount(json.html);
+
+      } catch (err) {
+        console.error(err);
+        toast("Lỗi mạng / server.");
+      } finally {
+        btnConfirm.disabled = false;
+      }
+    });
         });
     </script>

@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
+}
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width:720px;">
+        <div class="card-body text-center p-5">
+
+            <!-- Icon -->
+            <div class="success-icon mb-4">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <!-- Title -->
+            <h3 class="fw-bold text-success mb-3">
+                Nạp tiền thành công
+            </h3>
+
+            <!-- Description -->
+            <p class="text-muted mb-3">
+                Yêu cầu nạp tiền của bạn đã được ghi nhận.
+                Hệ thống đang xác thực giao dịch,
+                vui lòng chờ khoảng <strong>2 tiếng</strong>.
+            </p>
+
+            <div class="alert alert-light border rounded-3 small mb-4">
+                Nếu quá thời gian chưa cộng tiền, vui lòng liên hệ hỗ trợ
+                và cung cấp <strong>mã giao dịch</strong>.
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <a asp-controller="Home"
+                   asp-action="Bank"
+                   class="btn btn-primary px-4 rounded-3">
+                    Quay lại trang nạp
+                </a>
+
+                <button type="button"
+                        class="btn btn-outline-secondary px-4 rounded-3"
+                        data-bs-toggle="modal"
+                        data-bs-target="#supportModal">
+                    Liên hệ hỗ trợ
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================= MODAL SUPPORT ================= -->
+<div class="modal fade"
+     id="supportModal"
+     tabindex="-1"
+     aria-labelledby="supportModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" id="supportModalLabel">
+                    Liên hệ hỗ trợ
+                </h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                </button>
+            </div>
+
+            <div class="modal-body pt-2">
+
+                <p class="text-muted small mb-3">
+                    Nếu quá <strong>2 tiếng</strong> chưa được cộng tiền,
+                    vui lòng liên hệ và cung cấp <strong>mã giao dịch</strong>.
+                </p>
+
+                <div class="list-group list-group-flush">
+
+                    <a href="tel:0900000000"
+                       class="list-group-item list-group-item-action rounded-3 mb-2 border">
+                        <div class="fw-semibold">Số điện thoại</div>
+                        <div class="small text-muted">0900 000 000</div>
+                    </a>
+
+                    <a href="https://zalo.me/0900000000"
+                       target="_blank"
+                       class="list-group-item list-group-item-action rounded-3 mb-2 border">
+                        <div class="fw-semibold">Zalo</div>
+                        <div class="small text-muted">zalo.me/0900000000</div>
+                    </a>
+
+                    <a href="https://facebook.com/yourpage"
+                       target="_blank"
+                       class="list-group-item list-group-item-action rounded-3 border">
+                        <div class="fw-semibold">Facebook</div>
+                        <div class="small text-muted">facebook.com/yourpage</div>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button"
+                        class="btn btn-secondary rounded-3"
+                        data-bs-dismiss="modal">
+                    Đóng
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .success-icon {
+        font-size: 64px;
+        color: #22c55e;
+        animation: popIn .4s ease;
+    }
+
+    @@keyframes popIn {
+        0% {
+            transform: scale(.6);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+</style>

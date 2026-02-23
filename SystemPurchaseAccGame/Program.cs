@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System;
 using SystemPurchaseAccGame.Models;
@@ -16,6 +16,13 @@ builder.Services
         opt.ExpireTimeSpan = TimeSpan.FromHours(8);
         opt.SlidingExpiration = true;
     });
+builder.Services.AddDistributedMemoryCache();  // BẮT BUỘC
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(6);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -30,6 +37,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseStaticFiles();
 app.MapStaticAssets();
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=ClientHome}/{action=index}/{id?}")

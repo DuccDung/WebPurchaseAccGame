@@ -461,6 +461,10 @@
       "PackagePath": "staticwebassets\\assets_new\\css\\login.css"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\lucky_main.css",
+      "PackagePath": "staticwebassets\\assets_new\\css\\lucky_main.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\main.css",
       "PackagePath": "staticwebassets\\assets_new\\css\\main.css"
     },
@@ -681,6 +685,78 @@
       "PackagePath": "staticwebassets\\img\\20260215082948319_ac31fc84214a43c4b84105cd691a19d1.gif"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260215083819189_f2969d2f3c7541eeb2203e34391dcd91.gif",
+      "PackagePath": "staticwebassets\\img\\20260215083819189_f2969d2f3c7541eeb2203e34391dcd91.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260215083819204_d383285eda9a46028ad130b53f212148.gif",
+      "PackagePath": "staticwebassets\\img\\20260215083819204_d383285eda9a46028ad130b53f212148.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260215083819207_a2af7fe78a5b4e149486ec479931c950.gif",
+      "PackagePath": "staticwebassets\\img\\20260215083819207_a2af7fe78a5b4e149486ec479931c950.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260215083850008_73ec306a7e184d7aab425d1c4f45b44b.gif",
+      "PackagePath": "staticwebassets\\img\\20260215083850008_73ec306a7e184d7aab425d1c4f45b44b.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260215083850011_5b9ab128675a486798c6cfc09c342ed9.gif",
+      "PackagePath": "staticwebassets\\img\\20260215083850011_5b9ab128675a486798c6cfc09c342ed9.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260215083850014_e00878ee73a044768ddaa36b3b9b2e0c.gif",
+      "PackagePath": "staticwebassets\\img\\20260215083850014_e00878ee73a044768ddaa36b3b9b2e0c.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223153708105_1370bbc94d654c398128ea29587a6b86.png",
+      "PackagePath": "staticwebassets\\img\\20260223153708105_1370bbc94d654c398128ea29587a6b86.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223153708114_a5c2b4345c7c4fb0bc89bbcf095d9e94.gif",
+      "PackagePath": "staticwebassets\\img\\20260223153708114_a5c2b4345c7c4fb0bc89bbcf095d9e94.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223154003265_567bb9f927074280bbda53f880c3d8bf.gif",
+      "PackagePath": "staticwebassets\\img\\20260223154003265_567bb9f927074280bbda53f880c3d8bf.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223154003284_d12f94b73b3f4f51a3f57ef5279fb2eb.gif",
+      "PackagePath": "staticwebassets\\img\\20260223154003284_d12f94b73b3f4f51a3f57ef5279fb2eb.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223154003290_c90bb74185de4c10bf158dcea45a2551.gif",
+      "PackagePath": "staticwebassets\\img\\20260223154003290_c90bb74185de4c10bf158dcea45a2551.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223154003293_95737c00abec4e419b582790fbd8ffef.gif",
+      "PackagePath": "staticwebassets\\img\\20260223154003293_95737c00abec4e419b582790fbd8ffef.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223154003297_b4a92a9c1cdc434394b14c6377ad549b.gif",
+      "PackagePath": "staticwebassets\\img\\20260223154003297_b4a92a9c1cdc434394b14c6377ad549b.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223155810436_33adabd1f2c1416ca3677414d48a8129.gif",
+      "PackagePath": "staticwebassets\\img\\20260223155810436_33adabd1f2c1416ca3677414d48a8129.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223155810454_f875b39f111747cfb14a143aba7f907c.gif",
+      "PackagePath": "staticwebassets\\img\\20260223155810454_f875b39f111747cfb14a143aba7f907c.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223155810459_9e9f151e29d243a2b93476d7d20a70bd.gif",
+      "PackagePath": "staticwebassets\\img\\20260223155810459_9e9f151e29d243a2b93476d7d20a70bd.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223155810462_da8ef697ef48447289b08002caa38d9b.gif",
+      "PackagePath": "staticwebassets\\img\\20260223155810462_da8ef697ef48447289b08002caa38d9b.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260223155810465_c84dec3b25bf47c1a8531d050fd69711.gif",
+      "PackagePath": "staticwebassets\\img\\20260223155810465_c84dec3b25bf47c1a8531d050fd69711.gif"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
       "PackagePath": "staticwebassets\\img\\QR.png"
     },
@@ -691,6 +767,10 @@
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\logo.png",
       "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\lucky\\ID_01.jpg",
+      "PackagePath": "staticwebassets\\img\\lucky\\ID_01.jpg"
     },
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\js\\home\\main.js",

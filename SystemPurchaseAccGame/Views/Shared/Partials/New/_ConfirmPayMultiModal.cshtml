@@ -1,0 +1,38 @@
+﻿@model SystemPurchaseAccGame.ViewModel.ConfirmPayMultiVm
+@using System.Globalization
+@{
+    var vi = new CultureInfo("vi-VN");
+}
+
+<div class="acc_detail_pay_modal" data-open="true" aria-hidden="false" role="dialog">
+    <div class="acc_detail_pay_modalCard">
+        <div class="acc_detail_pay_modalTop">
+            <div class="acc_detail_pay_modalTitle">Xác nhận thanh toán</div>
+            <button class="acc_detail_pay_modalClose js-close-modal" type="button" aria-label="Đóng">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="p-3">
+            <div class="mb-2"><strong>@Model.GameName</strong></div>
+            <div class="mb-2">Số lượng: <strong>@Model.Quantity</strong></div>
+            <div class="mb-2">Đơn giá: <strong>@Model.UnitPrice.ToString("N0", vi) ₫</strong></div>
+            <div class="mb-2">Tổng tiền: <strong class="text-danger">@Model.TotalPrice.ToString("N0", vi) ₫</strong></div>
+            <div class="mb-3">Số dư ví: <strong>@Model.Balance.ToString("N0", vi) ₫</strong></div>
+
+            <div class="alert alert-info mb-3">
+                Hệ thống sẽ tự chọn <b>@Model.Quantity</b> acc còn hàng (AVAILABLE) cho bạn.
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="button" class="btn btn-outline-secondary js-close-modal">Huỷ</button>
+                <button type="button"
+                        class="btn btn-primary js-confirm-cheap-pay"
+                        data-game-id="@Model.GameId"
+                        data-qty="@Model.Quantity">
+                    Thanh toán
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

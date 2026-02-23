@@ -92,7 +92,7 @@ namespace SystemPurchaseAccGame.Controllers
                     }
                 }
             }
-            return RedirectToAction("PaymentSuccess" , "Home");
+            return RedirectToAction("PaymentSuccess" , "ClientHome");
         }
     }
 

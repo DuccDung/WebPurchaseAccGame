@@ -1,0 +1,498 @@
+﻿@model SystemPurchaseAccGame.Models.ViewModels.LuckyIndexVm
+@using System.Text.Json
+
+@{
+    // Nếu bạn đang dùng Layout chung thì để nguyên.
+    // Nếu bị lỗi do Layout chồng <html><body> thì bật dòng dưới:
+    // Layout = null;
+
+    var json = JsonSerializer.Serialize(Model.Items, new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    });
+
+    // Ảnh cố định 1..9 lưu tại: wwwroot/img/lucky/
+    // Tên file: ID_01.(png/jpg/jpeg/webp) -> ID_09.(png/jpg/jpeg/webp)
+    // Có thể thêm default.(png/jpg/...) nếu muốn
+    var imgBase = Url.Content("~/img/lucky/");
+
+    // Endpoint Spin
+    var spinUrl = Url.Action("Spin", "Lucky") ?? "/Lucky/Spin";
+
+    // Trang chủ để quay về khi bấm OK
+    var homeUrl = Url.Action("Index", "ClientHome") ?? "/";
+}
+
+<form method="post">
+    @Html.AntiForgeryToken()
+</form>
+
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vòng xoay may mắn</title>
+
+    <link href="~/assets_new/css/lucky_main.css" asp-append-version="true" rel="stylesheet" />
+
+    <style>
+        /* nếu file css ngoài bạn đã có .label thì bạn bỏ block này đi */
+        .item .label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+            white-space: nowrap;
+            font-weight: 800;
+            font-size: 18px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,.55);
+        }
+
+            .item .label span {
+                display: inline-block;
+                transform-origin: 50% 50%;
+            }
+
+        /* ===== POPUP ===== */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,.55);
+            z-index: 9999;
+            padding: 16px;
+        }
+
+        .modal-card {
+            width: min(440px, 96vw);
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+            text-align: center;
+        }
+
+        .modal-title {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .modal-text {
+            margin: 0 0 14px 0;
+            font-size: 16px;
+            line-height: 1.4;
+            color: #222;
+            white-space: pre-line;
+        }
+
+        .modal-btn {
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid #111;
+            background: #111;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 700;
+        }
+
+            .modal-btn:disabled {
+                opacity: .65;
+                cursor: not-allowed;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card">
+            <div class="header">
+                <div class="title"><h1>Vòng xoay may mắn</h1></div>
+            </div>
+
+            <div class="stage">
+                <div class="wheel-shell">
+                    <div class="pointer" aria-hidden="true"></div>
+
+                    <div class="wheel-viewport">
+                        <div class="wheel-rotor" id="rotor">
+                            <div class="items donut-mask" id="items"></div>
+                        </div>
+                    </div>
+
+                    <div class="hub" id="spinBtn" role="button" aria-label="Quay">
+                        <div class="btn">QUAY</div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="result" id="result">Kết quả: <b>—</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== POPUP NHẬN THƯỞNG ===== -->
+    <div id="winModal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+            <h3 id="winTitle" class="modal-title">🎉 Chúc mừng!</h3>
+            <div id="winText" class="modal-text">—</div>
+            <button id="winOk" type="button" class="modal-btn">OK</button>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const rotor = document.getElementById("rotor");
+            const itemsEl = document.getElementById("items");
+            const spinBtn = document.getElementById("spinBtn");
+            const resultEl = document.getElementById("result");
+
+            const winModal = document.getElementById("winModal");
+            const winText = document.getElementById("winText");
+            const winOk = document.getElementById("winOk");
+
+            // ====== DATA từ server ======
+            const prizesDb = @Html.Raw(json);
+            console.log("prizesDb", prizesDb);
+
+            // Base url ảnh cố định: /img/lucky/
+            const IMG_BASE = "@imgBase";
+            const SPIN_URL = "@spinUrl";
+            const HOME_URL = "@homeUrl";
+
+            // Cho phép nhiều đuôi ảnh
+            const IMG_EXTS = [".png", ".jpg", ".jpeg", ".webp"];
+
+            function getAntiForgeryToken() {
+                const el = document.querySelector('input[name="__RequestVerificationToken"]');
+                return el ? el.value : "";
+            }
+
+            function showWinModal(message) {
+                winText.textContent = message || "Bạn đã nhận thưởng!";
+                winModal.style.display = "flex";
+                winModal.setAttribute("aria-hidden", "false");
+            }
+
+            function hideWinModal() {
+                winModal.style.display = "none";
+                winModal.setAttribute("aria-hidden", "true");
+            }
+
+            winOk.addEventListener("click", () => {
+                // bấm OK -> về trang chủ
+                window.location.href = HOME_URL;
+            });
+
+            // đóng popup nếu click nền đen (tuỳ bạn)
+            winModal.addEventListener("click", (e) => {
+                if (e.target === winModal) {
+                    // nếu bạn muốn bắt buộc bấm OK mới về home thì comment 2 dòng này
+                    hideWinModal();
+                }
+            });
+
+            // thử load 1 url, trả true/false
+            function canLoadImage(url) {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => resolve(true);
+                    img.onerror = () => resolve(false);
+                    img.src = url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(); // cache-bust
+                });
+            }
+
+            // trả về url ảnh đúng đuôi cho slot (ID_01..ID_09)
+            async function pickImgBySlot(slot) {
+                const key = `ID_${String(slot).padStart(2, "0")}`;
+
+                for (const ext of IMG_EXTS) {
+                    const url = IMG_BASE + key + ext;
+                    if (await canLoadImage(url)) return url;
+                }
+
+                // fallback nếu slot chưa có ảnh: default.(png/jpg/jpeg/webp)
+                for (const ext of IMG_EXTS) {
+                    const fallback = IMG_BASE + "default" + ext;
+                    if (await canLoadImage(fallback)) return fallback;
+                }
+
+                return "";
+            }
+
+            // format label hiển thị trên vòng
+            function formatLabel(x) {
+                // Nếu muốn hiện Title:
+                // return x.title;
+
+                const v = x.prizeValue || 0;
+                if (v >= 1000) return (v / 1000) + "k";
+                return String(v);
+            }
+
+            // DTO -> object dùng cho wheel (imgUrl sẽ set trong init)
+            let prizes = (prizesDb || []).map((x) => ({
+                itemId: x.itemId,
+                title: x.title,
+                prizeValue: x.prizeValue,
+                weight: x.weight,
+                remaining: x.remaining,
+                winMessage: x.winMessage,
+                imgUrl: "",
+                label: formatLabel(x),
+            }));
+
+            // Nếu server không đủ 9 item hợp lệ thì disable
+            if (prizes.length !== 9) {
+                resultEl.innerHTML = "Kết quả: <b>Không đủ 9 phần thưởng hợp lệ để quay</b>";
+                spinBtn.style.pointerEvents = "none";
+                spinBtn.style.opacity = "0.6";
+                return;
+            }
+
+            // ===== WHEEL STATE =====
+            let angle = 0;
+            let spinning = false;
+            let offsetDeg = 0; // chỉnh khớp pointer nếu cần
+
+            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+            function normAngleRad(a) {
+                const twoPi = Math.PI * 2;
+                return ((a % twoPi) + twoPi) % twoPi;
+            }
+            function setRotorAngle(rad) {
+                const deg = (rad * 180) / Math.PI;
+                rotor.style.transform = `rotate(${deg + offsetDeg}deg)`;
+            }
+
+            // ====== BUILD ITEMS ======
+            function buildItems() {
+                itemsEl.innerHTML = "";
+                const n = prizes.length;
+                const pointsPerSlice = 22;
+
+                for (let i = 0; i < n; i++) {
+                    const item = document.createElement("div");
+                    item.className = "item";
+                    item.dataset.index = String(i);
+
+                    if (prizes[i].imgUrl) {
+                        item.style.backgroundImage = `url("${prizes[i].imgUrl}")`;
+                    } else {
+                        item.style.backgroundImage = "none";
+                    }
+
+                    const start = (i / n) * Math.PI * 2;
+                    const end = ((i + 1) / n) * Math.PI * 2;
+
+                    const pts = ["50% 50%"];
+                    for (let k = 0; k <= pointsPerSlice; k++) {
+                        const t = k / pointsPerSlice;
+                        const a = start + (end - start) * t;
+                        const x = 50 + Math.cos(a) * 50;
+                        const y = 50 + Math.sin(a) * 50;
+                        pts.push(`${x}% ${y}%`);
+                    }
+                    item.style.clipPath = `polygon(${pts.join(",")})`;
+
+                    // ===== label cân đối =====
+                    const mid = (start + end) / 2;
+                    const r = 36; // bán kính đặt chữ (%)
+                    const lx = 50 + Math.cos(mid) * r;
+                    const ly = 50 + Math.sin(mid) * r;
+
+                    const label = document.createElement("div");
+                    label.className = "label";
+                    label.style.left = lx + "%";
+                    label.style.top = ly + "%";
+
+                    const span = document.createElement("span");
+                    span.textContent = prizes[i].label;
+
+                    // chữ theo hướng vòng (tangential)
+                    span.style.transform = `rotate(${mid + Math.PI / 2}rad)`;
+
+                    label.appendChild(span);
+                    item.appendChild(label);
+
+                    // click test (khi không quay)
+                    item.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        if (spinning) return;
+                        const p = prizes[i];
+                        resultEl.innerHTML = `Chọn (click): <b>${p.title}</b>`;
+                        console.log("CLICK ITEM =>", p);
+                    });
+
+                    itemsEl.appendChild(item);
+                }
+            }
+
+            // ====== CALL API SPIN ======
+            async function callSpinApi() {
+                const token = getAntiForgeryToken();
+
+                const payload = {
+                    currentItemIds: prizes.map(p => p.itemId)
+                };
+
+                const res = await fetch(SPIN_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": token
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                // Nếu chưa login: 401
+                if (res.status === 401) {
+                    throw new Error("Bạn cần đăng nhập để quay.");
+                }
+                if (!res.ok) {
+                    // có thể server trả JSON message, thử đọc cho đẹp
+                    let text = "";
+                    try { text = await res.text(); } catch { }
+                    throw new Error("Quay thất bại. " + (text || ("HTTP " + res.status)));
+                }
+
+                return await res.json();
+            }
+
+            // ====== SPIN (SERVER-DRIVEN) ======
+            // Server chọn item trúng -> client quay đúng vào slice đó
+            async function spin() {
+                if (spinning) return;
+                spinning = true;
+
+                // UI disable tạm
+                spinBtn.style.pointerEvents = "none";
+                spinBtn.style.opacity = "0.7";
+
+                try {
+                    const data = await callSpinApi();
+
+                    if (!data || data.ok !== true || !data.won) {
+                        spinning = false;
+                        spinBtn.style.pointerEvents = "";
+                        spinBtn.style.opacity = "";
+
+                        const msgFail = (data && data.message) ? data.message : "Quay thất bại";
+                        resultEl.innerHTML = `Kết quả: <b>${msgFail}</b>`;
+                        return;
+                    }
+
+                    const won = data.won;                 // LuckySpinItemVm
+                    const replacement = data.replacement; // LuckySpinItemVm | null
+
+                    const chosen = prizes.findIndex(p => p.itemId === won.itemId);
+                    if (chosen < 0) {
+                        spinning = false;
+                        spinBtn.style.pointerEvents = "";
+                        spinBtn.style.opacity = "";
+                        resultEl.innerHTML = "Kết quả: <b>Dữ liệu hiển thị không khớp. Vui lòng tải lại.</b>";
+                        return;
+                    }
+
+                    const n = prizes.length;
+                    const slice = (Math.PI * 2) / n;
+
+                    const pointerAngle = -Math.PI / 2;
+                    const targetCenter = (chosen + 0.5) * slice;
+
+                    const offsetRad = (offsetDeg * Math.PI) / 180;
+                    let target = pointerAngle - targetCenter - offsetRad;
+                    target = normAngleRad(target);
+
+                    const start = angle;
+                    const extraTurns = (Math.floor(Math.random() * 3) + 6) * (Math.PI * 2);
+                    const end = target + extraTurns;
+
+                    const duration = 4200;
+                    const t0 = performance.now();
+
+                    const tick = (now) => {
+                        const t = Math.min(1, (now - t0) / duration);
+                        const e = easeOutCubic(t);
+                        angle = start + (end - start) * e;
+                        setRotorAngle(angle);
+
+                        if (t < 1) {
+                            requestAnimationFrame(tick);
+                            return;
+                        }
+
+                        // kết thúc quay
+                        angle = target;
+                        setRotorAngle(angle);
+                        spinning = false;
+
+                        // re-enable (nhưng thực tế bạn có thể không cho quay nữa vì session đã trừ)
+                        spinBtn.style.pointerEvents = "";
+                        spinBtn.style.opacity = "";
+
+                        const msg = data.message || `Bạn trúng ${won.title}`;
+                        resultEl.innerHTML = `Kết quả: <b>${msg}</b>`;
+                        console.log("SPIN RESULT =>", data);
+
+                        // Thay thế item vừa trúng bằng replacement (để item đã trúng không hiện nữa)
+                        if (replacement) {
+                            const keepImg = prizes[chosen].imgUrl; // ảnh theo slot cố định
+
+                            prizes[chosen] = {
+                                itemId: replacement.itemId,
+                                title: replacement.title,
+                                prizeValue: replacement.prizeValue,
+                                weight: replacement.weight,
+                                remaining: replacement.remaining,
+                                winMessage: replacement.winMessage,
+                                imgUrl: keepImg,
+                                label: formatLabel(replacement),
+                            };
+
+                            buildItems();
+                        }
+
+                        // POPUP nhận thưởng + OK về trang chủ
+                        showWinModal(msg);
+
+                        spinBtn.classList.remove("pop");
+                        void spinBtn.offsetWidth;
+                        spinBtn.classList.add("pop");
+                    };
+
+                    requestAnimationFrame(tick);
+                } catch (e) {
+                    spinning = false;
+                    spinBtn.style.pointerEvents = "";
+                    spinBtn.style.opacity = "";
+
+                    const msgErr = (e && e.message) ? e.message : "Lỗi quay";
+                    resultEl.innerHTML = `Kết quả: <b>${msgErr}</b>`;
+                }
+            }
+
+            // init: nạp ảnh theo slot 1..9 (song song) rồi build vòng
+            async function init() {
+                const urls = await Promise.all(
+                    prizes.map((_, idx) => pickImgBySlot(idx + 1))
+                );
+                urls.forEach((u, i) => prizes[i].imgUrl = u);
+
+                buildItems();
+                setRotorAngle(angle);
+            }
+
+            spinBtn.addEventListener("click", spin);
+            init();
+        })();
+    </script>
+</body>
+</html>

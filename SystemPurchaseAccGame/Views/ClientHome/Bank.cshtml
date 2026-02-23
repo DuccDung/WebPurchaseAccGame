@@ -1,0 +1,263 @@
+﻿@using System.Globalization
+@{
+    Layout = "~/Views/Shared/_ClientNewLayout.cshtml";
+    decimal balance = ViewBag.WalletBalance ?? 0m;
+    var vi = CultureInfo.GetCultureInfo("vi-VN");
+
+    // ====== BANK INFO (bạn có thể đổi theo thực tế) ======
+    var bankName = "TIMO";
+    var bankAccount = "9021758421767";
+    var bankOwner = "NGUYEN DINH CUONG";
+
+    // Nội dung chuyển khoản: prefix + mã giao dịch (JS sẽ tự ghép)
+    var transferPrefix = "cuongbufffsao";
+
+    // Ảnh QR (đổi path theo dự án của bạn)
+    var qrImageUrl = Url.Content("~/img/QR.png");
+}
+
+<div class="container py-5">
+    <div class="card shadow rounded-4 p-4">
+
+        <h3 class="fw-bold mb-3 text-primary">
+            <i class="fa-solid fa-wallet me-2"></i>Nạp tiền vào ví
+        </h3>
+
+        <div class="alert alert-info mb-4">
+            Số dư hiện tại:
+            <b class="text-success">
+                @balance.ToString("N0", vi) ₫
+            </b>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-pills mb-4" id="topupTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active"
+                        id="tab-card"
+                        data-bs-toggle="pill"
+                        data-bs-target="#card"
+                        type="button"
+                        role="tab"
+                        aria-controls="card"
+                        aria-selected="true">
+                    Nạp thẻ cào
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
+                        id="tab-bank"
+                        data-bs-toggle="pill"
+                        data-bs-target="#bank"
+                        type="button"
+                        role="tab"
+                        aria-controls="bank"
+                        aria-selected="false">
+                    Chuyển khoản ngân hàng
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+
+            <!-- ================= CARD ================= -->
+            <div class="tab-pane fade show active" id="card" role="tabpanel" aria-labelledby="tab-card">
+
+                <form method="post" action="/client/topup/card" autocomplete="off">
+
+                    <div class="mb-3">
+                        <label class="form-label">Loại thẻ</label>
+                        <select class="form-select" name="provider" required>
+                            <option value="VIETTEL">VIETTEL</option>
+                            <option value="VINAPHONE">VINAPHONE</option>
+                            <option value="MOBIFONE">MOBIFONE</option>
+                            <option value="ZING">ZING</option>
+                            <option value="GARENA">GARENA</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Mệnh giá</label>
+                        <select class="form-select" name="amount" required>
+                            <option value="" selected disabled>Chọn mệnh giá</option>
+                            <option value="10000">10.000</option>
+                            <option value="20000">20.000</option>
+                            <option value="50000">50.000</option>
+                            <option value="100000">100.000</option>
+                            <option value="200000">200.000</option>
+                            <option value="500000">500.000</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Mã thẻ</label>
+                        <input class="form-control" name="pin" inputmode="numeric" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Serial</label>
+                        <input class="form-control" name="serial" inputmode="numeric" required />
+                    </div>
+
+                    <button class="btn btn-primary w-100">
+                        <i class="fa-solid fa-check me-1"></i>Nạp thẻ
+                    </button>
+
+                    <div class="mt-3 small text-muted">
+                        <b>Lưu ý:</b> Nạp đúng mệnh giá. Sai mệnh giá có thể bị trừ phí theo quy định.
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- ================= BANK ================= -->
+            <div class="tab-pane fade" id="bank" role="tabpanel" aria-labelledby="tab-bank">
+
+                <div class="alert alert-warning">
+                    Vui lòng chuyển khoản đúng nội dung để hệ thống tự động cộng tiền.
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- Thông tin ngân hàng -->
+                    <div class="col-lg-6">
+                        <div class="border rounded-3 p-3 h-100">
+                            <div class="mb-2"><b>Ngân hàng:</b> @bankName</div>
+                            <div class="mb-2"><b>Số tài khoản:</b> @bankAccount</div>
+                            <div class="mb-2"><b>Chủ tài khoản:</b> @bankOwner</div>
+
+                            <hr />
+
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold mb-1">Nội dung chuyển khoản</label>
+                                <div class="bg-light border rounded-3 p-2 text-primary fw-bold"
+                                     id="transferContent">
+                                    @transferPrefix gxxxxxxxxxx
+                                </div>
+                                <div class="small text-muted mt-1">
+                                    Hệ thống dùng nội dung này để đối soát tự động.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div class="col-lg-6 text-center">
+                        <div class="border rounded-3 p-3 h-100 d-flex flex-column justify-content-center align-items-center">
+                            <img src="@qrImageUrl"
+                                 class="img-fluid mb-3"
+                                 style="max-width:250px;"
+                                 alt="QR chuyển khoản" />
+                            <div class="fw-semibold text-muted">
+                                Quét QR để chuyển khoản nhanh
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- FORM GỬI YÊU CẦU -->
+                <form method="post" action="/client/topup/bank" autocomplete="off">
+
+                    <div class="mb-3">
+                        <label class="form-label">Số tiền</label>
+                        <input id="bankAmountView"
+                               class="form-control"
+                               inputmode="numeric"
+                               placeholder="Nhập số tiền muốn nạp"
+                               required />
+                        <input type="hidden" name="amount" id="bankAmount" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Mã giao dịch</label>
+                        <input class="form-control"
+                               name="txn_code"
+                               id="txnCode"
+                               readonly />
+                    </div>
+
+                    <!-- (Tuỳ chọn) gửi kèm metadata ngân hàng để backend log/đối soát -->
+                    <input type="hidden" name="bank_name" value="@bankName" />
+                    <input type="hidden" name="bank_account" value="@bankAccount" />
+                    <input type="hidden" name="bank_owner" value="@bankOwner" />
+                    <input type="hidden" name="transfer_prefix" value="@transferPrefix" />
+                    <input type="hidden" name="transfer_content" id="bankContentHidden" value="" />
+
+                    <button class="btn btn-success w-100">
+                        <i class="fa-solid fa-paper-plane me-1"></i>Gửi yêu cầu
+                    </button>
+
+                    <div class="mt-3 small text-muted">
+                        Sau khi chuyển khoản, nhấn <b>Gửi yêu cầu</b> để hệ thống ghi nhận.
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const view = document.getElementById("bankAmountView");
+        const hidden = document.getElementById("bankAmount");
+        const txn = document.getElementById("txnCode");
+        const contentBox = document.getElementById("transferContent");
+        const contentHidden = document.getElementById("bankContentHidden");
+
+        const prefix = "@transferPrefix";
+
+        function makeTxnCode() {
+            const ts = Date.now();
+            const rnd = Math.floor(1000 + Math.random() * 9000);
+            return "g" + ts + rnd;
+        }
+
+        function updateContent() {
+            if (!txn) return;
+            const content = (prefix + " " + (txn.value || "")).trim();
+            if (contentBox) contentBox.textContent = content;
+            if (contentHidden) contentHidden.value = content;
+        }
+
+        // Tạo txn khi vào tab bank (hoặc khi load mà đã ở bank)
+        function ensureTxn() {
+            if (!txn) return;
+            if (!txn.value) txn.value = makeTxnCode();
+            updateContent();
+        }
+
+        // Format input tiền: 1.000.000
+        const onlyDigits = (s) => (s || "").replace(/[^\d]/g, "");
+
+        view?.addEventListener("input", () => {
+            const raw = onlyDigits(view.value);
+            if (!raw) {
+                hidden.value = "";
+                view.value = "";
+                return;
+            }
+            const num = Number(raw);
+            hidden.value = String(num);
+            view.value = num.toLocaleString("vi-VN");
+        });
+
+        // Nếu user mở tab bank thì mới ensureTxn
+        const tabBankBtn = document.getElementById("tab-bank");
+        tabBankBtn?.addEventListener("shown.bs.tab", () => {
+            ensureTxn();
+        });
+
+        // Trường hợp refresh page đang đứng ở tab bank (ít gặp nhưng xử lý luôn)
+        if (location.hash === "#bank") {
+            const trigger = tabBankBtn;
+            trigger?.click();
+            ensureTxn();
+        }
+    })();
+</script>

@@ -1,0 +1,54 @@
+﻿@model SystemPurchaseAccGame.Models.LuckySpinItem
+
+<h2>Edit LuckySpinItem</h2>
+
+<form method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="ItemId" />
+    <input type="hidden" asp-for="RowVer" />
+
+    <div class="mb-2">
+        <label>Title</label>
+        <input class="form-control" asp-for="Title" />
+    </div>
+
+    <div class="mb-2">
+        <label>PrizeTier</label>
+        <input class="form-control" asp-for="PrizeTier" />
+    </div>
+
+    <div class="mb-2">
+        <label>PrizeValue</label>
+        <input class="form-control" asp-for="PrizeValue" />
+    </div>
+
+    <div class="mb-2">
+        <label>Weight</label>
+        <input class="form-control" asp-for="Weight" />
+    </div>
+
+    <div class="mb-2">
+        <label>Remaining (null = unlimited)</label>
+        <input class="form-control" asp-for="Remaining" />
+    </div>
+
+    <div class="mb-2">
+        <label>IsActive</label>
+        <input type="checkbox" asp-for="IsActive" />
+    </div>
+
+    <div class="mb-2">
+        <label>WinMessage</label>
+        <input class="form-control" asp-for="WinMessage" />
+    </div>
+
+    <div class="mb-2">
+        <label>Note</label>
+        <input class="form-control" asp-for="Note" />
+    </div>
+
+    <hr />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Back</a>
+</form>

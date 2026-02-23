@@ -1,0 +1,57 @@
+﻿@model SystemPurchaseAccGame.ViewModel.PaidAccountMultiVm
+@using System.Globalization
+@{
+    var vi = new CultureInfo("vi-VN");
+}
+
+<div class="acc_detail_pay_modal" data-open="true" aria-hidden="false" role="dialog">
+    <div class="acc_detail_pay_modalCard">
+        <div class="acc_detail_pay_modalTop">
+            <div class="acc_detail_pay_modalTitle">Thanh toán thành công</div>
+            <button class="acc_detail_pay_modalClose js-close-modal" type="button" aria-label="Đóng">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="p-3">
+            <div class="mb-2"><strong>@Model.Title</strong></div>
+            <div class="mb-3">Mã đơn: <strong>#@Model.OrderId</strong> • Tổng: <strong class="text-danger">@Model.TotalAmount.ToString("N0", vi) ₫</strong></div>
+
+            <div class="alert alert-info mb-3">
+                <i class="fa-solid fa-circle-info me-2"></i>@Model.Hint
+            </div>
+
+            <div class="d-grid gap-3">
+                @for (int i = 0; i < Model.Accounts.Count; i++)
+                {
+                    var a = Model.Accounts[i];
+                    <div class="border rounded-4 p-3">
+                        <div class="fw-bold mb-2">Acc @(i + 1) • ID: <span class="text-primary">@a.AccountId</span></div>
+                        <div class="mb-1"><span class="text-muted">Title:</span> <strong>@a.Title</strong></div>
+                        <div class="mb-2"><span class="text-muted">Giá:</span> <strong>@a.Price.ToString("N0", vi) ₫</strong></div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div><span class="text-muted">User:</span> <strong id="u_@a.AccountId">@a.Username</strong></div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary js-copy" data-copy="#u_@a.AccountId">Copy</button>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div><span class="text-muted">Pass:</span> <strong id="p_@a.AccountId">@a.Password</strong></div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary js-copy" data-copy="#p_@a.AccountId">Copy</button>
+                        </div>
+
+                        @if (!string.IsNullOrWhiteSpace(a.Note))
+                        {
+                            <div class="mt-2"><span class="text-muted">Ghi chú:</span> <strong>@a.Note</strong></div>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end mt-3">
+                <a class="btn btn-outline-primary" href="/home/paymenthistory">Lịch sử mua</a>
+                <button type="button" class="btn btn-primary js-close-modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

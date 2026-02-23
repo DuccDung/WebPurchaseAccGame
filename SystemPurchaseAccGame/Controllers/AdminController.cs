@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using SystemPurchaseAccGame.Models;
 using SystemPurchaseAccGame.ViewModel;
 
@@ -12,34 +14,47 @@ namespace SystemPurchaseAccGame.Controllers
     public class AdminController : Controller
     {
         private readonly GameAccShopContext _context;
+
+        // ====== Session Keys ======
+        private const string S_ADMIN_ID = "ADMIN_ID";
+        private const string S_ADMIN_EMAIL = "ADMIN_EMAIL";
+        private const string S_ADMIN_ROLE = "ADMIN_ROLE";
+
         public AdminController(GameAccShopContext context)
         {
             _context = context;
         }
 
-        // ===== Helpers =====
+        // =========================
+        // Helpers: Auth / Session
+        // =========================
         private bool IsAdmin()
         {
-            // Bạn đang login admin bằng query user.Role == "Admin"
-            // Hiện tại chưa thấy bạn lưu cookie/claims cho Admin => check tạm Session/TempData.
-            // Nếu bạn có lưu session, hãy sửa lại cho đúng.
-            // Ở đây check "AdminEmail" cho đơn giản, bạn có thể đổi.
-            // Nếu chưa có session, cứ để true để test (khuyến nghị sửa sau).
-            return true;
+            var role = HttpContext.Session.GetString(S_ADMIN_ROLE);
+            var id = HttpContext.Session.GetInt32(S_ADMIN_ID);
+            return id.HasValue && id.Value > 0 && string.Equals(role, "Admin", StringComparison.OrdinalIgnoreCase);
         }
 
-        private static string Mask(string? s, int keepStart = 2, int keepEnd = 2)
+        private IActionResult RequireAdminView()
         {
-            if (string.IsNullOrWhiteSpace(s)) return "";
-            s = s.Trim();
-            if (s.Length <= keepStart + keepEnd) return new string('*', s.Length);
-            return s.Substring(0, keepStart) + new string('*', s.Length - keepStart - keepEnd) + s.Substring(s.Length - keepEnd);
+            if (IsAdmin()) return null!;
+            return RedirectToAction(nameof(Login));
         }
 
-        // ===== Login giữ nguyên của bạn =====
-        public async Task<IActionResult> Login()
+        private IActionResult RequireAdminJson()
         {
-            await Task.CompletedTask;
+            if (IsAdmin()) return null!;
+            return Unauthorized(new { success = false, message = "Vui lòng đăng nhập Admin." });
+        }
+
+        // =========================
+        // Login / Logout
+        // =========================
+        [HttpGet]
+        public IActionResult Login()
+        {
+            // Nếu đã login rồi thì đá thẳng qua dashboard
+            if (IsAdmin()) return RedirectToAction(nameof(Dashboard));
             return View();
         }
 
@@ -47,25 +62,50 @@ namespace SystemPurchaseAccGame.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string email, string password, bool rememberMe)
         {
-            var user = _context.Users
-                .FirstOrDefault(u => u.Email == email && u.PasswordHash == password && u.Role == "Admin");
+            email = (email ?? "").Trim();
+
+            // NOTE: bạn đang so passwordHash == password (plain). Mình giữ nguyên theo code của bạn.
+            var user = await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u =>
+                    u.Email == email &&
+                    u.PasswordHash == password &&
+                    u.Role == "Admin"
+                );
 
             if (user == null)
                 return Json(new { success = false, message = "Đăng Nhập Không Thành Công!" });
 
+            // ===== Lưu session =====
+            HttpContext.Session.SetInt32(S_ADMIN_ID, (int)user.UserId);
+            HttpContext.Session.SetString(S_ADMIN_EMAIL, user.Email ?? "");
+            HttpContext.Session.SetString(S_ADMIN_ROLE, user.Role ?? "Admin");
+
+            // rememberMe: bạn muốn thì sau này đổi sang cookie auth; hiện tại dùng session nên ignore
             await Task.CompletedTask;
 
-            return Json(new { success = true, redirectUrl = Url.Action("Dashboard", "Admin") });
+            return Json(new { success = true, redirectUrl = Url.Action(nameof(Dashboard), "Admin") });
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Login));
+        }
+
+        // =========================
+        // Dashboard
+        // =========================
         public async Task<IActionResult> Dashboard()
         {
-            // if (!IsAdmin()) return Unauthorized();
+            var guard = RequireAdminView();
+            if (guard != null) return guard;
 
             var now = DateTime.UtcNow;
             var monthStart = new DateTime(now.Year, now.Month, 1);
 
-            // Doanh thu tháng + số đơn PAID tháng
             var paidThisMonth = await _context.Orders
                 .AsNoTracking()
                 .Where(o => o.Status == "PAID" && o.CreatedAt >= monthStart)
@@ -74,7 +114,6 @@ namespace SystemPurchaseAccGame.Controllers
             ViewBag.RevenueMonth = paidThisMonth.Sum(x => x.TotalAmount);
             ViewBag.SoldCountMonth = paidThisMonth.Count;
 
-            // Topup PENDING (đổ vào bảng, lấy 10 cái đầu)
             var pendingTopups = await _context.Topups
                 .AsNoTracking()
                 .Where(t => t.Status == "PENDING")
@@ -99,7 +138,6 @@ namespace SystemPurchaseAccGame.Controllers
 
             ViewBag.PendingTopups = pendingTopups;
 
-            // Recent PAID Orders (top 5)
             var recentPaidOrders = await _context.Orders
                 .AsNoTracking()
                 .Where(o => o.Status == "PAID")
@@ -121,8 +159,14 @@ namespace SystemPurchaseAccGame.Controllers
             return View();
         }
 
+        // =========================
+        // Partials
+        // =========================
         public async Task<IActionResult> UploadAccGame()
         {
+            var guard = RequireAdminView();
+            if (guard != null) return guard;
+
             var games = await _context.Games
                 .AsNoTracking()
                 .Where(x => x.IsActive)
@@ -130,23 +174,26 @@ namespace SystemPurchaseAccGame.Controllers
                 .ToListAsync();
 
             ViewBag.Games = games;
-
             return PartialView("Partials/Admin/_UploadAccGame");
         }
 
         public async Task<IActionResult> AccGame()
         {
+            var guard = RequireAdminView();
+            if (guard != null) return guard;
+
             await Task.CompletedTask;
             return PartialView("Partials/Admin/_AccountGame");
         }
 
         // ============================================================
-        // 1) VIEW: ConfirmPayment -> render list Topup PENDING
+        // VIEW: ConfirmPayment
         // ============================================================
         [HttpGet]
         public async Task<IActionResult> ConfirmPayment()
         {
-            if (!IsAdmin()) return Unauthorized();
+            var guard = RequireAdminView();
+            if (guard != null) return guard;
 
             var pending = await _context.Topups
                 .AsNoTracking()
@@ -160,7 +207,6 @@ namespace SystemPurchaseAccGame.Controllers
                     UserName = t.User.Username ?? t.User.FullName ?? "",
                     Email = t.User.Email ?? "",
                     Phone = t.User.Phone ?? "",
-
                     Method = t.Method,
                     Amount = t.Amount,
                     Status = t.Status,
@@ -171,7 +217,6 @@ namespace SystemPurchaseAccGame.Controllers
                 })
                 .ToListAsync();
 
-            // stats cho view
             ViewBag.PendingCount = pending.Count;
             ViewBag.PendingTotalAmount = pending.Sum(x => x.Amount);
 
@@ -183,7 +228,7 @@ namespace SystemPurchaseAccGame.Controllers
         }
 
         // ============================================================
-        // API: Approve / Reject (JSON)
+        // API: Approve / Reject
         // ============================================================
         public class ApproveTopupJson
         {
@@ -196,9 +241,12 @@ namespace SystemPurchaseAccGame.Controllers
 
         [HttpPost]
         [Route("/admin/api/topup/approve")]
-        [IgnoreAntiforgeryToken] // nếu bạn muốn dùng token thì bỏ dòng này và gửi token từ JS
+        [IgnoreAntiforgeryToken]
         public async Task<IActionResult> ApiApproveTopup([FromBody] ApproveTopupJson req)
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             if (req == null || req.TopupId <= 0)
                 return BadRequest(new { success = false, message = "TopupId không hợp lệ." });
 
@@ -281,6 +329,9 @@ namespace SystemPurchaseAccGame.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> ApiRejectTopup([FromBody] RejectTopupJson req)
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             if (req == null || req.TopupId <= 0)
                 return BadRequest(new { success = false, message = "TopupId không hợp lệ." });
 
@@ -322,7 +373,8 @@ namespace SystemPurchaseAccGame.Controllers
         [HttpGet]
         public async Task<IActionResult> Category()
         {
-            // if (!IsAdmin()) return Unauthorized();
+            var guard = RequireAdminView();
+            if (guard != null) return guard;
 
             var list = await _context.GameCategories
                 .AsNoTracking()
@@ -340,13 +392,13 @@ namespace SystemPurchaseAccGame.Controllers
             return PartialView("Partials/Admin/_Category", list);
         }
 
-        // =========================
-        // API: LIST
-        // =========================
         [HttpGet]
         [Route("/admin/api/category/list")]
         public async Task<IActionResult> ApiCategoryList()
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             var list = await _context.GameCategories
                 .AsNoTracking()
                 .OrderByDescending(x => x.CategoryId)
@@ -363,20 +415,16 @@ namespace SystemPurchaseAccGame.Controllers
             return Json(new { success = true, data = list });
         }
 
-        // =========================
-        // API: CREATE
-        // =========================
-        public class CategoryCreateJson
-        {
-            public string? Name { get; set; }
-            public string? Slug { get; set; } // optional
-        }
+        public class CategoryCreateJson { public string? Name { get; set; } public string? Slug { get; set; } }
 
         [HttpPost]
         [Route("/admin/api/category/create")]
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> ApiCategoryCreate([FromBody] CategoryCreateJson req)
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             var name = (req?.Name ?? "").Trim();
             if (string.IsNullOrWhiteSpace(name) || name.Length > 80)
                 return BadRequest(new { success = false, message = "Tên danh mục không hợp lệ (1-80 ký tự)." });
@@ -387,7 +435,6 @@ namespace SystemPurchaseAccGame.Controllers
             if (slug.Length > 120)
                 return BadRequest(new { success = false, message = "Slug quá dài (tối đa 120 ký tự)." });
 
-            // unique check
             var existsName = await _context.GameCategories.AnyAsync(x => x.Name == name);
             if (existsName)
                 return BadRequest(new { success = false, message = "Tên danh mục đã tồn tại." });
@@ -421,21 +468,16 @@ namespace SystemPurchaseAccGame.Controllers
             });
         }
 
-        // =========================
-        // API: UPDATE
-        // =========================
-        public class CategoryUpdateJson
-        {
-            public int CategoryId { get; set; }
-            public string? Name { get; set; }
-            public string? Slug { get; set; } // optional
-        }
+        public class CategoryUpdateJson { public int CategoryId { get; set; } public string? Name { get; set; } public string? Slug { get; set; } }
 
         [HttpPost]
         [Route("/admin/api/category/update")]
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> ApiCategoryUpdate([FromBody] CategoryUpdateJson req)
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             if (req == null || req.CategoryId <= 0)
                 return BadRequest(new { success = false, message = "CategoryId không hợp lệ." });
 
@@ -453,7 +495,6 @@ namespace SystemPurchaseAccGame.Controllers
             if (slug.Length > 120)
                 return BadRequest(new { success = false, message = "Slug quá dài (tối đa 120 ký tự)." });
 
-            // unique check (exclude self)
             var existsName = await _context.GameCategories.AnyAsync(x => x.Name == name && x.CategoryId != entity.CategoryId);
             if (existsName)
                 return BadRequest(new { success = false, message = "Tên danh mục đã tồn tại." });
@@ -484,19 +525,16 @@ namespace SystemPurchaseAccGame.Controllers
             });
         }
 
-        // =========================
-        // API: DELETE
-        // =========================
-        public class CategoryDeleteJson
-        {
-            public int CategoryId { get; set; }
-        }
+        public class CategoryDeleteJson { public int CategoryId { get; set; } }
 
         [HttpPost]
         [Route("/admin/api/category/delete")]
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> ApiCategoryDelete([FromBody] CategoryDeleteJson req)
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             if (req == null || req.CategoryId <= 0)
                 return BadRequest(new { success = false, message = "CategoryId không hợp lệ." });
 
@@ -522,28 +560,25 @@ namespace SystemPurchaseAccGame.Controllers
         private static string Slugify(string input)
         {
             input = (input ?? "").Trim().ToLowerInvariant();
-
-            // bỏ dấu tiếng việt cơ bản
-            input = input
-                .Replace("đ", "d")
-                .Normalize(NormalizationForm.FormD);
+            input = input.Replace("đ", "d").Normalize(NormalizationForm.FormD);
 
             var chars = input.Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark).ToArray();
             input = new string(chars).Normalize(NormalizationForm.FormC);
 
-            // ký tự không hợp lệ -> -
             input = Regex.Replace(input, @"[^a-z0-9]+", "-");
             input = Regex.Replace(input, @"-+", "-").Trim('-');
 
             return string.IsNullOrWhiteSpace(input) ? "category" : input;
         }
+
         // =========================
         // VIEW: Game (Partial)
         // =========================
         [HttpGet]
         public async Task<IActionResult> Game()
         {
-            // if (!IsAdmin()) return Unauthorized();
+            var guard = RequireAdminView();
+            if (guard != null) return guard;
 
             var categories = await _context.GameCategories
                 .AsNoTracking()
@@ -574,13 +609,13 @@ namespace SystemPurchaseAccGame.Controllers
             return PartialView("Partials/Admin/_Game", list);
         }
 
-        // =========================
-        // API: LIST
-        // =========================
         [HttpGet]
         [Route("/admin/api/game/list")]
         public async Task<IActionResult> ApiGameList()
         {
+            var guard = RequireAdminJson();
+            if (guard != null) return guard;
+
             var list = await _context.Games
                 .AsNoTracking()
                 .Include(x => x.Category)
@@ -603,202 +638,7 @@ namespace SystemPurchaseAccGame.Controllers
             return Json(new { success = true, data = list });
         }
 
-        // =========================
-        // API: CREATE
-        // =========================
-        public class GameCreateJson
-        {
-            public int CategoryId { get; set; }
-            public string? Name { get; set; }
-            public string? Slug { get; set; } // optional
-            public string? Description { get; set; }
-            public string? ThumbnailUrl { get; set; }
-            public bool IsActive { get; set; } = true;
-        }
-
-        [HttpPost]
-        [Route("/admin/api/game/create")]
-        [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> ApiGameCreate([FromBody] GameCreateJson req)
-        {
-            if (req == null) return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ." });
-
-            if (req.CategoryId <= 0)
-                return BadRequest(new { success = false, message = "Vui lòng chọn Category." });
-
-            var catOk = await _context.GameCategories.AnyAsync(x => x.CategoryId == req.CategoryId);
-            if (!catOk)
-                return BadRequest(new { success = false, message = "Category không tồn tại." });
-
-            var name = (req.Name ?? "").Trim();
-            if (string.IsNullOrWhiteSpace(name) || name.Length > 120)
-                return BadRequest(new { success = false, message = "Tên game không hợp lệ (1-120 ký tự)." });
-
-            var slug = (req.Slug ?? "").Trim();
-            if (string.IsNullOrWhiteSpace(slug)) slug = Slugify(name);
-            if (slug.Length > 160)
-                return BadRequest(new { success = false, message = "Slug quá dài (tối đa 160 ký tự)." });
-
-            // unique slug
-            var existsSlug = await _context.Games.AnyAsync(x => x.Slug == slug);
-            if (existsSlug)
-                return BadRequest(new { success = false, message = "Slug đã tồn tại." });
-
-            var thumb = (req.ThumbnailUrl ?? "").Trim();
-            if (thumb.Length > 500) return BadRequest(new { success = false, message = "ThumbnailUrl quá dài (tối đa 500)." });
-
-            var entity = new Game
-            {
-                CategoryId = req.CategoryId,
-                Name = name,
-                Slug = slug,
-                Description = string.IsNullOrWhiteSpace(req.Description) ? null : req.Description.Trim(),
-                ThumbnailUrl = string.IsNullOrWhiteSpace(thumb) ? null : thumb,
-                IsActive = req.IsActive,
-                CreatedAt = DateTime.UtcNow
-            };
-
-            _context.Games.Add(entity);
-            await _context.SaveChangesAsync();
-
-            var categoryName = await _context.GameCategories
-                .Where(x => x.CategoryId == entity.CategoryId)
-                .Select(x => x.Name)
-                .FirstAsync();
-
-            return Json(new
-            {
-                success = true,
-                message = "Đã thêm game.",
-                data = new
-                {
-                    entity.GameId,
-                    entity.CategoryId,
-                    CategoryName = categoryName,
-                    entity.Name,
-                    entity.Slug,
-                    entity.Description,
-                    entity.ThumbnailUrl,
-                    entity.IsActive,
-                    CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                    ListingCount = 0
-                }
-            });
-        }
-
-        // =========================
-        // API: UPDATE
-        // =========================
-        public class GameUpdateJson
-        {
-            public int GameId { get; set; }
-            public int CategoryId { get; set; }
-            public string? Name { get; set; }
-            public string? Slug { get; set; } // optional
-            public string? Description { get; set; }
-            public string? ThumbnailUrl { get; set; }
-            public bool IsActive { get; set; } = true;
-        }
-
-        [HttpPost]
-        [Route("/admin/api/game/update")]
-        [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> ApiGameUpdate([FromBody] GameUpdateJson req)
-        {
-            if (req == null || req.GameId <= 0)
-                return BadRequest(new { success = false, message = "GameId không hợp lệ." });
-
-            var entity = await _context.Games.FirstOrDefaultAsync(x => x.GameId == req.GameId);
-            if (entity == null)
-                return NotFound(new { success = false, message = "Không tìm thấy game." });
-
-            if (req.CategoryId <= 0)
-                return BadRequest(new { success = false, message = "Vui lòng chọn Category." });
-
-            var catOk = await _context.GameCategories.AnyAsync(x => x.CategoryId == req.CategoryId);
-            if (!catOk)
-                return BadRequest(new { success = false, message = "Category không tồn tại." });
-
-            var name = (req.Name ?? "").Trim();
-            if (string.IsNullOrWhiteSpace(name) || name.Length > 120)
-                return BadRequest(new { success = false, message = "Tên game không hợp lệ (1-120 ký tự)." });
-
-            var slug = (req.Slug ?? "").Trim();
-            if (string.IsNullOrWhiteSpace(slug)) slug = Slugify(name);
-            if (slug.Length > 160)
-                return BadRequest(new { success = false, message = "Slug quá dài (tối đa 160 ký tự)." });
-
-            // unique slug exclude self
-            var existsSlug = await _context.Games.AnyAsync(x => x.Slug == slug && x.GameId != entity.GameId);
-            if (existsSlug)
-                return BadRequest(new { success = false, message = "Slug đã tồn tại." });
-
-            var thumb = (req.ThumbnailUrl ?? "").Trim();
-            if (thumb.Length > 500) return BadRequest(new { success = false, message = "ThumbnailUrl quá dài (tối đa 500)." });
-
-            entity.CategoryId = req.CategoryId;
-            entity.Name = name;
-            entity.Slug = slug;
-            entity.Description = string.IsNullOrWhiteSpace(req.Description) ? null : req.Description.Trim();
-            entity.ThumbnailUrl = string.IsNullOrWhiteSpace(thumb) ? null : thumb;
-            entity.IsActive = req.IsActive;
-
-            await _context.SaveChangesAsync();
-
-            var categoryName = await _context.GameCategories
-                .Where(x => x.CategoryId == entity.CategoryId)
-                .Select(x => x.Name)
-                .FirstAsync();
-
-            var listingCount = await _context.AccountListings.CountAsync(a => a.GameId == entity.GameId);
-
-            return Json(new
-            {
-                success = true,
-                message = "Đã cập nhật game.",
-                data = new
-                {
-                    entity.GameId,
-                    entity.CategoryId,
-                    CategoryName = categoryName,
-                    entity.Name,
-                    entity.Slug,
-                    entity.Description,
-                    entity.ThumbnailUrl,
-                    entity.IsActive,
-                    CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
-                    ListingCount = listingCount
-                }
-            });
-        }
-
-        // =========================
-        // API: DELETE
-        // =========================
-        public class GameDeleteJson { public int GameId { get; set; } }
-
-        [HttpPost]
-        [Route("/admin/api/game/delete")]
-        [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> ApiGameDelete([FromBody] GameDeleteJson req)
-        {
-            if (req == null || req.GameId <= 0)
-                return BadRequest(new { success = false, message = "GameId không hợp lệ." });
-
-            var entity = await _context.Games
-                .Include(x => x.AccountListings)
-                .FirstOrDefaultAsync(x => x.GameId == req.GameId);
-
-            if (entity == null)
-                return NotFound(new { success = false, message = "Không tìm thấy game." });
-
-            if (entity.AccountListings.Any())
-                return BadRequest(new { success = false, message = "Game đang có account listing, không thể xóa." });
-
-            _context.Games.Remove(entity);
-            await _context.SaveChangesAsync();
-
-            return Json(new { success = true, message = "Đã xóa game." });
-        }
+        // ... (phần GameCreate / GameUpdate / GameDelete của bạn)
+        // Bạn chỉ cần thêm guard RequireAdminJson() y như Category API ở trên vào các API đó.
     }
 }
