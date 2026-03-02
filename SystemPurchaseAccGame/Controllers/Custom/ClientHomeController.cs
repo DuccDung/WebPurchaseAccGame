@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Text.Json;
+using System.Globalization;
 using SystemPurchaseAccGame.Models;
 using SystemPurchaseAccGame.ViewModel;
 
@@ -16,20 +18,47 @@ namespace SystemPurchaseAccGame.Controllers.Custom
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index()
         {
             ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
 
             if (ViewBag.IsAuthenticated)
             {
+                // ===== REFRESH BALANCE CLAIM (COOKIE) =====
                 var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (int.TryParse(userIdStr, out var userId))
+                {
+                    var newBalance = await _context.Wallets
+                        .AsNoTracking()
+                        .Where(w => w.UserId == userId)
+                        .Select(w => w.Balance)
+                        .FirstOrDefaultAsync();
+
+                    var identity = (ClaimsIdentity)User.Identity!;
+                    var old = identity.FindFirst("balance");
+                    var newVal = newBalance.ToString(CultureInfo.InvariantCulture);
+
+                    if (old == null || old.Value != newVal)
+                    {
+                        if (old != null) identity.RemoveClaim(old);
+                        identity.AddClaim(new Claim("balance", newVal));
+
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(identity));
+                    }
+                    ViewBag.Balance = newBalance;
+                }
+                // ========================================
+
+                if (int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var userId2))
                 {
                     ViewBag.Email = User.FindFirstValue(ClaimTypes.Name);
 
                     var u = await _context.Users
                         .AsNoTracking()
-                        .Where(x => x.UserId == userId)
+                        .Where(x => x.UserId == userId2)
                         .Select(x => new { x.UserId, x.Username })
                         .FirstOrDefaultAsync();
 
@@ -41,9 +70,7 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 }
             }
 
-
             var result = await _context.GameCategories.Include(c => c.Games)
-
                 .Select(c => new GameCategoryVm
                 {
                     CategoryId = c.CategoryId,
@@ -61,10 +88,9 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                     }).ToList()
                 })
                 .ToListAsync();
+
             return View(result);
         }
-
-
 
         public async Task<IActionResult> Login()
         {
@@ -72,8 +98,6 @@ namespace SystemPurchaseAccGame.Controllers.Custom
             return View();
         }
 
-
-        // POST: /Home/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginVm model)
@@ -81,40 +105,51 @@ namespace SystemPurchaseAccGame.Controllers.Custom
             bool status = false;
 
             var user = await _context.Users
-                 .FirstOrDefaultAsync(u => (u.Email == model.Identity || u.Phone == model.Identity) && u.PasswordHash == model.Password);
+                .FirstOrDefaultAsync(u =>
+                    (u.Email == model.Identity || u.Phone == model.Identity) &&
+                    u.PasswordHash == model.Password);
+
             if (user != null) status = true;
+
             if (status && user != null)
             {
                 var balance = await _context.Wallets
-                           .Where(x => x.UserId == user.UserId)
-                           .Select(x => x.Balance)
-                           .FirstOrDefaultAsync();
+                    .Where(x => x.UserId == user.UserId)
+                    .Select(x => x.Balance)
+                    .FirstOrDefaultAsync();
 
                 var claims = new List<Claim>
                 {
-                  new Claim(ClaimTypes.NameIdentifier , user.UserId.ToString()),
-                  new Claim(ClaimTypes.Name , user.Email ?? ""),
-                    new Claim("balance", balance.ToString(System.Globalization.CultureInfo.InvariantCulture))
+                    new Claim(ClaimTypes.NameIdentifier , user.UserId.ToString()),
+                    new Claim(ClaimTypes.Name , user.Email ?? ""),
+                    new Claim("balance", balance.ToString(CultureInfo.InvariantCulture))
                 };
+
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
+
                 if (model.Remember)
                 {
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        principal,
                         new AuthenticationProperties
                         {
                             IsPersistent = true,
                             ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
                         });
                 }
-                else await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                else
+                {
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        principal);
+                }
 
-                ViewBag.Balance = await _context.Wallets.Where(x => x.UserId == user.UserId).Select(x => x.Balance).FirstOrDefaultAsync();
-
+                ViewBag.Balance = balance;
                 return RedirectToAction("Index", "ClientHome");
             }
 
-            // thất bại: báo view
             ViewBag.LoginError = "Email/Tài khoản hoặc mật khẩu không đúng.";
             ViewBag.ActiveTab = "login";
             return View();
@@ -143,10 +178,9 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 return View(model);
             }
 
-            var existed = await _context.Users
-                .AnyAsync(x => x.Email == model.Email);
-            var existedPhone = await _context.Users
-                .AnyAsync(x => x.Phone == model.Phone);
+            var existed = await _context.Users.AnyAsync(x => x.Email == model.Email);
+            var existedPhone = await _context.Users.AnyAsync(x => x.Phone == model.Phone);
+
             if (existedPhone)
             {
                 ViewBag.RegisterError = "Số điện thoại đã tồn tại.";
@@ -160,18 +194,17 @@ namespace SystemPurchaseAccGame.Controllers.Custom
 
             var user = new User
             {
-                Username = "" + model.Email.Split('@')[0], // Lấy phần trước dấu @ làm username tạm
+                Username = "" + model.Email.Split('@')[0],
                 Email = model.Email,
                 Phone = model.Phone,
-                PasswordHash = model.Password, // ⚠️ sau này nên hash
+                PasswordHash = model.Password,
                 CreatedAt = DateTime.UtcNow
             };
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            var existedWallet = await _context.Wallets
-     .AnyAsync(x => x.UserId == user.UserId);
+            var existedWallet = await _context.Wallets.AnyAsync(x => x.UserId == user.UserId);
 
             if (!existedWallet)
             {
@@ -186,13 +219,12 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 await _context.SaveChangesAsync();
             }
 
-            // Auto login sau khi đăng ký
             var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.NameIdentifier , user.UserId.ToString()),
-        new Claim(ClaimTypes.Name , user.Email),
-        new Claim("balance", "0")
-    };
+            {
+                new Claim(ClaimTypes.NameIdentifier , user.UserId.ToString()),
+                new Claim(ClaimTypes.Name , user.Email),
+                new Claim("balance", "0")
+            };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
@@ -208,27 +240,51 @@ namespace SystemPurchaseAccGame.Controllers.Custom
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
             Response.Cookies.Delete("my_cookie");
-
             return RedirectToAction("Login", "ClientHome");
         }
 
         [HttpGet]
-        public async Task<IActionResult> Purchase(long id) // id = AccountId
+        public async Task<IActionResult> Purchase(long id)
         {
             ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
 
             if (ViewBag.IsAuthenticated)
             {
+                // ===== REFRESH BALANCE CLAIM (COOKIE) =====
                 var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (int.TryParse(userIdStr, out var userId))
+                {
+                    var newBalance = await _context.Wallets
+                        .AsNoTracking()
+                        .Where(w => w.UserId == userId)
+                        .Select(w => w.Balance)
+                        .FirstOrDefaultAsync();
+
+                    var identity = (ClaimsIdentity)User.Identity!;
+                    var old = identity.FindFirst("balance");
+                    var newVal = newBalance.ToString(CultureInfo.InvariantCulture);
+
+                    if (old == null || old.Value != newVal)
+                    {
+                        if (old != null) identity.RemoveClaim(old);
+                        identity.AddClaim(new Claim("balance", newVal));
+
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(identity));
+                    }
+                    ViewBag.Balance = newBalance;
+                }
+                // ========================================
+
+                if (int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var userId2))
                 {
                     ViewBag.Email = User.FindFirstValue(ClaimTypes.Name);
 
                     var u = await _context.Users
                         .AsNoTracking()
-                        .Where(x => x.UserId == userId)
+                        .Where(x => x.UserId == userId2)
                         .Select(x => new { x.UserId, x.Username })
                         .FirstOrDefaultAsync();
 
@@ -239,6 +295,7 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                     }
                 }
             }
+
             var acc = await _context.AccountListings
                 .AsNoTracking()
                 .Include(x => x.AccountMedia)
@@ -260,7 +317,7 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                     .OrderBy(m => m.SortOrder)
                     .Select(m => new MediaDto
                     {
-                        MediaType = MapMediaType(m.MediaType),  // background/thumbnail/gallery -> COVER/AVATAR/GALLERY
+                        MediaType = MapMediaType(m.MediaType),
                         Url = NormalizeUrl(m.Url),
                         SortOrder = m.SortOrder
                     })
@@ -278,20 +335,47 @@ namespace SystemPurchaseAccGame.Controllers.Custom
 
             return View(vm);
         }
+
         public async Task<IActionResult> GameDetail(int id)
         {
             ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
 
             if (ViewBag.IsAuthenticated)
             {
+                // ===== REFRESH BALANCE CLAIM (COOKIE) =====
                 var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 if (int.TryParse(userIdStr, out var userId))
+                {
+                    var newBalance = await _context.Wallets
+                        .AsNoTracking()
+                        .Where(w => w.UserId == userId)
+                        .Select(w => w.Balance)
+                        .FirstOrDefaultAsync();
+
+                    var identity = (ClaimsIdentity)User.Identity!;
+                    var old = identity.FindFirst("balance");
+                    var newVal = newBalance.ToString(CultureInfo.InvariantCulture);
+
+                    if (old == null || old.Value != newVal)
+                    {
+                        if (old != null) identity.RemoveClaim(old);
+                        identity.AddClaim(new Claim("balance", newVal));
+
+                        await HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            new ClaimsPrincipal(identity));
+                    }
+                    ViewBag.Balance = newBalance;
+                }
+                // ========================================
+
+                if (int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var userId2))
                 {
                     ViewBag.Email = User.FindFirstValue(ClaimTypes.Name);
 
                     var u = await _context.Users
                         .AsNoTracking()
-                        .Where(x => x.UserId == userId)
+                        .Where(x => x.UserId == userId2)
                         .Select(x => new { x.UserId, x.Username })
                         .FirstOrDefaultAsync();
 
@@ -303,7 +387,6 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 }
             }
 
-            // 1) Lấy list account trước
             var accounts = await _context.AccountListings
                 .AsNoTracking()
                 .Where(al => al.GameId == id && al.Status == "AVAILABLE")
@@ -320,7 +403,6 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 })
                 .ToListAsync();
 
-            // 2) Lấy attributes theo list AccountId (1 query)
             var ids = accounts.Select(x => x.AccountListingId).ToList();
 
             var attrs = await _context.AccountAttributes
@@ -334,17 +416,13 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 })
                 .ToListAsync();
 
-            // 3) Group vào dictionary
             var dict = attrs
                 .GroupBy(x => x.AccountId)
                 .ToDictionary(
                     g => g.Key,
-                    g => g
-                        .Select(x => new AttrDto { Key = x.AttrKey, Value = x.AttrValue })
-                        .ToList()
+                    g => g.Select(x => new AttrDto { Key = x.AttrKey, Value = x.AttrValue }).ToList()
                 );
 
-            // 4) gán vào VM
             foreach (var acc in accounts)
             {
                 if (dict.TryGetValue(acc.AccountListingId, out var list))
@@ -353,10 +431,39 @@ namespace SystemPurchaseAccGame.Controllers.Custom
 
             return View(accounts);
         }
+
         public async Task<IActionResult> OrderHistory()
         {
             if (!User.Identity?.IsAuthenticated ?? true)
                 return RedirectToAction("Login");
+
+            // ===== REFRESH BALANCE CLAIM (COOKIE) =====
+            var userIdStrClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (long.TryParse(userIdStrClaim, out var userIdLong))
+            {
+                var newBalance = await _context.Wallets
+                    .AsNoTracking()
+                    .Where(w => w.UserId == userIdLong)
+                    .Select(w => w.Balance)
+                    .FirstOrDefaultAsync();
+
+                var identity = (ClaimsIdentity)User.Identity!;
+                var old = identity.FindFirst("balance");
+                var newVal = newBalance.ToString(CultureInfo.InvariantCulture);
+
+                if (old == null || old.Value != newVal)
+                {
+                    if (old != null) identity.RemoveClaim(old);
+                    identity.AddClaim(new Claim("balance", newVal));
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(identity));
+                }
+
+                ViewBag.Balance = newBalance;
+            }
+            // ========================================
 
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!long.TryParse(userIdStr, out var userId))
@@ -417,28 +524,49 @@ namespace SystemPurchaseAccGame.Controllers.Custom
 
             return View(result);
         }
+
         public async Task<IActionResult> Bank()
         {
             ViewBag.IsAuthenticated = User?.Identity?.IsAuthenticated == true;
 
             if (!ViewBag.IsAuthenticated)
-            {
                 return RedirectToAction("Login", "ClientHome");
-            }
+
+            // ===== REFRESH BALANCE CLAIM (COOKIE) =====
             var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (int.TryParse(userIdStr, out var userId))
             {
-                var wallet = await _context.Wallets
+                var newBalance = await _context.Wallets
                     .AsNoTracking()
-                    .FirstOrDefaultAsync(w => w.UserId == userId);
-                ViewBag.WalletBalance = wallet != null ? wallet.Balance : 0m;
+                    .Where(w => w.UserId == userId)
+                    .Select(w => w.Balance)
+                    .FirstOrDefaultAsync();
+
+                var identity = (ClaimsIdentity)User.Identity!;
+                var old = identity.FindFirst("balance");
+                var newVal = newBalance.ToString(CultureInfo.InvariantCulture);
+
+                if (old == null || old.Value != newVal)
+                {
+                    if (old != null) identity.RemoveClaim(old);
+                    identity.AddClaim(new Claim("balance", newVal));
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(identity));
+                }
+
+                ViewBag.Balance = newBalance;
+                ViewBag.WalletBalance = newBalance;
             }
+            // ========================================
+
             await Task.CompletedTask;
             return View();
         }
+
         public async Task<IActionResult> PaymentSuccess()
         {
-            // bắt buộc đăng nhập
             if (!User.Identity?.IsAuthenticated ?? true)
                 return RedirectToAction("Login", "ClientHome");
 
@@ -446,23 +574,39 @@ namespace SystemPurchaseAccGame.Controllers.Custom
             if (!long.TryParse(userIdStr, out var userId))
                 return RedirectToAction("Login", "ClientHome");
 
-            // ====== CỘNG 1 LƯỢT QUAY ======
-            // Key theo từng user để tránh user khác dùng chung
+            // ===== REFRESH BALANCE CLAIM (COOKIE) =====
+            var newBalance = await _context.Wallets
+                .AsNoTracking()
+                .Where(w => w.UserId == userId)
+                .Select(w => w.Balance)
+                .FirstOrDefaultAsync();
+
+            var identity = (ClaimsIdentity)User.Identity!;
+            var old = identity.FindFirst("balance");
+            var newVal = newBalance.ToString(CultureInfo.InvariantCulture);
+
+            if (old == null || old.Value != newVal)
+            {
+                if (old != null) identity.RemoveClaim(old);
+                identity.AddClaim(new Claim("balance", newVal));
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(identity));
+            }
+            ViewBag.Balance = newBalance;
+            // ========================================
+
             var key = $"LUCKY_SPIN_CHANCE_{userId}";
-
-            // Nếu bạn muốn "mỗi lần mua chỉ 1 lượt và không cộng dồn", set = 1 luôn
-            // HttpContext.Session.SetInt32(key, 1);
-
-            // Nếu bạn muốn "mua nhiều lần cộng dồn lượt quay"
             var current = HttpContext.Session.GetInt32(key) ?? 0;
             HttpContext.Session.SetInt32(key, current + 1);
 
-            // (Tuỳ chọn) đưa cờ để home hiển thị nút "Quay ngay"
             TempData["LuckySpinGranted"] = true;
 
             await Task.CompletedTask;
             return View();
         }
+
         private string MapMediaType(string? raw)
         {
             var t = (raw ?? "").Trim().ToLowerInvariant();
@@ -481,17 +625,16 @@ namespace SystemPurchaseAccGame.Controllers.Custom
 
             url = url.Trim();
 
-            // url tuyệt đối
             if (url.StartsWith("http://") || url.StartsWith("https://"))
                 return url;
 
-            // nếu DB lưu "/img/xxx.jpg" hoặc "img/xxx.jpg"
             if (url.StartsWith("/"))
-                return Url.Content("~" + url);      // => "~/img/.."
+                return Url.Content("~" + url);
+
             if (url.StartsWith("~/"))
                 return Url.Content(url);
 
-            return Url.Content("~/" + url);         // => "~/img/.."
+            return Url.Content("~/" + url);
         }
     }
 }

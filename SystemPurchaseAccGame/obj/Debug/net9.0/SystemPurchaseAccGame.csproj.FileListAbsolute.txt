@@ -517,7 +517,6 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPur
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\appsettings.json
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\SystemPurchaseAccGame.staticwebassets.runtime.json
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\SystemPurchaseAccGame.staticwebassets.endpoints.json
-D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\SystemPurchaseAccGame.exe
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\SystemPurchaseAccGame.deps.json
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\SystemPurchaseAccGame.runtimeconfig.json
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\bin\Debug\net9.0\SystemPurchaseAccGame.dll
@@ -669,7 +668,6 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPur
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\39xhzrq2o7-eett732pie.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\6vknqyunn8-1w625hiout.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\7gvwyjlfuh-y2pmz3yw93.gz
-D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\p2lwm3f9z1-ilvi2q6gep.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\ii6tmm2bs8-56jv9tpqgw.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\zpr9dib1a3-u83rq9agdi.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\sulslhzmuu-rmr6h77cha.gz
@@ -766,7 +764,6 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPur
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.SystemPurchaseAccGame.props
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.SystemPurchaseAccGame.props
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\staticwebassets.pack.json
-D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\SystemPu.269359D1.Up2Date
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\SystemPurchaseAccGame.dll
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\refint\SystemPurchaseAccGame.dll
@@ -776,4 +773,6 @@ D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPur
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\6372vnexmi-moxh2wz3bw.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\qq2malytrg-jmjadx83w3.gz
 D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\sqa41nrta6-ctryl2kpar.gz
-D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\iqra6k2kaw-k3ar7t29vi.gz
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\p2lwm3f9z1-rp2aub7dcw.gz
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\laptrinhweb\code_outsrc\WebPurchaseAccGame\ver_2\WebPurchaseAccGame\SystemPurchaseAccGame\obj\Debug\net9.0\compressed\iqra6k2kaw-vt0ose69c3.gz

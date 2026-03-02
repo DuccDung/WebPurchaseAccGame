@@ -141,7 +141,7 @@ namespace SystemPurchaseAccGame.Controllers.Custom
                 .FirstOrDefaultAsync();
 
             await tx.CommitAsync();
-
+            HttpContext.Session.Remove(key);
             return Json(new SpinResponseVm
             {
                 Ok = true,

@@ -120,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ilvi2q6gep</Fingerprint>
-      <Integrity>ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs=</Integrity>
+      <Fingerprint>rp2aub7dcw</Fingerprint>
+      <Integrity>P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets_admin\js\left_menu.js'))</OriginalItemSpec>
@@ -2064,8 +2064,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>k3ar7t29vi</Fingerprint>
-      <Integrity>4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg=</Integrity>
+      <Fingerprint>vt0ose69c3</Fingerprint>
+      <Integrity>M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets_new\css\lucky_main.css'))</OriginalItemSpec>
@@ -3546,6 +3546,168 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260223161342855_32fbfe9d4e864a0a9e07d214e404c0a6.gif'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>sblvw7geyi</Fingerprint>
+      <Integrity>SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>n4r4qqpvjc</Fingerprint>
+      <Integrity>qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>sblvw7geyi</Fingerprint>
+      <Integrity>SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449153_d6a8be319b3140e98451375cecd8196e.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224054449153_d6a8be319b3140e98451375cecd8196e.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>n4r4qqpvjc</Fingerprint>
+      <Integrity>qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449153_d6a8be319b3140e98451375cecd8196e.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449156_f84ad7f68c054cce943205c1365c290a.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224054449156_f84ad7f68c054cce943205c1365c290a.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>e35a013b8t</Fingerprint>
+      <Integrity>SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224054449156_f84ad7f68c054cce943205c1365c290a.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>sblvw7geyi</Fingerprint>
+      <Integrity>SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319479_f57585df0782414799c33ea0c68b893b.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224060319479_f57585df0782414799c33ea0c68b893b.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>e35a013b8t</Fingerprint>
+      <Integrity>SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319479_f57585df0782414799c33ea0c68b893b.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>n4r4qqpvjc</Fingerprint>
+      <Integrity>qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319486_2ec750604e5b4f88b799d5223164def2.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SystemPurchaseAccGame</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SystemPurchaseAccGame</BasePath>
+      <RelativePath>img/20260224060319486_2ec750604e5b4f88b799d5223164def2.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>e35a013b8t</Fingerprint>
+      <Integrity>SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\20260224060319486_2ec750604e5b4f88b799d5223164def2.gif'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\btn-view-all.gif'))">
       <SourceType>Package</SourceType>
       <SourceId>SystemPurchaseAccGame</SourceId>
@@ -3612,8 +3774,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>x77hp7vvjh</Fingerprint>
-      <Integrity>zSP7cUtuoBtNRknjNglUr1LFt5pfuq8QnG2xEN3PT6E=</Integrity>
+      <Fingerprint>aichnm6pz6</Fingerprint>
+      <Integrity>bncCISscU6n6o7DQRsYK047Tdc0dSN+v01eH+J8pRMg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\QR.png'))</OriginalItemSpec>

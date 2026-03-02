@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uc1i82QuV88bY977KJMqt3TvVwund89XWnNkJd7PHu8=",
+  "Hash": "E2vgeKEtYqWL2xzZl2mj4AoQ/T/5zq9za0tIR0GW+nE=",
   "Source": "SystemPurchaseAccGame",
   "BasePath": "_content/SystemPurchaseAccGame",
   "Mode": "Default",
@@ -1172,12 +1172,12 @@
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-k3ar7t29vi.gz",
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-vt0ose69c3.gz",
       "SourceId": "SystemPurchaseAccGame",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/SystemPurchaseAccGame",
-      "RelativePath": "assets_new/css/lucky_main#[.{fingerprint=k3ar7t29vi}]?.css.gz",
+      "RelativePath": "assets_new/css/lucky_main#[.{fingerprint=vt0ose69c3}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1186,8 +1186,8 @@
       "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\lucky_main.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "l0lv7jq756",
-      "Integrity": "JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg=",
+      "Fingerprint": "azslqvgx07",
+      "Integrity": "CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\lucky_main.css"
@@ -1403,12 +1403,12 @@
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\lib\\owlcarousel\\assets\\owl.theme.green.css"
     },
     {
-      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-ilvi2q6gep.gz",
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-rp2aub7dcw.gz",
       "SourceId": "SystemPurchaseAccGame",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/SystemPurchaseAccGame",
-      "RelativePath": "assets_admin/js/left_menu#[.{fingerprint=ilvi2q6gep}]?.js.gz",
+      "RelativePath": "assets_admin/js/left_menu#[.{fingerprint=rp2aub7dcw}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "tprenqdym8",
-      "Integrity": "Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c=",
+      "Fingerprint": "4xk8uk7wfm",
+      "Integrity": "6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js"
@@ -2194,8 +2194,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ilvi2q6gep",
-      "Integrity": "ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs=",
+      "Fingerprint": "rp2aub7dcw",
+      "Integrity": "P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets_admin\\js\\left_menu.js"
@@ -4462,8 +4462,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "k3ar7t29vi",
-      "Integrity": "4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg=",
+      "Fingerprint": "vt0ose69c3",
+      "Integrity": "M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets_new\\css\\lucky_main.css"
@@ -6191,6 +6191,195 @@
       "OriginalItemSpec": "wwwroot\\img\\20260223161342855_32fbfe9d4e864a0a9e07d214e404c0a6.gif"
     },
     {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224054449140_d78a06b2d3a94961bc1f0891d7630908#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sblvw7geyi",
+      "Integrity": "SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n4r4qqpvjc",
+      "Integrity": "qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224054449151_bcc2e5ae296b425e95f20f1e897df260#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sblvw7geyi",
+      "Integrity": "SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449153_d6a8be319b3140e98451375cecd8196e.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224054449153_d6a8be319b3140e98451375cecd8196e#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n4r4qqpvjc",
+      "Integrity": "qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224054449153_d6a8be319b3140e98451375cecd8196e.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449156_f84ad7f68c054cce943205c1365c290a.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224054449156_f84ad7f68c054cce943205c1365c290a#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e35a013b8t",
+      "Integrity": "SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224054449156_f84ad7f68c054cce943205c1365c290a.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sblvw7geyi",
+      "Integrity": "SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319479_f57585df0782414799c33ea0c68b893b.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224060319479_f57585df0782414799c33ea0c68b893b#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e35a013b8t",
+      "Integrity": "SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224060319479_f57585df0782414799c33ea0c68b893b.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224060319482_632ad96639c24dcbb8e929955c0c635d#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n4r4qqpvjc",
+      "Integrity": "qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319486_2ec750604e5b4f88b799d5223164def2.gif",
+      "SourceId": "SystemPurchaseAccGame",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\",
+      "BasePath": "_content/SystemPurchaseAccGame",
+      "RelativePath": "img/20260224060319486_2ec750604e5b4f88b799d5223164def2#[.{fingerprint}]?.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e35a013b8t",
+      "Integrity": "SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\20260224060319486_2ec750604e5b4f88b799d5223164def2.gif"
+    },
+    {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\btn-view-all.gif",
       "SourceId": "SystemPurchaseAccGame",
       "SourceType": "Discovered",
@@ -6268,8 +6457,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "x77hp7vvjh",
-      "Integrity": "zSP7cUtuoBtNRknjNglUr1LFt5pfuq8QnG2xEN3PT6E=",
+      "Fingerprint": "aichnm6pz6",
+      "Integrity": "bncCISscU6n6o7DQRsYK047Tdc0dSN+v01eH+J8pRMg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\QR.png"
@@ -8698,13 +8887,13 @@
       ]
     },
     {
-      "Route": "assets_admin/js/left_menu.ilvi2q6gep.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-ilvi2q6gep.gz",
+      "Route": "assets_admin/js/left_menu.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-rp2aub7dcw.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000725163162"
+          "Quality": "0.000613873542"
         }
       ],
       "ResponseHeaders": [
@@ -8714,19 +8903,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1378"
+          "Value": "1628"
         },
         {
           "Name": "ETag",
-          "Value": "\"Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c=\""
+          "Value": "\"6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Feb 2026 09:15:24 GMT"
+          "Value": "Tue, 24 Feb 2026 03:39:36 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -8742,26 +8931,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs=\""
+          "Value": "W/\"P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "ilvi2q6gep"
-        },
-        {
-          "Name": "label",
-          "Value": "assets_admin/js/left_menu.js"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs="
+          "Value": "sha256-P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw="
         }
       ]
     },
     {
-      "Route": "assets_admin/js/left_menu.ilvi2q6gep.js",
+      "Route": "assets_admin/js/left_menu.js",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -8771,7 +8952,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5142"
+          "Value": "6224"
         },
         {
           "Name": "Content-Type",
@@ -8779,11 +8960,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs=\""
+          "Value": "\"P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Feb 2026 09:15:24 GMT"
+          "Value": "Tue, 24 Feb 2026 03:39:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw="
+        }
+      ]
+    },
+    {
+      "Route": "assets_admin/js/left_menu.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-rp2aub7dcw.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1628"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 03:39:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c="
+        }
+      ]
+    },
+    {
+      "Route": "assets_admin/js/left_menu.rp2aub7dcw.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-rp2aub7dcw.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000613873542"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1628"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 03:39:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rp2aub7dcw"
+        },
+        {
+          "Name": "label",
+          "Value": "assets_admin/js/left_menu.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw="
+        }
+      ]
+    },
+    {
+      "Route": "assets_admin/js/left_menu.rp2aub7dcw.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 03:39:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8793,7 +9119,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ilvi2q6gep"
+          "Value": "rp2aub7dcw"
         },
         {
           "Name": "label",
@@ -8801,13 +9127,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs="
+          "Value": "sha256-P8brYI1SmrcY/V4Cx0MPtQxCtuHyx2gC0bB88Mfn/sw="
         }
       ]
     },
     {
-      "Route": "assets_admin/js/left_menu.ilvi2q6gep.js.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-ilvi2q6gep.gz",
+      "Route": "assets_admin/js/left_menu.rp2aub7dcw.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-rp2aub7dcw.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -8816,7 +9142,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1378"
+          "Value": "1628"
         },
         {
           "Name": "Content-Type",
@@ -8824,11 +9150,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c=\""
+          "Value": "\"6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Feb 2026 09:15:24 GMT"
+          "Value": "Tue, 24 Feb 2026 03:39:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8846,7 +9172,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ilvi2q6gep"
+          "Value": "rp2aub7dcw"
         },
         {
           "Name": "label",
@@ -8854,144 +9180,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c="
-        }
-      ]
-    },
-    {
-      "Route": "assets_admin/js/left_menu.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-ilvi2q6gep.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000725163162"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1378"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 05 Feb 2026 09:15:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs="
-        }
-      ]
-    },
-    {
-      "Route": "assets_admin/js/left_menu.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_admin\\js\\left_menu.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5142"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 05 Feb 2026 09:15:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ikXa6trw4pTKERMoTWOZGVgjk+27GgMNavFoBjxJSOs="
-        }
-      ]
-    },
-    {
-      "Route": "assets_admin/js/left_menu.js.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\p2lwm3f9z1-ilvi2q6gep.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1378"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 05 Feb 2026 09:15:24 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Lw2FgcIicMmoT5SXfJoadwnkPaA02kF9hlqqB8TR60c="
+          "Value": "sha256-6DnUggauODAics8vDX9h0ZrW/A0kzrUtsabVXVn3W/c="
         }
       ]
     },
@@ -22307,12 +22496,12 @@
     },
     {
       "Route": "assets_new/css/lucky_main.css",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-k3ar7t29vi.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-vt0ose69c3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000539956803"
+          "Quality": "0.000496524330"
         }
       ],
       "ResponseHeaders": [
@@ -22322,15 +22511,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1851"
+          "Value": "2013"
         },
         {
           "Name": "ETag",
-          "Value": "\"JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg=\""
+          "Value": "\"CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 23 Feb 2026 10:57:42 GMT"
+          "Value": "Mon, 02 Mar 2026 16:26:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22350,13 +22539,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg=\""
+          "Value": "W/\"M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg="
+          "Value": "sha256-M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw="
         }
       ]
     },
@@ -22371,7 +22560,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6011"
+          "Value": "6685"
         },
         {
           "Name": "Content-Type",
@@ -22379,11 +22568,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg=\""
+          "Value": "\"M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 23 Feb 2026 10:57:42 GMT"
+          "Value": "Mon, 02 Mar 2026 16:26:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22393,13 +22582,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg="
+          "Value": "sha256-M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw="
         }
       ]
     },
     {
       "Route": "assets_new/css/lucky_main.css.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-k3ar7t29vi.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-vt0ose69c3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -22408,7 +22597,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1851"
+          "Value": "2013"
         },
         {
           "Name": "Content-Type",
@@ -22416,11 +22605,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg=\""
+          "Value": "\"CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 23 Feb 2026 10:57:42 GMT"
+          "Value": "Mon, 02 Mar 2026 16:26:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22438,18 +22627,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg="
+          "Value": "sha256-CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo="
         }
       ]
     },
     {
-      "Route": "assets_new/css/lucky_main.k3ar7t29vi.css",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-k3ar7t29vi.gz",
+      "Route": "assets_new/css/lucky_main.vt0ose69c3.css",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-vt0ose69c3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000539956803"
+          "Quality": "0.000496524330"
         }
       ],
       "ResponseHeaders": [
@@ -22459,15 +22648,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1851"
+          "Value": "2013"
         },
         {
           "Name": "ETag",
-          "Value": "\"JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg=\""
+          "Value": "\"CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 23 Feb 2026 10:57:42 GMT"
+          "Value": "Mon, 02 Mar 2026 16:26:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22487,13 +22676,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg=\""
+          "Value": "W/\"M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k3ar7t29vi"
+          "Value": "vt0ose69c3"
         },
         {
           "Name": "label",
@@ -22501,12 +22690,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg="
+          "Value": "sha256-M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw="
         }
       ]
     },
     {
-      "Route": "assets_new/css/lucky_main.k3ar7t29vi.css",
+      "Route": "assets_new/css/lucky_main.vt0ose69c3.css",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\assets_new\\css\\lucky_main.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -22516,7 +22705,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6011"
+          "Value": "6685"
         },
         {
           "Name": "Content-Type",
@@ -22524,11 +22713,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg=\""
+          "Value": "\"M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 23 Feb 2026 10:57:42 GMT"
+          "Value": "Mon, 02 Mar 2026 16:26:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22538,7 +22727,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k3ar7t29vi"
+          "Value": "vt0ose69c3"
         },
         {
           "Name": "label",
@@ -22546,13 +22735,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-4MaQ07qgts8Ueeh3Hz+YuYeWu66Kzz0pFYP3PZxQbqg="
+          "Value": "sha256-M07mTKDo6AlPlI5X/v4Xb+76BSCVhO4bFkvTZyA79Rw="
         }
       ]
     },
     {
-      "Route": "assets_new/css/lucky_main.k3ar7t29vi.css.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-k3ar7t29vi.gz",
+      "Route": "assets_new/css/lucky_main.vt0ose69c3.css.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\obj\\Debug\\net9.0\\compressed\\iqra6k2kaw-vt0ose69c3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -22561,7 +22750,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1851"
+          "Value": "2013"
         },
         {
           "Name": "Content-Type",
@@ -22569,11 +22758,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg=\""
+          "Value": "\"CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 23 Feb 2026 10:57:42 GMT"
+          "Value": "Mon, 02 Mar 2026 16:26:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22591,7 +22780,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k3ar7t29vi"
+          "Value": "vt0ose69c3"
         },
         {
           "Name": "label",
@@ -22599,7 +22788,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-JW88sjuU26FigjD2mkGsM9LlsfFghT4rTTSEJGxUbLg="
+          "Value": "sha256-CgR5/WJwv2PhmdV7YVDTckDboLoCTQ48z2TpYOStLLo="
         }
       ]
     },
@@ -30840,6 +31029,744 @@
       ]
     },
     {
+      "Route": "img/20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1451299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449140_d78a06b2d3a94961bc1f0891d7630908.sblvw7geyi.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1451299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sblvw7geyi"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224054449140_d78a06b2d3a94961bc1f0891d7630908.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2077080"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.n4r4qqpvjc.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2077080"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n4r4qqpvjc"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224054449148_f1db5dd7bdce4ea78ad38a56cd78502a.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1451299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449151_bcc2e5ae296b425e95f20f1e897df260.sblvw7geyi.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1451299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sblvw7geyi"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224054449151_bcc2e5ae296b425e95f20f1e897df260.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449153_d6a8be319b3140e98451375cecd8196e.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449153_d6a8be319b3140e98451375cecd8196e.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2077080"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449153_d6a8be319b3140e98451375cecd8196e.n4r4qqpvjc.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449153_d6a8be319b3140e98451375cecd8196e.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2077080"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n4r4qqpvjc"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224054449153_d6a8be319b3140e98451375cecd8196e.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449156_f84ad7f68c054cce943205c1365c290a.e35a013b8t.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449156_f84ad7f68c054cce943205c1365c290a.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1971828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e35a013b8t"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224054449156_f84ad7f68c054cce943205c1365c290a.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224054449156_f84ad7f68c054cce943205c1365c290a.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224054449156_f84ad7f68c054cce943205c1365c290a.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1971828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 05:44:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1451299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.sblvw7geyi.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1451299"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sblvw7geyi"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224060319470_4f4611d943e946d0bd31d5ac8ca00f4a.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SGYY8GGtKzff5UY8fYwCZczUN8fs2yVh9gddXjUkqro="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319479_f57585df0782414799c33ea0c68b893b.e35a013b8t.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319479_f57585df0782414799c33ea0c68b893b.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1971828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e35a013b8t"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224060319479_f57585df0782414799c33ea0c68b893b.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319479_f57585df0782414799c33ea0c68b893b.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319479_f57585df0782414799c33ea0c68b893b.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1971828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2077080"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319482_632ad96639c24dcbb8e929955c0c635d.n4r4qqpvjc.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2077080"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n4r4qqpvjc"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224060319482_632ad96639c24dcbb8e929955c0c635d.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319486_2ec750604e5b4f88b799d5223164def2.e35a013b8t.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319486_2ec750604e5b4f88b799d5223164def2.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1971828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e35a013b8t"
+        },
+        {
+          "Name": "label",
+          "Value": "img/20260224060319486_2ec750604e5b4f88b799d5223164def2.gif"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM="
+        }
+      ]
+    },
+    {
+      "Route": "img/20260224060319486_2ec750604e5b4f88b799d5223164def2.gif",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\20260224060319486_2ec750604e5b4f88b799d5223164def2.gif",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1971828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/gif"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 06:03:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SsxXfF5kws11D9wNtkp3I3hrw4LyLzrPYUQNOWhJdNM="
+        }
+      ]
+    },
+    {
       "Route": "img/btn-view-all.gif",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\btn-view-all.gif",
       "Selectors": [],
@@ -31086,6 +32013,51 @@
       ]
     },
     {
+      "Route": "img/QR.aichnm6pz6.png",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "24828"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bncCISscU6n6o7DQRsYK047Tdc0dSN+v01eH+J8pRMg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 03:27:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aichnm6pz6"
+        },
+        {
+          "Name": "label",
+          "Value": "img/QR.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bncCISscU6n6o7DQRsYK047Tdc0dSN+v01eH+J8pRMg="
+        }
+      ]
+    },
+    {
       "Route": "img/QR.png",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
       "Selectors": [],
@@ -31096,7 +32068,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4067"
+          "Value": "24828"
         },
         {
           "Name": "Content-Type",
@@ -31104,11 +32076,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zSP7cUtuoBtNRknjNglUr1LFt5pfuq8QnG2xEN3PT6E=\""
+          "Value": "\"bncCISscU6n6o7DQRsYK047Tdc0dSN+v01eH+J8pRMg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 03 Feb 2026 11:13:06 GMT"
+          "Value": "Tue, 24 Feb 2026 03:27:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -31118,52 +32090,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zSP7cUtuoBtNRknjNglUr1LFt5pfuq8QnG2xEN3PT6E="
-        }
-      ]
-    },
-    {
-      "Route": "img/QR.x77hp7vvjh.png",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\WebPurchaseAccGame\\ver_2\\WebPurchaseAccGame\\SystemPurchaseAccGame\\wwwroot\\img\\QR.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4067"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zSP7cUtuoBtNRknjNglUr1LFt5pfuq8QnG2xEN3PT6E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 03 Feb 2026 11:13:06 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "x77hp7vvjh"
-        },
-        {
-          "Name": "label",
-          "Value": "img/QR.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zSP7cUtuoBtNRknjNglUr1LFt5pfuq8QnG2xEN3PT6E="
+          "Value": "sha256-bncCISscU6n6o7DQRsYK047Tdc0dSN+v01eH+J8pRMg="
         }
       ]
     },

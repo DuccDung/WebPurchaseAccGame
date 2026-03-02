@@ -1,0 +1,324 @@
+﻿/* =========================
+         LOGIN (prefix: login-)
+      ========================== */
+.login-page {
+    background: #f3f6ff; /* giống nền nhạt trong ảnh */
+    padding: 36px 14px;
+    font-family: "Signika", sans-serif;
+}
+
+.login-wrap {
+    min-height: calc(100vh - 120px); /* trừ header tương đối */
+    display: grid;
+    place-items: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 574px; /* nhỏ giống ảnh (đừng để 900+) */
+    background: #fff;
+    border-radius: 10px;
+    padding: 44px 64px 40px;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.login-title {
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.2px;
+    color: #0f172a;
+}
+
+.login-subtitle {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    color: #64748b;
+}
+
+.login-form {
+    margin-top: 34px;
+}
+
+.login-field + .login-field {
+    margin-top: 22px;
+}
+
+.login-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #0f172a;
+}
+
+.login-input {
+    width: 100%;
+    height: 52px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    padding: 0 18px;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+}
+
+    .login-input::placeholder {
+        color: #94a3b8;
+        font-weight: 700;
+    }
+
+    .login-input:focus {
+        border-color: #cbd5e1;
+        box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.06);
+    }
+
+.login-row {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.login-remember {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #64748b;
+    user-select: none;
+}
+
+.login-check {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+    accent-color: #0f172a;
+}
+
+.login-forgot {
+    font-weight: 600;
+    font-size: 14px;
+    color: #0f172a;
+    text-decoration: none;
+}
+
+    .login-forgot:hover {
+        text-decoration: underline;
+    }
+
+.login-btn {
+    margin-top: 18px;
+    width: 100%;
+    height: 48px;
+    border: 0;
+    border-radius: 6px;
+    background: #0f172a; /* nút đen navy như ảnh */
+    color: #fff;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.2px;
+}
+
+    .login-btn:hover {
+        filter: brightness(1.05);
+    }
+
+.login-divider {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: #94a3b8;
+    font-weight: 700;
+    justify-content: center;
+}
+
+    .login-divider::before,
+    .login-divider::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: #e2e8f0;
+    }
+
+    .login-divider span {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+.login-bottom {
+    margin-top: 64px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.login-bottom-link {
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+    .login-bottom-link:hover {
+        text-decoration: underline;
+    }
+
+/* responsive */
+@media (max-width: 768px) {
+    .login-card {
+        max-width: 520px;
+        padding: 34px 26px 30px;
+    }
+
+    .login-title {
+        font-size: 30px;
+    }
+
+    .login-subtitle {
+        font-size: 18px;
+    }
+
+    .login-label,
+    .login-input,
+    .login-remember,
+    .login-forgot,
+    .login-divider span,
+    .login-bottom {
+        font-size: 16px;
+    }
+
+    .login-btn {
+        height: 56px;
+        font-size: 20px;
+    }
+
+    .login-bottom {
+        margin-top: 46px;
+    }
+}
+/* =========================
+       LOGIN mobile only (không ảnh hưởng PC)
+    ========================= */
+@media (max-width: 768px) {
+    .login-page
+
+{
+    padding: 18px 12px;
+}
+
+.login-wrap {
+    min-height: calc(100vh - 92px); /* giảm bớt trừ header để cân đẹp hơn */
+    align-items: start;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.login-card {
+    max-width: 420px; /* nhỏ hơn nữa cho mobile */
+    width: 100%;
+    padding: 22px 18px 20px; /* giảm padding */
+    border-radius: 10px;
+}
+
+.login-title {
+    font-size: 20px; /* nhỏ chữ tiêu đề */
+    font-weight: 700;
+}
+
+.login-subtitle {
+    font-size: 13px;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+.login-form {
+    margin-top: 18px;
+}
+
+.login-field + .login-field {
+    margin-top: 14px;
+}
+
+.login-label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.login-input {
+    height: 42px; /* input thấp lại */
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+.login-row {
+    margin-top: 12px;
+    gap: 10px;
+}
+
+.login-remember {
+    font-size: 13px;
+    gap: 8px;
+}
+
+.login-check {
+    width: 14px;
+    height: 14px;
+}
+
+.login-forgot {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.login-btn {
+    height: 44px; /* nút thấp lại */
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 14px;
+}
+
+.login-divider {
+    margin-top: 16px;
+    gap: 10px;
+}
+
+    .login-divider span {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+.login-bottom {
+    margin-top: 34px; /* khoảng cách dưới nhỏ lại */
+    font-size: 12px;
+    letter-spacing: 0.4px;
+}
+
+.login-bottom-link {
+    font-size: 12px;
+}
+
+}
+
+/* mobile nhỏ hơn nữa (<= 360px) */
+@media (max-width: 360px) {
+    .login-card {
+        padding: 18px 14px 18px;
+    }
+
+    .login-title {
+        font-size: 18px;
+    }
+}
+

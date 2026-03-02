@@ -1,0 +1,256 @@
+﻿/* =========================
+   LUCKY WHEEL (no :root vars)
+   ========================= */
+
+
+
+/* Nếu bạn dùng Layout có body chung thì có thể bỏ block body này */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+/* ===== LAYOUT ===== */
+.lucky_c_wrap {
+    width: min(560px, 92vw);
+}
+
+.lucky_c_card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(251, 191, 36, 0.16); /* gold-ish */
+    border-radius: 22px;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+    padding: 18px 16px 16px;
+}
+
+.lucky_c_header {
+    margin-bottom: 12px;
+}
+
+.lucky_c_title h1 {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* ===== STAGE / WHEEL ===== */
+.lucky_c_stage {
+    display: grid;
+    place-items: center;
+    padding: 14px 8px 8px;
+}
+
+.lucky_c_wheel-shell {
+    position: relative;
+    width: min(420px, 82vw);
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+    padding: 14px;
+    background: radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.28), transparent 55%), radial-gradient(circle at 70% 70%, rgba(239, 68, 68, 0.22), transparent 55%), linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+}
+
+.lucky_c_pointer {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 30px solid #fbbf24; /* gold */
+    filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.35));
+    z-index: 6;
+}
+
+.lucky_c_wheel-viewport {
+    width: 100%;
+    height: 100%;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(2, 6, 23, 0.48);
+    box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.04);
+}
+
+.lucky_c_wheel-rotor {
+    position: absolute;
+    inset: 0;
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+    will-change: transform;
+}
+
+.lucky_c_items {
+    position: absolute;
+    inset: 0;
+}
+
+/* ===== Donut mask (set inner hole size trực tiếp) ===== */
+/* Nếu muốn vòng rỗng: chỉnh 0% -> 28% (hoặc tuỳ) */
+.lucky_c_donut-mask {
+    -webkit-mask: radial-gradient(circle at 50% 50%, transparent 0%, #000 1px);
+    mask: radial-gradient(circle at 50% 50%, transparent 0%, #000 1px);
+}
+
+/* ===== ITEM / SLICE ===== */
+.lucky_c_item {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    outline: 3px solid rgba(255, 255, 255, 0.6);
+    outline-offset: -3px;
+    transition: outline-color 0.12s ease, filter 0.12s ease;
+    display: grid;
+    place-items: center;
+}
+
+    .lucky_c_item:hover {
+        outline-color: rgba(251, 191, 36, 0.95); /* gold hover */
+        filter: brightness(1.05);
+    }
+
+    .lucky_c_item .lucky_c_label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        white-space: nowrap;
+        font-weight: 800;
+        font-size: 18px;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+    }
+
+        .lucky_c_item .lucky_c_label span {
+            display: inline-block;
+            transform-origin: 50% 50%;
+        }
+
+/* ===== HUB / BUTTON ===== */
+.lucky_c_hub {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    width: 98px;
+    height: 98px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05) 55%, rgba(0, 0, 0, 0.22)), linear-gradient(180deg, rgba(251, 191, 36, 0.62), rgba(239, 68, 68, 0.36));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    user-select: none;
+    cursor: pointer;
+}
+
+    .lucky_c_hub:active {
+        transform: translate(-50%, -50%) scale(0.985);
+    }
+
+    .lucky_c_hub .lucky_c_btn {
+        width: 84px;
+        height: 84px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(17, 24, 39, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #fff7ed;
+        font-weight: 800;
+        letter-spacing: 0.6px;
+    }
+
+    .lucky_c_hub.lucky_c_pop {
+        animation: lucky_c_popGlow 260ms ease-out 1;
+    }
+
+@keyframes lucky_c_popGlow {
+    0% {
+        filter: brightness(1);
+    }
+
+    40% {
+        filter: brightness(1.18);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* ===== FOOTER / RESULT ===== */
+.lucky_c_footer {
+    margin-top: 10px;
+}
+
+.lucky_c_result {
+    font-size: 14px;
+    background: rgba(2, 6, 23, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    padding: 10px 12px;
+    border-radius: 14px;
+}
+
+    .lucky_c_result b {
+        color: #fbbf24; /* gold */
+    }
+
+/* ===== MODAL ===== */
+.lucky_c_modal-backdrop {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+    padding: 16px;
+}
+
+.lucky_c_modal-card {
+    width: min(440px, 96vw);
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    text-align: center;
+}
+
+.lucky_c_modal-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.lucky_c_modal-text {
+    margin: 0 0 14px 0;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #222222;
+    white-space: pre-line;
+}
+
+.lucky_c_modal-btn {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #111111;
+    background: #111111;
+    color: #ffffff;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 700;
+}
+
+    .lucky_c_modal-btn:disabled {
+        opacity: .65;
+        cursor: not-allowed;
+    }

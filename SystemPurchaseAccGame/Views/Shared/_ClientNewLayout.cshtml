@@ -47,7 +47,83 @@
         var urlForgot = Url.Action("ForgotPassword", "ClientHome");
         var urlLogout = Url.Action("Logout", "ClientHome");
 }
+<style>
+    /* Sticky footer bar: chỉ xuất hiện khi isAuth render */
+    .user-stickybar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10050;
+        padding: 10px 12px;
+        background: rgba(20, 20, 20, 0.88);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255,255,255,0.12);
+    }
 
+    .user-stickybar__inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .user-stickybar__left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    .user-stickybar__avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        object-fit: cover;
+        flex: 0 0 auto;
+    }
+
+    .user-stickybar__meta {
+        min-width: 0;
+    }
+
+    .user-stickybar__name {
+        font-weight: 700;
+        line-height: 1.1;
+        color: #fff;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60vw;
+    }
+
+    .user-stickybar__balance {
+        margin-top: 2px;
+        font-size: 13px;
+        color: rgba(255,255,255,0.85);
+    }
+
+    .user-stickybar__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.10);
+        flex: 0 0 auto;
+    }
+
+        .user-stickybar__btn:hover {
+            background: rgba(255,255,255,0.16);
+        }
+</style>
 <body>
     <style>
         /* PC dropdown - hiển thị theo data-open */
@@ -228,6 +304,25 @@
 
     @RenderBody()
 
+    @if (isAuth)
+    {
+        <div class="user-stickybar" role="contentinfo" aria-label="Thông tin tài khoản">
+            <div class="user-stickybar__inner">
+                <div class="user-stickybar__left">
+                    <img src="~/assets_new/img/avatar_default.svg" alt="Avatar" class="user-stickybar__avatar" />
+                    <div class="user-stickybar__meta">
+                        <div class="user-stickybar__name">@email</div>
+                        <div class="user-stickybar__balance">@bal.ToString("N0", vi) ₫</div>
+                    </div>
+                </div>
+
+                <a class="user-stickybar__btn" href="@urlTopupBank" aria-label="Nạp tiền">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Nạp tiền</span>
+                </a>
+            </div>
+        </div>
+    }
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-main">
